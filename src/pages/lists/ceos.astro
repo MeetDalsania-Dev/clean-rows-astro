@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import How from '../../components/How.astro';
+import Results from '../../components/Results.astro';
+import Pricing from '../../components/Pricing.astro';
+import FAQ from '../../components/FAQ.astro';
+import Contact from '../../components/Contact.astro';
+import Compliance from '../../components/Compliance.astro';
+import WhoNotFor from '../../components/WhoNotFor.astro';
+import Founder from '../../components/Founder.astro';
+import SampleTable from '../../components/SampleTable.astro';
+
+---
+<BaseLayout title="CEO Email Lists & Contact Data | Clean Rows" description="Buy verified CEO email lists and contact data. Targeted, ICP-based lists of Chief Executive Officers built fresh for your campaign.">
+<section class="hero" id="top">
+<div class="hero-grid"><div class="hero-copy">
+<a class="announcement" href="/#pricing"><span>TARGET DECISION MAKERS</span>Verified C-Level Data <span aria-hidden="true">↗︎</span></a>
+<p class="eyebrow hero-kicker">YOUR ICP. YOUR NEXT CAMPAIGN.</p>
+<h1>Targeted <em>CEO</em> <br>prospect lists.</h1>
+<p class="hero-description">Reach the ultimate decision-makers. We build fresh, accurate lists of Chief Executive Officers and Founders matching your exact industry, location, and company size requirements.</p>
+<div class="hero-actions"><div class="cta-pair"><a class="button lime cta-primary" data-sample href="/#contact">Get 100 free leads</a><a class="button cta-secondary" href="/#pricing">Choose a plan</a></div></div>
+<p class="micro hero-note">No card. No call. No signup wall.</p>
+</div>
+<div class="lead-scene" aria-label="Illustrative lead verification process with sample contacts">
+<div class="scene-grid" aria-hidden="true"></div><div class="scene-orbit orbit-one" aria-hidden="true"></div><div class="scene-orbit orbit-two" aria-hidden="true"></div>
+<div class="scene-brief"><span class="scene-icon" aria-hidden="true">⌕</span><div><small>TARGET AUDIENCE</small><strong>Chief Executive Officers</strong><p>CEO <span>·</span> B2B SaaS <span>·</span> US + UK</p></div></div>
+<div class="scene-file"><div class="file-top"><span class="file-symbol" aria-hidden="true">▤</span><div><strong>ceo-campaign.csv</strong><span>10,000 leads · 10 enriched fields</span></div><span class="file-menu" aria-hidden="true">•••</span></div>
+<div class="file-columns"><span>YOUR NEXT CONVERSATION</span><span>STATUS</span></div>
+<div class="scene-person"><span class="avatar a0">MP</span><div><strong>Maya Patel</strong><small>CEO · Northwind</small></div><span class="person-check" aria-label="Verified">✓</span></div>
+<div class="scene-person"><span class="avatar a1">JW</span><div><strong>Jonas Weber</strong><small>CEO · Brightline</small></div><span class="person-check" aria-label="Verified">✓</span></div>
+<div class="file-checks"><span>✓ LinkedIn profiles</span><span>✓ Business contacts</span></div><div class="scan-line" aria-hidden="true"></div></div>
+</div></div>
+<div class="hero-proof"><div><span class="proof-icon" aria-hidden="true">✓</span><p><strong>LinkedIn + email.</strong><span>One list. More ways to connect.</span></p></div><div><span class="proof-icon" aria-hidden="true">✓</span><p><strong>1,000 leads for $25.</strong><span>No seats. No contracts.</span></p></div><div><span class="proof-icon" aria-hidden="true">＋</span><p><strong>Check the fit first.</strong><span>100 real leads. Yours to review.</span></p></div></div>
+</section>
+
+<section class="section paper" id="features">
+<div class="section-heading">
+<p class="eyebrow"><span>01</span>WHAT LANDS IN YOUR FILE</p>
+<h2>Ten enriched fields per CEO.</h2>
+<p>CEOs are hard to reach. You need multiple angles of approach. We provide personal LinkedIn profiles, company context, and verified business emails so you can execute highly personalized, multichannel campaigns.</p>
+</div>
+<div class="field-workspace reveal">
+<div class="workspace-chrome"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>ceo-campaign.csv</span><small>10 ENRICHED FIELDS</small></div>
+<div class="field-list" role="tablist" aria-label="Enriched lead fields">
+<button role="tab" id="field-tab-0" aria-controls="field-detail" aria-selected="true" tabindex="0" data-field="0"><span>01</span>First &amp; last name<span>↗︎</span></button>
+<button role="tab" id="field-tab-1" aria-controls="field-detail" aria-selected="false" tabindex="-1" data-field="1"><span>02</span>Verified business email<span>↗︎</span></button>
+<button role="tab" id="field-tab-2" aria-controls="field-detail" aria-selected="false" tabindex="-1" data-field="2"><span>03</span>Personal LinkedIn profile<span>↗︎</span></button>
+<button role="tab" id="field-tab-6" aria-controls="field-detail" aria-selected="false" tabindex="-1" data-field="6"><span>04</span>Exact job title (CEO)<span>↗︎</span></button>
+</div>
+<div class="field-preview">
+<div class="profile-head"><span class="profile-avatar">MP</span><div><h3>Maya Patel</h3><p>CEO · Northwind</p></div><span class="verified-badge">✓ Verified</span></div>
+<div id="field-detail" role="tabpanel" aria-labelledby="field-tab-0" tabindex="0"><p class="eyebrow" id="field-name">FIRST &amp; LAST NAME</p><strong id="field-value">Maya Patel</strong><p id="field-description">Cleanly formatted names for personalisation across your outreach.</p></div>
+<div class="profile-footer"><span>✓ LinkedIn profiles</span><span>✓ Business contacts</span><small>Illustrative lead</small></div>
+</div>
+</div>
+<div class="section-cta"><p>Review the fields against your campaign. <strong>Your first 100 leads are free.</strong></p><div class="cta-pair"><a class="button lime cta-primary" data-sample href="/#contact">Get 100 free leads</a><a class="button cta-secondary" href="/#pricing">Choose a plan</a></div></div>
+</section>
+
+<How />
+<Results />
+
+<Compliance />
+<WhoNotFor />
+<Founder />
+
+<Pricing />
+<FAQ />
+<SampleTable />
+<Contact />
+</BaseLayout>
+

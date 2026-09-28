@@ -1,0 +1,35 @@
+[
+  {
+    "filename": "instantly.svg",
+    "assetUrl": "https://cdn.prod.website-files.com/63860c8c65e7bef4a1eeebeb/68bfbb700e2932c8884be3ee_Instantly%20Logo%202%20(1).svg",
+    "pageUrl": "https://instantly.ai/"
+  },
+  {
+    "filename": "smartlead.png",
+    "assetUrl": "https://cdn.prod.website-files.com/6204a703ff61516512c04f55/6462250d368a9e5c6eea28cc_smartlead-logo-main-1.webp",
+    "pageUrl": "https://www.smartlead.ai/",
+    "originalFilename": "smartlead.webp"
+  },
+  {
+    "filename": "lemlist.png",
+    "assetUrl": "https://web-assets.lemlist.com/prod/a327b952f10c989e4c701d945b21bc4f",
+    "pageUrl": "https://www.lemlist.com/",
+    "originalFilename": "lemlist.avif"
+  },
+  {
+    "filename": "apollo.svg",
+    "pageUrl": "https://www.apollo.io/",
+    "assetUrl": "https://www.apollo.io/",
+    "source": "Unmodified path artwork extracted from inline desktop header SVG inside the homepage link; CSS class removed for standalone SVG."
+  },
+  {
+    "filename": "hubspot.svg",
+    "pageUrl": "https://www.hubspot.com/",
+    "note": "Original full header wordmark decoded unchanged from the global-nav-logo -static image data URL."
+  },
+  {
+    "filename": "linkedin.svg",
+    "pageUrl": "https://brand.linkedin.com/linkedin-logo",
+    "note": "Original blue logo geometry extracted from the linkedin-logo-blue-21 symbol and wrapped in its original 82.9 by 21 viewBox."
+  }
+]
