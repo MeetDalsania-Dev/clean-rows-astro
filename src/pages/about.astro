@@ -1,20 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Contact from '../components/Contact.astro';
-import FAQ from '../components/FAQ.astro';
-import How from '../components/How.astro';
-import Pricing from '../components/Pricing.astro';
-import Results from '../components/Results.astro';
-import Compliance from '../components/Compliance.astro';
-import WhoNotFor from '../components/WhoNotFor.astro';
 import Founder from '../components/Founder.astro';
-import SampleTable from '../components/SampleTable.astro';
+import Results from '../components/Results.astro';
+import Contact from '../components/Contact.astro';
 ---
-<BaseLayout title="About Clean Rows | Our Mission" description="Custom B2B data lists built for your ICP.">
+<BaseLayout title="About Clean Rows | Our Mission" description="Learn why we built Clean Rows to replace expensive, stale B2B data platforms with fresh, custom-built prospect lists.">
+  <section class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <a class="announcement" href="/pricing"><span>OUR MISSION</span>Built for outbound teams <span aria-hidden="true">↗︎</span></a>
+        <p class="eyebrow hero-kicker">ABOUT CLEAN ROWS</p>
+        <h1>A small team<br>that <em>ships fast.</em></h1>
+        <p class="hero-description">We started Clean Rows after watching good agencies and founders sign $15k annual contracts for data they could get fresher, cleaner, and more cost-effective. We built the service we wished existed.</p>
+        <div class="hero-actions">
+          <div class="cta-pair">
+            <a class="button lime cta-primary" href="#founder">Meet the team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="hero" style="padding: 10rem 0 5rem;"><div class="section-heading"><h1>About Clean Rows | Our Mission</h1></div></section>
-<SampleTable />
-<Compliance />
-<FAQ />
-<Contact />
+  <Founder />
+  <Results />
+  <Contact />
 </BaseLayout>

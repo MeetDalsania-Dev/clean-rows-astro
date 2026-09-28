@@ -1,20 +1,39 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Contact from '../components/Contact.astro';
-import FAQ from '../components/FAQ.astro';
-import How from '../components/How.astro';
 import Pricing from '../components/Pricing.astro';
-import Results from '../components/Results.astro';
-import Compliance from '../components/Compliance.astro';
-import WhoNotFor from '../components/WhoNotFor.astro';
-import Founder from '../components/Founder.astro';
-import SampleTable from '../components/SampleTable.astro';
+import FAQ from '../components/FAQ.astro';
+import Contact from '../components/Contact.astro';
 ---
-<BaseLayout title="B2B Data Pricing | Pay As You Go" description="Custom B2B data lists built for your ICP.">
+<BaseLayout title="B2B Data Pricing | Pay As You Go | Clean Rows" description="No subscriptions. No seat licenses. Pay only for the custom B2B data lists you need. See our pricing packages.">
+  <section class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <a class="announcement" href="/about"><span>TRANSPARENT PRICING</span>No Annual Contracts <span aria-hidden="true">↗︎</span></a>
+        <p class="eyebrow hero-kicker">PAY AS YOU GO</p>
+        <h1>Pay for data.<br><em>Not for seats.</em></h1>
+        <p class="hero-description">Most B2B data providers trap you in $15,000 annual contracts and charge you per seat. We build custom, verified lists starting at just $25. Buy what you need, when you need it.</p>
+        <div class="hero-actions">
+          <div class="cta-pair">
+            <a class="button lime cta-primary" href="#pricing">See Packages</a>
+          </div>
+        </div>
+        <p class="micro hero-note">Volume discounts automatically applied.</p>
+      </div>
+      <!-- Right side illustration or empty to let grid layout flow -->
+      <div class="lead-scene" aria-hidden="true" style="opacity: 0.5;">
+         <div class="scene-grid"></div>
+         <div class="scene-brief">
+           <span class="scene-icon">💳</span>
+           <div>
+             <small>NO HIDDEN FEES</small>
+             <strong>Clear, upfront pricing.</strong>
+           </div>
+         </div>
+      </div>
+    </div>
+  </section>
 
-<section class="hero" style="padding: 10rem 0 5rem;"><div class="section-heading"><h1>B2B Data Pricing | Pay As You Go</h1></div></section>
-<SampleTable />
-<Compliance />
-<FAQ />
-<Contact />
+  <Pricing />
+  <FAQ />
+  <Contact />
 </BaseLayout>
