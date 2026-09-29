@@ -50,11 +50,31 @@
     });
   volume.addEventListener("change", updateSelection);
   updateSelection();
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.reportValidity() || form.elements.namedItem("bot-field").value)
       return;
     const data = new FormData(form);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if(submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+    }
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec", {
+        method: "POST",
+        body: new URLSearchParams(data).toString(),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        mode: "no-cors"
+      });
+    } catch (e) {
+      console.error(e);
+    }
+    if(submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Continue to WhatsApp <span aria-hidden="true">↗︎</span>';
+    }
+  
     const lines = [
       "Hi Clean Rows, I’d like to discuss " +
         (plans[data.get("volume")] || "a prospect list") +
