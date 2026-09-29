@@ -4,6 +4,8 @@ import Hero from "../../components/editorial/Hero.astro";
 import FAQ from "../../components/editorial/FAQ.astro";
 import Related from "../../components/editorial/Related.astro";
 import Contact from "../../components/Contact.astro";
+import FeatureChart from "../../components/editorial/FeatureChart.astro";
+import PriceDrivers from "../../components/editorial/PriceDrivers.astro";
 const checked = "29 September 2026";
 const apolloPricing = "https://www.apollo.io/pricing";
 const faqs = [
@@ -59,6 +61,45 @@ const faqs = [
       ["Checked", checked],
     ]}
   />
+  <section class="ed-section" aria-labelledby="glance-heading">
+    <div class="ed-wrap">
+      <div class="ed-glance">
+        <div>
+          <p class="ed-kicker">FEATURE VS FEATURE</p>
+          <h2 id="glance-heading">
+            Clean Rows vs Apollo
+            <br />at a glance.
+          </h2>
+          <p>
+            A quick scorecard of what each option includes. The detailed,
+            sourced comparison follows below.
+          </p>
+        </div>
+        <FeatureChart
+          competitor="Apollo"
+          caption="Clean Rows and Apollo feature summary, from the sourced table below. Checked 29 September 2026."
+          rows={[
+        ["Researched to your brief", true, false],
+        ["Self-serve database search", false, true],
+        ["Sequences and dialer", false, true],
+        ["Intent data", false, true],
+        ["Native CRM integrations", false, true],
+        ["No seat fees", true, false],
+        ["No subscription needed", true, false, "Apollo paid plans are monthly or annual"],
+        ["Free way to try", true, true, "Clean Rows sample · Apollo free plan"],
+      ]}
+        />
+      </div>
+      <PriceDrivers
+        id="apollo-drivers"
+        competitor="Apollo"
+        model="Per-seat subscription"
+        drivers={["Number of seats","Plan tier","Monthly or annual billing","Extra credits used"]}
+        alt="Apollo pricing depends on the number of seats, the plan tier, monthly or annual billing and any extra credits used."
+        caption="What drives the price. Apollo details from apollo.io/pricing, checked 29 September 2026. Clean Rows prices from our pricing page."
+      />
+    </div>
+  </section>
   <section class="ed-section" id="approach" aria-labelledby="apollo-who">
     <div class="ed-wrap">
       <div class="ed-section-head">

@@ -1,0 +1,193 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import { founder } from "../data/founder";
+const hasPhoto = fs.existsSync(path.join(process.cwd(), "public", founder.photo));
+const hasLinkedIn = /^https:\/\/(www\.)?linkedin\.com\//.test(founder.linkedin);
+---
+
+<section class="fb" id="founder" aria-labelledby="founder-heading">
+  <div class="fb-wrap">
+    <div class="fb-intro">
+      <p class="fb-kicker"><span aria-hidden="true"></span>FROM THE FOUNDER</p>
+      <h2 id="founder-heading">
+        Built because the old model <em>wasn’t working.</em>
+      </h2>
+    </div>
+    <figure class="fb-card">
+      <div class="fb-person">
+        {hasPhoto ? (
+          <img
+            class="fb-photo"
+            src={founder.photo}
+            width="96"
+            height="96"
+            alt={`${founder.name}, ${founder.role}`}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <span class="fb-photo fb-initials" aria-hidden="true">{founder.initials}</span>
+        )}
+        <figcaption>
+          <strong>{founder.name}</strong>
+          <span>{founder.role}</span>
+          {hasLinkedIn && (
+            <a href={founder.linkedin} rel="noopener me" target="_blank">
+              Connect on LinkedIn <span aria-hidden="true">↗</span>
+            </a>
+          )}
+        </figcaption>
+      </div>
+      <blockquote>
+        <p>“{founder.quote}”</p>
+      </blockquote>
+      <ul class="fb-principles">
+        {founder.principles.map((item) => <li>{item}</li>)}
+      </ul>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .fb {
+    background: #173c2e;
+    color: #eaf6ee;
+    padding: 96px 0;
+  }
+  .fb-wrap {
+    width: min(1240px, 88%);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .fb-kicker {
+    font: 600 0.72rem/1.6 "JetBrains Mono", monospace;
+    letter-spacing: 0.08em;
+    color: #a9cdb5;
+    margin: 0 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .fb-kicker span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #34d399;
+  }
+  .fb h2 {
+    font-size: clamp(2rem, 3.4vw, 3.1rem);
+    line-height: 1.12;
+    color: #f3fff7;
+    text-wrap: balance;
+  }
+  .fb h2 em {
+    display: block;
+    font-style: normal;
+    color: #a0eaba;
+  }
+  .fb-card {
+    margin: 0;
+    background: #f7faf6;
+    color: #173c2e;
+    border-radius: 14px;
+    padding: 40px;
+    box-shadow: 0 24px 60px #0000002e;
+  }
+  .fb-person {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid #dce6df;
+  }
+  .fb-photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .fb-initials {
+    display: grid;
+    place-items: center;
+    background: #173c2e;
+    color: #a0eaba;
+    font: 600 1.4rem/1 Manrope, Inter, sans-serif;
+    letter-spacing: -0.02em;
+  }
+  .fb-person figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .fb-person strong {
+    font: 600 1.15rem/1.3 Manrope, Inter, sans-serif;
+  }
+  .fb-person figcaption > span {
+    font-size: 0.88rem;
+    color: #51685d;
+  }
+  .fb-person a {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #176a48;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fb-card blockquote {
+    margin: 28px 0;
+    padding-left: 22px;
+    border-left: 3px solid #34a26f;
+  }
+  .fb-card blockquote p {
+    font: 500 clamp(1.15rem, 1.7vw, 1.4rem) / 1.6 Manrope, Inter, sans-serif;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: #1d4533;
+  }
+  .fb-principles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .fb-principles li {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #e8f3ea;
+    border: 1px solid #bfd7c6;
+    font-size: 0.83rem;
+    color: #1c4a33;
+  }
+  @media (max-width: 900px) {
+    .fb-wrap {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+  @media (max-width: 560px) {
+    .fb {
+      padding: 60px 0;
+    }
+    .fb-wrap {
+      width: 90%;
+    }
+    .fb-card {
+      padding: 26px 22px;
+    }
+    .fb-card blockquote {
+      padding-left: 16px;
+    }
+  }
+</style>

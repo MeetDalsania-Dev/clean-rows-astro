@@ -1,4 +1,5 @@
 ---
+import { founder } from '../data/founder';
 const { title, description, editorial = false, schema = [], planHref, bodyClass, mainClass, scripts = editorial ? 'editorial' : 'home', noindex = false, sampleHref } = Astro.props;
 const origin = Astro.site || new URL('https://clean-rows-astro.vercel.app');
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).href;
@@ -8,7 +9,7 @@ const pageDescription = description || 'ICP-based B2B prospect lists for enterpr
 // Editorial pages describe their own WebSite node; other pages get a minimal one.
 const website = { '@type': 'WebSite', '@id': new URL('/#website', origin).href, name: 'Clean Rows', url: origin.href };
 const graph = [
-  { '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrows.com' },
+  { '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrows.com', ...(founder.verified ? { founder: { '@type': 'Person', name: founder.name, jobTitle: founder.role, ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}) } } : {}) },
   ...(schema.some((node: { '@type'?: string }) => node['@type'] === 'WebSite') ? [] : [website]),
   ...schema,
 ];

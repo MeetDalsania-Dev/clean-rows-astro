@@ -1319,3 +1319,165 @@ html:has(body.editorial) {
     padding: 56px 0 52px;
   }
 }
+
+/* Comparison visuals: feature scorecard and price-driver infographic. */
+.editorial .ed-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.editorial .ed-glance {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 70px;
+  align-items: start;
+}
+.editorial .ed-feature-chart {
+  background: white;
+  border: 1px solid #d2dfd4;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.editorial .ed-feature-chart table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.editorial .ed-feature-chart caption {
+  caption-side: bottom;
+  text-align: left;
+  padding: 14px 22px;
+  font-size: 0.75rem;
+  color: var(--ed-muted);
+  border-top: 1px solid #e2e9e1;
+}
+.editorial .ed-feature-chart th,
+.editorial .ed-feature-chart td {
+  padding: 14px 22px;
+  border-bottom: 1px solid #e8eee7;
+  text-align: left;
+}
+.editorial .ed-feature-chart thead th {
+  background: #fafbf8;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #234d36;
+}
+.editorial .ed-feature-chart thead th:nth-child(2),
+.editorial .ed-feature-chart td:nth-child(2) {
+  background: #f1f7f0;
+}
+.editorial .ed-feature-chart tbody th {
+  font-weight: 500;
+  color: #173c2e;
+}
+.editorial .ed-feature-chart tbody th small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--ed-muted);
+  margin-top: 2px;
+}
+.editorial .ed-feature-chart td {
+  width: 22%;
+  text-align: center;
+  font-size: 1.05rem;
+}
+.editorial .ed-feature-chart thead th:not(:first-child) {
+  text-align: center;
+}
+.editorial .ed-feature-chart td.yes span[aria-hidden] {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #16825b;
+  color: white;
+  font-size: 0.85rem;
+}
+.editorial .ed-feature-chart td.no span[aria-hidden] {
+  color: #8a9a8f;
+}
+.editorial .ed-feature-chart tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.editorial .ed-figure {
+  margin: 40px 0 0;
+}
+.editorial .ed-figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.editorial .ed-figure .k {
+  font: 600 15px "JetBrains Mono", monospace;
+  letter-spacing: 1px;
+  fill: #51685d;
+}
+.editorial .ed-figure .h {
+  font: 600 24px Manrope, Inter, sans-serif;
+  fill: #173c2e;
+}
+.editorial .ed-figure .c {
+  font: 500 18px Inter, sans-serif;
+  fill: #45604f;
+}
+.editorial .ed-figure .g {
+  fill: #176a48;
+}
+.editorial .ed-figure .s {
+  font: 700 17px Inter, sans-serif;
+  fill: #45604f;
+}
+.editorial .ed-figure .w {
+  fill: white;
+}
+.editorial .ed-figure .n {
+  font: 500 17px Inter, sans-serif;
+  fill: #45604f;
+}
+.editorial .ed-figure figcaption {
+  font-size: 0.8rem;
+  color: var(--ed-muted);
+  margin-top: 14px;
+}
+@media (max-width: 900px) {
+  .editorial .ed-glance {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+@media (max-width: 560px) {
+  .editorial .ed-feature-chart th,
+  .editorial .ed-feature-chart td {
+    padding: 12px 14px;
+  }
+  .editorial .ed-feature-chart tbody th {
+    font-size: 0.84rem;
+  }
+}
+.editorial .ed-figure-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+@media (max-width: 700px) {
+  .editorial .ed-figure-panels {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+.editorial .ed-feature-chart table {
+  min-width: 0;
+}
+.editorial .ed-glance > * {
+  min-width: 0;
+}
+
+.editorial .ed-glance h2 + p {
+  margin-top: 23px;
+}

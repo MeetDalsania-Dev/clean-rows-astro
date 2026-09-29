@@ -1,0 +1,50 @@
+---
+interface Props {
+  id: string;
+  competitor: string;
+  model: string;
+  drivers: string[];
+  caption: string;
+  alt: string;
+}
+const { id, competitor, model, drivers, caption, alt } = Astro.props;
+const rowY = (i: number) => 104 + i * 50;
+const height = Math.max(104 + drivers.length * 50 + 30, 320);
+const mid = height / 2;
+---
+
+<figure class="ed-figure" role="group" aria-labelledby={`${id}-cap`}>
+  <div class="ed-figure-panels">
+    <svg viewBox={`0 0 480 ${height}`} role="img" aria-labelledby={`${id}-a-t ${id}-a-d`}>
+      <title id={`${id}-a-t`}>What drives {competitor} pricing</title>
+      <desc id={`${id}-a-d`}>{alt}</desc>
+      <rect x="1" y="1" width="478" height={height - 2} rx="14" fill="#ffffff" stroke="#d6e0d4" />
+      <text x="30" y="46" class="k">{competitor.toUpperCase()}</text>
+      <text x="30" y="76" class="h">{model}</text>
+      {drivers.map((d, i) => (
+        <g>
+          <rect x="30" y={rowY(i)} width="310" height="38" rx="19" fill="#f7f8f6" stroke="#e1e6e0" />
+          <text x="50" y={rowY(i) + 25} class="c">{d}</text>
+          <path d={`M340 ${rowY(i) + 19} C 380 ${rowY(i) + 19}, 380 ${mid}, 404 ${mid}`} fill="none" stroke="#b7c4ba" stroke-width="1.5" />
+        </g>
+      ))}
+      <circle cx="428" cy={mid} r="22" fill="#e8ede9" stroke="#b7c4ba" />
+      <text x="428" y={mid + 6} text-anchor="middle" class="s">$</text>
+    </svg>
+    <svg viewBox={`0 0 480 ${height}`} role="img" aria-labelledby={`${id}-b-t ${id}-b-d`}>
+      <title id={`${id}-b-t`}>What drives Clean Rows pricing</title>
+      <desc id={`${id}-b-d`}>Clean Rows price depends on list volume only: $25 for 1,000 leads, $199 for 10,000 and $799 for 50,000, with a custom quote from 100,000.</desc>
+      <rect x="1" y="1" width="478" height={height - 2} rx="14" fill="#f1f7f0" stroke="#bfd7c6" />
+      <text x="30" y="46" class="k g">CLEAN ROWS</text>
+      <text x="30" y="76" class="h">Published price per list</text>
+      <rect x="30" y="104" width="310" height="38" rx="19" fill="#e8f3ea" stroke="#bfd7c6" />
+      <text x="50" y="129" class="c g">List volume</text>
+      <path d={`M340 123 C 380 123, 380 ${mid}, 404 ${mid}`} fill="none" stroke="#39855f" stroke-width="1.5" />
+      <circle cx="428" cy={mid} r="22" fill="#16825b" />
+      <text x="428" y={mid + 6} text-anchor="middle" class="s w">$</text>
+      <text x="30" y={height - 62} class="n">$25 for 1,000 · $199 for 10,000</text>
+      <text x="30" y={height - 36} class="n">$799 for 50,000 · 100,000+ quoted</text>
+    </svg>
+  </div>
+  <figcaption id={`${id}-cap`}>{caption}</figcaption>
+</figure>

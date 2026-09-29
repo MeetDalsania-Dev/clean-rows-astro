@@ -4,6 +4,8 @@ import Hero from "../../components/editorial/Hero.astro";
 import FAQ from "../../components/editorial/FAQ.astro";
 import Related from "../../components/editorial/Related.astro";
 import Contact from "../../components/Contact.astro";
+import FeatureChart from "../../components/editorial/FeatureChart.astro";
+import PriceDrivers from "../../components/editorial/PriceDrivers.astro";
 const checked = "29 September 2026";
 const guide = "https://pipeline.zoominfo.com/sales/how-much-does-zoominfo-cost";
 const filing =
@@ -61,6 +63,44 @@ const faqs = [
       ["Checked", checked],
     ]}
   />
+  <section class="ed-section" aria-labelledby="glance-heading">
+    <div class="ed-wrap">
+      <div class="ed-glance">
+        <div>
+          <p class="ed-kicker">FEATURE VS FEATURE</p>
+          <h2 id="glance-heading">
+            Clean Rows vs ZoomInfo
+            <br />at a glance.
+          </h2>
+          <p>
+            A quick scorecard of what each option includes. The detailed,
+            sourced comparison follows below.
+          </p>
+        </div>
+        <FeatureChart
+          competitor="ZoomInfo"
+          caption="Clean Rows and ZoomInfo feature summary, from the sourced table below. Checked 29 September 2026."
+          rows={[
+        ["Researched to your brief", true, false],
+        ["Self-serve database search", false, true],
+        ["Intent data and technographics", false, true],
+        ["Direct CRM integration", false, true],
+        ["Published prices", true, false, "ZoomInfo paid plans are quoted"],
+        ["One-time purchase", true, false, "Most ZoomInfo paid plans billed annually"],
+        ["Free way to try", true, true, "Clean Rows sample · ZoomInfo Lite"],
+      ]}
+        />
+      </div>
+      <PriceDrivers
+        id="zoominfo-drivers"
+        competitor="ZoomInfo"
+        model="Custom-quoted subscription"
+        drivers={["Team size","Credit volume","Features such as intent data","Integrations and API access","Contract length"]}
+        alt="ZoomInfo quotes depend on team size, credit volume, features such as intent data, integrations and API access, and contract length."
+        caption="What drives the price. ZoomInfo factors from its published pricing guide (updated 7 July 2026), checked 29 September 2026."
+      />
+    </div>
+  </section>
   <section class="ed-section" id="approach" aria-labelledby="zi-buying">
     <div class="ed-wrap">
       <div class="ed-section-head">

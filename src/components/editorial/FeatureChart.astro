@@ -1,0 +1,37 @@
+---
+interface Props {
+  competitor: string;
+  caption: string;
+  rows: [string, boolean, boolean, string?][];
+}
+const { competitor, caption, rows } = Astro.props;
+---
+
+<div class="ed-feature-chart">
+  <table>
+    <caption>{caption}</caption>
+    <thead>
+      <tr>
+        <th scope="col">Feature</th>
+        <th scope="col">Clean Rows</th>
+        <th scope="col">{competitor}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(([feature, us, them, note]) => (
+        <tr>
+          <th scope="row">
+            {feature}
+            {note && <small>{note}</small>}
+          </th>
+          {[us, them].map((value) => (
+            <td class:list={{ yes: value, no: !value }}>
+              <span aria-hidden="true">{value ? "✓" : "–"}</span>
+              <span class="ed-sr">{value ? "Yes" : "No"}</span>
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
