@@ -50,16 +50,19 @@
     });
   volume.addEventListener("change", updateSelection);
   updateSelection();
+  
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (!form.reportValidity() || form.elements.namedItem("bot-field").value)
-      return;
-    const data = new FormData(form);
+    if (!form.reportValidity() || form.elements.namedItem("bot-field").value) return;
+    
     const submitBtn = form.querySelector('button[type="submit"]');
     if(submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
     }
+    
+    const data = new FormData(form);
+    
     try {
       await fetch("https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec", {
         method: "POST",
@@ -67,60 +70,34 @@
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         mode: "no-cors"
       });
+      
+      const message = document.createElement("p");
+      message.textContent = "Your request has been received securely. We will review your requirements and email you shortly.";
+      status.replaceChildren(message);
+      status.focus({ preventScroll: true });
+      form.reset();
+      
     } catch (e) {
       console.error(e);
+      const message = document.createElement("p");
+      message.textContent = "Something went wrong. Please try again or email us directly.";
+      status.replaceChildren(message);
     }
+    
     if(submitBtn) {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Continue to WhatsApp <span aria-hidden="true">↗︎</span>';
+      submitBtn.innerHTML = 'Request Sent <span aria-hidden="true">✓</span>';
     }
-  
-    const lines = [
-      "Hi Clean Rows, I’d like to discuss " +
-        (plans[data.get("volume")] || "a prospect list") +
-        ".",
-    ];
-    const labels = {
-      name: "Name",
-      email: "Work email",
-      icp: "Ideal customer",
-      company: "Company",
-      type: "Team",
-      timeline: "Timeline",
-      notes: "Notes",
-    };
-    for (const [key, label] of Object.entries(labels)) {
-      const value = String(data.get(key) || "").trim();
-      if (value) lines.push(label + ": " + value);
-    }
-    lines.push("", "Page: " + pagePath);
-    if (window.CleanRowsTracking)
-      lines.push("Ref: " + window.CleanRowsTracking.summary());
-    const link = document.createElement("a");
-    link.href =
-      "https://wa.me/918469847308?text=" + encodeURIComponent(lines.join("\n"));
-    link.target = "_blank";
-    link.rel = "noopener";
-    link.className = "ed-text-link";
-    link.textContent = "Open my request in WhatsApp ↗";
-    const message = document.createElement("p");
-    message.textContent =
-      "Your request is prepared, not sent. Open WhatsApp, review it, then press Send.";
-    status.replaceChildren(message, link);
-    status.focus({ preventScroll: true });
-    window.open(link.href, "_blank", "noopener");
   });
-  document
-    .querySelector("#copy-slack-email")
-    ?.addEventListener("click", async () => {
-      const email = document.querySelector("#slack-email").textContent.trim();
-      const message = document.querySelector("#slack-copy-status");
-      try {
-        await navigator.clipboard.writeText(email);
-        message.textContent =
-          "Email copied. Paste it into your Slack workspace invitation.";
-      } catch {
-        message.textContent = "Select and copy the email above to invite us.";
-      }
-    });
+
+  document.querySelector('#copy-slack-email')?.addEventListener('click', async () => {
+    const email = document.querySelector('#slack-email').textContent.trim();
+    const message = document.querySelector('#slack-copy-status');
+    try {
+      await navigator.clipboard.writeText(email);
+      message.textContent = 'Email copied. Paste it into your Slack workspace invitation.';
+    } catch {
+      message.textContent = 'Select and copy the email above to invite us.';
+    }
+  });
 })();

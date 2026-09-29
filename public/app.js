@@ -34,12 +34,19 @@
   if(onNetlify){submit.innerHTML='Send my request <span aria-hidden="true">↗︎</span>';$('#form-note').textContent='No card required. We reply within hours, often minutes.';}
   function statusMessage(message,url,label){status.replaceChildren();const p=document.createElement('p');p.textContent=message;status.append(p);if(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent=label;status.append(a);}status.focus({preventScroll:true});}
   function fillAttribution(){const tracking=window.CleanRowsTracking;if(!tracking)return;for(const [key,value] of Object.entries(tracking.data())){const input=form.querySelector('input[type=hidden][name="'+key+'"]');if(input)input.value=value;}}
-  form.addEventListener('submit',async event=>{event.preventDefault();if(!form.reportValidity())return;fillAttribution();const data = new FormData(form);
+  
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity() || form.elements.namedItem("bot-field").value) return;
+    
+    fillAttribution();
+    const data = new FormData(form);
     const submitBtn = form.querySelector('button[type="submit"]');
     if(submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
     }
+    
     try {
       await fetch("https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec", {
         method: "POST",
@@ -47,17 +54,21 @@
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         mode: "no-cors"
       });
+      
+      statusMessage('Your request is received. We will review your requirements and email you shortly.');
+      form.reset();
+      updateRequest();
     } catch (e) {
       console.error(e);
+      statusMessage('Your request didn’t send. Try again or email us directly.', 'mailto:hello@cleanrows.com', 'Email Clean Rows ↗︎');
     }
+    
     if(submitBtn) {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Continue to WhatsApp <span aria-hidden="true">↗︎</span>';
+      submitBtn.innerHTML = 'Request Sent <span aria-hidden="true">✓</span>';
     }
-  if(String(data.get('bot-field')||''))return;
-    if(!onNetlify){const labels={name:'Name',email:'Work email',icp:'Ideal customer',company:'Company',type:'Team',volume:'Volume',timeline:'Timeline',notes:'Notes'},lines=[String(data.get('volume'))==='100'?'Hi Clean Rows, I’d like my 100 free verified leads.':'Hi Clean Rows, I’d like to discuss the '+(planNames[String(data.get('volume'))]||'requested')+' prospect list plan.'];for(const [key,label] of Object.entries(labels)){const value=String(data.get(key)||'').trim();if(value)lines.push(label+': '+(key==='volume'?(planLabels[value]||value):value));}
-      if(window.CleanRowsTracking)lines.push('','Ref: '+window.CleanRowsTracking.summary());const url='https://wa.me/918469847308?text='+encodeURIComponent(lines.join('\n'));statusMessage('Your request is ready. Review the message in WhatsApp and press Send to complete it.',url,'Open my request in WhatsApp ↗︎');window.open(url,'_blank','noopener');return;}
-    submit.disabled=true;submit.textContent='Sending…';try{const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()});if(!response.ok)throw Error('Submission failed');statusMessage('Your request is received. We will reply to confirm your requirements and next steps.');form.reset();updateRequest();}catch{statusMessage('Your request didn’t send. Your answers are still here. Try again or message us on WhatsApp.','https://wa.me/918469847308','Message Clean Rows ↗︎');}finally{submit.disabled=false;submit.innerHTML='Send my request <span aria-hidden="true">↗︎</span>';}});
+  });
+
   $('#copy-slack-email').addEventListener('click',async()=>{
     const email=$('#slack-email').textContent.trim();
     const status=$('#slack-copy-status');
