@@ -38,15 +38,15 @@
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.reportValidity() || form.elements.namedItem("bot-field").value) return;
-    
+
     fillAttribution();
     const data = new FormData(form);
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if(submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-    }
-    
+    const isSample = data.get("volume") === "100";
+    const label = submit.innerHTML;
+    submit.disabled = true;
+    submit.textContent = "Sending…";
+    status.replaceChildren();
+
     try {
       await fetch("https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec", {
         method: "POST",
@@ -54,18 +54,20 @@
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         mode: "no-cors"
       });
-      
-      statusMessage('Your request is received. We will review your requirements and email you shortly.');
+      if (window.CleanRowsSuccess) {
+        window.CleanRowsSuccess.show(form, { sample: isSample });
+      } else {
+        statusMessage("Your request is received. We will review your requirements and email you shortly.");
+      }
       form.reset();
       updateRequest();
     } catch (e) {
       console.error(e);
-      statusMessage('Your request didn’t send. Try again or email us directly.', 'mailto:hello@cleanrows.com', 'Email Clean Rows ↗︎');
-    }
-    
-    if(submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Request Sent <span aria-hidden="true">✓</span>';
+      // Keep what the visitor typed so they can retry.
+      statusMessage("Your request didn’t send. Try again or email us directly.", "mailto:hello@cleanrows.com", "Email Clean Rows ↗︎");
+    } finally {
+      submit.disabled = false;
+      submit.innerHTML = label;
     }
   });
 

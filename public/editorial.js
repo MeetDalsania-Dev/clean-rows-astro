@@ -1,4 +1,4 @@
-/* Shared editorial pages: plan selection and explicit WhatsApp handoff. */
+/* Shared editorial pages: plan selection and request submission. */
 (() => {
   "use strict";
   const pagePath = location.pathname.replace(/\/$/, "") || "/";
@@ -51,18 +51,32 @@
   volume.addEventListener("change", updateSelection);
   updateSelection();
   
+  // Copy campaign attribution into the hidden fields, as app.js does on Home.
+  function fillAttribution() {
+    const tracking = window.CleanRowsTracking;
+    if (!tracking) return;
+    for (const [key, value] of Object.entries(tracking.data())) {
+      const input = form.querySelector('input[type=hidden][name="' + key + '"]');
+      if (input) input.value = value;
+    }
+  }
+
+  form.addEventListener("reset", () => setTimeout(updateSelection));
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.reportValidity() || form.elements.namedItem("bot-field").value) return;
-    
+
+    fillAttribution();
     const submitBtn = form.querySelector('button[type="submit"]');
-    if(submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-    }
-    
+    const label = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+    status.replaceChildren();
+
     const data = new FormData(form);
-    
+    const isSample = data.get("volume") === "100";
+
     try {
       await fetch("https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec", {
         method: "POST",
@@ -70,23 +84,25 @@
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         mode: "no-cors"
       });
-      
-      const message = document.createElement("p");
-      message.textContent = "Your request has been received securely. We will review your requirements and email you shortly.";
-      status.replaceChildren(message);
-      status.focus({ preventScroll: true });
+      if (window.CleanRowsSuccess) {
+        window.CleanRowsSuccess.show(form, { sample: isSample });
+      } else {
+        const message = document.createElement("p");
+        message.textContent = "Your request has been received. We will review your requirements and email you shortly.";
+        status.replaceChildren(message);
+        status.focus({ preventScroll: true });
+      }
       form.reset();
-      
     } catch (e) {
       console.error(e);
+      // Keep what the visitor typed so they can retry.
       const message = document.createElement("p");
-      message.textContent = "Something went wrong. Please try again or email us directly.";
+      message.textContent = "Your request didn’t send. Please try again or email hello@cleanrows.com.";
       status.replaceChildren(message);
-    }
-    
-    if(submitBtn) {
+      status.focus({ preventScroll: true });
+    } finally {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Request Sent <span aria-hidden="true">✓</span>';
+      submitBtn.innerHTML = label;
     }
   });
 

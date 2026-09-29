@@ -170,3 +170,29 @@ form input,form textarea,form select{scroll-margin-top:125px}
 /* WCAG AA text contrast on legal and calculator pages (Home keeps its palette). */
 .legal-page .legal-kicker,.legal-page .legal-toc>p,.legal-page .legal-table th,.legal-page .legal-table td{color:#5c7264}
 .calculator-page .calculator .eyebrow,.calculator-page .volume-presets button[aria-pressed=false],.calculator-page .calc-result-top,.calculator-page .calc-result-top button[aria-pressed=false],.calculator-page .cost-row:not(.us),.calculator-page .cost-row:not(.us) strong,.calculator-page .savings,.calculator-page .calculator-result>.micro,.calculator-page .assumptions,.calculator-page .calculator-input>p:not(.eyebrow),.calculator-page .calculator label{color:#5c7264}
+
+/* Request form success state (Home and editorial pages). */
+.form-success{display:none}
+form.is-sent{display:flex;align-items:center;justify-content:center}
+form.is-sent>:not(.form-success){display:none!important}
+form.is-sent>.form-success{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:400px;padding:12px 0;outline:none}
+.form-success-mark{width:76px;height:76px;margin-bottom:26px;overflow:visible}
+.form-success-ring,.form-success-tick{fill:none;stroke:#16825b;stroke-linecap:round;stroke-linejoin:round}
+.form-success-ring{stroke-width:2.5;stroke-dasharray:183;stroke-dashoffset:183;transform:rotate(-90deg);transform-origin:center}
+.form-success-tick{stroke-width:3.5;stroke-dasharray:36;stroke-dashoffset:36}
+.form-success-title{font-family:Manrope,Inter,sans-serif;font-size:2rem;line-height:1.15;letter-spacing:-.035em;font-weight:600;color:#173c2e;margin:0}
+.form-success-copy{font-size:.95rem!important;line-height:1.75!important;color:#51685d!important;margin:14px 0 26px!important;text-align:center!important}
+.form-success-again{background:none;border:0;padding:6px 0;min-height:44px;font-size:.875rem;font-weight:600;color:#176a48;text-decoration:underline;text-decoration-color:#92ab9c;text-underline-offset:5px}
+.form-success-again:hover{color:#173c2e}
+.form-success.is-playing .form-success-mark{animation:success-pop .5s cubic-bezier(.34,1.56,.64,1) both}
+.form-success.is-playing .form-success-ring{animation:success-draw .7s cubic-bezier(.65,0,.35,1) .05s forwards}
+.form-success.is-playing .form-success-tick{animation:success-draw .4s cubic-bezier(.65,0,.35,1) .6s forwards}
+.form-success.is-playing .form-success-title,.form-success.is-playing .form-success-copy,.form-success.is-playing .form-success-again{opacity:0;animation:success-rise .6s cubic-bezier(.22,1,.36,1) forwards}
+.form-success.is-playing .form-success-title{animation-delay:.75s}
+.form-success.is-playing .form-success-copy{animation-delay:.87s}
+.form-success.is-playing .form-success-again{animation-delay:1s}
+@keyframes success-draw{to{stroke-dashoffset:0}}
+@keyframes success-pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes success-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.form-success.is-playing *{animation:none!important;opacity:1!important}.form-success-ring,.form-success-tick{stroke-dashoffset:0}}
+@media (max-width:560px){.form-success-title{font-size:1.7rem}.form-success-mark{width:64px;height:64px}}

@@ -42,7 +42,7 @@ const graph = [
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
 
-  <link rel="stylesheet" href="/site.css?v=14">
+  <link rel="stylesheet" href="/site.css?v=15">
   {editorial && <link rel="stylesheet" href="/editorial.css" />}
 </head>
 <body class:list={[bodyClass, { editorial }]}>
@@ -116,10 +116,10 @@ const graph = [
 
   {/* Page scripts: 'home' (content + app), 'editorial', 'calculator' or 'none' (legal pages). */}
   {scripts === 'home' && <script is:inline src="/content.js?v=8"></script>}
-  <script is:inline src="/site-ui.js?v=7"></script>
+  <script is:inline src="/site-ui.js?v=8"></script>
   <script is:inline src="/tracking.js?v=1"></script>
-  {scripts === 'home' && <script is:inline src="/app.js?v=13"></script>}
-  {scripts === 'editorial' && <script is:inline src="/editorial.js"></script>}
+  {scripts === 'home' && <script is:inline src="/app.js?v=14"></script>}
+  {scripts === 'editorial' && <script is:inline src="/editorial.js?v=2"></script>}
   {scripts === 'calculator' && <script is:inline src="/calculator.js?v=8"></script>}
 </body>
 </html>
