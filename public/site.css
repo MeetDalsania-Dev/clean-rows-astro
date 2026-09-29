@@ -163,3 +163,10 @@ form input,form textarea,form select{scroll-margin-top:125px}
 .site-footer .footer-bottom a{display:inline-flex;align-items:center;min-height:44px}
 @media(max-width:1000px){.site-footer{grid-template-columns:1fr;gap:36px}.site-footer .footer-brand{display:flex;align-items:start;justify-content:space-between;gap:40px}.site-footer .footer-brand p{max-width:440px;margin:0}.site-footer .footer-grid{gap:24px}}
 @media(max-width:600px){.site-footer{padding:44px 6% 24px;gap:32px}.site-footer .footer-brand{display:block}.site-footer .footer-brand p{margin-top:18px;max-width:340px}.site-footer .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}.site-footer .footer-col strong{margin-bottom:8px}.site-footer .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px}.site-footer .footer-bottom>div{gap:4px 20px}}
+
+/* The custom-quote link is toggled with the hidden attribute; keep it hidden. */
+#custom-quote-link[hidden]{display:none}
+
+/* WCAG AA text contrast on legal and calculator pages (Home keeps its palette). */
+.legal-page .legal-kicker,.legal-page .legal-toc>p,.legal-page .legal-table th,.legal-page .legal-table td{color:#5c7264}
+.calculator-page .calculator .eyebrow,.calculator-page .volume-presets button[aria-pressed=false],.calculator-page .calc-result-top,.calculator-page .calc-result-top button[aria-pressed=false],.calculator-page .cost-row:not(.us),.calculator-page .cost-row:not(.us) strong,.calculator-page .savings,.calculator-page .calculator-result>.micro,.calculator-page .assumptions,.calculator-page .calculator-input>p:not(.eyebrow),.calculator-page .calculator label{color:#5c7264}

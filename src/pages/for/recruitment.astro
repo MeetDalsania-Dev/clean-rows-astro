@@ -1,39 +1,304 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Contact from '../../components/Contact.astro';
-import FAQ from '../../components/FAQ.astro';
-import How from '../../components/How.astro';
-import Pricing from '../../components/Pricing.astro';
-import Results from '../../components/Results.astro';
-import Compliance from '../../components/Compliance.astro';
-import WhoNotFor from '../../components/WhoNotFor.astro';
-import Founder from '../../components/Founder.astro';
-import SampleTable from '../../components/SampleTable.astro';
+import Layout from "../../layouts/EditorialLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import FAQ from "../../components/editorial/FAQ.astro";
+import Related from "../../components/editorial/Related.astro";
+import Contact from "../../components/Contact.astro";
+const faqs = [
+  [
+    "Is this a candidate database?",
+    "No. Clean Rows builds business-development lists of employers and the people who hire for them. Candidate CVs and profiles for placement are not included.",
+  ],
+  [
+    "Is every company on the list actively hiring?",
+    "No. Lists are built on employer profile, such as sector, size and region. Hiring status, live vacancies and hiring intent are not standard fields.",
+  ],
+  [
+    "Which contacts should a recruitment agency target?",
+    "It depends on your desk. HR and talent acquisition leaders often manage agency relationships, while departmental leaders often own the hiring need. Agree which roles, or both, before research starts.",
+  ],
+  [
+    "Can you build a separate list for each desk?",
+    "Yes. Files can be split by desk, specialty or consultant. Agree the splits and column names before you order.",
+  ],
+  [
+    "Can you exclude our current clients and other agencies?",
+    "Send the company names or domains you want left out with your brief. Excluding recruitment and staffing firms is agreed as part of the scope.",
+  ],
+  [
+    "Can you add live job postings to the file?",
+    "Live vacancy data is not part of the standard file. If you need additional research, feasibility and price are agreed before ordering.",
+  ],
+];
 ---
-<BaseLayout title="B2B Leads for Recruitment Agencies" description="Custom B2B data lists built for your ICP.">
 
-
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow hero-kicker">CLIENT ACQUISITION</p>
-        <h1>Leads for Recruitment Agencies</h1>
-        <p class="hero-description">Find hiring managers and HR leaders actively growing their teams. Highly targeted lists for recruitment outreach.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#contact">Get 100 free leads</a>
-          </div>
+<Layout
+  title="Employer Lead Lists for Recruitment Agencies | Clean Rows"
+  description="Recruitment business-development lists: employers by sector, size and region, with HR, talent acquisition and hiring-leader contacts. Not a candidate database."
+  label="For recruitment"
+  serviceName="Employer prospect lists for recruitment agencies"
+  audience="Recruitment agencies prospecting for employer clients"
+  serviceOffers={false}
+  faqs={faqs}
+  service
+>
+  <Hero
+    label="For recruitment agencies"
+    title="Prospect lists for recruiters."
+    accent="Employers, not candidates."
+    description="Find the employers your desk wants to work with, and the HR, talent acquisition and department leaders who hire. Business-development data for your agency, not a candidate database."
+    cta="Brief a desk sample"
+    secondary="Check a contact’s relevance"
+    secondaryHref="#approach"
+    panelLabel="EXAMPLE DESK BRIEF"
+    panelTitle="Engineering desk. UK Midlands."
+    items={[
+      ["Employers", "Manufacturers, 100–1,000 staff"],
+      ["Region", "East and West Midlands"],
+      ["Contacts", "Heads of Engineering, TA leads"],
+      ["Exclude", "Current clients, other agencies"],
+    ]}
+  />
+  <section class="ed-boundary" aria-labelledby="recruitment-boundary">
+    <div class="ed-wrap">
+      <p class="ed-kicker">WHAT THIS IS, AND WHAT IT ISN’T</p>
+      <h2 id="recruitment-boundary">
+        Business-development data. Not a candidate database.
+      </h2>
+      <p>
+        Every row is an employer contact your consultants could approach about
+        recruitment services. Files do not include candidate CVs, live
+        vacancies or hiring-intent signals, and a company appearing on a list
+        does not mean it is hiring right now.
+      </p>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="recruitment-desk">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">BUILT AROUND YOUR DESK</p>
+          <h2 id="recruitment-desk">
+            Your employers.
+            <br />Their hiring leaders.
+          </h2>
         </div>
+        <p>
+          A generalist export of “HR contacts” won’t match a specialist desk.
+          Start from the market you recruit for, then choose who inside each
+          employer should hear from you.
+        </p>
+      </div>
+      <div class="ed-cards">
+        <article>
+          <span class="ed-index">01</span>
+          <h3>Employer profile</h3>
+          <p>
+            Sector, company size and region, matched to the kind of employer
+            your desk already places candidates with.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">02</span>
+          <h3>People who hire</h3>
+          <p>
+            HR and talent acquisition leaders, plus the departmental heads who
+            own hiring for the roles you fill.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">03</span>
+          <h3>A file per desk</h3>
+          <p>
+            Separate lists for each desk, specialty or consultant, so
+            nobody works the same employer twice.
+          </p>
+        </article>
       </div>
     </div>
   </section>
-<How />
-<Results />
-<SampleTable />
-<Compliance />
-<WhoNotFor />
-<Founder />
-<Pricing />
-<FAQ />
-<Contact />
-</BaseLayout>
+  <section class="ed-section ed-tint" aria-labelledby="recruitment-roles">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">ILLUSTRATIVE DESK BRIEFS</p>
+          <h2 id="recruitment-roles">
+            Different desks.
+            <br />Different decision-makers.
+          </h2>
+        </div>
+        <p>
+          These examples show how contacts and exclusions change by specialty.
+          Your own role and company rules are agreed with the brief.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="desk-hint">
+        Scroll sideways to see every column.
+      </p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label="Illustrative recruitment desk briefs"
+        aria-describedby="desk-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap">
+          <caption>
+            Illustrative examples, not standard segments. Role and company
+            exclusions are agreed per brief.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Desk</th>
+              <th scope="col">Departmental contacts</th>
+              <th scope="col">Example exclusion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Technology</th>
+              <td>CTO, Head of Engineering, IT Director</td>
+              <td>IT consultancies and outsourcing firms</td>
+            </tr>
+            <tr>
+              <th scope="row">Finance and accounting</th>
+              <td>Finance Director, Financial Controller</td>
+              <td>Accounting practices, if you recruit for in-house teams</td>
+            </tr>
+            <tr>
+              <th scope="row">Sales and marketing</th>
+              <td>Sales Director, Head of Marketing</td>
+              <td>Companies below an agreed employee count</td>
+            </tr>
+            <tr>
+              <th scope="row">Engineering and manufacturing</th>
+              <td>Head of Engineering, Operations Director, Plant Manager</td>
+              <td>Sites outside the region your candidates can reach</td>
+            </tr>
+            <tr>
+              <th scope="row">Any desk</th>
+              <td>HR Director, Head of Talent Acquisition</td>
+              <td>Recruitment and staffing agencies, and your current clients</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section" id="approach" aria-labelledby="recruitment-review">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">REVIEWING YOUR SAMPLE</p>
+        <h2 id="recruitment-review">
+          Is this contact
+          <br />relevant to your desk?
+        </h2>
+        <p>
+          Your first 100 leads are free before your first paid order. Use them
+          to check relevance, not just whether an email address is present.
+        </p>
+      </div>
+      <ol class="ed-checklist">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Is the employer in your market?</h3>
+            <p>
+              Check sector, size and location against the employers your desk
+              actually places into. Flag companies outside your specialty.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Does this person influence hiring?</h3>
+            <p>
+              Read the exact job title. An HR generalist, a talent acquisition
+              lead and a department head play different roles in choosing an
+              agency.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Have your exclusions held?</h3>
+            <p>
+              Confirm that current clients, other agencies and out-of-scope
+              roles were left out. Adjust the rules before the full build.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" aria-labelledby="recruitment-file">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">WHAT’S IN THE FILE</p>
+        <h2 id="recruitment-file">
+          Employer contacts,
+          <br />clearly scoped.
+        </h2>
+        <p>
+          The same{" "}
+          <a class="ed-inline" href="/whats-in-the-file">standard field groups</a>{" "}
+          as every Clean Rows list. Anything else is scoped before payment as{" "}
+          <a class="ed-inline" href="/services/custom-lists">custom research</a>.
+        </p>
+      </div>
+      <div class="ed-two-lists">
+        <article>
+          <h3>Included as standard</h3>
+          <ul>
+            <li>Employer name, domain and LinkedIn page</li>
+            <li>Company size, industry and location</li>
+            <li>Contact name and exact job title</li>
+            <li>Business email and LinkedIn profile</li>
+            <li>Phone numbers, where available</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Not included</h3>
+          <ul>
+            <li>Candidate CVs or candidate profiles</li>
+            <li>Live vacancies or job adverts</li>
+            <li>Hiring-intent signals</li>
+            <li>Confirmation a company is hiring now</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+  <FAQ title="Questions recruiters ask first." items={faqs} />
+  <Contact
+    sampleOnly
+    team="Recruitment"
+    showSlack={false}
+    heading="Brief one desk."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Describe the employers your desk places into, the roles you want to reach and anyone to leave out. We’ll confirm sample coverage and timing. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+    placeholder="e.g. Heads of Engineering and TA leads at Midlands manufacturers, 100–1,000 staff. Exclude staffing agencies."
+  />
+  <Related
+    items={[
+      [
+        "/whats-in-the-file",
+        "See the standard fields",
+        "Every column, with a CSV preview.",
+      ],
+      [
+        "/data-sources",
+        "How contacts are checked",
+        "What verification does and doesn’t mean.",
+      ],
+      [
+        "/pricing",
+        "Size the full order",
+        "One-time packages, no seat fees.",
+      ],
+    ]}
+  />
+</Layout>

@@ -1,71 +1,332 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-
-import How from '../../components/How.astro';
-import Results from '../../components/Results.astro';
-import Pricing from '../../components/Pricing.astro';
-import FAQ from '../../components/FAQ.astro';
-import Contact from '../../components/Contact.astro';
-import Compliance from '../../components/Compliance.astro';
-import WhoNotFor from '../../components/WhoNotFor.astro';
-import Founder from '../../components/Founder.astro';
-import SampleTable from '../../components/SampleTable.astro';
-
+import Layout from "../../layouts/EditorialLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import FAQ from "../../components/editorial/FAQ.astro";
+import Related from "../../components/editorial/Related.astro";
+import PlanStrip from "../../components/editorial/PlanStrip.astro";
+import Contact from "../../components/Contact.astro";
+const faqs = [
+  [
+    "Can you build a separate list for each agency client?",
+    "Yes. Each client gets its own brief and its own export. Splits by client or campaign are agreed before you order.",
+  ],
+  [
+    "Are the files white-label?",
+    "Yes. Files are a plain CSV or Google Sheet with no Clean Rows branding, ready for campaigns you run under your agency’s name. Our Terms let agencies use a list to run campaigns for their clients; the data itself may not be resold or distributed as a dataset.",
+  ],
+  [
+    "Do we pay for each person on our team?",
+    "No. There are no seat fees. You pay per list package, and everyone on your team can work from the delivered file.",
+  ],
+  [
+    "Can you exclude a client’s customers or previous campaign contacts?",
+    "Send the exclusions with the brief. Existing customers, open deals, earlier campaign contacts and suppression lists are agreed as part of the scope, and you should still deduplicate against your own records before import.",
+  ],
+  [
+    "Can we test a new client’s market before committing?",
+    "Start with a 100-lead sample before your first paid order. Check it against the client’s brief, then agree the volume the campaign actually needs.",
+  ],
+  [
+    "Do you offer recurring delivery for retainers?",
+    "Recurring delivery can be scoped around your campaign calendar. It is agreed separately, and there is no automatic subscription or renewal.",
+  ],
+  [
+    "Will a list guarantee meetings for our clients?",
+    "No. A prospect list is research, not a campaign result. Replies and meetings depend on your offer, messaging, sending setup and the client’s market.",
+  ],
+];
 ---
-<BaseLayout title="B2B Leads for Marketing Agencies | Clean Rows" description="Custom-built B2B prospect lists for marketing agencies. Give your clients the highest quality outbound data.">
-<section class="hero" id="top">
-<div class="hero-grid"><div class="hero-copy">
-<a class="announcement" href="/#pricing"><span>AGENCY PARTNERS</span>White-label files and per-client splits <span aria-hidden="true">↗︎</span></a>
-<p class="eyebrow hero-kicker">BETTER DATA. HAPPIER CLIENTS.</p>
-<h1>B2B leads for <br><em>Marketing Agencies.</em></h1>
-<p class="hero-description">Stop burning your clients' domains with stale database dumps. We build fresh, ICP-verified prospect lists for your clients' cold email and LinkedIn outreach campaigns.</p>
-<div class="hero-actions"><div class="cta-pair"><a class="button lime cta-primary" data-sample href="/#contact">Get 100 free leads</a><a class="button cta-secondary" href="/#pricing">Choose a plan</a></div></div>
-<p class="micro hero-note">Separate exports for every client campaign.</p>
-</div>
-<div class="lead-scene" aria-label="Illustrative lead verification process with sample contacts">
-<div class="scene-grid" aria-hidden="true"></div><div class="scene-orbit orbit-one" aria-hidden="true"></div><div class="scene-orbit orbit-two" aria-hidden="true"></div>
-<div class="scene-brief"><span class="scene-icon" aria-hidden="true">⌕</span><div><small>CLIENT: ACME CORP</small><strong>Right people. Right companies.</strong><p>VP of Sales <span>·</span> B2B SaaS <span>·</span> US + UK</p></div></div>
-<div class="scene-file"><div class="file-top"><span class="file-symbol" aria-hidden="true">▤</span><div><strong>acme-campaign.csv</strong><span>10,000 leads · 10 enriched fields</span></div><span class="file-menu" aria-hidden="true">•••</span></div>
-<div class="file-columns"><span>YOUR NEXT CONVERSATION</span><span>STATUS</span></div>
-<div class="scene-person"><span class="avatar a0">MP</span><div><strong>Maya Patel</strong><small>VP of Sales · Northwind</small></div><span class="person-check" aria-label="Verified">✓</span></div>
-<div class="scene-person"><span class="avatar a1">JW</span><div><strong>Jonas Weber</strong><small>CTO · Brightline</small></div><span class="person-check" aria-label="Verified">✓</span></div>
-<div class="file-checks"><span>✓ LinkedIn profiles</span><span>✓ Business contacts</span></div><div class="scan-line" aria-hidden="true"></div></div>
-</div></div>
-<div class="hero-proof"><div><span class="proof-icon" aria-hidden="true">✓</span><p><strong>White-label friendly.</strong><span>Deliver directly to clients.</span></p></div><div><span class="proof-icon" aria-hidden="true">✓</span><p><strong>Pay per client list.</strong><span>No expensive seat licenses.</span></p></div><div><span class="proof-icon" aria-hidden="true">＋</span><p><strong>Check the fit first.</strong><span>100 real leads. Yours to review.</span></p></div></div>
-</section>
 
-<section class="section paper" id="who">
-<div class="section-heading">
-<p class="eyebrow"><span>01</span>AGENCY FOCUS</p>
-<h2>Built for multichannel agencies</h2>
-<p>You run outbound for multiple clients. You need clean data, separated into specific lists, delivered fast. We handle the data research so you can focus on writing campaigns and booking meetings.</p>
-</div>
-<div class="audience-panel reveal" style="display:block;">
-<div>
-<span class="audience-index">01 / AGENCIES</span>
-<h3>Agencies running multichannel campaigns</h3>
-<p>Build targeted prospect lists for every client, with LinkedIn profiles, company context and business contacts in one file. Separate exports keep client campaigns organised, and per-list pricing keeps costs clear.</p>
-</div>
-<ul>
-<li>Separate export per client or campaign</li>
-<li>Lower per-lead rates on larger packages</li>
-<li>Priority rebuilds for retainer clients</li>
-<li>White-label friendly files</li>
-</ul>
-</div>
-<div class="section-cta"><p>Find out if your clients' target market fits. <strong>Start with a free sample.</strong></p><div class="cta-pair"><a class="button lime cta-primary" data-sample href="/#contact">Get 100 free leads</a><a class="button cta-secondary" href="/#pricing">Choose a plan</a></div></div>
-</section>
-
-<How />
-<Results />
-
-<Compliance />
-<WhoNotFor />
-<Founder />
-
-<Pricing />
-<FAQ />
-<SampleTable />
-<Contact />
-</BaseLayout>
-
+<Layout
+  title="B2B Lead Lists for Agencies: One File per Client | Clean Rows"
+  description="Custom B2B prospect lists for outbound and marketing agencies. A separate brief and white-label file per client, no seat fees, and 100 free leads to start."
+  label="For agencies"
+  serviceName="B2B prospect lists for agencies"
+  audience="Outbound and marketing agencies"
+  planHref="#pricing"
+  faqs={faqs}
+  service
+>
+  <Hero
+    label="For agencies"
+    title="Prospect lists for agencies."
+    accent="One brief per client."
+    description="You run outbound for several clients, and each one sells to a different buyer. Brief every client separately and receive a white-label file built for that campaign."
+    cta="Brief a client sample"
+    secondary="How client briefs work"
+    secondaryHref="#approach"
+    note="No seat fees · White-label files · Pay per list"
+    panelLabel="EXAMPLE CLIENT BRIEF"
+    panelTitle="Client A. Their buyers, not yours."
+    items={[
+      ["Buyers", "CFOs, Heads of Finance"],
+      ["Market", "UK logistics, 200–1,000 staff"],
+      ["Exclude", "Client A’s current customers"],
+      ["File", "client-a-uk-finance.csv"],
+    ]}
+  />
+  <section class="ed-section" aria-labelledby="agency-problem">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">THE AGENCY PROBLEM</p>
+          <h2 id="agency-problem">
+            Every client sells
+            <br />to someone different.
+          </h2>
+        </div>
+        <p>
+          One database export rarely fits a whole client roster. Buyers,
+          markets and exclusions change from one retainer to the next, and the
+          file your client sees should reflect their brief.
+        </p>
+      </div>
+      <div class="ed-cards">
+        <article>
+          <span class="ed-index">01</span>
+          <h3>Different buyers</h3>
+          <p>
+            A payroll client and a cybersecurity client need different titles,
+            company sizes and regions. Each brief is agreed on its own terms.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">02</span>
+          <h3>Different exclusions</h3>
+          <p>
+            One client wants current customers removed. Another wants last
+            quarter’s campaign contacts left out. Exclusions belong to the
+            client’s brief.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">03</span>
+          <h3>Different deliverables</h3>
+          <p>
+            Each campaign may need its own file, naming and exclusions, with
+            no third-party branding. Splits and format are agreed before the
+            order.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" id="approach" aria-labelledby="agency-approach">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">HOW A CLIENT BRIEF WORKS</p>
+        <h2 id="agency-approach">
+          Client-specific,
+          <br />from brief to file.
+        </h2>
+        <p>
+          Nothing is pooled across your clients. Each audience is defined,
+          checked and exported on its own, so one client’s campaign never
+          shapes another’s list.
+        </p>
+      </div>
+      <ol class="ed-checklist">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Brief the client’s audience</h3>
+            <p>
+              Roles and title variations, sectors, company size and locations.
+              Add named accounts if your client already has a target list.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Share the exclusions</h3>
+            <p>
+              Current customers, open deals, contacts from earlier campaigns
+              and any suppression list. We agree how they are applied before
+              research starts.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Receive a separate export</h3>
+            <p>
+              One file per client or campaign, as a CSV or Google Sheet, with
+              the column names and file naming you agreed.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="agency-briefs">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">ILLUSTRATIVE CLIENT BRIEFS</p>
+          <h2 id="agency-briefs">
+            Two clients.
+            <br />Two very different files.
+          </h2>
+        </div>
+        <p>
+          These briefs are fictional. They show how much the audience,
+          exclusions and export can change between clients on the same roster.
+        </p>
+      </div>
+      <div class="ed-brief-pair">
+        <article class="ed-example-brief">
+          <span class="ed-kicker">CLIENT A · FINANCE SOFTWARE</span>
+          <p>
+            “CFOs and Heads of Finance at UK logistics companies with 200–1,000
+            employees. Exclude the client’s current customers.”
+          </p>
+          <dl>
+            <div><dt>Split</dt><dd>One file</dd></div>
+            <div><dt>Export</dt><dd>client-a-uk-finance.csv</dd></div>
+          </dl>
+        </article>
+        <article class="ed-example-brief">
+          <span class="ed-kicker">CLIENT B · IT SERVICES</span>
+          <p>
+            “IT Directors and Heads of Infrastructure at German and Austrian
+            manufacturers, 100–500 employees. Leave out everyone contacted in
+            the client’s last campaign.”
+          </p>
+          <dl>
+            <div><dt>Split</dt><dd>One file per country</dd></div>
+            <div><dt>Export</dt><dd>Shared Google Sheet</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" aria-labelledby="agency-delivery">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">WHAT EACH CAMPAIGN GETS</p>
+        <h2 id="agency-delivery">
+          A clean file
+          <br />under your name.
+        </h2>
+        <p>
+          The same{" "}
+          <a class="ed-inline" href="/whats-in-the-file">standard field groups</a>{" "}
+          in every client file. Anything beyond the standard scope is confirmed
+          before payment.
+        </p>
+      </div>
+      <div class="ed-two-lists">
+        <article>
+          <h3>In every client file</h3>
+          <ul>
+            <li>Prospects matched to that client’s brief</li>
+            <li>People, company and business contact fields</li>
+            <li>Deduplication and consistent formatting</li>
+            <li>No Clean Rows branding in the file</li>
+            <li>CSV or Google Sheet delivery</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Agree before ordering</h3>
+          <ul>
+            <li>How client exclusions will be supplied</li>
+            <li>Per-client or per-campaign file splits</li>
+            <li>Coverage for narrow client audiences</li>
+            <li>Additional research or custom columns</li>
+            <li>Delivery dates and any recurring schedule</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="agency-sample">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">START WITH ONE CLIENT</p>
+          <h2 id="agency-sample">Check the fit. Then scale it.</h2>
+        </div>
+        <p>
+          Your first 100 leads are free before your first paid order. Use them
+          on a client whose market you know well.
+        </p>
+      </div>
+      <div class="ed-cards">
+        <article>
+          <span class="ed-index">01</span>
+          <h3>Brief one client</h3>
+          <p>
+            Pick a live or upcoming campaign and share its audience and
+            exclusions.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">02</span>
+          <h3>Review the sample</h3>
+          <p>
+            Check titles, companies and contacts against the client’s brief.
+            Flag anything outside it before the full build.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">03</span>
+          <h3>Order what the campaign needs</h3>
+          <p>
+            Choose a package for that client. Recurring work is scoped around
+            your campaign calendar, not an automatic subscription.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <PlanStrip
+    kicker="PRICED FOR CLIENT WORK"
+    heading="Pay per list. Never per seat."
+    points={[
+      [
+        "No seat fees for your team",
+        "Your strategists and SDRs all work from the same delivered file. Nobody needs a license to open it.",
+      ],
+      [
+        "White-label files for your clients",
+        "No Clean Rows branding in the file, so campaigns run under your agency’s name. Our Terms let agencies run campaigns for clients.",
+      ],
+      [
+        "One-time packages",
+        "Buy a list for one client campaign. No subscription or automatic renewal.",
+      ],
+    ]}
+    note="Prices in USD. Per-client file splits on request. Targeting, coverage and delivery date are confirmed before payment."
+  />
+  <FAQ title="Questions agencies ask first." items={faqs} />
+  <Contact
+    team="Agency"
+    showSlack={false}
+    heading="Brief your next client."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Share one client’s audience, exclusions and intended volume. We’ll confirm coverage, file splits and timing before you pay. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+    placeholder="e.g. Client A: CFOs at UK logistics companies, 200–1,000 staff. Exclude their current customers. One CSV."
+  />
+  <Related
+    items={[
+      [
+        "/whats-in-the-file",
+        "See what’s in each file",
+        "The standard field groups and a CSV preview.",
+      ],
+      [
+        "/services/custom-lists",
+        "A client with a narrow market?",
+        "Scope specialist research first.",
+      ],
+      [
+        "/free-sample",
+        "Review a sample first",
+        "What to check before scaling.",
+      ],
+    ]}
+  />
+</Layout>

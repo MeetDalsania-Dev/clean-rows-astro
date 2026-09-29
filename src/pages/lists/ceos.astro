@@ -1,72 +1,283 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-
-import How from '../../components/How.astro';
-import Results from '../../components/Results.astro';
-import Pricing from '../../components/Pricing.astro';
-import FAQ from '../../components/FAQ.astro';
-import Contact from '../../components/Contact.astro';
-import Compliance from '../../components/Compliance.astro';
-import WhoNotFor from '../../components/WhoNotFor.astro';
-import Founder from '../../components/Founder.astro';
-import SampleTable from '../../components/SampleTable.astro';
-
+import Layout from "../../layouts/EditorialLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import FAQ from "../../components/editorial/FAQ.astro";
+import Related from "../../components/editorial/Related.astro";
+import PlanStrip from "../../components/editorial/PlanStrip.astro";
+import Contact from "../../components/Contact.astro";
+const faqs = [
+  [
+    "Which titles are included in a CEO list?",
+    "The titles are agreed with your brief. Common choices are CEO, Founder, Co-founder and Managing Director; Owner or President can fit depending on company size and country.",
+  ],
+  [
+    "Can former, fractional or consultant CEOs be left out?",
+    "Yes, when the brief says so. Former CEOs, fractional or interim executives, advisors and consultants using a CEO title can be excluded; check the sample to confirm the rule held.",
+  ],
+  [
+    "Can I get more than one leader per company?",
+    "Yes. Agree a maximum per account, for example the CEO plus up to two co-founders. The default for your order is set in the brief, not assumed.",
+  ],
+  [
+    "Does a CEO title mean the person has budget?",
+    "No. A leadership title describes a role, not budget or buying intent. At larger companies a department head may own the decision you care about.",
+  ],
+  [
+    "What contact details come with each CEO?",
+    "Each row includes the business email, a personal LinkedIn profile and company context such as size, industry and location. Phone numbers are included where available.",
+  ],
+  [
+    "How much does a CEO email list cost?",
+    "Standard packages are $25 for 1,000 leads, $199 for 10,000 and $799 for 50,000, in USD. Narrow audiences or extra research may need a custom quote before payment.",
+  ],
+];
 ---
-<BaseLayout title="CEO Email Lists & Contact Data | Clean Rows" description="Buy verified CEO email lists and contact data. Targeted, ICP-based lists of Chief Executive Officers built fresh for your campaign.">
-<section class="hero" id="top">
-<div class="hero-grid"><div class="hero-copy">
-<a class="announcement" href="/#pricing"><span>TARGET DECISION MAKERS</span>Verified C-Level Data <span aria-hidden="true">↗︎</span></a>
-<p class="eyebrow hero-kicker">YOUR ICP. YOUR NEXT CAMPAIGN.</p>
-<h1>Targeted <em>CEO</em> <br>prospect lists.</h1>
-<p class="hero-description">Reach the ultimate decision-makers. We build fresh, accurate lists of Chief Executive Officers and Founders matching your exact industry, location, and company size requirements.</p>
-<div class="hero-actions"><div class="cta-pair"><a class="button lime cta-primary" data-sample href="/#contact">Get 100 free leads</a><a class="button cta-secondary" href="/#pricing">Choose a plan</a></div></div>
-<p class="micro hero-note">No card. No call. No signup wall.</p>
-</div>
-<div class="lead-scene" aria-label="Illustrative lead verification process with sample contacts">
-<div class="scene-grid" aria-hidden="true"></div><div class="scene-orbit orbit-one" aria-hidden="true"></div><div class="scene-orbit orbit-two" aria-hidden="true"></div>
-<div class="scene-brief"><span class="scene-icon" aria-hidden="true">⌕</span><div><small>TARGET AUDIENCE</small><strong>Chief Executive Officers</strong><p>CEO <span>·</span> B2B SaaS <span>·</span> US + UK</p></div></div>
-<div class="scene-file"><div class="file-top"><span class="file-symbol" aria-hidden="true">▤</span><div><strong>ceo-campaign.csv</strong><span>10,000 leads · 10 enriched fields</span></div><span class="file-menu" aria-hidden="true">•••</span></div>
-<div class="file-columns"><span>YOUR NEXT CONVERSATION</span><span>STATUS</span></div>
-<div class="scene-person"><span class="avatar a0">MP</span><div><strong>Maya Patel</strong><small>CEO · Northwind</small></div><span class="person-check" aria-label="Verified">✓</span></div>
-<div class="scene-person"><span class="avatar a1">JW</span><div><strong>Jonas Weber</strong><small>CEO · Brightline</small></div><span class="person-check" aria-label="Verified">✓</span></div>
-<div class="file-checks"><span>✓ LinkedIn profiles</span><span>✓ Business contacts</span></div><div class="scan-line" aria-hidden="true"></div></div>
-</div></div>
-<div class="hero-proof"><div><span class="proof-icon" aria-hidden="true">✓</span><p><strong>LinkedIn + email.</strong><span>One list. More ways to connect.</span></p></div><div><span class="proof-icon" aria-hidden="true">✓</span><p><strong>1,000 leads for $25.</strong><span>No seats. No contracts.</span></p></div><div><span class="proof-icon" aria-hidden="true">＋</span><p><strong>Check the fit first.</strong><span>100 real leads. Yours to review.</span></p></div></div>
-</section>
 
-<section class="section paper" id="features">
-<div class="section-heading">
-<p class="eyebrow"><span>01</span>WHAT LANDS IN YOUR FILE</p>
-<h2>Ten enriched fields per CEO.</h2>
-<p>CEOs are hard to reach. You need multiple angles of approach. We provide personal LinkedIn profiles, company context, and verified business emails so you can execute highly personalized, multichannel campaigns.</p>
-</div>
-<div class="field-workspace reveal">
-<div class="workspace-chrome"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>ceo-campaign.csv</span><small>10 ENRICHED FIELDS</small></div>
-<div class="field-list" role="tablist" aria-label="Enriched lead fields">
-<button role="tab" id="field-tab-0" aria-controls="field-detail" aria-selected="true" tabindex="0" data-field="0"><span>01</span>First &amp; last name<span>↗︎</span></button>
-<button role="tab" id="field-tab-1" aria-controls="field-detail" aria-selected="false" tabindex="-1" data-field="1"><span>02</span>Verified business email<span>↗︎</span></button>
-<button role="tab" id="field-tab-2" aria-controls="field-detail" aria-selected="false" tabindex="-1" data-field="2"><span>03</span>Personal LinkedIn profile<span>↗︎</span></button>
-<button role="tab" id="field-tab-6" aria-controls="field-detail" aria-selected="false" tabindex="-1" data-field="6"><span>04</span>Exact job title (CEO)<span>↗︎</span></button>
-</div>
-<div class="field-preview">
-<div class="profile-head"><span class="profile-avatar">MP</span><div><h3>Maya Patel</h3><p>CEO · Northwind</p></div><span class="verified-badge">✓ Verified</span></div>
-<div id="field-detail" role="tabpanel" aria-labelledby="field-tab-0" tabindex="0"><p class="eyebrow" id="field-name">FIRST &amp; LAST NAME</p><strong id="field-value">Maya Patel</strong><p id="field-description">Cleanly formatted names for personalisation across your outreach.</p></div>
-<div class="profile-footer"><span>✓ LinkedIn profiles</span><span>✓ Business contacts</span><small>Illustrative lead</small></div>
-</div>
-</div>
-<div class="section-cta"><p>Review the fields against your campaign. <strong>Your first 100 leads are free.</strong></p><div class="cta-pair"><a class="button lime cta-primary" data-sample href="/#contact">Get 100 free leads</a><a class="button cta-secondary" href="/#pricing">Choose a plan</a></div></div>
-</section>
-
-<How />
-<Results />
-
-<Compliance />
-<WhoNotFor />
-<Founder />
-
-<Pricing />
-<FAQ />
-<SampleTable />
-<Contact />
-</BaseLayout>
-
+<Layout
+  title="CEO & Founder Email Lists Built to Your ICP | Clean Rows"
+  description="CEO and founder email lists with business emails, LinkedIn profiles and company context. Title rules and exclusions agreed first. 100 free leads to start."
+  label="CEO lists"
+  serviceName="CEO and founder prospect lists"
+  audience="B2B teams selling to company leaders"
+  planHref="#pricing"
+  faqs={faqs}
+  service
+>
+  <Hero
+    label="CEO & founder lists"
+    title="CEO and founder lists."
+    accent="Titles agreed first."
+    description="Reach the people who run the companies you sell to. Agree which leadership titles count, which companies qualify and who to leave out, before any research starts."
+    cta="Brief a CEO sample"
+    secondary="See the title rules"
+    secondaryHref="#approach"
+    panelLabel="EXAMPLE CEO BRIEF"
+    panelTitle="Founder-led services firms."
+    items={[
+      ["Titles", "CEO, Founder, Managing Director"],
+      ["Companies", "Agencies, 10–50 staff"],
+      ["Location", "United States, Canada"],
+      ["Exclude", "Former, fractional, advisors"],
+    ]}
+  />
+  <section class="ed-section ed-tint" id="approach" aria-labelledby="ceo-titles">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">WHO COUNTS AS A CEO</p>
+          <h2 id="ceo-titles">
+            One role.
+            <br />Several titles.
+          </h2>
+        </div>
+        <p>
+          The person running a company might call themselves CEO, Founder or
+          Managing Director. Others use a CEO title for work that isn’t running
+          your target company at all. Agree the rules first.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="ceo-hint">
+        Scroll sideways to see every column.
+      </p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label="CEO and founder title rules"
+        aria-describedby="ceo-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap">
+          <caption>
+            Common title rules. Your final list of included and excluded
+            titles is agreed with the brief.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Usually means</th>
+              <th scope="col">Decide in the brief</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">CEO</th>
+              <td>The most senior executive running the company</td>
+              <td>Include by name only, or with founders too?</td>
+            </tr>
+            <tr>
+              <th scope="row">Founder, Co-founder</th>
+              <td>Started the business; may or may not still run it</td>
+              <td>Only founders still in an operating role?</td>
+            </tr>
+            <tr>
+              <th scope="row">Managing Director</th>
+              <td>Runs the company in the UK and many other markets; can mean a regional head elsewhere</td>
+              <td>Company-wide MDs only, or country MDs as well?</td>
+            </tr>
+            <tr>
+              <th scope="row">Owner, President</th>
+              <td>Common at small or family-owned businesses and in the US</td>
+              <td>Which company sizes this should apply to</td>
+            </tr>
+            <tr>
+              <th scope="row">Former, fractional, interim, advisor</th>
+              <td>Not currently running the target company</td>
+              <td>Usually excluded; confirm in the brief</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="ceo-accounts">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">ONE LEADER OR SEVERAL</p>
+          <h2 id="ceo-accounts">
+            Decide how many
+            <br />leaders per company.
+          </h2>
+        </div>
+        <p>
+          Many startups have two or three co-founders. Choose whether you want
+          the single most senior leader or every founder at each account.
+        </p>
+      </div>
+      <div class="ed-brief-pair">
+        <article class="ed-example-brief">
+          <span class="ed-kicker">OPTION A · ONE PER ACCOUNT</span>
+          <p>
+            The most senior leader at each company. Simpler to sequence, and
+            every row is a different business.
+          </p>
+          <dl>
+            <div><dt>Rows per company</dt><dd>1</dd></div>
+            <div><dt>Useful when</dt><dd>You want account coverage</dd></div>
+          </dl>
+        </article>
+        <article class="ed-example-brief">
+          <span class="ed-kicker">OPTION B · UP TO AN AGREED LIMIT</span>
+          <p>
+            The CEO plus co-founders or other agreed leaders. Multiple routes
+            into the same company, with fewer companies per 1,000 rows.
+          </p>
+          <dl>
+            <div><dt>Rows per company</dt><dd>Agreed maximum</dd></div>
+            <div><dt>Useful when</dt><dd>Founders share decisions</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" aria-labelledby="ceo-companies">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">THE COMPANY COMES FIRST</p>
+        <h2 id="ceo-companies">
+          The right CEO
+          <br />at the right company.
+        </h2>
+        <p>
+          A CEO list is only as useful as the companies behind it. Every row
+          carries the{" "}
+          <a class="ed-inline" href="/whats-in-the-file">company context</a>{" "}
+          your team needs to judge fit.
+        </p>
+      </div>
+      <ol class="ed-checklist">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Company size</h3>
+            <p>
+              At a 15-person company the CEO often makes the purchase. At 5,000
+              people they rarely evaluate tools. Set the size range to match
+              who actually buys.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Sector</h3>
+            <p>
+              Name the industries you serve and any you don’t. “Tech
+              companies” is too broad to research consistently.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Geography</h3>
+            <p>
+              Countries, regions or states. Agree whether location means the
+              company’s headquarters or where the leader is based.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="ed-boundary" aria-labelledby="ceo-boundary">
+    <div class="ed-wrap">
+      <p class="ed-kicker">A TITLE IS NOT A BUDGET</p>
+      <h2 id="ceo-boundary">Leadership doesn’t prove buying intent.</h2>
+      <p>
+        A CEO list tells you who runs a company, not whether they have budget,
+        a current need or any interest in your offer. Treat each row as a
+        starting point for research, and check your intended outreach against
+        our <a href="/data-sources">sourcing approach</a>.
+      </p>
+    </div>
+  </section>
+  <PlanStrip
+    kicker="CEO LIST PRICING"
+    heading="The same price per lead. Any title."
+    points={[
+      [
+        "Priced by volume",
+        "CEO and founder lists use the same standard packages as every other audience.",
+      ],
+      [
+        "Title rules included",
+        "Agreeing included and excluded titles is part of the brief, not an extra.",
+      ],
+      [
+        "Narrow audiences quoted first",
+        "If your company criteria leave too few CEOs to fill a package, we tell you before payment.",
+      ],
+    ]}
+    note="Prices in USD. One-time packages, no seat fees. Targeting, coverage and delivery date are confirmed before payment."
+  />
+  <FAQ title="CEO list questions." items={faqs} />
+  <Contact
+    team="Other"
+    showSlack={false}
+    heading="Brief your CEO list."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Share the titles, company profile and locations you want, plus anyone to leave out. We’ll confirm coverage and timing before you pay. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+    placeholder="e.g. CEOs and founders at US and Canadian agencies, 10–50 staff. Exclude fractional and former CEOs."
+  />
+  <Related
+    items={[
+      [
+        "/lists/vp-sales",
+        "Selling to sales leaders?",
+        "VP of Sales and CRO lists.",
+      ],
+      [
+        "/whats-in-the-file",
+        "See every field",
+        "The standard file with a CSV preview.",
+      ],
+      [
+        "/services/custom-lists",
+        "A very narrow audience?",
+        "Scope custom research first.",
+      ],
+    ]}
+  />
+</Layout>

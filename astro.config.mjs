@@ -2,4 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  // Production origin for canonical URLs, structured data and the sitemap.
+  site: 'https://clean-rows-astro.vercel.app',
+});

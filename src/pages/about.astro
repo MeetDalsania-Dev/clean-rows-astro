@@ -1,27 +1,275 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Founder from '../components/Founder.astro';
-import Results from '../components/Results.astro';
-import Contact from '../components/Contact.astro';
+import Layout from "../layouts/EditorialLayout.astro";
+import Hero from "../components/editorial/Hero.astro";
+import FAQ from "../components/editorial/FAQ.astro";
+import Related from "../components/editorial/Related.astro";
+import Contact from "../components/Contact.astro";
+const faqs = [
+  [
+    "Where is Clean Rows based?",
+    "Clean Rows is operated from India. We serve business customers mainly in the United States, United Kingdom, European Union, Canada and Australia.",
+  ],
+  [
+    "Who does Clean Rows work with?",
+    "Businesses only. Our customers are mainly agencies, B2B software companies and B2B service firms. The service is not available for personal or consumer use.",
+  ],
+  [
+    "Does Clean Rows sell access to a database?",
+    "No. Each list is built to an agreed brief and delivered as a file. Lists are not exclusive, so the same professional can appear in lists built for other customers.",
+  ],
+  [
+    "Do you share my ICP or enquiry with anyone?",
+    "No. We do not sell, rent or share your enquiry, your ICP or your order details with other customers or data buyers.",
+  ],
+  [
+    "How do I contact Clean Rows?",
+    "Email hello@cleanrows.com or message us on WhatsApp. A person reads every message.",
+  ],
+];
 ---
-<BaseLayout title="About Clean Rows | Our Mission" description="Learn why we built Clean Rows to replace expensive, stale B2B data platforms with fresh, custom-built prospect lists.">
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <a class="announcement" href="/pricing"><span>OUR MISSION</span>Built for outbound teams <span aria-hidden="true">↗︎</span></a>
-        <p class="eyebrow hero-kicker">ABOUT CLEAN ROWS</p>
-        <h1>A small team<br>that <em>ships fast.</em></h1>
-        <p class="hero-description">We started Clean Rows after watching good agencies and founders sign $15k annual contracts for data they could get fresher, cleaner, and more cost-effective. We built the service we wished existed.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#founder">Meet the team</a>
-          </div>
-        </div>
+
+<Layout
+  title="About Clean Rows: Custom B2B Prospect Lists | Clean Rows"
+  description="Clean Rows builds custom B2B prospect lists for businesses. How the service works, who it serves, the principles behind it and how to reach the team."
+  label="About"
+  pageType="AboutPage"
+  faqs={faqs}
+>
+  <Hero
+    label="About Clean Rows"
+    title="About Clean Rows."
+    accent="Prospect lists, built to order."
+    description="Clean Rows builds custom B2B prospect lists for business customers. Every list starts from an agreed brief, is checked before delivery and arrives as a file your team can use."
+    cta="Talk to the team"
+    secondary="How the service works"
+    secondaryHref="#approach"
+    panelLabel="COMPANY FACTS"
+    panelTitle="A service, not a platform."
+    items={[
+      ["What we do", "Custom B2B prospect lists"],
+      ["Customers", "Businesses only"],
+      ["Serving mainly", "US, UK, EU, Canada, Australia"],
+      ["Operated from", "India"],
+    ]}
+  />
+  <section class="ed-section" aria-labelledby="about-what">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">WHAT WE DO</p>
+        <h2 id="about-what">
+          One job,
+          <br />done to a brief.
+        </h2>
+        <p>
+          Outbound teams need the right people at the right companies, in a
+          file they can use. That’s the whole service. It is also clear about
+          what it leaves to other tools.
+        </p>
+      </div>
+      <div class="ed-two-lists">
+        <article>
+          <h3>What we do</h3>
+          <ul>
+            <li>Research prospect lists to an agreed brief</li>
+            <li>Check business emails before delivery</li>
+            <li>Remove duplicates and format the file</li>
+            <li>Deliver as a CSV or Google Sheet</li>
+            <li>Rebuild or refund when a list misses the brief</li>
+          </ul>
+        </article>
+        <article>
+          <h3>What we don’t do</h3>
+          <ul>
+            <li>Sell seats or a searchable database</li>
+            <li>Share or resell your ICP or enquiry</li>
+            <li>Include consumer, sensitive or financial data</li>
+            <li>Guarantee replies, meetings or sales</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
-
-  <Founder />
-  <Results />
-  <Contact />
-</BaseLayout>
+  <section class="ed-section ed-tint" aria-labelledby="about-who">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">WHO WE SERVE</p>
+          <h2 id="about-who">
+            Built for teams
+            <br />that sell to businesses.
+          </h2>
+        </div>
+        <p>
+          Our customers are mainly agencies, B2B software companies and B2B
+          service firms. Each has a page explaining how briefs work for them.
+        </p>
+      </div>
+      <div class="ed-cards">
+        <article>
+          <span class="ed-index">01</span>
+          <h3>Agencies</h3>
+          <p>
+            A separate brief and file for each client campaign.{" "}
+            <a class="ed-inline" href="/for/agencies">Lists for agencies</a>
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">02</span>
+          <h3>B2B software</h3>
+          <p>
+            Market tests, territories and target accounts.{" "}
+            <a class="ed-inline" href="/for/saas">Lists for SaaS teams</a>
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">03</span>
+          <h3>Recruitment and services</h3>
+          <p>
+            Employer contacts for business development.{" "}
+            <a class="ed-inline" href="/for/recruitment">Lists for recruiters</a>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section" id="approach" aria-labelledby="about-how">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">HOW IT WORKS</p>
+        <h2 id="about-how">
+          From brief
+          <br />to delivered file.
+        </h2>
+        <p>
+          The same five steps for every order, set out in our{" "}
+          <a class="ed-inline" href="/terms">Terms of Service</a> and{" "}
+          <a class="ed-inline" href="/refund">Refund Policy</a>.
+        </p>
+      </div>
+      <ol class="ed-checklist">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Brief</h3>
+            <p>
+              You describe your ideal customer profile. We confirm what we can
+              source before you pay.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Sample</h3>
+            <p>
+              Up to 100 leads free, one sample per business, so you can check
+              the fit.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Order</h3>
+            <p>
+              Confirmed once criteria, volume and price are agreed in writing.
+              Email or WhatsApp is enough.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>04</span>
+          <div>
+            <h3>Delivery</h3>
+            <p>
+              A CSV or Google Sheet. Delivery times are estimates that depend
+              on the audience and volume.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>05</span>
+          <div>
+            <h3>Resolution</h3>
+            <p>
+              If a list doesn’t match the agreed brief, tell us within 7 days
+              for a free rebuild or a refund.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" aria-labelledby="about-principles">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">OPERATING PRINCIPLES</p>
+        <h2 id="about-principles">
+          How we handle
+          <br />data and people.
+        </h2>
+        <p>
+          These commitments come from our{" "}
+          <a class="ed-inline" href="/privacy">Privacy Policy</a> and{" "}
+          <a class="ed-inline" href="/gdpr">GDPR notice</a>, which set them out
+          in full.
+        </p>
+      </div>
+      <dl class="ed-principles ed-principles-flush">
+        <div>
+          <dt>Work-related data only</dt>
+          <dd>
+            Lists hold professional details from public business sources, never
+            special category data, financial data or home addresses.
+          </dd>
+        </div>
+        <div>
+          <dt>Your enquiry stays private</dt>
+          <dd>
+            Your ICP and order details are not sold, rented or shared with other
+            customers or data buyers.
+          </dd>
+        </div>
+        <div>
+          <dt>Removal is honored</dt>
+          <dd>
+            Anyone can ask to see their data or be removed. Removed people are
+            suppressed from future lists.
+          </dd>
+        </div>
+        <div>
+          <dt>A person handles every request</dt>
+          <dd>
+            A named person at Clean Rows handles every data request, and a
+            person reads every message.
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+  <FAQ title="About Clean Rows questions." items={faqs} />
+  <Contact
+    sampleOnly
+    team="Other"
+    showSlack={false}
+    heading="Talk to the team."
+    emphasis="Or start with 100 leads."
+    closing=""
+    description="Ask a question by email or WhatsApp, or describe your audience below for a free sample. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+  />
+  <Related
+    items={[
+      [
+        "/data-sources",
+        "Where the data comes from",
+        "Sources, checks and their limits.",
+      ],
+      [
+        "/services/custom-lists",
+        "How custom lists work",
+        "Briefs, feasibility and scope.",
+      ],
+      ["/pricing", "Pricing", "One-time packages, no seat fees."],
+    ]}
+  />
+</Layout>

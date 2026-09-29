@@ -1,0 +1,56 @@
+---
+import { plans } from "../../data/plans";
+interface Props {
+  kicker: string;
+  heading: string;
+  points: string[][];
+  note: string;
+}
+const { kicker, heading, points, note } = Astro.props;
+---
+
+<section class="ed-section" id="pricing" aria-labelledby="plan-strip-heading">
+  <div class="ed-wrap ed-split">
+    <div>
+      <p class="ed-kicker">{kicker}</p>
+      <h2 id="plan-strip-heading">{heading}</h2>
+      <dl class="ed-principles">
+        {points.map(([term, text]) => (
+          <div>
+            <dt>{term}</dt>
+            <dd>{text}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <div>
+      <ul class="ed-plan-strip" id="plan-options">
+        {plans.map((plan) => (
+          <li class:list={{ featured: plan.featured }}>
+            <div>
+              <h3>{plan.name}</h3>
+              <p>{plan.volume}</p>
+            </div>
+            <div class="ed-plan-price">
+              <strong>{plan.price}</strong>
+              <span>{plan.rate}</span>
+            </div>
+            <a
+              class="ed-button ed-plan-choice"
+              href="#contact"
+              data-plan={plan.dataPlan}
+              aria-label={`${plan.ctaText}: ${plan.name}, ${plan.volume}, ${plan.price}`}
+            >
+              {plan.dataPlan === "100000+" ? "Quote" : "Choose"}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="ed-plan-note">
+        {note}{" "}
+        <a class="ed-inline" href="/pricing">Compare full package details</a>.
+      </p>
+    </div>
+  </div>
+</section>

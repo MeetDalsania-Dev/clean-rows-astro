@@ -1,7 +1,17 @@
 ---
-const { title, description, editorial = false, schema = [] } = Astro.props;
+const { title, description, editorial = false, schema = [], planHref, bodyClass, mainClass, scripts = editorial ? 'editorial' : 'home' } = Astro.props;
 const origin = Astro.site || new URL('https://clean-rows-astro.vercel.app');
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).href;
+const current = (href: string) => (editorial && Astro.url.pathname.replace(/\/$/, '') === href ? 'page' : undefined);
+const pageTitle = title || 'Clean Rows | B2B Prospect Lists Built for Your ICP';
+const pageDescription = description || 'ICP-based B2B prospect lists for enterprise, SaaS and agency teams.';
+// Editorial pages describe their own WebSite node; other pages get a minimal one.
+const website = { '@type': 'WebSite', '@id': new URL('/#website', origin).href, name: 'Clean Rows', url: origin.href };
+const graph = [
+  { '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrows.com' },
+  ...(schema.some((node: { '@type'?: string }) => node['@type'] === 'WebSite') ? [] : [website]),
+  ...schema,
+];
 ---
 <!doctype html>
 <html lang="en-US">
@@ -11,52 +21,51 @@ const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).
   <meta name="theme-color" content="#ffffff" />
   <meta name="color-scheme" content="light" />
 
-  <title>{title || 'Clean Rows | B2B Prospect Lists Built for Your ICP'}</title>
-  <meta name="description" content={description || 'ICP-based B2B prospect lists for enterprise, SaaS and agency teams.'} />
-
-  {editorial && <>
-    <link rel="canonical" href={canonical} />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Clean Rows" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
-    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': [{ '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrows.com' }, ...schema] }).replace(/</g, '\\u003c')} />
-
-  </>}
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Clean Rows" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Fonts load without blocking first paint; text shows in the fallback font until they arrive. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
 
-  <link rel="stylesheet" href="/site.css?v=13">
+  <link rel="stylesheet" href="/site.css?v=14">
   {editorial && <link rel="stylesheet" href="/editorial.css" />}
 </head>
-<body class:list={{ editorial }}>
+<body class:list={[bodyClass, { editorial }]}>
   <a class="skip" href="#main">Skip to content</a>
   <div id="reading-progress" aria-hidden="true"></div>
   
   <header class="header">
-    <a class="logo" href="/#top" aria-label="Clean Rows home">
+    <a class="logo" href="/#top" aria-label="cleanrows home">
       <img src="/mark-emerald-on-dark.svg" width="30" height="30" alt="">cleanrows<span>®</span>
     </a>
     <nav id="menu" aria-label="Primary">
-      <a href="/for/agencies">For Agencies</a>
-      <a href="/lists/ceos">CEO Lists</a>
-      <a href="/pricing" aria-current={editorial && Astro.url.pathname.replace(/\/$/, '') === '/pricing' ? 'page' : undefined}>Pricing</a>
-      <a href="/about">About</a>
+      <a href="/for/agencies" aria-current={current('/for/agencies')}>For Agencies</a>
+      <a href="/lists/ceos" aria-current={current('/lists/ceos')}>CEO Lists</a>
+      <a href="/pricing" aria-current={current('/pricing')}>Pricing</a>
+      <a href="/about" aria-current={current('/about')}>About</a>
     </nav>
     <div class="cta-pair header-actions">
       <a class="button lime cta-primary" data-sample href={editorial ? '#contact' : '/#contact'}>Get 100 free leads</a>
-      <a class="button cta-secondary" href={editorial ? (Astro.url.pathname.replace(/\/$/, '') === '/pricing' ? '#pricing' : '/pricing') : '/#pricing'}>Choose a plan</a>
+      <a class="button cta-secondary" href={planHref || (editorial ? (Astro.url.pathname.replace(/\/$/, '') === '/pricing' ? '#pricing' : '/pricing') : '/#pricing')}>Choose a plan</a>
     </div>
     <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Open navigation">☰</button>
   </header>
 
-  <main id="main">
+  <main id="main" class={mainClass}>
     <slot />
   </main>
 
@@ -104,10 +113,12 @@ const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).
     </div>
   </footer>
 
-  {!editorial && <script is:inline src="/content.js?v=8"></script>}
+  {/* Page scripts: 'home' (content + app), 'editorial', 'calculator' or 'none' (legal pages). */}
+  {scripts === 'home' && <script is:inline src="/content.js?v=8"></script>}
   <script is:inline src="/site-ui.js?v=7"></script>
   <script is:inline src="/tracking.js?v=1"></script>
-  {!editorial && <script is:inline src="/app.js?v=12"></script>}
-  {editorial && <script is:inline src="/editorial.js"></script>}
+  {scripts === 'home' && <script is:inline src="/app.js?v=13"></script>}
+  {scripts === 'editorial' && <script is:inline src="/editorial.js"></script>}
+  {scripts === 'calculator' && <script is:inline src="/calculator.js?v=8"></script>}
 </body>
 </html>

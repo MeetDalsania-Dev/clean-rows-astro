@@ -1,39 +1,285 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Contact from '../../components/Contact.astro';
-import FAQ from '../../components/FAQ.astro';
-import How from '../../components/How.astro';
-import Pricing from '../../components/Pricing.astro';
-import Results from '../../components/Results.astro';
-import Compliance from '../../components/Compliance.astro';
-import WhoNotFor from '../../components/WhoNotFor.astro';
-import Founder from '../../components/Founder.astro';
-import SampleTable from '../../components/SampleTable.astro';
+import Layout from "../../layouts/EditorialLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import FAQ from "../../components/editorial/FAQ.astro";
+import Related from "../../components/editorial/Related.astro";
+import Contact from "../../components/Contact.astro";
+const subsectors = [
+  {
+    name: "Payments",
+    purpose: "Processing, acceptance, payouts and cross-border transfers.",
+    clarify: "Include card issuers and remittance, or merchant payments only?",
+  },
+  {
+    name: "Lending",
+    purpose: "Business and consumer credit, BNPL and lending platforms.",
+    clarify: "Lenders themselves, or the software that lenders use?",
+  },
+  {
+    name: "Financial software",
+    purpose: "Accounting, treasury, spend management and finance tools.",
+    clarify: "Is B2B finance software fintech for your offer, or SaaS?",
+  },
+  {
+    name: "Banking infrastructure",
+    purpose: "Digital banks, banking-as-a-service and core banking providers.",
+    clarify: "Include incumbent banks, or new entrants only?",
+  },
+  {
+    name: "Wealth and investing",
+    purpose: "Investment platforms, brokerage apps and wealth tools.",
+    clarify: "Retail-facing platforms, adviser tools, or both?",
+  },
+  {
+    name: "Insurance and compliance",
+    purpose: "Insurtech, regtech, fraud and identity verification.",
+    clarify: "Should these sit in a fintech list or a separate one?",
+  },
+];
+const faqs = [
+  [
+    "What counts as a fintech company?",
+    "There is no single definition, so it is agreed with your brief. Name the subsectors you want, such as payments, lending or financial software, and any you want left out.",
+  ],
+  [
+    "Which roles can a fintech list include?",
+    "Common choices are founders and CEOs, partnerships and business development leaders, and sales leadership. Other functions can be agreed in the brief.",
+  ],
+  [
+    "Is location based on headquarters or operating markets?",
+    "You choose. Headquarters location is simpler to define; companies operating in a market but based elsewhere need an agreed rule before research starts.",
+  ],
+  [
+    "Does the list include licensing or regulatory status?",
+    "No. Regulatory permissions and licensing status are not standard fields. Check them against the relevant regulator’s own records if they matter to your outreach.",
+  ],
+  [
+    "Does the list include funding rounds or tech stack?",
+    "No. Funding data is not a standard field and tech-stack enrichment is not offered. The file includes company size, industry and location.",
+  ],
+  [
+    "Does the list include consumer financial data?",
+    "No. Clean Rows lists are professional contacts at businesses. They contain no consumer financial records or information about customers of those companies.",
+  ],
+];
 ---
-<BaseLayout title="Fintech Email List & Contact Data" description="Custom B2B data lists built for your ICP.">
 
-
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow hero-kicker">TARGET FINTECH</p>
-        <h1>Fintech Email List & Contact Data</h1>
-        <p class="hero-description">Reach founders and executives at fast-growing financial technology companies globally.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#contact">Get 100 free leads</a>
-          </div>
+<Layout
+  title="Fintech Company Contact Lists by Subsector | Clean Rows"
+  description="Custom fintech prospect lists: define payments, lending or other subsectors first, then reach founders, partnerships and sales leaders. 100 free leads to start."
+  label="Fintech lists"
+  serviceName="Fintech company prospect lists"
+  audience="B2B teams selling to financial technology companies"
+  serviceOffers={false}
+  faqs={faqs}
+  service
+>
+  <Hero
+    label="Fintech lists"
+    title="Fintech contact lists."
+    accent="Built by subsector."
+    description="Fintech covers everything from payment processors to accounting software. Define the subsectors that match your offer, select the companies, then choose the leaders to reach inside them."
+    cta="Brief a fintech sample"
+    secondary="Define your subsectors"
+    secondaryHref="#approach"
+    panelLabel="EXAMPLE FINTECH BRIEF"
+    panelTitle="Payments and lending, Europe."
+    items={[
+      ["Subsectors", "Payments, business lending"],
+      ["Companies", "50–500 staff"],
+      ["Location", "HQ in the EU or UK"],
+      ["Roles", "Founders, Heads of Partnerships"],
+    ]}
+  />
+  <section class="ed-section" id="approach" aria-labelledby="fintech-subsectors">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">FINTECH IS NOT ONE MARKET</p>
+          <h2 id="fintech-subsectors">
+            Name the subsectors.
+            <br />Then build the list.
+          </h2>
         </div>
+        <p>
+          A payments processor and a wealth app share a label, not a buyer.
+          These common categories are a starting point; each one raises a
+          question worth settling in the brief.
+        </p>
+      </div>
+      <div class="ed-field-grid ed-subsectors">
+        {subsectors.map((item, i) => (
+          <article class="ed-field-card">
+            <div class="ed-field-top">
+              <span class="ed-index">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{item.name}</h3>
+            </div>
+            <p>{item.purpose}</p>
+            <div class="ed-field-example">
+              <span>CLARIFY IN THE BRIEF</span>
+              <strong>{item.clarify}</strong>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
-<How />
-<Results />
-<SampleTable />
-<Compliance />
-<WhoNotFor />
-<Founder />
-<Pricing />
-<FAQ />
-<Contact />
-</BaseLayout>
+  <section class="ed-sample-path ed-steps-band" aria-labelledby="fintech-order">
+    <div class="ed-wrap">
+      <h2 id="fintech-order" class="ed-kicker">COMPANIES BEFORE CONTACTS</h2>
+      <ol>
+        <li>
+          <span>01</span>
+          <div>
+            <strong>Define the subsectors</strong>
+            <p>Included and excluded categories.</p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <strong>Select the companies</strong>
+            <p>Size and location within each subsector.</p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <strong>Choose the contacts</strong>
+            <p>The functions that match your offer.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" aria-labelledby="fintech-roles">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">WHO TO REACH</p>
+        <h2 id="fintech-roles">
+          The functions
+          <br />that buy from you.
+        </h2>
+        <p>
+          In fintech, the right contact depends on what you sell. A banking
+          partner, a software vendor and an agency usually need different
+          people.
+        </p>
+      </div>
+      <dl class="ed-principles ed-principles-flush">
+        <div>
+          <dt>Founders and CEOs</dt>
+          <dd>
+            Often the decision-maker at early-stage fintechs. See the{" "}
+            <a class="ed-inline" href="/lists/ceos">CEO list title rules</a>.
+          </dd>
+        </div>
+        <div>
+          <dt>Partnerships and business development</dt>
+          <dd>
+            Relevant when you offer an integration, distribution or a banking
+            relationship.
+          </dd>
+        </div>
+        <div>
+          <dt>Sales leadership</dt>
+          <dd>
+            For services that help fintechs sell. See{" "}
+            <a class="ed-inline" href="/lists/vp-sales">sales-leader lists</a>.
+          </dd>
+        </div>
+        <div>
+          <dt>Other functions</dt>
+          <dd>
+            Compliance, product, finance or engineering leaders can be agreed
+            in the brief.
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="fintech-geo">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">WHERE IS A FINTECH?</p>
+          <h2 id="fintech-geo">
+            Headquarters or
+            <br />operating market?
+          </h2>
+        </div>
+        <p>
+          Fintechs often operate far from where they’re incorporated. Pick the
+          rule that matches how you sell, and put it in the brief.
+        </p>
+      </div>
+      <div class="ed-brief-pair">
+        <article class="ed-example-brief">
+          <span class="ed-kicker">RULE A · HEADQUARTERS</span>
+          <p>
+            “Fintechs headquartered in the UK.” Clear and consistent: a
+            company qualifies by where it is based.
+          </p>
+          <dl>
+            <div><dt>Includes</dt><dd>A UK firm serving Africa</dd></div>
+            <div><dt>Misses</dt><dd>A US firm launching in the UK</dd></div>
+          </dl>
+        </article>
+        <article class="ed-example-brief">
+          <span class="ed-kicker">RULE B · OPERATING MARKET</span>
+          <p>
+            “Fintechs serving customers in Nigeria.” Closer to how many
+            partnerships work, but it needs an agreed test for “serving”.
+          </p>
+          <dl>
+            <div><dt>Includes</dt><dd>A UK firm serving Nigeria</dd></div>
+            <div><dt>Agree</dt><dd>What evidence counts</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-boundary" aria-labelledby="fintech-boundary">
+    <div class="ed-wrap">
+      <p class="ed-kicker">NOT IN A STANDARD FILE</p>
+      <h2 id="fintech-boundary">Company contacts, not financial records.</h2>
+      <p>
+        Fintech lists do not include regulatory permissions or licensing
+        status, funding rounds, installed technology, or any consumer financial
+        records. Each row is a professional contact at a business, with the{" "}
+        <a href="/whats-in-the-file">standard field groups</a>. Anything more
+        is scoped as <a href="/services/custom-lists">custom research</a>.
+      </p>
+    </div>
+  </section>
+  <FAQ title="Fintech list questions." items={faqs} />
+  <Contact
+    sampleOnly
+    team="Other"
+    showSlack={false}
+    heading="Brief your fintech list."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="List the subsectors to include and exclude, the company size and location rule, and the roles you want. We’ll confirm sample coverage and timing. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+    placeholder="e.g. Founders and Heads of Partnerships at payments and business-lending fintechs, HQ in the EU or UK, 50–500 staff."
+  />
+  <Related
+    items={[
+      [
+        "/services/custom-lists",
+        "A very specific segment?",
+        "Scope custom research first.",
+      ],
+      [
+        "/data-sources",
+        "How contacts are checked",
+        "What verification does and doesn’t mean.",
+      ],
+      [
+        "/pricing",
+        "Size the full order",
+        "One-time packages from $25.",
+      ],
+    ]}
+  />
+</Layout>

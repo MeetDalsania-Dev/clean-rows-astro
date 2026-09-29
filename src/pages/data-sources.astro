@@ -1,34 +1,306 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Contact from '../components/Contact.astro';
-import FAQ from '../components/FAQ.astro';
-import How from '../components/How.astro';
-import Pricing from '../components/Pricing.astro';
-import Results from '../components/Results.astro';
-import Compliance from '../components/Compliance.astro';
-import WhoNotFor from '../components/WhoNotFor.astro';
-import Founder from '../components/Founder.astro';
-import SampleTable from '../components/SampleTable.astro';
+import Layout from "../layouts/EditorialLayout.astro";
+import Hero from "../components/editorial/Hero.astro";
+import FAQ from "../components/editorial/FAQ.astro";
+import Related from "../components/editorial/Related.astro";
+import Contact from "../components/Contact.astro";
+const sources = [
+  ["Public professional profiles", "Such as LinkedIn profiles, for names, roles and employers."],
+  ["Company websites", "Including team pages and press releases."],
+  ["Business directories and registries", "Public directories and company registries."],
+  ["Public regulatory filings", "Such as SEC filings, where relevant to the brief."],
+];
+const faqs = [
+  [
+    "Where does Clean Rows get its data?",
+    "From publicly accessible business sources: public professional profiles such as LinkedIn, company websites, public business directories and registries, and public regulatory filings such as SEC filings.",
+  ],
+  [
+    "Does Clean Rows buy or resell databases?",
+    "No. We do not buy or resell private databases. Lists are built to an agreed brief rather than drawn from a large stored database of profiles.",
+  ],
+  [
+    "How are business emails checked?",
+    "Business email addresses are checked with two independent email verification services before delivery. Those services receive prospect email addresses only, not your details.",
+  ],
+  [
+    "What happens if a verified email bounces?",
+    "If an email we marked as verified hard-bounces the first time you send to it, within 14 days of delivery, send the bounce report and we replace those rows free.",
+  ],
+  [
+    "Is the data GDPR compliant?",
+    "Compliance depends on how the data is used, not only on where it came from. We publish a GDPR notice for the professionals in our lists, and our Terms set out what customers must do when contacting them.",
+  ],
+  [
+    "How can someone be removed from Clean Rows lists?",
+    "Email hello@cleanrows.com with the subject “Remove me”. Removal is permanent: the person is added to a suppression list so they are not added again.",
+  ],
+];
 ---
-<BaseLayout title="Where Does B2B Data Come From? | Compliance" description="Custom B2B data lists built for your ICP.">
 
-
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow hero-kicker">COMPLIANCE & SOURCES</p>
-        <h1>Where Does B2B Data Come From?</h1>
-        <p class="hero-description">We strictly aggregate publicly available professional data. 100% GDPR and CCPA aligned.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#contact">Get 100 free leads</a>
-          </div>
+<Layout
+  title="Where Our B2B Prospect Data Comes From | Clean Rows"
+  description="How Clean Rows builds B2B prospect lists: public business sources, email checks with two verification services, deduplication, and what ‘verified’ really means."
+  label="Data sources"
+  faqs={faqs}
+>
+  <Hero
+    label="Data sources"
+    title="Our data sources."
+    accent="And what the checks mean."
+    description="Clean Rows lists are built from publicly accessible business sources, scoped to your brief and checked before delivery. Here is the process, what “verified” does and doesn’t mean, and where the limits are."
+    cta="Review the process"
+    href="#approach"
+    secondary="What “verified” means"
+    secondaryHref="#verified"
+    panelLabel="THE PROCESS AT A GLANCE"
+    panelTitle="Sources and checks."
+    items={[
+      ["Sources", "Public business sources"],
+      ["Email checks", "Two verification services"],
+      ["Duplicates", "Removed before delivery"],
+      ["Delivered files", "Kept for 90 days"],
+    ]}
+  />
+  <section class="ed-section" aria-labelledby="ds-sources">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">THE SOURCES</p>
+          <h2 id="ds-sources">
+            Public business sources.
+            <br />No private databases.
+          </h2>
         </div>
+        <p>
+          Every list is researched from publicly accessible business
+          information. We do not buy or resell private databases, and lists
+          hold work-related details only.
+        </p>
+      </div>
+      <div class="ed-source-grid">
+        {sources.map(([name, text], i) => (
+          <article>
+            <span class="ed-index">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{name}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
-<SampleTable />
-<Compliance />
-<FAQ />
-<Contact />
-</BaseLayout>
+  <section class="ed-section ed-tint" id="approach" aria-labelledby="ds-process">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">THE PROCESS</p>
+        <h2 id="ds-process">
+          From agreed criteria
+          <br />to a checked file.
+        </h2>
+        <p>
+          These steps are the commitments in our{" "}
+          <a class="ed-inline" href="/terms">Terms of Service</a>. They apply
+          to every paid list.
+        </p>
+      </div>
+      <ol class="ed-checklist">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Criteria are agreed</h3>
+            <p>
+              Roles, companies, locations and exclusions come from your brief.
+              We confirm what we can source before you pay.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Research follows the brief</h3>
+            <p>
+              Contacts are researched from the public sources above against
+              the agreed criteria, rather than drawn from a large stored
+              database of profiles.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Emails are checked</h3>
+            <p>
+              Business email addresses go through two independent email
+              verification services before delivery.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>04</span>
+          <div>
+            <h3>The file is cleaned and reviewed</h3>
+            <p>
+              Duplicates are removed and the file is reviewed before it is
+              delivered as a CSV or Google Sheet.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="ed-section" id="verified" aria-labelledby="ds-verified">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">WHAT “VERIFIED” MEANS</p>
+        <h2 id="ds-verified">
+          A checked email,
+          <br />not a promise.
+        </h2>
+        <p>
+          “Verified” describes the result of email checks at the time of
+          delivery. It is useful, and it has limits worth knowing before you
+          send.
+        </p>
+      </div>
+      <div class="ed-two-lists">
+        <article>
+          <h3>What it means</h3>
+          <ul>
+            <li>The business email passed checks with two verification services</li>
+            <li>The check happened before delivery</li>
+            <li>Hard bounces on first send within 14 days are replaced free</li>
+          </ul>
+        </article>
+        <article>
+          <h3>What it doesn’t mean</h3>
+          <ul>
+            <li>Guaranteed inbox placement or a reply</li>
+            <li>Delivery past every company’s email security</li>
+            <li>The person will still hold that job later</li>
+            <li>Permission to contact the person</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" aria-labelledby="ds-limits">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">COVERAGE LIMITS</p>
+          <h2 id="ds-limits">
+            Where the data
+            <br />runs out.
+          </h2>
+        </div>
+        <p>
+          Public business information is uneven. These limits are set out in
+          our{" "}
+          <a class="ed-inline" href="/terms">Terms</a> and{" "}
+          <a class="ed-inline" href="/refund">Refund Policy</a>, so they are
+          not a surprise after delivery.
+        </p>
+      </div>
+      <div class="ed-cards">
+        <article>
+          <span class="ed-index">01</span>
+          <h3>Mobile numbers</h3>
+          <p>
+            Included only where publicly available, typically for around 50–60%
+            of rows. Check coverage in your sample.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">02</span>
+          <h3>Information changes</h3>
+          <p>
+            People change jobs and companies change. Rows can go out of date
+            after delivery, and no row is guaranteed complete.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">03</span>
+          <h3>Narrow audiences</h3>
+          <p>
+            Some audiences are small. We confirm what can be sourced before
+            you pay, rather than widening the brief.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-boundary" aria-labelledby="ds-boundary">
+    <div class="ed-wrap">
+      <p class="ed-kicker">PUBLIC IS NOT THE SAME AS PERMISSION</p>
+      <h2 id="ds-boundary">You decide how the data is used.</h2>
+      <p>
+        Public availability does not by itself make outreach lawful. Under our{" "}
+        <a href="/terms">Terms</a>, customers must follow the outreach laws that
+        apply to them, say who they are and where they got the details, include
+        a working opt-out and honor removal requests. This page is not legal
+        advice.
+      </p>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="ds-rights">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">IF YOU APPEAR IN A LIST</p>
+        <h2 id="ds-rights">
+          Your data,
+          <br />your rights.
+        </h2>
+        <p>
+          Our{" "}
+          <a class="ed-inline" href="/gdpr">GDPR and Your Data Rights</a>{" "}
+          notice explains this processing in full. The{" "}
+          <a class="ed-inline" href="/privacy">Privacy Policy</a> covers
+          visitors and customers.
+        </p>
+      </div>
+      <dl class="ed-principles ed-principles-flush">
+        <div>
+          <dt>See or correct your data</dt>
+          <dd>Ask what we hold about you and where it came from, and correct anything inaccurate.</dd>
+        </div>
+        <div>
+          <dt>Be removed for good</dt>
+          <dd>Email hello@cleanrows.com with the subject “Remove me”. You are added to a suppression list so you are not added again.</dd>
+        </div>
+        <div>
+          <dt>Limited retention</dt>
+          <dd>We keep a delivered file for 90 days for rebuilds and support, then delete it from working storage.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+  <FAQ title="Data sources questions." items={faqs} />
+  <Contact
+    sampleOnly
+    team="Other"
+    showSlack={false}
+    heading="Check the data yourself."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Request a free sample for your audience and review the titles, companies and email coverage before ordering. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+  />
+  <Related
+    items={[
+      [
+        "/whats-in-the-file",
+        "What’s in the file",
+        "Every standard field, with a CSV preview.",
+      ],
+      [
+        "/refund",
+        "Refund Policy",
+        "Rebuilds, refunds and bounced emails.",
+      ],
+      [
+        "/services/custom-lists",
+        "Custom lists",
+        "Scope narrow or specialist audiences.",
+      ],
+    ]}
+  />
+</Layout>

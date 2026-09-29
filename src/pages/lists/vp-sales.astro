@@ -1,39 +1,255 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Contact from '../../components/Contact.astro';
-import FAQ from '../../components/FAQ.astro';
-import How from '../../components/How.astro';
-import Pricing from '../../components/Pricing.astro';
-import Results from '../../components/Results.astro';
-import Compliance from '../../components/Compliance.astro';
-import WhoNotFor from '../../components/WhoNotFor.astro';
-import Founder from '../../components/Founder.astro';
-import SampleTable from '../../components/SampleTable.astro';
+import Layout from "../../layouts/EditorialLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import FAQ from "../../components/editorial/FAQ.astro";
+import Related from "../../components/editorial/Related.astro";
+import Contact from "../../components/Contact.astro";
+const faqs = [
+  [
+    "Which titles are included in a VP of Sales list?",
+    "The titles are agreed with your brief. Sales leadership titles such as VP Sales, SVP Sales, Head of Sales and Sales Director are the usual core, with other variations added or excluded by agreement.",
+  ],
+  [
+    "Can the list include Chief Revenue Officers?",
+    "Yes, if you ask for them. A CRO often owns sales alongside marketing or customer success, so decide whether that wider remit suits your offer.",
+  ],
+  [
+    "Can I target only regional sales leaders?",
+    "Yes. Regional titles such as VP Sales, EMEA can be included or excluded. Agree whether the region in the title or the leader’s own location defines your territory.",
+  ],
+  [
+    "Are account executives and SDRs included?",
+    "Only if your brief asks for them. Individual contributors are a different audience from sales leadership, so they are agreed separately.",
+  ],
+  [
+    "Does a verified email guarantee inbox placement?",
+    "No. Email checks aim to reduce invalid addresses in the file. They do not guarantee inbox placement, a reply, or delivery past enterprise email security and firewalls.",
+  ],
+  [
+    "Can I get more than one sales leader per company?",
+    "Yes. Agree a maximum per account, for example one global head plus regional leaders. Fewer companies fit into the same number of rows.",
+  ],
+];
 ---
-<BaseLayout title="VP of Sales Email List" description="Custom B2B data lists built for your ICP.">
 
-
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow hero-kicker">DECISION MAKERS</p>
-        <h1>VP of Sales Email List</h1>
-        <p class="hero-description">Target the ultimate buyers of sales software and agency services. Verified contact data for VPs of Sales.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#contact">Get 100 free leads</a>
-          </div>
+<Layout
+  title="VP of Sales Email Lists for Your ICP | Clean Rows"
+  description="Custom VP of Sales lists: Heads of Sales, CROs and regional sales leaders at companies matching your ICP. Title rules agreed upfront. 100 free leads to start."
+  label="VP of Sales lists"
+  serviceName="VP of Sales prospect lists"
+  audience="B2B teams selling to sales leadership"
+  serviceOffers={false}
+  faqs={faqs}
+  service
+>
+  <Hero
+    label="VP of Sales lists"
+    title="VP of Sales lists."
+    accent="Leaders, not reps."
+    description="Sales leadership titles vary more than almost any other function. Agree which roles, regions and seniority levels count before research starts, so the file reaches the people who run the number."
+    cta="Brief a sales-leader sample"
+    secondary="See the title map"
+    secondaryHref="#approach"
+    panelLabel="EXAMPLE SALES-LEADER BRIEF"
+    panelTitle="Mid-market software, North America."
+    items={[
+      ["Titles", "VP Sales, Head of Sales, CRO"],
+      ["Scope", "Global or North America"],
+      ["Companies", "B2B software, 100–1,000 staff"],
+      ["Exclude", "AEs, SDRs, sales managers"],
+    ]}
+  />
+  <section class="ed-section ed-tint" id="approach" aria-labelledby="vp-map">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">THE TITLE MAP</p>
+          <h2 id="vp-map">
+            Agree the titles
+            <br />before the research.
+          </h2>
         </div>
+        <p>
+          “Head of Sales” at a 40-person company can outrank a “VP Sales” at a
+          global enterprise. Settling the map first keeps the file consistent
+          and stops reps turning up in a leadership list.
+        </p>
+      </div>
+      <div class="ed-scope">
+        <article class="ed-scope-in">
+          <h3>Usually in scope</h3>
+          <p>Leaders who own the sales number.</p>
+          <ul>
+            <li>VP Sales</li>
+            <li>SVP Sales</li>
+            <li>Head of Sales</li>
+            <li>Sales Director</li>
+            <li>VP Revenue</li>
+          </ul>
+        </article>
+        <article class="ed-scope-agree">
+          <h3>Agree first</h3>
+          <p>Relevant for some offers, not others.</p>
+          <ul>
+            <li>Chief Revenue Officer</li>
+            <li>Regional VP Sales</li>
+            <li>Country Manager</li>
+            <li>Head of Sales Development</li>
+            <li>VP Business Development</li>
+          </ul>
+        </article>
+        <article class="ed-scope-out">
+          <h3>Usually out of scope</h3>
+          <p>Individual contributors and first-line roles.</p>
+          <ul>
+            <li>Account Executive</li>
+            <li>SDR / BDR</li>
+            <li>Sales Executive</li>
+            <li>Account Manager</li>
+            <li>Sales Manager</li>
+          </ul>
+        </article>
+      </div>
+      <p class="ed-scope-note">
+        Watch for false friends: in the UK, “Sales Executive” is usually a
+        quota-carrying individual role, despite the name. These groupings are a
+        starting point; your brief sets the final list.
+      </p>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="vp-scope">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">GLOBAL OR REGIONAL</p>
+          <h2 id="vp-scope">
+            Whose territory
+            <br />are you selling into?
+          </h2>
+        </div>
+        <p>
+          Larger companies split sales leadership by region. Decide whether you
+          want the leader who owns the whole number, or the one who owns your
+          market.
+        </p>
+      </div>
+      <div class="ed-brief-pair">
+        <article class="ed-example-brief">
+          <span class="ed-kicker">GLOBAL RESPONSIBILITY</span>
+          <p>
+            One sales leader for the whole company. Common at smaller and
+            mid-sized businesses, and the natural contact when the decision is
+            made centrally.
+          </p>
+          <dl>
+            <div><dt>Title looks like</dt><dd>VP Sales, CRO</dd></div>
+            <div><dt>Decide</dt><dd>Minimum company size</dd></div>
+          </dl>
+        </article>
+        <article class="ed-example-brief">
+          <span class="ed-kicker">REGIONAL RESPONSIBILITY</span>
+          <p>
+            A leader for one region, such as EMEA at a US company. Useful when
+            you only sell into that region, or when regions buy independently.
+          </p>
+          <dl>
+            <div><dt>Title looks like</dt><dd>VP Sales, EMEA</dd></div>
+            <div><dt>Decide</dt><dd>Title region or leader location</dd></div>
+          </dl>
+        </article>
       </div>
     </div>
   </section>
-<How />
-<Results />
-<SampleTable />
-<Compliance />
-<WhoNotFor />
-<Founder />
-<Pricing />
-<FAQ />
-<Contact />
-</BaseLayout>
+  <section class="ed-section ed-tint" aria-labelledby="vp-companies">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">COMPANY AND TERRITORY</p>
+        <h2 id="vp-companies">
+          The leader matters.
+          <br />So does the company.
+        </h2>
+        <p>
+          Each row carries{" "}
+          <a class="ed-inline" href="/whats-in-the-file">company context</a>{" "}
+          next to the contact, so your team can see why an account fits.
+        </p>
+      </div>
+      <ol class="ed-checklist">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>A real sales team</h3>
+            <p>
+              Set a company size where a dedicated sales leader exists. Below
+              that, the founder is often still running sales.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>The sectors you serve</h3>
+            <p>
+              Name included and excluded industries. Sales leaders in retail
+              and in B2B software face very different problems.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Your territory</h3>
+            <p>
+              Countries, regions or states, plus the rule for whether company
+              headquarters or the leader’s location decides.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="ed-boundary ed-answer" aria-labelledby="vp-answer">
+    <div class="ed-wrap">
+      <p class="ed-kicker">STRAIGHT ANSWER</p>
+      <h2 id="vp-answer">Does a verified email reach the inbox?</h2>
+      <p>
+        <strong>No, not by itself.</strong> Email checks aim to reduce invalid
+        addresses in the file. They do not guarantee inbox placement, and they
+        cannot get a message past enterprise email security, spam filtering or
+        firewalls. Your sending reputation, volume and message still decide
+        where an email lands. Read more on{" "}
+        <a href="/data-sources">how contacts are checked</a>.
+      </p>
+    </div>
+  </section>
+  <FAQ title="Sales-leader list questions." items={faqs} />
+  <Contact
+    sampleOnly
+    team="Other"
+    showSlack={false}
+    heading="Brief your sales-leader list."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Share the titles you want, the ones to exclude, and the company profile and territory. We’ll confirm sample coverage and timing. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+    placeholder="e.g. VP Sales, Head of Sales and CROs at North American B2B software companies, 100–1,000 staff. Exclude AEs and SDRs."
+  />
+  <Related
+    items={[
+      [
+        "/for/saas",
+        "Selling SaaS to sales teams?",
+        "Territories, target accounts and exclusions.",
+      ],
+      [
+        "/lists/ceos",
+        "Need the CEO instead?",
+        "Founder and CEO list rules.",
+      ],
+      [
+        "/pricing",
+        "Size the full order",
+        "One-time packages from $25.",
+      ],
+    ]}
+  />
+</Layout>

@@ -1,39 +1,347 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Contact from '../../components/Contact.astro';
-import FAQ from '../../components/FAQ.astro';
-import How from '../../components/How.astro';
-import Pricing from '../../components/Pricing.astro';
-import Results from '../../components/Results.astro';
-import Compliance from '../../components/Compliance.astro';
-import WhoNotFor from '../../components/WhoNotFor.astro';
-import Founder from '../../components/Founder.astro';
-import SampleTable from '../../components/SampleTable.astro';
+import Layout from "../../layouts/EditorialLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import FAQ from "../../components/editorial/FAQ.astro";
+import Related from "../../components/editorial/Related.astro";
+import Contact from "../../components/Contact.astro";
+const faqs = [
+  [
+    "What should a custom list brief include?",
+    "Roles and title variations, sectors, company size, locations, any named accounts, exclusions and the fields you need. The more specific the brief, the more consistent the list.",
+  ],
+  [
+    "What if my audience is too small for a package?",
+    "We tell you before payment. We don’t widen your criteria to fill a volume; you decide whether to adjust the brief or order fewer leads.",
+  ],
+  [
+    "Can you research fields outside the standard file?",
+    "Additional research can be discussed before ordering, with feasibility and price agreed in advance. Tech-stack enrichment is not currently offered.",
+  ],
+  [
+    "When is a custom quote needed?",
+    "For orders of 100,000+ leads, specialist research or additional columns, and recurring schedules. Standard audiences within a package use the published prices.",
+  ],
+  [
+    "How is a delivered list accepted?",
+    "The agreed brief is the acceptance standard. If rows fall outside it, report them within 7 days of delivery for a free rebuild or a refund.",
+  ],
+  [
+    "Can one order be split into several files?",
+    "Yes. Splits by client, territory, desk or campaign, and your preferred column names, are agreed with the brief before research starts.",
+  ],
+];
 ---
-<BaseLayout title="Targeted B2B Email Lists & ICP Building" description="Custom B2B data lists built for your ICP.">
 
-
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow hero-kicker">CUSTOM RESEARCH</p>
-        <h1>Targeted B2B Email Lists</h1>
-        <p class="hero-description">Stop relying on stale databases. We build bespoke outbound lists mapped exactly to your Ideal Customer Profile.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#contact">Get 100 free leads</a>
-          </div>
+<Layout
+  title="Custom B2B Prospect Lists Built to Your Brief | Clean Rows"
+  description="Custom B2B list research: roles, sectors, named accounts, exclusions and required fields scoped before you pay. Narrow audiences stay narrow, never padded."
+  label="Custom lists"
+  serviceName="Custom B2B prospect list research"
+  audience="B2B sales, marketing and agency teams"
+  serviceOffers={false}
+  faqs={faqs}
+  service
+>
+  <Hero
+    label="Custom lists"
+    title="Custom B2B lists."
+    accent="Scoped before you pay."
+    description="When your audience needs more than a standard package, such as specific titles, named accounts, exclusions or extra research, the brief, feasibility and acceptance criteria are agreed before payment."
+    cta="Scope a custom list"
+    secondary="What makes a useful brief"
+    secondaryHref="#approach"
+    panelLabel="WHAT GETS AGREED"
+    panelTitle="Agreed before research."
+    items={[
+      ["Audience", "Roles, sectors, size, location"],
+      ["Accounts", "Named targets and exclusions"],
+      ["Fields", "Standard or custom columns"],
+      ["Acceptance", "The brief, in writing"],
+    ]}
+  />
+  <section class="ed-section" id="approach" aria-labelledby="cl-brief">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">WHAT MAKES A USEFUL BRIEF</p>
+          <h2 id="cl-brief">
+            Vague in, vague out.
+            <br />Specific in, useful out.
+          </h2>
         </div>
+        <p>
+          Two fictional briefs for the same buyer. The second one tells the
+          researcher exactly who counts, who doesn’t and what the file must
+          contain.
+        </p>
+      </div>
+      <div class="ed-brief-pair">
+        <article class="ed-example-brief ed-brief-weak">
+          <span class="ed-kicker">A VAGUE BRIEF</span>
+          <p>“Marketing people at tech companies in Europe.”</p>
+          <dl>
+            <div><dt>Titles</dt><dd>Undefined</dd></div>
+            <div><dt>Company size</dt><dd>Undefined</dd></div>
+            <div><dt>Exclusions</dt><dd>None</dd></div>
+          </dl>
+        </article>
+        <article class="ed-example-brief">
+          <span class="ed-kicker">A USEFUL BRIEF</span>
+          <p>
+            “VP Marketing and Heads of Demand Generation at B2B software
+            companies, 100–1,000 staff, in Germany, the Netherlands and the
+            Nordics. Exclude agencies and our current customers. Business email
+            and LinkedIn required.”
+          </p>
+          <dl>
+            <div><dt>Titles</dt><dd>Two, with seniority</dd></div>
+            <div><dt>Company size</dt><dd>100–1,000 staff</dd></div>
+            <div><dt>Exclusions</dt><dd>Agencies, customers</dd></div>
+          </dl>
+        </article>
       </div>
     </div>
   </section>
-<How />
-<Results />
-<SampleTable />
-<Compliance />
-<WhoNotFor />
-<Founder />
-<Pricing />
-<FAQ />
-<Contact />
-</BaseLayout>
+  <section class="ed-section ed-tint" aria-labelledby="cl-parts">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">THE PARTS OF A BRIEF</p>
+          <h2 id="cl-parts">
+            Seven decisions
+            <br />behind every list.
+          </h2>
+        </div>
+        <p>
+          You don’t need all seven on day one. Anything left open is settled
+          with you before research starts, not guessed.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="cl-hint">
+        Scroll sideways to see every column.
+      </p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label="The parts of a custom list brief"
+        aria-describedby="cl-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap">
+          <caption>
+            The parts of a custom list brief, with fictional examples.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Part of the brief</th>
+              <th scope="col">Example</th>
+              <th scope="col">Why it matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Roles and title variations</th>
+              <td>VP Marketing, Head of Demand Generation</td>
+              <td>The same buyer uses different titles at different companies</td>
+            </tr>
+            <tr>
+              <th scope="row">Sectors</th>
+              <td>B2B software; not IT services</td>
+              <td>Broad labels like “tech” are researched inconsistently</td>
+            </tr>
+            <tr>
+              <th scope="row">Company size</th>
+              <td>100–1,000 employees</td>
+              <td>Decides whether a dedicated buyer exists at all</td>
+            </tr>
+            <tr>
+              <th scope="row">Location</th>
+              <td>Germany, Netherlands, Nordics; company HQ</td>
+              <td>HQ and contact location can differ</td>
+            </tr>
+            <tr>
+              <th scope="row">Named accounts</th>
+              <td>A list of 250 target companies</td>
+              <td>Focuses research on accounts you already prioritize</td>
+            </tr>
+            <tr>
+              <th scope="row">Exclusions</th>
+              <td>Current customers, open deals, competitors</td>
+              <td>Excluded companies and contacts are part of the acceptance criteria</td>
+            </tr>
+            <tr>
+              <th scope="row">Required fields</th>
+              <td>Business email and LinkedIn; phone optional</td>
+              <td>Sets what a complete row means for your campaign</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="ed-boundary" aria-labelledby="cl-narrow">
+    <div class="ed-wrap">
+      <p class="ed-kicker">FEASIBILITY</p>
+      <h2 id="cl-narrow">A narrow audience stays narrow.</h2>
+      <p>
+        If fewer people match your brief than the volume you had in mind, we
+        tell you before payment. We don’t quietly widen titles, sizes or
+        regions to fill a package. You decide whether to adjust the brief or
+        order fewer leads.
+      </p>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="cl-scope">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">STANDARD OR CUSTOM</p>
+        <h2 id="cl-scope">
+          Most lists fit a package.
+          <br />Some need a quote.
+        </h2>
+        <p>
+          Standard packages cover most briefs at{" "}
+          <a class="ed-inline" href="/pricing">published prices</a>. A custom
+          quote is agreed in writing before any payment.
+        </p>
+      </div>
+      <div class="ed-two-lists">
+        <article>
+          <h3>Standard package</h3>
+          <ul>
+            <li>Built to your agreed ICP</li>
+            <li>The <a class="ed-inline" href="/whats-in-the-file">standard field groups</a></li>
+            <li>CSV or Google Sheet delivery</li>
+            <li>1,000 to 50,000 leads</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Custom quote</h3>
+          <ul>
+            <li>100,000+ leads</li>
+            <li>Specialist research or extra columns</li>
+            <li>Recurring delivery schedules</li>
+            <li>Audiences that need feasibility checks</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" aria-labelledby="cl-files">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">FILES AND EXPORTS</p>
+          <h2 id="cl-files">
+            Delivered the way
+            <br />your team works.
+          </h2>
+        </div>
+        <p>
+          File structure is part of the brief, so the list arrives ready to
+          split, import and assign.
+        </p>
+      </div>
+      <div class="ed-cards">
+        <article>
+          <span class="ed-index">01</span>
+          <h3>Splits</h3>
+          <p>
+            One file, or separate files by client, territory, desk or campaign.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">02</span>
+          <h3>Headers</h3>
+          <p>
+            Column names agreed to match the import format of your CRM or
+            outreach tool.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">03</span>
+          <h3>Format</h3>
+          <p>
+            A CSV file or a Google Sheet. Delivery times are estimates that
+            depend on the audience and volume.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="cl-agree">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">BEFORE YOU PAY</p>
+        <h2 id="cl-agree">
+          Scope, timing and
+          <br />acceptance, in writing.
+        </h2>
+        <p>
+          An order is confirmed when criteria, volume and price are agreed in
+          writing; email or WhatsApp is enough. See the{" "}
+          <a class="ed-inline" href="/refund">Refund Policy</a> for the full
+          terms.
+        </p>
+      </div>
+      <ol class="ed-checklist">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Review a sample</h3>
+            <p>
+              Start with up to 100 free leads, one sample per business, and
+              adjust the brief before scaling.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Agree scope and timing</h3>
+            <p>
+              Criteria, volume, fields, splits, price and an estimated delivery
+              date are confirmed before payment.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>The brief is the standard</h3>
+            <p>
+              Rows outside the agreed criteria, excluded companies, duplicates
+              or missing columns are rebuilt or refunded if reported within 7
+              days.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <FAQ title="Custom list questions." items={faqs} />
+  <Contact
+    team="Other"
+    showSlack={false}
+    heading="Scope your custom list."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Share the audience, exclusions, required fields and intended volume. We’ll confirm feasibility, timing and price before you pay. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+    placeholder="e.g. VP Marketing at B2B software companies, 100–1,000 staff, DACH and Nordics. Exclude agencies. Email and LinkedIn required."
+  />
+  <Related
+    items={[
+      [
+        "/data-sources",
+        "Where the data comes from",
+        "Sources, checks and their limits.",
+      ],
+      [
+        "/whats-in-the-file",
+        "The standard fields",
+        "What every list includes.",
+      ],
+      ["/pricing", "Standard packages", "Published prices from $25."],
+    ]}
+  />
+</Layout>

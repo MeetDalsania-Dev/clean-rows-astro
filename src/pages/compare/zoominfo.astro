@@ -1,36 +1,293 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Contact from '../../components/Contact.astro';
-import FAQ from '../../components/FAQ.astro';
-import How from '../../components/How.astro';
-import Pricing from '../../components/Pricing.astro';
-import Results from '../../components/Results.astro';
-import Compliance from '../../components/Compliance.astro';
-import WhoNotFor from '../../components/WhoNotFor.astro';
-import Founder from '../../components/Founder.astro';
-import SampleTable from '../../components/SampleTable.astro';
-import CompareTable from '../../components/CompareTable.astro';
+import Layout from "../../layouts/EditorialLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import FAQ from "../../components/editorial/FAQ.astro";
+import Related from "../../components/editorial/Related.astro";
+import Contact from "../../components/Contact.astro";
+const checked = "29 September 2026";
+const guide = "https://pipeline.zoominfo.com/sales/how-much-does-zoominfo-cost";
+const filing =
+  "https://www.sec.gov/Archives/edgar/data/1794515/000179451526000012/zi-20251231.htm";
+const faqs = [
+  [
+    "How much does ZoomInfo cost?",
+    "ZoomInfo does not publish fixed prices for paid plans. Its own pricing guide says quotes depend on team size, credit volume, features, integrations and API access, and contract length.",
+  ],
+  [
+    "Is ZoomInfo billed monthly?",
+    "ZoomInfo’s pricing guide says most paid plans are billed annually upfront and that monthly billing is not standard. Confirm the terms in your own quote.",
+  ],
+  [
+    "Is there a free version of ZoomInfo?",
+    "Yes. ZoomInfo Lite is a free plan with 10 monthly credits, according to ZoomInfo’s pricing guide. Paid plans are quoted separately.",
+  ],
+  [
+    "Does Clean Rows offer intent data or technographics?",
+    "No. Clean Rows delivers researched prospect lists with standard people and company fields. Intent data and tech-stack enrichment are not offered.",
+  ],
+  [
+    "Can I buy a single list instead of a subscription?",
+    "With Clean Rows, yes: packages are one-time, from $25 for 1,000 leads, with no subscription. You can review a 100-lead sample before your first paid order.",
+  ],
+  [
+    "When were the ZoomInfo details on this page checked?",
+    "They were checked on 29 September 2026 against ZoomInfo’s published pricing guide, last updated 7 July 2026, and its annual report for fiscal 2025. Confirm current terms with ZoomInfo.",
+  ],
+];
 ---
-<BaseLayout title="Clean Rows vs ZoomInfo" description="Custom B2B data lists built for your ICP.">
 
-
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow hero-kicker">THE HONEST COMPARISON</p>
-        <h1>Clean Rows vs <em> ZoomInfo</em></h1>
-        <p class="hero-description">Avoid 5k annual contracts. See why teams prefer our fresh, verified data over traditional bulk platforms.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#contact">Get 100 free leads</a>
-          </div>
+<Layout
+  title="Clean Rows vs ZoomInfo: One List or an Annual Platform?"
+  description="Compare Clean Rows and ZoomInfo: a one-time B2B list service versus a quote-based data platform. Buying process, pricing model, features and when each fits."
+  label="Clean Rows vs ZoomInfo"
+  faqs={faqs}
+>
+  <Hero
+    label="Clean Rows vs ZoomInfo"
+    title="Clean Rows vs ZoomInfo."
+    accent="One list or a platform?"
+    description="ZoomInfo is a quote-based data and intelligence platform, usually bought on an annual contract. Clean Rows researches a single list to your brief for a one-time price. Here’s how they compare, and when each makes sense."
+    cta="Compare side by side"
+    href="#comparison"
+    secondary="When ZoomInfo fits better"
+    secondaryHref="#fit"
+    note={`ZoomInfo details checked on ${checked}`}
+    panelLabel="AT A GLANCE"
+    panelTitle="Different purchases entirely."
+    items={[
+      ["Clean Rows", "One-time list packages"],
+      ["ZoomInfo", "Quote-based subscription"],
+      ["Published prices", "Clean Rows only"],
+      ["Checked", checked],
+    ]}
+  />
+  <section class="ed-section" id="approach" aria-labelledby="zi-buying">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">THE BUYING PROCESS</p>
+          <h2 id="zi-buying">
+            A procurement decision,
+            <br />or a campaign decision?
+          </h2>
         </div>
+        <p>
+          Buying ZoomInfo is usually a team-wide platform decision. Buying a
+          Clean Rows list is a decision about one campaign. The steps show the
+          difference.
+        </p>
+      </div>
+      <div class="ed-flow-pair">
+        <article>
+          <span class="ed-kicker">WITH ZOOMINFO</span>
+          <h3>Scope a platform subscription</h3>
+          <ol>
+            <li>Talk to sales about seats, credits and features.</li>
+            <li>Receive a custom quote; prices are not published.</li>
+            <li>Sign a contract, typically billed annually upfront.</li>
+            <li>Your team searches, exports and enriches inside the platform.</li>
+          </ol>
+        </article>
+        <article>
+          <span class="ed-kicker">WITH CLEAN ROWS</span>
+          <h3>Order one researched list</h3>
+          <ol>
+            <li>Choose a published package or ask for a quote.</li>
+            <li>Review a 100-lead sample built to your brief.</li>
+            <li>Agree scope, timing and price before paying.</li>
+            <li>Receive a CSV or Google Sheet for that campaign.</li>
+          </ol>
+        </article>
       </div>
     </div>
   </section>
-<CompareTable competitorName="ZoomInfo" />
-<SampleTable />
-<Compliance />
-<FAQ />
-<Contact />
-</BaseLayout>
+  <section class="ed-section ed-tint" id="comparison" aria-labelledby="zi-table">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">SIDE BY SIDE</p>
+          <h2 id="zi-table">
+            Clean Rows and ZoomInfo,
+            <br />compared honestly.
+          </h2>
+        </div>
+        <p>
+          ZoomInfo details come from its{" "}
+          <a class="ed-inline" href={guide} rel="noopener">published pricing guide</a>{" "}
+          and{" "}
+          <a class="ed-inline" href={filing} rel="noopener">annual report</a>,
+          checked on {checked}. ZoomInfo covers far more than prospect lists;
+          Clean Rows only supplies the list.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="zi-hint">
+        Scroll sideways to see every column.
+      </p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label="Clean Rows and ZoomInfo comparison table"
+        aria-describedby="zi-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap ed-compare">
+          <caption>
+            Clean Rows and ZoomInfo compared. ZoomInfo details from its pricing
+            guide (updated 7 July 2026) and fiscal 2025 annual report, checked
+            on {checked}.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Aspect</th>
+              <th scope="col">Clean Rows</th>
+              <th scope="col">ZoomInfo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">What it is</th>
+              <td>A managed B2B list-building service</td>
+              <td>A data and intelligence platform for sales and marketing teams</td>
+            </tr>
+            <tr>
+              <th scope="row">How you get data</th>
+              <td>We research contacts to your brief and deliver a file</td>
+              <td>Your team searches the platform and uses credits to download contact records</td>
+            </tr>
+            <tr>
+              <th scope="row">Published prices</th>
+              <td>Yes: $25 for 1,000 leads, $199 for 10,000, $799 for 50,000; custom quote from 100,000</td>
+              <td>No fixed prices for paid plans; each contract is custom-quoted</td>
+            </tr>
+            <tr>
+              <th scope="row">What drives the price</th>
+              <td>List volume, plus any agreed custom scope</td>
+              <td>Team size, credit volume, features, integrations and API access, and contract length</td>
+            </tr>
+            <tr>
+              <th scope="row">Billing and commitment</th>
+              <td>One-time packages; no subscription</td>
+              <td>Annual subscriptions; most paid plans billed annually upfront</td>
+            </tr>
+            <tr>
+              <th scope="row">Free option</th>
+              <td>100-lead sample before the first paid order</td>
+              <td>ZoomInfo Lite free plan with 10 monthly credits</td>
+            </tr>
+            <tr>
+              <th scope="row">Intent and technographics</th>
+              <td>Not offered</td>
+              <td>Available as features, such as intent data and technographics</td>
+            </tr>
+            <tr>
+              <th scope="row">CRM connection</th>
+              <td>File import from CSV or Google Sheet</td>
+              <td>Integrates directly with CRM and sales and marketing automation systems</td>
+            </tr>
+            <tr>
+              <th scope="row">Who does the work</th>
+              <td>Clean Rows researches; you review the sample and file</td>
+              <td>Your team searches, filters and exports in the platform</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section" id="fit" aria-labelledby="zi-fit">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">CHOOSING HONESTLY</p>
+        <h2 id="zi-fit">
+          When each one
+          <br />makes sense.
+        </h2>
+        <p>
+          ZoomInfo covers far more than a prospect list. If your team needs
+          that breadth every day, a delivered list is not a substitute.
+        </p>
+      </div>
+      <div class="ed-two-lists ed-fit">
+        <article>
+          <h3>ZoomInfo may fit better if</h3>
+          <ul>
+            <li>Many people need daily access to company and contact data</li>
+            <li>You rely on intent data, technographics or website visitor data</li>
+            <li>You want data flowing directly into your CRM and automation</li>
+            <li>An annual platform contract fits your budget and planning</li>
+          </ul>
+        </article>
+        <article>
+          <h3>A delivered list may fit if</h3>
+          <ul>
+            <li>You need contacts for a specific campaign or market test</li>
+            <li>You want a published price and no annual commitment</li>
+            <li>Nobody on the team has time to search and clean exports</li>
+            <li>You want to review a sample before paying anything</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-boundary" aria-labelledby="zi-boundary">
+    <div class="ed-wrap">
+      <p class="ed-kicker">WHAT CLEAN ROWS DOES NOT PROVIDE</p>
+      <h2 id="zi-boundary">A researched list, not an intelligence platform.</h2>
+      <p>
+        Clean Rows offers no searchable database, intent data, technographics,
+        website visitor identification or live CRM sync. A delivered list does
+        not guarantee inbox placement, replies or meetings. See{" "}
+        <a href="/whats-in-the-file">what’s in the file</a> and{" "}
+        <a href="/data-sources">how contacts are checked</a>.
+      </p>
+    </div>
+  </section>
+  <FAQ title="Clean Rows vs ZoomInfo questions." items={faqs} />
+  <section class="ed-section ed-sources" aria-labelledby="zi-sources">
+    <div class="ed-wrap">
+      <h2 id="zi-sources" class="ed-kicker">SOURCES</h2>
+      <ul>
+        <li>
+          <a class="ed-inline" href={guide} rel="noopener">ZoomInfo pricing guide</a>
+          <span>Custom quotes, pricing variables, annual billing and ZoomInfo Lite. Updated 7 July 2026; checked {checked}.</span>
+        </li>
+        <li>
+          <a class="ed-inline" href={filing} rel="noopener">ZoomInfo annual report, fiscal 2025 (Form 10-K)</a>
+          <span>How subscriptions are priced and CRM integration. Checked {checked}.</span>
+        </li>
+        <li>
+          <a class="ed-inline" href="/pricing">Clean Rows pricing</a>
+          <span>Standard packages and what is confirmed before payment.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <Contact
+    sampleOnly
+    team="Other"
+    showSlack={false}
+    heading="Try one list first."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Describe the audience for your next campaign. We’ll confirm sample coverage and timing. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+  />
+  <Related
+    items={[
+      [
+        "/compare/apollo",
+        "Clean Rows vs Apollo",
+        "A list service or a sales platform?",
+      ],
+      [
+        "/free-sample",
+        "How the sample works",
+        "What to check before paying.",
+      ],
+      [
+        "/pricing",
+        "Clean Rows pricing",
+        "One-time packages, no seat fees.",
+      ],
+    ]}
+  />
+</Layout>

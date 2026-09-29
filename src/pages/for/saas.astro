@@ -1,39 +1,309 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Contact from '../../components/Contact.astro';
-import FAQ from '../../components/FAQ.astro';
-import How from '../../components/How.astro';
-import Pricing from '../../components/Pricing.astro';
-import Results from '../../components/Results.astro';
-import Compliance from '../../components/Compliance.astro';
-import WhoNotFor from '../../components/WhoNotFor.astro';
-import Founder from '../../components/Founder.astro';
-import SampleTable from '../../components/SampleTable.astro';
+import Layout from "../../layouts/EditorialLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import FAQ from "../../components/editorial/FAQ.astro";
+import Related from "../../components/editorial/Related.astro";
+import Contact from "../../components/Contact.astro";
+const faqs = [
+  [
+    "Can you build prospect lists by sales territory?",
+    "Yes. Territories can be defined by country, region or state. Agree whether a territory follows the company’s headquarters or the contact’s own location before research starts.",
+  ],
+  [
+    "Can you find contacts at our named target accounts?",
+    "Share the account list with your brief and we research the agreed buying roles in those companies. Coverage varies by company, so check it in the sample first.",
+  ],
+  [
+    "Can you exclude our customers and open opportunities?",
+    "Send the company names or domains with your brief. Exclusions are agreed as part of the scope, and you should still deduplicate against your CRM before import.",
+  ],
+  [
+    "Do you provide tech-stack data?",
+    "No. Tech-stack enrichment is not currently offered. Company fit is described through size, industry, location and the company’s own profile.",
+  ],
+  [
+    "Does Clean Rows integrate with our CRM?",
+    "No native integration is offered. Lists are delivered as a CSV or Google Sheet that you import into your CRM or outreach tool, with headers agreed to match its import.",
+  ],
+  [
+    "Will a list generate demos or pipeline?",
+    "No. A list is research for your team to act on. Demos and pipeline depend on your offer, messaging, timing and sending setup.",
+  ],
+  [
+    "How should a founder test a new market?",
+    "Start with a 100-lead sample for one tightly defined segment. If the companies and roles look right, order the volume that the test actually needs.",
+  ],
+];
 ---
-<BaseLayout title="B2B Leads for SaaS Companies" description="Custom B2B data lists built for your ICP.">
 
-
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow hero-kicker">SCALE YOUR OUTBOUND</p>
-        <h1>B2B Leads for SaaS Companies</h1>
-        <p class="hero-description">Fuel your SDR team with fresh, accurate data. We build lists of decision makers at your target accounts.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#contact">Get 100 free leads</a>
-          </div>
+<Layout
+  title="B2B SaaS Prospect Lists by ICP & Territory | Clean Rows"
+  description="Custom prospect lists for B2B SaaS founders, sales leaders and SDR teams. Buyer roles, company fit and exclusions agreed upfront. Start with 100 free leads."
+  label="For B2B SaaS"
+  serviceName="B2B prospect lists for SaaS companies"
+  audience="B2B SaaS founders, sales leaders, SDR and growth teams"
+  serviceOffers={false}
+  faqs={faqs}
+  service
+>
+  <Hero
+    label="For B2B SaaS"
+    title="B2B SaaS prospect lists."
+    accent="Built around your buyer."
+    description="For founders testing a market, sales leaders assigning territories and SDR teams working target accounts. Agree the companies and buying roles, then import the file into the tools you already use."
+    cta="Brief a market test"
+    secondary="Define the buyer"
+    secondaryHref="#approach"
+    panelLabel="EXAMPLE SAAS BRIEF"
+    panelTitle="Territory: DACH mid-market."
+    items={[
+      ["Buyers", "VP Sales, Head of RevOps"],
+      ["Companies", "B2B software, 50–500 staff"],
+      ["Territory", "Germany, Austria, Switzerland"],
+      ["Exclude", "Customers, open deals"],
+    ]}
+  />
+  <section class="ed-section" aria-labelledby="saas-uses">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">WHERE A LIST FITS</p>
+          <h2 id="saas-uses">
+            Three jobs.
+            <br />Three different briefs.
+          </h2>
         </div>
+        <p>
+          The same product can need very different lists depending on who is
+          doing the outreach and why. Start from the job, then define the file.
+        </p>
+      </div>
+      <div class="ed-cards">
+        <article>
+          <span class="ed-index">01</span>
+          <h3>Founder-led market tests</h3>
+          <p>
+            Testing a new vertical or region before hiring for it? A small,
+            tightly defined list shows whether the audience exists and whether
+            it looks reachable.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">02</span>
+          <h3>Territory prospecting</h3>
+          <p>
+            Give each rep or region a file scoped to their patch, so research
+            isn’t duplicated and accounts don’t overlap across the team.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">03</span>
+          <h3>Target-account research</h3>
+          <p>
+            Start from the accounts your team already wants and find the
+            relevant buying roles inside those companies.
+          </p>
+        </article>
       </div>
     </div>
   </section>
-<How />
-<Results />
-<SampleTable />
-<Compliance />
-<WhoNotFor />
-<Founder />
-<Pricing />
-<FAQ />
-<Contact />
-</BaseLayout>
+  <section class="ed-section ed-tint" id="approach" aria-labelledby="saas-roles">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">DEFINE THE BUYER</p>
+          <h2 id="saas-roles">
+            One buyer.
+            <br />Many job titles.
+          </h2>
+        </div>
+        <p>
+          The person who buys your product rarely has one consistent title.
+          Agree which variations count, and which don’t, before research
+          begins.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="roles-hint">
+        Scroll sideways to see every column.
+      </p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label="Illustrative buyer roles and title variations"
+        aria-describedby="roles-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap">
+          <caption>
+            Illustrative title groups. Your final title list is agreed with the
+            brief.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Buying role</th>
+              <th scope="col">Titles often included</th>
+              <th scope="col">Decide before research</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Sales leadership</th>
+              <td>VP Sales, Head of Sales, Sales Director</td>
+              <td>Include CROs? Regional or global heads only?</td>
+            </tr>
+            <tr>
+              <th scope="row">Revenue operations</th>
+              <td>Head of RevOps, Sales Operations Manager</td>
+              <td>Minimum seniority, and whether to include enablement</td>
+            </tr>
+            <tr>
+              <th scope="row">Marketing</th>
+              <td>VP Marketing, Head of Demand Generation</td>
+              <td>Whether growth and product marketing titles qualify</td>
+            </tr>
+            <tr>
+              <th scope="row">Finance</th>
+              <td>CFO, VP Finance, Finance Director</td>
+              <td>Company size where the CFO is still the right contact</td>
+            </tr>
+            <tr>
+              <th scope="row">IT and security</th>
+              <td>CIO, Head of IT, CISO</td>
+              <td>Whether managers or only department heads are in scope</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section" aria-labelledby="saas-fit">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">COMPANY FIT, NOT JUST CONTACTS</p>
+        <h2 id="saas-fit">
+          Every contact
+          <br />comes with context.
+        </h2>
+        <p>
+          Your SDRs need to see why an account fits before they write to it.
+          Company fields sit next to every person in the{" "}
+          <a class="ed-inline" href="/whats-in-the-file">standard file</a>.
+        </p>
+      </div>
+      <div class="ed-two-lists">
+        <article>
+          <h3>Company context included</h3>
+          <ul>
+            <li>Company name and website domain</li>
+            <li>Company LinkedIn profile</li>
+            <li>Company size and industry</li>
+            <li>Location</li>
+            <li>Company HQ phone, where available</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Not included as standard</h3>
+          <ul>
+            <li>Tech-stack enrichment (not offered)</li>
+            <li>Funding rounds and investors</li>
+            <li>Hiring or buying-intent signals</li>
+            <li>Native CRM or sequencer sync</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" aria-labelledby="saas-workflow">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">FROM FILE TO YOUR CRM</p>
+        <h2 id="saas-workflow">
+          Fits the workflow
+          <br />you already run.
+        </h2>
+        <p>
+          A CSV is a file you import, not an integration. A few decisions up
+          front keep the import clean and your reps out of each other’s
+          accounts.
+        </p>
+      </div>
+      <ol class="ed-checklist">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Share your exclusions</h3>
+            <p>
+              Current customers, open opportunities and accounts already owned
+              by a rep. Send domains or company names with the brief.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Match your import headers</h3>
+            <p>
+              Agree column names that map to your CRM or outreach tool, and
+              whether files should split by territory or rep.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Deduplicate, then sequence</h3>
+            <p>
+              Check the file against your CRM before import. Contact checks do
+              not guarantee inbox placement, so keep your normal sending
+              practices.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="ed-boundary" aria-labelledby="saas-boundary">
+    <div class="ed-wrap">
+      <p class="ed-kicker">SET THE RIGHT EXPECTATIONS</p>
+      <h2 id="saas-boundary">A list is research, not pipeline.</h2>
+      <p>
+        Clean Rows builds the prospect file. It does not promise booked demos,
+        pipeline or revenue, and delivery is file-based rather than a native
+        CRM integration. See{" "}
+        <a href="/pricing">package pricing</a> or scope{" "}
+        <a href="/services/custom-lists">custom research</a> if your brief
+        goes beyond the standard fields.
+      </p>
+    </div>
+  </section>
+  <FAQ title="Questions SaaS teams ask first." items={faqs} />
+  <Contact
+    sampleOnly
+    team="B2B SaaS"
+    showSlack={false}
+    heading="Test one segment."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Describe one segment: the buying roles, company profile, territory and exclusions. We’ll confirm sample coverage and timing. The form prepares a WhatsApp message; press Send in WhatsApp to submit it."
+    placeholder="e.g. VP Sales and Heads of RevOps at DACH B2B software companies, 50–500 staff. Exclude our customers."
+  />
+  <Related
+    items={[
+      [
+        "/lists/vp-sales",
+        "Targeting sales leaders?",
+        "How VP of Sales lists are defined.",
+      ],
+      [
+        "/whats-in-the-file",
+        "Check the import fields",
+        "Every standard column, with a CSV preview.",
+      ],
+      [
+        "/pricing",
+        "Ready to size the order?",
+        "One-time packages from $25.",
+      ],
+    ]}
+  />
+</Layout>

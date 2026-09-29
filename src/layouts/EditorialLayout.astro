@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import { plans } from "../data/plans";
-const { title, description, label, faqs = [], service = false } = Astro.props;
+const { title, description, label, faqs = [], service = false, serviceName, audience, planHref, serviceOffers = true, pageType = "WebPage" } = Astro.props;
 const origin = Astro.site || new URL("https://clean-rows-astro.vercel.app");
 const url = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", origin).href;
 const schema = [
   {
-    "@type": "WebPage",
+    "@type": pageType,
     "@id": url,
     url,
     name: title,
@@ -42,12 +42,15 @@ const schema = [
     ? [
         {
           "@type": "Service",
-          name: label,
+          name: serviceName || label,
           description,
+          ...(audience
+            ? { audience: { "@type": "BusinessAudience", audienceType: audience } }
+            : {}),
           url,
           provider: { "@id": new URL("/#organization", origin).href },
           serviceType: "Custom B2B prospect list research",
-          offers: plans
+          ...(serviceOffers ? { offers: plans
             .filter((plan) => plan.price.startsWith("$"))
             .map((plan) => ({
               "@type": "Offer",
@@ -57,13 +60,13 @@ const schema = [
               url,
               description:
                 "One-time package; targeting, coverage and delivery confirmed before payment.",
-            })),
+            })) } : {}),
         },
       ]
     : []),
 ];
 ---
 
-<BaseLayout title={title} description={description} editorial schema={schema}>
+<BaseLayout title={title} description={description} editorial schema={schema} planHref={planHref}>
   <slot />
 </BaseLayout>
