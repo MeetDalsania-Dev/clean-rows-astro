@@ -147,3 +147,19 @@ form input,form textarea,form select{scroll-margin-top:125px}
 .contact-copy>.micro a{color:#bee0ca;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:800px){.legal-toc li{padding:0}.legal-toc a{display:flex;align-items:center;min-height:44px}}
 .legal-body ul,.legal-summary ul{list-style:disc}.legal-body ol{list-style:decimal}.legal-body li::marker,.legal-summary li::marker{color:#00704f}
+
+/* Shared footer: brand introduction beside four readable navigation columns. */
+.site-footer{display:grid;grid-template-columns:minmax(220px,.85fr) minmax(0,2fr);gap:48px 64px;padding:64px max(6%,calc((100vw - 1240px)/2)) 28px;align-items:start}
+.site-footer .footer-brand{min-width:0}
+.site-footer .footer-brand .logo{font-size:1.5625rem}
+.site-footer .footer-brand p{max-width:310px;margin:22px 0 0;font-size:.8125rem;line-height:1.85;color:#a2bfae}
+.site-footer .footer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:0;min-width:0;width:100%}
+.site-footer .footer-col{min-width:0}
+.site-footer .footer-col strong{display:block;margin:0 0 14px;color:#e1efe5;font-size:.8125rem;font-weight:600}
+.site-footer .footer-col a{display:flex;align-items:center;min-height:44px;padding:7px 0;color:#b6d3bf;font-size:.8125rem;line-height:1.5;overflow-wrap:break-word}
+.site-footer .footer-col a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.site-footer .footer-bottom{grid-column:1/-1;margin:0;padding-top:20px;align-items:center;color:#a2bfae}
+.site-footer .footer-bottom>div{display:flex;flex-wrap:wrap;gap:8px 22px}
+.site-footer .footer-bottom a{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:1000px){.site-footer{grid-template-columns:1fr;gap:36px}.site-footer .footer-brand{display:flex;align-items:start;justify-content:space-between;gap:40px}.site-footer .footer-brand p{max-width:440px;margin:0}.site-footer .footer-grid{gap:24px}}
+@media(max-width:600px){.site-footer{padding:44px 6% 24px;gap:32px}.site-footer .footer-brand{display:block}.site-footer .footer-brand p{margin-top:18px;max-width:340px}.site-footer .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}.site-footer .footer-col strong{margin-bottom:8px}.site-footer .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px}.site-footer .footer-bottom>div{gap:4px 20px}}

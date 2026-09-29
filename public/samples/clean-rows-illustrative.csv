@@ -1,0 +1,3 @@
+first_name,last_name,business_email,linkedin_url,company_linkedin_url,mobile_phone,company_phone,job_title,company_name,company_domain,company_size,industry,location
+Alex,Morgan,alex@example.com,,,,,VP of Sales,Example SaaS,example.com,50–200,B2B software,United States
+Sam,Taylor,sam@example.org,,,,,Head of Growth,Example Labs,example.org,10–50,B2B software,United Kingdom

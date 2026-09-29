@@ -1,5 +1,7 @@
 ---
-const { title, description } = Astro.props;
+const { title, description, editorial = false, schema = [] } = Astro.props;
+const origin = Astro.site || new URL('https://clean-rows-astro.vercel.app');
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).href;
 ---
 <!doctype html>
 <html lang="en-US">
@@ -12,6 +14,17 @@ const { title, description } = Astro.props;
   <title>{title || 'Clean Rows | B2B Prospect Lists Built for Your ICP'}</title>
   <meta name="description" content={description || 'ICP-based B2B prospect lists for enterprise, SaaS and agency teams.'} />
 
+  {editorial && <>
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Clean Rows" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': [{ '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrows.com' }, ...schema] }).replace(/</g, '\\u003c')} />
+
+  </>}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -20,8 +33,9 @@ const { title, description } = Astro.props;
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/site.css?v=13">
+  {editorial && <link rel="stylesheet" href="/editorial.css" />}
 </head>
-<body>
+<body class:list={{ editorial }}>
   <a class="skip" href="#main">Skip to content</a>
   <div id="reading-progress" aria-hidden="true"></div>
   
@@ -32,12 +46,12 @@ const { title, description } = Astro.props;
     <nav id="menu" aria-label="Primary">
       <a href="/for/agencies">For Agencies</a>
       <a href="/lists/ceos">CEO Lists</a>
-      <a href="/pricing">Pricing</a>
+      <a href="/pricing" aria-current={editorial && Astro.url.pathname.replace(/\/$/, '') === '/pricing' ? 'page' : undefined}>Pricing</a>
       <a href="/about">About</a>
     </nav>
     <div class="cta-pair header-actions">
-      <a class="button lime cta-primary" data-sample href="/#contact">Get 100 free leads</a>
-      <a class="button cta-secondary" href="/#pricing">Choose a plan</a>
+      <a class="button lime cta-primary" data-sample href={editorial ? '#contact' : '/#contact'}>Get 100 free leads</a>
+      <a class="button cta-secondary" href={editorial ? (Astro.url.pathname.replace(/\/$/, '') === '/pricing' ? '#pricing' : '/pricing') : '/#pricing'}>Choose a plan</a>
     </div>
     <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Open navigation">☰</button>
   </header>
@@ -46,37 +60,39 @@ const { title, description } = Astro.props;
     <slot />
   </main>
 
-  <footer>
+  <footer class="site-footer">
+    <div class="footer-brand">
     <a class="logo" href="/#top">
       <img src="/mark-emerald-on-dark.svg" width="30" height="30" alt="">cleanrows<span>®</span>
     </a>
     <p>ICP-based B2B data for LinkedIn, email and account-based prospecting.<br>Professionally researched prospect data, built around your target markets.</p>
-    <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin: 2rem 0; width: 100%;">
+    </div>
+    <nav class="footer-grid" aria-label="Footer">
       <div class="footer-col">
         <strong>Use Cases</strong>
-        <a href="/for/agencies" style="display:block; margin-top:0.5rem;">Marketing Agencies</a>
-        <a href="/for/saas" style="display:block; margin-top:0.5rem;">B2B SaaS</a>
-        <a href="/for/recruitment" style="display:block; margin-top:0.5rem;">Recruitment</a>
+        <a href="/for/agencies">Marketing Agencies</a>
+        <a href="/for/saas">B2B SaaS</a>
+        <a href="/for/recruitment">Recruitment</a>
       </div>
       <div class="footer-col">
         <strong>Target Lists</strong>
-        <a href="/lists/ceos" style="display:block; margin-top:0.5rem;">CEOs & Founders</a>
-        <a href="/lists/vp-sales" style="display:block; margin-top:0.5rem;">VP of Sales</a>
-        <a href="/lists/fintech" style="display:block; margin-top:0.5rem;">Fintech Companies</a>
+        <a href="/lists/ceos">CEOs & Founders</a>
+        <a href="/lists/vp-sales">VP of Sales</a>
+        <a href="/lists/fintech">Fintech Companies</a>
       </div>
       <div class="footer-col">
         <strong>Compare</strong>
-        <a href="/compare/apollo" style="display:block; margin-top:0.5rem;">vs Apollo.io</a>
-        <a href="/compare/zoominfo" style="display:block; margin-top:0.5rem;">vs ZoomInfo</a>
+        <a href="/compare/apollo">vs Apollo.io</a>
+        <a href="/compare/zoominfo">vs ZoomInfo</a>
       </div>
       <div class="footer-col">
         <strong>Company</strong>
-        <a href="/about" style="display:block; margin-top:0.5rem;">About Us</a>
-        <a href="/pricing" style="display:block; margin-top:0.5rem;">Pricing</a>
-        <a href="/whats-in-the-file" style="display:block; margin-top:0.5rem;">Data Fields</a>
-        <a href="/data-sources" style="display:block; margin-top:0.5rem;">Data Sources</a>
+        <a href="/about">About Us</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/whats-in-the-file">Data Fields</a>
+        <a href="/data-sources">Data Sources</a>
       </div>
-    </div>
+    </nav>
     <div class="footer-bottom">
       <span>© 2026 Clean Rows.</span>
       <div>
@@ -88,9 +104,10 @@ const { title, description } = Astro.props;
     </div>
   </footer>
 
-  <script is:inline src="/content.js?v=8"></script>
+  {!editorial && <script is:inline src="/content.js?v=8"></script>}
   <script is:inline src="/site-ui.js?v=7"></script>
   <script is:inline src="/tracking.js?v=1"></script>
-  <script is:inline src="/app.js?v=12"></script>
+  {!editorial && <script is:inline src="/app.js?v=12"></script>}
+  {editorial && <script is:inline src="/editorial.js"></script>}
 </body>
 </html>

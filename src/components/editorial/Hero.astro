@@ -1,0 +1,87 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  accent: string;
+  description: string;
+  cta?: string;
+  href?: string;
+  secondary?: string;
+  secondaryHref?: string;
+  note?: string;
+  panelLabel?: string;
+  panelTitle?: string;
+  items?: string[][];
+}
+const {
+  label,
+  title,
+  accent,
+  description,
+  cta = "Get 100 free leads",
+  href = "#contact",
+  secondary = "See how it works",
+  secondaryHref = "#approach",
+  note = "Pay-as-you-go · No seat fees · Freshly sourced",
+  panelLabel = "YOUR CAMPAIGN BRIEF",
+  panelTitle = "A better starting point.",
+  items = [],
+} = Astro.props;
+---
+
+<section class="ed-hero" id="top">
+  <div class="ed-wrap">
+    <nav class="ed-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{label}</span>
+    </nav>
+    <div class="ed-hero-grid">
+      <div>
+        <p class="ed-kicker">
+          <span></span>
+          {label}
+        </p>
+        <h1>
+          {title} <em>{accent}</em>
+        </h1>
+        <p class="ed-intro">{description}</p>
+        <div class="ed-actions">
+          <a class="ed-button ed-primary" href={href}>
+            {cta}
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="ed-text-link" href={secondaryHref}>
+            {secondary}
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+        <p class="ed-note">{note}</p>
+      </div>
+      <aside class="ed-brief" aria-label={panelLabel}>
+        <div class="ed-brief-bar">
+          <span class="ed-dots" aria-hidden="true">
+            ● ● ●
+          </span>
+          <span>CLEAN ROWS / RESEARCH DESK</span>
+        </div>
+        <div class="ed-brief-body">
+          <p class="ed-kicker">{panelLabel}</p>
+          <h2>{panelTitle}</h2>
+          <dl>
+            {items.map(([key, value]) => (
+              <div>
+                <dt>{key}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+          <div class="ed-brief-foot">
+            <span class="ed-status" aria-hidden="true"></span>Define the
+            audience. Review the fit.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

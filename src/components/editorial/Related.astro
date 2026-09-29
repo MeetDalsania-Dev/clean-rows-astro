@@ -1,0 +1,18 @@
+---
+const { items } = Astro.props;
+---
+
+<section class="ed-section ed-related">
+  <div class="ed-wrap">
+    <p class="ed-kicker">KEEP EXPLORING</p>
+    <div class="ed-related-grid">
+      {items.map(([href, title, text]) => (
+        <a href={href}>
+          <span aria-hidden="true">↗</span>
+          <h2>{title}</h2>
+          <p>{text}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

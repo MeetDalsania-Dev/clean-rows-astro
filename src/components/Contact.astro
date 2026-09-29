@@ -1,3 +1,191 @@
 ---
+const {
+  heading = "Test us with",
+  emphasis = "100 leads.",
+  closing = "Costs you nothing.",
+  description = "Send your ICP and get 100 real prospects back within 24 hours. Review the LinkedIn profiles, job titles, companies and available contact details. See how the sample fits your campaign before you commit to a larger list.",
+  placeholder = "e.g. VP Sales at US SaaS companies, 50–500 staff. LinkedIn profiles and business emails.",
+  team = "Agency",
+  sampleOnly = false,
+  showSlack = true,
+} = Astro.props;
 ---
-<section class="section contact-section" id="contact"><div class="contact-copy"><p class="eyebrow"><span>→</span>FREE. NO CARD. NO CALL.</p><h2>Test us with<br><em>100 leads.</em><br>Costs you nothing.</h2><p>Send your ICP and get 100 real prospects back within 24 hours. Review the LinkedIn profiles, job titles, companies and available contact details. See how the sample fits your campaign before you commit to a larger list.</p><div class="contact-links"><a href="mailto:hello@cleanrows.com">hello@cleanrows.com ↗︎</a><a href="https://wa.me/918469847308" target="_blank" rel="noopener">WhatsApp · +91 8469847308 ↗︎</a></div><div class="slack-invite"><p>Prefer Slack? Invite me to your workspace.</p><div class="slack-invite-action"><span id="slack-email">dalsaniam3@gmail.com</span><button type="button" id="copy-slack-email" aria-label="Copy email for Slack invitation">Copy email</button></div><p class="slack-invite-help">Use this email when sending an invitation through Slack.</p><span id="slack-copy-status" role="status" aria-live="polite"></span></div><p class="micro">Your details go to a person, not a CRM sequence. We don’t sell, share or resell what you send us, including your ICP. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</p></div><form id="lead-form" name="lead" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="lead"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="click_id"><input type="hidden" name="cta"><input type="hidden" name="landing_page"><input type="hidden" name="referrer"><input type="hidden" name="first_touch"><p hidden><label>Leave blank <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><div class="form-title"><h3 id="request-heading">Your first 100 are on us.</h3><span>~2 min</span></div><div class="form-row"><label>Your name<input name="name" autocomplete="name" required placeholder="Alex Morgan"></label><label>Work email<input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label></div><label>Your ideal customer profile<textarea name="icp" required rows="4" placeholder="e.g. VP Sales at US SaaS companies, 50–500 staff. LinkedIn profiles and business emails."></textarea><span class="field-help">Roles, industry, company size and location. Tell us your preferred channels too.</span></label><details class="form-options"><summary>Add company, volume or delivery preferences <span>+</span></summary><label>Company or agency<input name="company" autocomplete="organization" placeholder="Your company"></label><div class="form-row"><label>Your team<select name="type"><option>Agency</option><option>B2B SaaS</option><option>Enterprise</option><option>Recruitment</option><option>Other</option></select></label><label>Lead volume<select name="volume"><option value="100">100 free sample first</option><option value="1000">1,000 leads ($25)</option><option value="10000">10,000 leads ($199)</option><option value="50000">50,000 leads ($799)</option><option value="100000+">100,000+ leads (custom quote)</option><option>Recurring monthly</option></select></label></div><label>When do you need it?<select name="timeline"><option>Just exploring</option><option>ASAP, within 24h</option><option>This week</option><option>This month</option></select></label><label>Anything else?<textarea name="notes" rows="2" placeholder="Suppression lists, custom columns, per-client splits…"></textarea></label></details><button class="button lime" type="submit" id="send-request">Continue to WhatsApp <span aria-hidden="true">↗︎</span></button><p class="micro" id="form-note">Review your request in WhatsApp, then press Send.</p><div id="form-status" role="status" tabindex="-1"></div></form></section>
+
+<section class="section contact-section" id="contact">
+  <div class="contact-copy">
+    <p class="eyebrow">
+      <span>→</span>FREE. NO CARD. NO CALL.
+    </p>
+    <h2>
+      {heading}
+      <br />
+      <em>{emphasis}</em>
+      {closing && (
+        <>
+          <br />
+          {closing}
+        </>
+      )}
+    </h2>
+    <p>{description}</p>
+    <div class="contact-links">
+      <a href="mailto:hello@cleanrows.com">hello@cleanrows.com ↗︎</a>
+      <a href="https://wa.me/918469847308" target="_blank" rel="noopener">
+        WhatsApp · +91 8469847308 ↗︎
+      </a>
+    </div>
+    {showSlack && (
+      <div class="slack-invite">
+        <p>Prefer Slack? Invite me to your workspace.</p>
+        <div class="slack-invite-action">
+          <span id="slack-email">dalsaniam3@gmail.com</span>
+          <button
+            type="button"
+            id="copy-slack-email"
+            aria-label="Copy email for Slack invitation"
+          >
+            Copy email
+          </button>
+        </div>
+        <p class="slack-invite-help">
+          Use this email when sending an invitation through Slack.
+        </p>
+        <span id="slack-copy-status" role="status" aria-live="polite"></span>
+      </div>
+    )}
+    <p class="micro">
+      Your details go to a person, not a CRM sequence. We don’t sell, share or
+      resell what you send us, including your ICP. See our{" "}
+      <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms</a>.
+    </p>
+  </div>
+  <form
+    id="lead-form"
+    name="lead"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+  >
+    <input type="hidden" name="form-name" value="lead" />
+    <input type="hidden" name="utm_source" />
+    <input type="hidden" name="utm_medium" />
+    <input type="hidden" name="utm_campaign" />
+    <input type="hidden" name="utm_term" />
+    <input type="hidden" name="utm_content" />
+    <input type="hidden" name="click_id" />
+    <input type="hidden" name="cta" />
+    <input type="hidden" name="landing_page" />
+    <input type="hidden" name="referrer" />
+    <input type="hidden" name="first_touch" />
+    <p hidden>
+      <label>
+        Leave blank <input name="bot-field" tabindex="-1" autocomplete="off" />
+      </label>
+    </p>
+    <div class="form-title">
+      <h3 id="request-heading">Your first 100 are on us.</h3>
+      <span>~2 min</span>
+    </div>
+    <div class="form-row">
+      <label>
+        Your name
+        <input
+          name="name"
+          autocomplete="name"
+          required
+          placeholder="Alex Morgan"
+        />
+      </label>
+      <label>
+        Work email
+        <input
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="you@company.com"
+        />
+      </label>
+    </div>
+    <label>
+      Your ideal customer profile
+      <textarea
+        name="icp"
+        required
+        rows="4"
+        placeholder={placeholder}
+      ></textarea>
+      <span class="field-help">
+        Roles, industry, company size and location. Tell us your preferred
+        channels too.
+      </span>
+    </label>
+    <details class="form-options">
+      <summary>
+        {sampleOnly
+          ? "Add company or delivery preferences"
+          : "Add company, volume or delivery preferences"}{" "}
+        <span>+</span>
+      </summary>
+      <label>
+        Company or agency
+        <input
+          name="company"
+          autocomplete="organization"
+          placeholder="Your company"
+        />
+      </label>
+      <div class="form-row">
+        <label>
+          Your team
+          <select name="type">
+            {["Agency", "B2B SaaS", "Enterprise", "Recruitment", "Other"].map(
+              (value) => (
+                <option selected={team === value}>{value}</option>
+              ),
+            )}
+          </select>
+        </label>
+        {sampleOnly ? (
+          <input type="hidden" name="volume" value="100" />
+        ) : (
+          <label>
+            Lead volume
+            <select name="volume">
+              <option value="100">100 free sample first</option>
+              <option value="1000">1,000 leads ($25)</option>
+              <option value="10000">10,000 leads ($199)</option>
+              <option value="50000">50,000 leads ($799)</option>
+              <option value="100000+">100,000+ leads (custom quote)</option>
+              <option>Recurring monthly</option>
+            </select>
+          </label>
+        )}
+      </div>
+      <label>
+        When do you need it?
+        <select name="timeline">
+          <option>Just exploring</option>
+          <option>ASAP, within 24h</option>
+          <option>This week</option>
+          <option>This month</option>
+        </select>
+      </label>
+      <label>
+        Anything else?
+        <textarea
+          name="notes"
+          rows="2"
+          placeholder="Suppression lists, custom columns, per-client splits…"
+        ></textarea>
+      </label>
+    </details>
+    <button class="button lime" type="submit" id="send-request">
+      Continue to WhatsApp <span aria-hidden="true">↗︎</span>
+    </button>
+    <p class="micro" id="form-note">
+      Review your request in WhatsApp, then press Send.
+    </p>
+    <div id="form-status" role="status" tabindex="-1"></div>
+  </form>
+</section>

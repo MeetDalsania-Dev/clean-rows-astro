@@ -1,34 +1,267 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Contact from '../components/Contact.astro';
-import FAQ from '../components/FAQ.astro';
-import How from '../components/How.astro';
-import Pricing from '../components/Pricing.astro';
-import Results from '../components/Results.astro';
-import Compliance from '../components/Compliance.astro';
-import WhoNotFor from '../components/WhoNotFor.astro';
-import Founder from '../components/Founder.astro';
-import SampleTable from '../components/SampleTable.astro';
+import Layout from "../layouts/EditorialLayout.astro";
+import Hero from "../components/editorial/Hero.astro";
+import FAQ from "../components/editorial/FAQ.astro";
+import Related from "../components/editorial/Related.astro";
+import Contact from "../components/Contact.astro";
+import { fields } from "../data/fields";
+const faqs = [
+  [
+    "What data is included in a Clean Rows prospect list?",
+    "The standard file covers 10 field groups. These cover names, business emails, personal and company LinkedIn profiles, available mobile and HQ phones, job title, company and domain, size and industry, and location.",
+  ],
+  [
+    "Does 10 field groups mean exactly 10 spreadsheet columns?",
+    "No. A field group can contain more than one column, such as first and last name or company name and domain. The illustrative CSV on this page uses 13 columns; agree your delivery headers before ordering.",
+  ],
+  [
+    "Will every row have a mobile number?",
+    "No. Phone numbers are included where available. Check coverage in your sample and discuss any phone requirement before placing the full order.",
+  ],
+  [
+    "Can I import the file into my CRM or outreach tool?",
+    "The file can be delivered as CSV or a Google Sheet. Map the headers to your tool, review required fields and deduplicate against your existing records before import.",
+  ],
+  [
+    "Does a verified email guarantee delivery?",
+    "No. Contact verification does not guarantee inbox placement, a reply or a meeting. Sending reputation, recipient policies and your message affect the result.",
+  ],
+  [
+    "Can I request extra fields?",
+    "Additional research can be discussed before ordering. Tech-stack enrichment is not currently offered; other requirements need feasibility and pricing agreed in advance.",
+  ],
+];
 ---
-<BaseLayout title="B2B Lead Data Fields Explained" description="Custom B2B data lists built for your ICP.">
 
-
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow hero-kicker">WHAT YOU GET</p>
-        <h1>Data Fields Explained</h1>
-        <p class="hero-description">Every prospect list includes 10 enriched fields, including verified business emails, LinkedIn URLs, and company context.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#contact">Get 100 free leads</a>
-          </div>
+<Layout
+  title="B2B Lead Data Fields & CSV Preview | Clean Rows"
+  description="Explore the 10 Clean Rows prospect data field groups, view a fictional CSV preview and understand phone coverage, file formats and import preparation."
+  label="Data fields"
+  faqs={faqs}
+>
+  <Hero
+    label="Inside your prospect file"
+    title="B2B data fields."
+    accent="Every column explained."
+    description="People, profiles, company context and business contacts in one file. Explore the 10 standard field groups and understand what availability means before ordering."
+    cta="Explore the fields"
+    href="#field-guide"
+    secondary="Preview the CSV"
+    secondaryHref="#file-preview"
+    panelLabel="THE FILE AT A GLANCE"
+    panelTitle="Built for your workflow."
+    items={[
+      ["Format", "CSV or Google Sheet"],
+      ["Specification", "10 standard field groups"],
+      ["Phone numbers", "Where available"],
+      ["Custom columns", "Scoped before ordering"],
+    ]}
+  />
+  <section class="ed-section" id="file-preview">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">OPEN THE FILE BEFORE YOU ORDER</p>
+          <h2>
+            A small preview.
+            <br />A clear specification.
+          </h2>
         </div>
+        <p>
+          This fictional example shows the export structure. Your real sample
+          follows your agreed audience; these are not actual prospects.
+        </p>
+      </div>
+      <div class="ed-file-bar">
+        <span>↳ clean-rows-illustrative.csv</span>
+        <span>FICTIONAL EXAMPLE</span>
+      </div>
+      <div
+        class="ed-table-scroll"
+        role="region"
+        aria-label="Fictional prospect CSV preview"
+        tabindex="0"
+        aria-describedby="csv-hint"
+      >
+        <table class="ed-table">
+          <caption>
+            5 preview columns from the 13-column illustrative CSV.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">First name</th>
+              <th scope="col">Last name</th>
+              <th scope="col">Job title</th>
+              <th scope="col">Company</th>
+              <th scope="col">Business email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alex</td>
+              <td>Morgan</td>
+              <td>VP of Sales</td>
+              <td>Example SaaS</td>
+              <td>alex@example.com</td>
+            </tr>
+            <tr>
+              <td>Sam</td>
+              <td>Taylor</td>
+              <td>Head of Growth</td>
+              <td>Example Labs</td>
+              <td>sam@example.org</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ed-file-footer">
+        <p id="csv-hint">
+          Scroll sideways on smaller screens. Profile URLs and phones are blank
+          in the download because the records are fictional.
+        </p>
+        <a
+          class="ed-button ed-download"
+          href="/samples/clean-rows-illustrative.csv"
+          download
+        >
+          Download example CSV <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+      <p class="ed-file-disclaimer">
+        This is a format example, not a deliverable or an accuracy claim. Final
+        column names and required coverage are agreed with your brief.
+      </p>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" id="field-guide">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">THE FIELD GUIDE</p>
+          <h2>
+            Ten field groups.
+            <br />A purpose for each one.
+          </h2>
+        </div>
+        <p>
+          Some groups contain multiple columns. For example, first and last name
+          are separate in the downloadable CSV. Standard fields do not imply
+          every cell will be populated.
+        </p>
+      </div>
+      <div class="ed-field-grid">
+        {fields.map((field, i) => (
+          <article class="ed-field-card">
+            <div class="ed-field-top">
+              <span class="ed-index">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{field.name}</h3>
+            </div>
+            <p>{field.purpose}</p>
+            <div class="ed-field-example">
+              <span>EXAMPLE</span>
+              <strong>{field.example}</strong>
+            </div>
+            <p class="ed-field-note">{field.note}</p>
+            <div
+              class="ed-field-columns"
+              aria-label="Illustrative column names"
+            >
+              {field.columns.map((column) => (
+                <code>{column}</code>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
-<SampleTable />
-<Compliance />
-<FAQ />
-<Contact />
-</BaseLayout>
+  <section class="ed-section">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">A USEFUL HANDOFF</p>
+        <h2>
+          From spreadsheet
+          <br />
+          to your workflow.
+        </h2>
+        <p>
+          CSV is a portable file format, not an automatic integration. Take
+          these checks into your CRM or outreach tool.
+        </p>
+      </div>
+      <ol class="ed-checklist">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Map the columns</h3>
+            <p>
+              Match the agreed headers to your tool’s fields. Confirm required
+              fields and phone formatting before the final export.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Apply your exclusions</h3>
+            <p>
+              Check the list against existing customers, previous campaigns and
+              suppression records before importing.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Review available contacts</h3>
+            <p>
+              Blank optional fields remain visible. Use the sample to confirm
+              whether coverage suits your intended channels.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="ed-boundary">
+    <div class="ed-wrap">
+      <p class="ed-kicker">SET THE RIGHT EXPECTATIONS</p>
+      <h2>A prospect file is a starting point.</h2>
+      <p>
+        Tech-stack enrichment is not offered. Funding, hiring intent and other
+        specialist research are not standard fields. Contact data does not
+        establish permission for outreach—review your intended use and{" "}
+        <a href="/data-sources">our sourcing approach</a>.
+      </p>
+    </div>
+  </section>
+  <FAQ title="Questions about your file." items={faqs} />
+  <Contact
+    sampleOnly
+    showSlack={false}
+    team="Other"
+    heading="See these fields"
+    emphasis="for your own audience."
+    closing=""
+    description="Request 100 free prospects for your ICP. Check the roles, companies, field formatting and available contact details before the full order."
+  />
+  <Related
+    items={[
+      [
+        "/free-sample",
+        "Review real prospects",
+        "Request a sample for your audience.",
+      ],
+      [
+        "/services/custom-lists",
+        "Need extra research?",
+        "Agree a custom scope before ordering.",
+      ],
+      [
+        "/pricing",
+        "Choose your volume",
+        "Standard packages and clear pricing.",
+      ],
+    ]}
+  />
+</Layout>

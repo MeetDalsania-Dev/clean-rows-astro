@@ -1,0 +1,37 @@
+---
+const { title = "A few things worth knowing.", items } = Astro.props;
+---
+
+<section class="ed-section ed-faq" id="questions">
+  <div class="ed-wrap ed-split">
+    <div>
+      <p class="ed-kicker">STRAIGHT ANSWERS</p>
+      <h2>{title}</h2>
+      <p>
+        Have a more specific brief?{" "}
+        <a class="ed-inline" href="#contact">
+          Ask us directly.
+        </a>
+      </p>
+    </div>
+    <div class="ed-questions">
+      {items.map(([question, answer]) => (
+        <details>
+          <summary>
+            {question}
+            <span aria-hidden="true">+</span>
+          </summary>
+          <p>
+            <strong>
+              {answer.split(". ")[0]}
+              {answer.includes(". ") ? "." : ""}
+            </strong>
+            {answer.includes(". ")
+              ? " " + answer.split(". ").slice(1).join(". ")
+              : ""}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

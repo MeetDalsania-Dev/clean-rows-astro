@@ -1,0 +1,69 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { plans } from "../data/plans";
+const { title, description, label, faqs = [], service = false } = Astro.props;
+const origin = Astro.site || new URL("https://clean-rows-astro.vercel.app");
+const url = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", origin).href;
+const schema = [
+  {
+    "@type": "WebPage",
+    "@id": url,
+    url,
+    name: title,
+    description,
+    isPartOf: { "@id": new URL("/#website", origin).href },
+  },
+  {
+    "@type": "WebSite",
+    "@id": new URL("/#website", origin).href,
+    name: "Clean Rows",
+    url: origin.href,
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: origin.href },
+      { "@type": "ListItem", position: 2, name: label, item: url },
+    ],
+  },
+  ...(faqs.length
+    ? [
+        {
+          "@type": "FAQPage",
+          mainEntity: faqs.map(([name, text]) => ({
+            "@type": "Question",
+            name,
+            acceptedAnswer: { "@type": "Answer", text },
+          })),
+        },
+      ]
+    : []),
+  ...(service
+    ? [
+        {
+          "@type": "Service",
+          name: label,
+          description,
+          url,
+          provider: { "@id": new URL("/#organization", origin).href },
+          serviceType: "Custom B2B prospect list research",
+          offers: plans
+            .filter((plan) => plan.price.startsWith("$"))
+            .map((plan) => ({
+              "@type": "Offer",
+              name: `${plan.name}: ${plan.volume}`,
+              price: Number(plan.price.slice(1)),
+              priceCurrency: "USD",
+              url,
+              description:
+                "One-time package; targeting, coverage and delivery confirmed before payment.",
+            })),
+        },
+      ]
+    : []),
+];
+---
+
+<BaseLayout title={title} description={description} editorial schema={schema}>
+  <slot />
+</BaseLayout>

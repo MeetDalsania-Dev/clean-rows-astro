@@ -1,34 +1,173 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Contact from '../components/Contact.astro';
-import FAQ from '../components/FAQ.astro';
-import How from '../components/How.astro';
-import Pricing from '../components/Pricing.astro';
-import Results from '../components/Results.astro';
-import Compliance from '../components/Compliance.astro';
-import WhoNotFor from '../components/WhoNotFor.astro';
-import Founder from '../components/Founder.astro';
-import SampleTable from '../components/SampleTable.astro';
+import Layout from "../layouts/EditorialLayout.astro";
+import Hero from "../components/editorial/Hero.astro";
+import FAQ from "../components/editorial/FAQ.astro";
+import Related from "../components/editorial/Related.astro";
+import Contact from "../components/Contact.astro";
+const faqs = [
+  [
+    "Are the first 100 B2B leads free?",
+    "Yes. You can request a 100-lead sample for your ICP before your first paid order. No card or subscription is required.",
+  ],
+  [
+    "Is the sample a generic demo file?",
+    "No. The requested sample is built around your agreed audience. Examples elsewhere on this website are labelled illustrative and are not the sample itself.",
+  ],
+  [
+    "When will I receive the sample?",
+    "We confirm timing after reviewing your brief. Very narrow audiences or additional research may need a different scope or schedule.",
+  ],
+  [
+    "What happens when I submit the form?",
+    "The form prepares a WhatsApp message for you to review. Press Send in WhatsApp to submit the request; completing the website form alone does not send it.",
+  ],
+  [
+    "Am I committing to a paid order?",
+    "No. Review the sample first. Any paid list requires a separately agreed scope, price and delivery date.",
+  ],
+];
 ---
-<BaseLayout title="Get 100 Free B2B Leads" description="Custom B2B data lists built for your ICP.">
 
-
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow hero-kicker">TEST OUR DATA</p>
-        <h1>Get 100 Free B2B Leads</h1>
-        <p class="hero-description">Send your ICP and get 100 real prospects back within 24 hours. Review the LinkedIn profiles and job titles before you commit to a larger list.</p>
-        <div class="hero-actions">
-          <div class="cta-pair">
-            <a class="button lime cta-primary" href="#contact">Get 100 free leads</a>
+<Layout
+  title="Get 100 Free B2B Leads for Your ICP | Clean Rows"
+  description="Request 100 free B2B prospects built around your target audience. Review people, companies and business contacts before ordering. No card required."
+  label="Free sample"
+  faqs={faqs}
+>
+  <Hero
+    label="100-lead sample"
+    title="100 free B2B leads."
+    accent="Your ICP. Your call."
+    description="Tell us who you want to reach. Review a real sample against your ideal customer profile before deciding whether a larger list makes sense."
+    cta="Brief my free sample"
+    secondary="What should I check?"
+    secondaryHref="#approach"
+    note="100 free leads · No card · No paid commitment"
+    panelLabel="YOUR SAMPLE CHECKLIST"
+    panelTitle="Make fit the first test."
+    items={[
+      ["People", "Relevant titles and seniority"],
+      ["Companies", "The market you actually serve"],
+      ["Contacts", "Profiles and business emails"],
+      ["Decision", "Approve the fit before scaling"],
+    ]}
+  />
+  <section class="ed-sample-path" aria-label="Your sample in three steps">
+    <div class="ed-wrap">
+      <ol>
+        <li>
+          <span>01</span>
+          <div>
+            <strong>Share your audience</strong>
+            <p>Roles, companies and markets.</p>
           </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <strong>Confirm the brief</strong>
+            <p>A direct conversation on WhatsApp.</p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <strong>Review your sample</strong>
+            <p>Check the fit before ordering more.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <Contact
+    sampleOnly
+    showSlack={false}
+    team="Other"
+    heading="Your audience."
+    emphasis="Your first 100."
+    closing=""
+    description="Include roles, industries, company sizes and locations. We’ll review the brief and confirm sample coverage and timing. Continue to WhatsApp, review the prepared message, then press Send."
+  />
+  <section class="ed-section ed-tint">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">MAKE THE BRIEF SPECIFIC</p>
+        <h2>
+          A few details.
+          <br />A much better starting point.
+        </h2>
+        <p>
+          Include your exclusions and any must-have fields. We’ll confirm what
+          can be sourced before the sample is built.
+        </p>
+      </div>
+      <aside class="ed-example-brief">
+        <span class="ed-kicker">EXAMPLE BRIEF</span>
+        <p>
+          “VP Sales and Heads of Revenue at US B2B SaaS companies with 50–500
+          employees. Exclude agencies and current customers. Business emails and
+          LinkedIn profiles for outbound research.”
+        </p>
+        <a class="ed-text-link" href="/whats-in-the-file">
+          See the available field groups ↗
+        </a>
+      </aside>
+    </div>
+  </section>
+  <section class="ed-section" id="approach">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">HOW TO REVIEW YOUR SAMPLE</p>
+          <h2>Check more than the email column.</h2>
         </div>
+        <p>
+          A useful sample answers a simple question: would your team want to
+          research and approach these companies?
+        </p>
+      </div>
+      <div class="ed-cards">
+        <article>
+          <span class="ed-index">01</span>
+          <h3>Check the company fit</h3>
+          <p>
+            Compare industries, company sizes and locations with your brief.
+            Flag businesses that fall outside your market.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">02</span>
+          <h3>Check the buying role</h3>
+          <p>
+            Review exact job titles and LinkedIn profiles. Similar-sounding
+            titles may still represent different buyers.
+          </p>
+        </article>
+        <article>
+          <span class="ed-index">03</span>
+          <h3>Check the handoff</h3>
+          <p>
+            Inspect column formatting and contact coverage. Agree any changes
+            before the full file is built.
+          </p>
+        </article>
       </div>
     </div>
   </section>
-<SampleTable />
-<Compliance />
-<FAQ />
-<Contact />
-</BaseLayout>
+  <FAQ title="Before you request the sample." items={faqs} />
+  <Related
+    items={[
+      [
+        "/whats-in-the-file",
+        "Preview the field groups",
+        "Know what to look for.",
+      ],
+      ["/data-sources", "Understand the checks", "Read how data is reviewed."],
+      [
+        "/pricing",
+        "What comes after the sample?",
+        "See paid packages when you’re ready.",
+      ],
+    ]}
+  />
+</Layout>
