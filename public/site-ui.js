@@ -61,3 +61,29 @@
 
   window.CleanRowsSuccess = { show, reset };
 })();
+
+/* Sends the request form to the lead webhook and resolves only on a confirmed success. */
+(() => {
+  'use strict';
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec';
+  window.CleanRowsSubmit = async (formData) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    try {
+      // A form-encoded POST without custom headers is a CORS "simple request",
+      // so Apps Script's JSON reply can be read without a preflight.
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        body: new URLSearchParams(formData),
+        signal: controller.signal,
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result || result.status !== 'success') {
+        throw new Error('Lead webhook error: ' + (result && result.message || response.status));
+      }
+      return result;
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+})();

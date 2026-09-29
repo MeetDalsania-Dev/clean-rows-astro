@@ -48,12 +48,7 @@
     status.replaceChildren();
 
     try {
-      await fetch("https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec", {
-        method: "POST",
-        body: new URLSearchParams(data).toString(),
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        mode: "no-cors"
-      });
+      await window.CleanRowsSubmit(data);
       if (window.CleanRowsSuccess) {
         window.CleanRowsSuccess.show(form, { sample: isSample });
       } else {
