@@ -33,8 +33,13 @@
       "Selected: " + (plans[volume.value] || volume.value);
     status.replaceChildren();
   }
+  // After a successful request, a plan or sample button reopens the form first.
+  function reopenRequest() {
+    if (form.classList.contains("is-sent")) window.CleanRowsSuccess?.reset(form);
+  }
   document.querySelectorAll("[data-plan]").forEach((link) => {
     link.addEventListener("click", () => {
+      reopenRequest();
       volume.value = link.dataset.plan;
       form.querySelector(".form-options").open = true;
       updateSelection();
@@ -44,6 +49,7 @@
     .querySelectorAll('[data-sample], .ed-actions a[href="#contact"]')
     .forEach((link) => {
       link.addEventListener("click", () => {
+        reopenRequest();
         volume.value = "100";
         updateSelection();
       });

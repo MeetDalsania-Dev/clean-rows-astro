@@ -3,7 +3,7 @@
   const $ = s => document.querySelector(s);
   const menu=$('#menu'),menuButton=$('.menu-toggle');
   function closeMenu(){menu.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Open navigation');}
-  menuButton.addEventListener('click',()=>{const open=menu.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close navigation':'Open navigation');});
+  menuButton.addEventListener('click',()=>{const open=menu.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close navigation':'Open navigation');if(open)menu.querySelector('a')?.focus();});
   matchMedia('(max-width: 800px)').addEventListener('change',closeMenu);
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){closeMenu();menuButton.focus();}});
@@ -69,22 +69,33 @@
   // Apps Script cold starts plus the sheet write and email can take several seconds.
   const TIMEOUT_MS = 30000;
   // A retry of the same request reuses its id, so the webhook can drop a duplicate
-  // when an earlier attempt was saved but its reply arrived too late. Editing the
-  // form starts a new request.
-  const ids = new WeakMap();
-  const watched = new WeakSet();
+  // when an earlier attempt was saved but its reply arrived too late. The id is tied
+  // to what the visitor typed (not attribution), and kept in this tab so a reload
+  // does not create a second lead. Only a digest is stored, never the brief itself.
+  const IDENTITY = ['name', 'email', 'company', 'type', 'icp', 'volume', 'timeline', 'notes'];
+  const pending = new Map();
   const newId = () => (window.crypto && crypto.randomUUID
     ? crypto.randomUUID()
-    : Date.now().toString(36) + Math.random().toString(36).slice(2));
+    : Date.now().toString(36) + '-' + Math.random().toString(36).slice(2));
+  async function requestKey(body) {
+    const identity = IDENTITY.map((k) => k + '=' + (body.get(k) || '')).join('&');
+    try {
+      const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(identity));
+      return 'cr-request:' + Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, '0')).join('');
+    } catch {
+      return 'cr-request:' + identity.length + ':' + identity.slice(0, 64);
+    }
+  }
 
   window.CleanRowsSubmit = async (form, formData) => {
-    if (!watched.has(form)) {
-      watched.add(form);
-      form.addEventListener('input', () => ids.delete(form));
-    }
-    if (!ids.has(form)) ids.set(form, newId());
     const body = new URLSearchParams(formData);
-    body.set('request_id', ids.get(form));
+    const key = await requestKey(body);
+    let id = pending.get(key);
+    if (!id) { try { id = sessionStorage.getItem(key); } catch {} }
+    if (!id) id = newId();
+    pending.set(key, id);
+    try { sessionStorage.setItem(key, id); } catch {}
+    body.set('request_id', id);
 
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -96,7 +107,8 @@
       if (!response.ok || !result || result.status !== 'success') {
         throw new Error('Lead webhook error: ' + (result && result.message || response.status));
       }
-      ids.delete(form);
+      pending.delete(key);
+      try { sessionStorage.removeItem(key); } catch {}
       return result;
     } catch (error) {
       if (error.name === 'AbortError') {
@@ -113,5 +125,5 @@
   // Wording for a failed submission. A timeout may still have reached us.
   window.CleanRowsSubmitError = (error) => error && error.code === 'timeout'
     ? 'This is taking longer than usual and your request may still reach us. Please wait a minute before trying again, or email hello@cleanrows.com.'
-    : 'Your request didn’t send. Please try again or email hello@cleanrows.com.';
+    : 'We couldn’t confirm your request. Your details are still on this page. Please try again or email hello@cleanrows.com.';
 })();

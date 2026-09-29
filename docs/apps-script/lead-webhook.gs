@@ -38,6 +38,20 @@ var FIELDS = [
   ["request_id", "Request ID"],
 ];
 
+// Maximum lengths for fields the visitor types (same as the form's maxlength).
+var LIMITS = { name: 200, email: 200, company: 200, icp: 5000, notes: 5000 };
+
+// True when a row with this request id already exists. The script cache answers
+// quickly; the Request ID column is the durable record if the cache was cleared.
+function isSaved(sheet, requestId) {
+  if (CacheService.getScriptCache().get("req_" + requestId)) return true;
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return false;
+  var column = FIELDS.map(function (field) { return field[0]; }).indexOf("request_id") + 1;
+  return !!sheet.getRange(2, column, lastRow - 1, 1)
+    .createTextFinder(requestId).matchEntireCell(true).findNext();
+}
+
 function doPost(e) {
   var lock = LockService.getScriptLock();
   try {
@@ -46,6 +60,14 @@ function doPost(e) {
     // Honeypot: bots fill the hidden field. Answer "success" so they learn nothing.
     if (data["bot-field"]) return json({ status: "success" });
 
+    // Reject fields the visitor typed that are too long, rather than silently
+    // cutting off requirements such as exclusions. Limits match the form's maxlength.
+    for (var key in LIMITS) {
+      if (String(data[key] == null ? "" : data[key]).length > LIMITS[key]) {
+        return json({ status: "error", message: "A field exceeds its maximum length" });
+      }
+    }
+
     var name = clean(data.name, 200);
     var email = clean(data.email, 200);
     var icp = clean(data.icp, 5000);
@@ -53,36 +75,41 @@ function doPost(e) {
       return json({ status: "error", message: "Missing or invalid fields" });
     }
 
+    // The website resends the same request_id when a retry follows a slow or lost
+    // reply. Older cached pages send none, so give those requests their own id.
+    var requestId = /^[A-Za-z0-9-]{8,100}$/.test(data.request_id || "") ? data.request_id : Utilities.getUuid();
+
     lock.waitLock(10000);
-
-    // The website resends the same request_id when a retry follows a slow reply.
-    // If that request was already saved, confirm it without writing a duplicate.
-    var cache = CacheService.getScriptCache();
-    var requestId = clean(data.request_id, 100);
-    if (requestId && cache.get("req_" + requestId)) {
-      lock.releaseLock();
-      return json({ status: "success", duplicate: true });
-    }
-
     var sheet = getSheet();
+    if (isSaved(sheet, requestId)) {
+      return json({ status: "success", requestId: requestId, duplicate: true });
+    }
     var row = FIELDS.map(function (field) {
       if (field[0] === "timestamp") return new Date();
+      if (field[0] === "request_id") return requestId;
       return safeCell(clean(data[field[0]], 5000));
     });
     sheet.appendRow(row);
-    if (requestId) cache.put("req_" + requestId, "1", 21600); // 6 hours
+    SpreadsheetApp.flush();
+    CacheService.getScriptCache().put("req_" + requestId, "1", 21600);
     lock.releaseLock();
 
-    MailApp.sendEmail({
-      to: NOTIFY_EMAIL,
-      replyTo: email,
-      subject: "New lead: " + name + " (" + (data.volume === "100" ? "free sample" : clean(data.volume, 20) || "request") + ")",
-      body: FIELDS.slice(1)
-        .map(function (field) { return field[1] + ": " + (clean(data[field[0]], 5000) || "-"); })
-        .join("\n"),
-    });
+    // The lead is saved. A notification failure must not turn this into an error,
+    // or the visitor would retry a request that already succeeded.
+    try {
+      MailApp.sendEmail({
+        to: NOTIFY_EMAIL,
+        replyTo: email,
+        subject: "New lead: " + name + " (" + (data.volume === "100" ? "free sample" : clean(data.volume, 20) || "request") + ")",
+        body: FIELDS.slice(1)
+          .map(function (field) { return field[1] + ": " + (clean(data[field[0]], 5000) || "-"); })
+          .join("\n"),
+      });
+    } catch (mailError) {
+      console.error("Lead saved but notification failed", requestId, mailError);
+    }
 
-    return json({ status: "success" });
+    return json({ status: "success", requestId: requestId });
   } catch (err) {
     console.error(err);
     return json({ status: "error", message: "Server error" });

@@ -232,3 +232,25 @@ body.home #how .eyebrow,body.home #pricing .section-heading>.eyebrow{color:#5c72
 /* Keep the original light eyebrows on dark sections. */
 body.home .ink .eyebrow{color:#99b6a6}
 body.home .contact-copy>.eyebrow{color:#84b497}
+
+/* Home: every "How it works" step in the page HTML, not only the active tab. */
+.process-summary{grid-column:1/-1;margin-top:56px;padding-top:32px;border-top:1px solid #dbe6dd}
+.process-summary h3{font-size:1.25rem;letter-spacing:-.02em;margin:0 0 22px}
+.process-summary ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px;counter-reset:step}
+.process-summary li{counter-increment:step;font-size:.875rem;line-height:1.7;color:#55675d}
+.process-summary li::before{content:counter(step,decimal-leading-zero);display:block;font-size:.75rem;font-weight:600;color:#006c4c;margin-bottom:10px}
+.process-summary strong{display:block;color:var(--ink);font-weight:600;margin-bottom:4px}
+@media(max-width:1000px){.process-summary ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.process-summary{margin-top:40px}.process-summary ol{grid-template-columns:1fr;gap:20px}}
+body.home .diagram-note a{color:#176a48;text-decoration:underline;text-underline-offset:3px}
+
+/* 601–800px: let the header CTA pair shrink so the menu button keeps its gutter. */
+@media(min-width:601px) and (max-width:800px){.header-actions{flex:1 1 0;width:auto;min-width:0;max-width:330px}}
+
+/* Home table captions: below the table, like the editorial tables. */
+.table-scroll caption{caption-side:bottom;text-align:left;padding:14px 24px;font-size:.75rem;line-height:1.6;color:#5c7264;border-top:1px solid #e5ece6}
+
+/* The highlighted second column is for the comparison table only, not the sample file. */
+#sample-table td:nth-child(2){background:transparent}#sample-table thead th:nth-child(2){background:#f5f9f6}
+body.home #sample-table td:nth-child(2){color:#56695e}
+body.home #sample-table thead th:nth-child(2){color:#4c6e58}

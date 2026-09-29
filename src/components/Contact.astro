@@ -91,6 +91,7 @@ const {
         Your name
         <input
           name="name"
+          maxlength="200"
           autocomplete="name"
           required
           placeholder="Alex Morgan"
@@ -100,6 +101,7 @@ const {
         Work email
         <input
           name="email"
+          maxlength="200"
           type="email"
           autocomplete="email"
           required
@@ -113,6 +115,7 @@ const {
       Your ideal customer profile
       <textarea
         name="icp"
+        maxlength="5000"
         required
         rows="4"
         placeholder={placeholder}
@@ -133,6 +136,7 @@ const {
         Company or agency
         <input
           name="company"
+          maxlength="200"
           autocomplete="organization"
           placeholder="Your company"
         />
@@ -177,6 +181,7 @@ const {
         Anything else?
         <textarea
           name="notes"
+          maxlength="5000"
           rows="2"
           placeholder="Suppression lists, custom columns, per-client splits…"
         ></textarea>
