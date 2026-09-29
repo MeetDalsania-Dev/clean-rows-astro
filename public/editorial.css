@@ -136,10 +136,15 @@
 .editorial .ed-brief-body .ed-kicker {
   margin-bottom: 12px;
 }
-.editorial .ed-brief h2 {
+/* Panel title is decorative, so it is a paragraph styled like the h2 it replaced. */
+.editorial .ed-brief-title {
+  font-family: Manrope, Inter, sans-serif;
+  font-weight: 550;
+  letter-spacing: -0.045em;
   font-size: 1.8rem;
   line-height: 1.25;
   max-width: 330px;
+  margin: 0;
 }
 .editorial .ed-brief dl {
   margin: 26px 0;
@@ -305,10 +310,10 @@
   border-top: 1px solid var(--ed-line);
   padding: 22px 0 0;
 }
-.editorial .ed-related-grid a:hover h2 {
+.editorial .ed-related-grid a:hover :is(h2, h3) {
   color: #007f5b;
 }
-.editorial .ed-related-grid h2 {
+.editorial .ed-related-grid :is(h2, h3) {
   font-size: 1.15rem;
   line-height: 1.4;
   letter-spacing: -0.02em;
@@ -391,8 +396,8 @@
 .editorial input:focus-visible,
 .editorial textarea:focus-visible,
 .editorial select:focus-visible {
-  outline: 3px solid #b6e9c8;
-  outline-offset: 3px;
+  outline: 2px solid #16825b;
+  outline-offset: 2px;
 }
 @media (max-width: 1100px) {
   .editorial .ed-hero-grid {
@@ -433,7 +438,7 @@
   .editorial .ed-related-grid {
     gap: 22px;
   }
-  .editorial .ed-related-grid h2 {
+  .editorial .ed-related-grid :is(h2, h3) {
     font-size: 1rem;
   }
 }
@@ -482,7 +487,7 @@
   .editorial .ed-section {
     padding: 50px 0;
   }
-  .editorial .ed-related-grid h2 {
+  .editorial .ed-related-grid :is(h2, h3) {
     font-size: 1.2rem;
   }
   .editorial .contact-section {
@@ -1296,14 +1301,6 @@ html:has(body.editorial) {
 .editorial .ed-404 h1 em {
   display: block;
 }
-.editorial .ed-related-grid h3 {
-  font-size: 1.15rem;
-  line-height: 1.4;
-  letter-spacing: -0.02em;
-}
-.editorial .ed-related-grid a:hover h3 {
-  color: #007f5b;
-}
 .editorial .ed-related h2.ed-kicker {
   font:
     600 0.72rem/1.6 "JetBrains Mono",
@@ -1480,4 +1477,7 @@ html:has(body.editorial) {
 
 .editorial .ed-glance h2 + p {
   margin-top: 23px;
+}
+.editorial .ed-brief-title {
+  text-wrap: balance;
 }

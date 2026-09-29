@@ -1,0 +1,44 @@
+# Clean Rows
+
+> Clean Rows builds custom B2B prospect lists for business customers. Each list is researched to an agreed brief (ideal customer profile), checked before delivery and delivered as a CSV file or Google Sheet. Pricing is per list with no seat fees and no subscription, and new customers can review 100 free leads before their first paid order.
+
+Key facts:
+- Standard packages (USD): $25 for 1,000 leads, $199 for 10,000, $799 for 50,000. Orders of 100,000+ leads and specialist research are quoted.
+- Free sample: up to 100 leads for your ICP, one per business, delivered within 24 hours of the request once the ICP is reviewed.
+- Sources: publicly accessible business sources (public professional profiles such as LinkedIn, company websites, public directories and registries, public regulatory filings). Business emails are checked with two independent verification services; duplicates are removed.
+- Not offered: tech-stack enrichment, intent data, a searchable database, native CRM sync, consumer data.
+- Customers: businesses only, mainly agencies, B2B software and B2B service firms in the US, UK, EU, Canada and Australia.
+- Contact: hello@cleanrows.com
+
+## Service
+
+- [Pricing](https://clean-rows-astro.vercel.app/pricing): Standard packages, what is included and how ordering works.
+- [Free sample](https://clean-rows-astro.vercel.app/free-sample): Request 100 free leads and how to review them.
+- [What's in the file](https://clean-rows-astro.vercel.app/whats-in-the-file): The 10 standard field groups and a CSV preview.
+- [Custom lists](https://clean-rows-astro.vercel.app/services/custom-lists): Briefs, feasibility, exclusions and custom quotes.
+- [Data sources](https://clean-rows-astro.vercel.app/data-sources): Where the data comes from and what "verified" means.
+
+## Who it is for
+
+- [Agencies](https://clean-rows-astro.vercel.app/for/agencies): One brief and file per client campaign.
+- [B2B SaaS](https://clean-rows-astro.vercel.app/for/saas): Market tests, territories and target accounts.
+- [Recruitment agencies](https://clean-rows-astro.vercel.app/for/recruitment): Employer business-development lists, not candidate data.
+
+## Target lists
+
+- [CEO and founder lists](https://clean-rows-astro.vercel.app/lists/ceos): Title rules and company criteria.
+- [VP of Sales lists](https://clean-rows-astro.vercel.app/lists/vp-sales): Sales-leadership title map.
+- [Fintech lists](https://clean-rows-astro.vercel.app/lists/fintech): Subsector definitions before contacts.
+
+## Comparisons
+
+- [Clean Rows vs Apollo](https://clean-rows-astro.vercel.app/compare/apollo): List service versus per-seat sales platform (sources dated).
+- [Clean Rows vs ZoomInfo](https://clean-rows-astro.vercel.app/compare/zoominfo): One-time list versus quote-based subscription (sources dated).
+
+## Company and policies
+
+- [About](https://clean-rows-astro.vercel.app/about)
+- [Terms of Service](https://clean-rows-astro.vercel.app/terms)
+- [Refund Policy](https://clean-rows-astro.vercel.app/refund)
+- [Privacy Policy](https://clean-rows-astro.vercel.app/privacy)
+- [GDPR and your data rights](https://clean-rows-astro.vercel.app/gdpr)

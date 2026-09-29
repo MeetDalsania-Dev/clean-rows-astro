@@ -66,24 +66,52 @@
 (() => {
   'use strict';
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec';
-  window.CleanRowsSubmit = async (formData) => {
+  // Apps Script cold starts plus the sheet write and email can take several seconds.
+  const TIMEOUT_MS = 30000;
+  // A retry of the same request reuses its id, so the webhook can drop a duplicate
+  // when an earlier attempt was saved but its reply arrived too late. Editing the
+  // form starts a new request.
+  const ids = new WeakMap();
+  const watched = new WeakSet();
+  const newId = () => (window.crypto && crypto.randomUUID
+    ? crypto.randomUUID()
+    : Date.now().toString(36) + Math.random().toString(36).slice(2));
+
+  window.CleanRowsSubmit = async (form, formData) => {
+    if (!watched.has(form)) {
+      watched.add(form);
+      form.addEventListener('input', () => ids.delete(form));
+    }
+    if (!ids.has(form)) ids.set(form, newId());
+    const body = new URLSearchParams(formData);
+    body.set('request_id', ids.get(form));
+
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 15000);
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
     try {
       // A form-encoded POST without custom headers is a CORS "simple request",
       // so Apps Script's JSON reply can be read without a preflight.
-      const response = await fetch(ENDPOINT, {
-        method: 'POST',
-        body: new URLSearchParams(formData),
-        signal: controller.signal,
-      });
+      const response = await fetch(ENDPOINT, { method: 'POST', body, signal: controller.signal });
       const result = await response.json().catch(() => null);
       if (!response.ok || !result || result.status !== 'success') {
         throw new Error('Lead webhook error: ' + (result && result.message || response.status));
       }
+      ids.delete(form);
       return result;
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        const timeout = new Error('Lead webhook timed out');
+        timeout.code = 'timeout';
+        throw timeout;
+      }
+      throw error;
     } finally {
       clearTimeout(timer);
     }
   };
+
+  // Wording for a failed submission. A timeout may still have reached us.
+  window.CleanRowsSubmitError = (error) => error && error.code === 'timeout'
+    ? 'This is taking longer than usual and your request may still reach us. Please wait a minute before trying again, or email hello@cleanrows.com.'
+    : 'Your request didn’t send. Please try again or email hello@cleanrows.com.';
 })();

@@ -103,6 +103,8 @@ const {
           type="email"
           autocomplete="email"
           required
+          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+          title="Enter a work email with a domain, such as you@company.com"
           placeholder="you@company.com"
         />
       </label>
@@ -125,7 +127,7 @@ const {
         {sampleOnly
           ? "Add company or delivery preferences"
           : "Add company, volume or delivery preferences"}{" "}
-        <span>+</span>
+        <span aria-hidden="true">+</span>
       </summary>
       <label>
         Company or agency

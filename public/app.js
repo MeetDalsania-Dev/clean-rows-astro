@@ -48,7 +48,7 @@
     status.replaceChildren();
 
     try {
-      await window.CleanRowsSubmit(data);
+      await window.CleanRowsSubmit(form, data);
       if (window.CleanRowsSuccess) {
         window.CleanRowsSuccess.show(form, { sample: isSample });
       } else {
@@ -59,7 +59,7 @@
     } catch (e) {
       console.error(e);
       // Keep what the visitor typed so they can retry.
-      statusMessage("Your request didn’t send. Try again or email us directly.", "mailto:hello@cleanrows.com", "Email Clean Rows ↗︎");
+      statusMessage(window.CleanRowsSubmitError ? window.CleanRowsSubmitError(e) : "Your request didn’t send. Try again or email us directly.", "mailto:hello@cleanrows.com", "Email Clean Rows ↗︎");
     } finally {
       submit.disabled = false;
       submit.innerHTML = label;

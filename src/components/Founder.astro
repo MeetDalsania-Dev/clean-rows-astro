@@ -15,7 +15,7 @@ const hasLinkedIn = /^https:\/\/(www\.)?linkedin\.com\//.test(founder.linkedin);
       </h2>
     </div>
     <figure class="fb-card">
-      <div class="fb-person">
+      <figcaption class="fb-person">
         {hasPhoto ? (
           <img
             class="fb-photo"
@@ -29,7 +29,7 @@ const hasLinkedIn = /^https:\/\/(www\.)?linkedin\.com\//.test(founder.linkedin);
         ) : (
           <span class="fb-photo fb-initials" aria-hidden="true">{founder.initials}</span>
         )}
-        <figcaption>
+        <div class="fb-name">
           <strong>{founder.name}</strong>
           <span>{founder.role}</span>
           {hasLinkedIn && (
@@ -37,8 +37,8 @@ const hasLinkedIn = /^https:\/\/(www\.)?linkedin\.com\//.test(founder.linkedin);
               Connect on LinkedIn <span aria-hidden="true">↗</span>
             </a>
           )}
-        </figcaption>
-      </div>
+        </div>
+      </figcaption>
       <blockquote>
         <p>“{founder.quote}”</p>
       </blockquote>
@@ -119,7 +119,7 @@ const hasLinkedIn = /^https:\/\/(www\.)?linkedin\.com\//.test(founder.linkedin);
     font: 600 1.4rem/1 Manrope, Inter, sans-serif;
     letter-spacing: -0.02em;
   }
-  .fb-person figcaption {
+  .fb-name {
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -127,7 +127,7 @@ const hasLinkedIn = /^https:\/\/(www\.)?linkedin\.com\//.test(founder.linkedin);
   .fb-person strong {
     font: 600 1.15rem/1.3 Manrope, Inter, sans-serif;
   }
-  .fb-person figcaption > span {
+  .fb-name > span {
     font-size: 0.88rem;
     color: #51685d;
   }

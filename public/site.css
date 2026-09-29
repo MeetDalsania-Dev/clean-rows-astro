@@ -171,6 +171,13 @@ form input,form textarea,form select{scroll-margin-top:125px}
 .legal-page .legal-kicker,.legal-page .legal-toc>p,.legal-page .legal-table th,.legal-page .legal-table td{color:#5c7264}
 .calculator-page .calculator .eyebrow,.calculator-page .volume-presets button[aria-pressed=false],.calculator-page .calc-result-top,.calculator-page .calc-result-top button[aria-pressed=false],.calculator-page .cost-row:not(.us),.calculator-page .cost-row:not(.us) strong,.calculator-page .savings,.calculator-page .calculator-result>.micro,.calculator-page .assumptions,.calculator-page .calculator-input>p:not(.eyebrow),.calculator-page .calculator label{color:#5c7264}
 
+/* Calculator subheading is an h2 (it follows the page h1); keep its original size. */
+.calculator h2{font-size:2.125rem;max-width:430px}
+@media(max-width:560px){.calculator-section .calculator h2{font-size:1.875rem}}
+
+/* Visible keyboard focus on form fields: the old pale ring was below 3:1 on white. */
+form input:focus-visible,form textarea:focus-visible,form select:focus-visible{border-color:#16825b;box-shadow:0 0 0 3px #16825b26;outline:2px solid #16825b;outline-offset:2px}
+
 /* Request form success state (Home and editorial pages). */
 .form-success{display:none}
 form.is-sent{display:flex;align-items:center;justify-content:center}
@@ -196,3 +203,32 @@ form.is-sent>.form-success{display:flex;flex-direction:column;align-items:center
 @keyframes success-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.form-success.is-playing *{animation:none!important;opacity:1!important}.form-success-ring,.form-success-tick{stroke-dashoffset:0}}
 @media (max-width:560px){.form-success-title{font-size:1.7rem}.form-success-mark{width:64px;height:64px}}
+
+/* Home: WCAG AA text contrast. Same hues, darkened (light backgrounds) or lightened
+   (dark backgrounds) only as far as 4.5:1 requires. Scoped to body.home. */
+body.home :is(.eyebrow,.table-hint,.micro,.diagram-note,.hero-note,.hero-proof p>span,.metrics p,.stack-strip>p,.stack-more,.workspace-chrome,.file-top div>span,.file-columns,.scene-person small,.scene-brief small,.scene-brief p span,.scene-caption,.scene-caption button,.profile-head p,.profile-footer small,.field-standard,.step-receipt>span,.step-receipt p,.payment,.result-note,.niches strong,.form-title>span,.field-help,form .micro,.form-options summary,.file-menu){color:#5c7264}
+body.home :is(#how,#pricing) .section-heading>p:last-child,body.home .step-copy p:not(.eyebrow){color:#55675d}
+body.home :is(.profile-footer,.scene-delivery small,.step-receipt small){color:#4f6b5a}
+body.home :is(.audience-tabs button[aria-selected=false],.field-list button[aria-selected=false],th,td){color:#56695e}
+body.home form label{color:#53695a}
+body.home thead th,body.home :is(.result-card>span,.result-card>p:first-child){color:#4c6e58}
+body.home :is(td:nth-child(2),thead th:nth-child(2)){color:#2a6d43}
+body.home :is(.field-list button[aria-selected=true],.verified-badge,.person-check){color:#006c4c}
+body.home .field-list button>span:first-child{color:#5c7264}
+body.home .field-list button[aria-selected=true]>span:first-child{color:#3d6b50}
+body.home :is(.audience-index){color:#3d6b50}
+body.home .audience-panel p{color:#3f5e49}
+body.home :is(.segmented button[aria-pressed=false],.target-display p,.damage span){color:#4f5b4b}
+body.home .profile-avatar{color:#4a5d80}
+body.home .avatar.a1{color:#6e5227}
+body.home .avatar.a2{color:#74465f}
+body.home .price-card:not(.featured) :is(.plan-volume,.unit-rate,ul),body.home .price-card:not(.featured)>p:first-of-type{color:#56705f}
+body.home .price-card:not(.featured) .plan-top>span{color:#2f6b47}
+body.home :is(.faq-list summary>span,.honesty summary span){color:#4c7059}
+body.home .stage-num{color:#a4c2af}
+body.home .ink .hero-proof p>span{color:#a6b8ad}
+body.home .contact-copy>.micro{color:#a9cdb5!important}
+body.home #how .eyebrow,body.home #pricing .section-heading>.eyebrow{color:#5c7264}
+/* Keep the original light eyebrows on dark sections. */
+body.home .ink .eyebrow{color:#99b6a6}
+body.home .contact-copy>.eyebrow{color:#84b497}

@@ -1,5 +1,11 @@
 ---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { founder } from '../data/founder';
+// Cache-busting URL for a file in public/: the query is a hash of its contents,
+// so long-lived caching is safe and no version number has to be bumped by hand.
+const asset = (path: string) => path + '?v=' + createHash('sha1').update(readFileSync(join(process.cwd(), 'public', path))).digest('hex').slice(0, 10);
 const { title, description, editorial = false, schema = [], planHref, bodyClass, mainClass, scripts = editorial ? 'editorial' : 'home', noindex = false, sampleHref } = Astro.props;
 const origin = Astro.site || new URL('https://clean-rows-astro.vercel.app');
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).href;
@@ -7,9 +13,9 @@ const current = (href: string) => (editorial && Astro.url.pathname.replace(/\/$/
 const pageTitle = title || 'Clean Rows | B2B Prospect Lists Built for Your ICP';
 const pageDescription = description || 'ICP-based B2B prospect lists for enterprise, SaaS and agency teams.';
 // Editorial pages describe their own WebSite node; other pages get a minimal one.
-const website = { '@type': 'WebSite', '@id': new URL('/#website', origin).href, name: 'Clean Rows', url: origin.href };
+const website = { '@type': 'WebSite', '@id': new URL('/#website', origin).href, name: 'Clean Rows', url: origin.href, publisher: { '@id': new URL('/#organization', origin).href } };
 const graph = [
-  { '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrows.com', ...(founder.verified ? { founder: { '@type': 'Person', name: founder.name, jobTitle: founder.role, ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}) } } : {}) },
+  { '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrows.com', logo: { '@type': 'ImageObject', url: new URL('/apple-touch-icon.png', origin).href, width: 180, height: 180 }, ...(founder.verified ? { founder: { '@type': 'Person', name: founder.name, jobTitle: founder.role, ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}) } } : {}) },
   ...(schema.some((node: { '@type'?: string }) => node['@type'] === 'WebSite') ? [] : [website]),
   ...schema,
 ];
@@ -30,7 +36,12 @@ const graph = [
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
   <meta property="og:url" content={canonical} />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content={new URL('/og-image.png', origin).href} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Clean Rows: custom B2B prospect lists, built to your ICP and priced per list." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={new URL('/og-image.png', origin).href} />
   <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -42,8 +53,8 @@ const graph = [
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
 
-  <link rel="stylesheet" href="/site.css?v=15">
-  {editorial && <link rel="stylesheet" href="/editorial.css" />}
+  <link rel="stylesheet" href={asset("/site.css")}>
+  {editorial && <link rel="stylesheet" href={asset("/editorial.css")} />}
 </head>
 <body class:list={[bodyClass, { editorial }]}>
   <a class="skip" href="#main">Skip to content</a>
@@ -115,11 +126,11 @@ const graph = [
   </footer>
 
   {/* Page scripts: 'home' (content + app), 'editorial', 'calculator' or 'none' (legal pages). */}
-  {scripts === 'home' && <script is:inline src="/content.js?v=8"></script>}
-  <script is:inline src="/site-ui.js?v=9"></script>
-  <script is:inline src="/tracking.js?v=1"></script>
-  {scripts === 'home' && <script is:inline src="/app.js?v=15"></script>}
-  {scripts === 'editorial' && <script is:inline src="/editorial.js?v=3"></script>}
-  {scripts === 'calculator' && <script is:inline src="/calculator.js?v=8"></script>}
+  {scripts === 'home' && <script is:inline src={asset("/content.js")}></script>}
+  <script is:inline src={asset("/site-ui.js")}></script>
+  <script is:inline src={asset("/tracking.js")}></script>
+  {scripts === 'home' && <script is:inline src={asset("/app.js")}></script>}
+  {scripts === 'editorial' && <script is:inline src={asset("/editorial.js")}></script>}
+  {scripts === 'calculator' && <script is:inline src={asset("/calculator.js")}></script>}
 </body>
 </html>

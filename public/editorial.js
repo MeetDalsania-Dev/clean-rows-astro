@@ -78,7 +78,7 @@
     const isSample = data.get("volume") === "100";
 
     try {
-      await window.CleanRowsSubmit(data);
+      await window.CleanRowsSubmit(form, data);
       if (window.CleanRowsSuccess) {
         window.CleanRowsSuccess.show(form, { sample: isSample });
       } else {
@@ -92,8 +92,14 @@
       console.error(e);
       // Keep what the visitor typed so they can retry.
       const message = document.createElement("p");
-      message.textContent = "Your request didn’t send. Please try again or email hello@cleanrows.com.";
-      status.replaceChildren(message);
+      message.textContent = window.CleanRowsSubmitError
+        ? window.CleanRowsSubmitError(e)
+        : "Your request didn’t send. Please try again or email hello@cleanrows.com.";
+      const link = document.createElement("a");
+      link.href = "mailto:hello@cleanrows.com";
+      link.className = "ed-inline";
+      link.textContent = "Email Clean Rows ↗";
+      status.replaceChildren(message, link);
       status.focus({ preventScroll: true });
     } finally {
       submitBtn.disabled = false;

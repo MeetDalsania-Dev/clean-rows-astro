@@ -35,6 +35,7 @@ var FIELDS = [
   ["utm_content", "UTM content"],
   ["click_id", "Click ID"],
   ["first_touch", "First touch"],
+  ["request_id", "Request ID"],
 ];
 
 function doPost(e) {
@@ -53,12 +54,23 @@ function doPost(e) {
     }
 
     lock.waitLock(10000);
+
+    // The website resends the same request_id when a retry follows a slow reply.
+    // If that request was already saved, confirm it without writing a duplicate.
+    var cache = CacheService.getScriptCache();
+    var requestId = clean(data.request_id, 100);
+    if (requestId && cache.get("req_" + requestId)) {
+      lock.releaseLock();
+      return json({ status: "success", duplicate: true });
+    }
+
     var sheet = getSheet();
     var row = FIELDS.map(function (field) {
       if (field[0] === "timestamp") return new Date();
       return safeCell(clean(data[field[0]], 5000));
     });
     sheet.appendRow(row);
+    if (requestId) cache.put("req_" + requestId, "1", 21600); // 6 hours
     lock.releaseLock();
 
     MailApp.sendEmail({
