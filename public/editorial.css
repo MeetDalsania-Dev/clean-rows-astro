@@ -1288,3 +1288,34 @@ html:has(body.editorial) {
 .editorial .ed-questions summary span {
   color: #2f7550;
 }
+
+/* 404 page. */
+.editorial .ed-404 {
+  padding: 96px 0 88px;
+}
+.editorial .ed-404 h1 em {
+  display: block;
+}
+.editorial .ed-related-grid h3 {
+  font-size: 1.15rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+.editorial .ed-related-grid a:hover h3 {
+  color: #007f5b;
+}
+.editorial .ed-related h2.ed-kicker {
+  font:
+    600 0.72rem/1.6 "JetBrains Mono",
+    monospace;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+.editorial .ed-404 + .ed-related .ed-related-grid {
+  row-gap: 36px;
+}
+@media (max-width: 560px) {
+  .editorial .ed-404 {
+    padding: 56px 0 52px;
+  }
+}

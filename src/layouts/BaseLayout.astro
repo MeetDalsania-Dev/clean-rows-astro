@@ -1,5 +1,5 @@
 ---
-const { title, description, editorial = false, schema = [], planHref, bodyClass, mainClass, scripts = editorial ? 'editorial' : 'home' } = Astro.props;
+const { title, description, editorial = false, schema = [], planHref, bodyClass, mainClass, scripts = editorial ? 'editorial' : 'home', noindex = false, sampleHref } = Astro.props;
 const origin = Astro.site || new URL('https://clean-rows-astro.vercel.app');
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).href;
 const current = (href: string) => (editorial && Astro.url.pathname.replace(/\/$/, '') === href ? 'page' : undefined);
@@ -23,7 +23,7 @@ const graph = [
 
   <title>{pageTitle}</title>
   <meta name="description" content={pageDescription} />
-  <link rel="canonical" href={canonical} />
+  {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Clean Rows" />
   <meta property="og:title" content={pageTitle} />
@@ -59,7 +59,7 @@ const graph = [
       <a href="/about" aria-current={current('/about')}>About</a>
     </nav>
     <div class="cta-pair header-actions">
-      <a class="button lime cta-primary" data-sample href={editorial ? '#contact' : '/#contact'}>Get 100 free leads</a>
+      <a class="button lime cta-primary" data-sample href={sampleHref || (editorial ? '#contact' : '/#contact')}>Get 100 free leads</a>
       <a class="button cta-secondary" href={planHref || (editorial ? (Astro.url.pathname.replace(/\/$/, '') === '/pricing' ? '#pricing' : '/pricing') : '/#pricing')}>Choose a plan</a>
     </div>
     <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Open navigation">☰</button>

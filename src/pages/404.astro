@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const links = [
+  ["/pricing", "Pricing", "One-time packages from $25."],
+  ["/free-sample", "Free sample", "100 leads for your ICP."],
+  ["/whats-in-the-file", "Data fields", "Every column, with a CSV preview."],
+  ["/for/agencies", "For agencies", "One brief and file per client."],
+  ["/services/custom-lists", "Custom lists", "Scope a specialist audience."],
+  ["/about", "About", "How the service works."],
+];
+---
+
+<BaseLayout
+  title="Page Not Found | Clean Rows"
+  description="The page you were looking for does not exist or has moved. Find Clean Rows pricing, free samples and prospect list pages here."
+  editorial
+  noindex
+  sampleHref="/free-sample"
+>
+  <section class="ed-hero ed-404" aria-labelledby="nf-title">
+    <div class="ed-wrap">
+      <p class="ed-kicker"><span></span>ERROR 404</p>
+      <h1 id="nf-title">
+        This row is empty. <em>The page wasn’t found.</em>
+      </h1>
+      <p class="ed-intro">
+        The link may be old or mistyped, or the page may have moved. Everything
+        else is still here.
+      </p>
+      <div class="ed-actions">
+        <a class="ed-button ed-primary" href="/">
+          Back to the homepage <span aria-hidden="true">↗</span>
+        </a>
+        <a class="ed-text-link" href="mailto:hello@cleanrows.com">
+          Report a broken link <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-related" aria-labelledby="nf-links">
+    <div class="ed-wrap">
+      <h2 id="nf-links" class="ed-kicker">POPULAR PAGES</h2>
+      <div class="ed-related-grid">
+        {links.map(([href, title, text]) => (
+          <a href={href}>
+            <span aria-hidden="true">↗</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
