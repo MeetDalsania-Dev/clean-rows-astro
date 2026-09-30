@@ -7,6 +7,10 @@ import Contact from "../components/Contact.astro";
 import { fields } from "../data/fields";
 const faqs = [
   [
+    "What is a B2B prospect list?",
+    "A B2B prospect list is a file of people at companies that match your ideal customer profile, with the details your team needs to research and contact them: names, job titles, companies, LinkedIn profiles and business emails.",
+  ],
+  [
     "What data is included in a Clean Rows prospect list?",
     "The standard file covers 10 field groups. These cover names, business emails, personal and company LinkedIn profiles, available mobile and HQ phones, job title, company and domain, size and industry, and location.",
   ],
@@ -41,7 +45,7 @@ const faqs = [
 >
   <Hero
     label="Inside your prospect file"
-    title="B2B data fields."
+    title="B2B prospect list data fields and CSV specification"
     accent="Every column explained."
     description="People, profiles, company context and business contacts in one file. Explore the 10 standard field groups and understand what availability means before ordering."
     cta="Explore the fields"
@@ -57,17 +61,15 @@ const faqs = [
       ["Custom columns", "Scoped before ordering"],
     ]}
   />
-  <section class="ed-section" id="file-preview">
+  <section class="ed-section" id="file-preview" aria-labelledby="wf-preview">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
           <p class="ed-kicker">OPEN THE FILE BEFORE YOU ORDER</p>
-          <h2>
-            A small preview.
-            <br />A clear specification.
-          </h2>
+          <h2 id="wf-preview">Preview a B2B prospect list CSV before you order</h2>
         </div>
         <p>
+          Comparing B2B email list providers? Look at the file before you buy.
           This fictional example shows the export structure. Your real sample
           follows your agreed audience; these are not actual prospects.
         </p>
@@ -133,15 +135,12 @@ const faqs = [
       </p>
     </div>
   </section>
-  <section class="ed-section ed-tint" id="field-guide">
+  <section class="ed-section ed-tint" id="field-guide" aria-labelledby="wf-fields">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
           <p class="ed-kicker">THE FIELD GUIDE</p>
-          <h2>
-            Ten field groups.
-            <br />A purpose for each one.
-          </h2>
+          <h2 id="wf-fields">10 data field groups in every prospect file</h2>
         </div>
         <p>
           Some groups contain multiple columns. For example, first and last name
@@ -175,14 +174,12 @@ const faqs = [
       </div>
     </div>
   </section>
-  <section class="ed-section">
+  <section class="ed-section" aria-labelledby="wf-import">
     <div class="ed-wrap ed-split">
       <div>
         <p class="ed-kicker">A USEFUL HANDOFF</p>
-        <h2>
-          From spreadsheet
-          <br />
-          to your workflow.
+        <h2 id="wf-import">
+          How to import your B2B lead list into a CRM or outreach tool
         </h2>
         <p>
           CSV is a portable file format, not an automatic integration. Take
@@ -223,22 +220,22 @@ const faqs = [
       </ol>
     </div>
   </section>
-  <section class="ed-boundary">
+  <section class="ed-boundary" aria-labelledby="wf-expect">
     <div class="ed-wrap">
       <p class="ed-kicker">SET THE RIGHT EXPECTATIONS</p>
-      <h2>A prospect file is a starting point.</h2>
+      <h2 id="wf-expect">A B2B prospect list is a starting point</h2>
       <p>
-        Tech-stack enrichment is not offered. Funding, hiring intent and other
+        A B2B prospect list gives your team the people, companies and business
+        contacts that match your ICP. Tech-stack enrichment is not offered. Funding, hiring intent and other
         specialist research are not standard fields. Contact data does not
         establish permission for outreach, so review your intended use and{" "}
         <a href="/data-sources">our sourcing approach</a>.
       </p>
     </div>
   </section>
-  <FAQ title="Questions about your file." items={faqs} />
+  <FAQ title="Questions about B2B prospect list data fields" items={faqs} />
   <Contact
     sampleOnly
-    showSlack={false}
     team="Other"
     heading="See these fields"
     emphasis="for your own audience."

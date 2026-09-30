@@ -7,8 +7,12 @@ import Contact from "../components/Contact.astro";
 import Founder from "../components/Founder.astro";
 const faqs = [
   [
+    "What is Clean Rows?",
+    "Clean Rows is a done-for-you B2B data provider. We research custom B2B prospect lists to your ICP when you order, check business emails before delivery and send a CSV or Google Sheet, priced per list with no seat fees.",
+  ],
+  [
     "Where is Clean Rows based?",
-    "Clean Rows is operated from India. We serve business customers mainly in the United States, United Kingdom, European Union, Canada and Australia.",
+    "Clean Rows is operated from India. Everything happens by email or Slack, so where you are based does not change how ordering works.",
   ],
   [
     "Who does Clean Rows work with?",
@@ -24,7 +28,7 @@ const faqs = [
   ],
   [
     "How do I contact Clean Rows?",
-    "Email hello@cleanrows.com or message us on WhatsApp. A person reads every message.",
+    "Email hello@cleanrowsdata.com, or invite meet@cleanrowsdata.com to your Slack workspace. A person reads every message.",
   ],
 ];
 ---
@@ -38,9 +42,9 @@ const faqs = [
 >
   <Hero
     label="About Clean Rows"
-    title="About Clean Rows."
+    title="About Clean Rows, a B2B data provider"
     accent="Prospect lists, built to order."
-    description="Clean Rows builds custom B2B prospect lists for business customers. Every list starts from an agreed brief, is checked before delivery and arrives as a file your team can use."
+    description="Clean Rows builds custom B2B prospect lists for business customers. Every list is researched fresh from an agreed brief, checked before delivery and delivered as a file your team can use."
     cta="Talk to the team"
     secondary="How the service works"
     secondaryHref="#approach"
@@ -49,7 +53,7 @@ const faqs = [
     items={[
       ["What we do", "Custom B2B prospect lists"],
       ["Customers", "Businesses only"],
-      ["Serving mainly", "US, UK, EU, Canada, Australia"],
+      ["Pricing", "Per list, no seat fees"],
       ["Operated from", "India"],
     ]}
   />
@@ -57,21 +61,19 @@ const faqs = [
     <div class="ed-wrap ed-split">
       <div>
         <p class="ed-kicker">WHAT WE DO</p>
-        <h2 id="about-what">
-          One job,
-          <br />done to a brief.
-        </h2>
+        <h2 id="about-what">What Clean Rows does as a B2B data provider</h2>
         <p>
-          Outbound teams need the right people at the right companies, in a
-          file they can use. That’s the whole service. It is also clear about
-          what it leaves to other tools.
+          Clean Rows is a done-for-you B2B data provider. Outbound teams need
+          the right people at the right companies, in a file they can use, so
+          we research each list when you order and deliver it. That’s the whole
+          service, and we’re clear about what we leave to other tools.
         </p>
       </div>
       <div class="ed-two-lists">
         <article>
           <h3>What we do</h3>
           <ul>
-            <li>Research prospect lists to an agreed brief</li>
+            <li>Research each prospect list fresh to an agreed brief</li>
             <li>Check business emails before delivery</li>
             <li>Remove duplicates and format the file</li>
             <li>Deliver as a CSV or Google Sheet</li>
@@ -96,8 +98,7 @@ const faqs = [
         <div>
           <p class="ed-kicker">WHO WE SERVE</p>
           <h2 id="about-who">
-            Built for teams
-            <br />that sell to businesses.
+            B2B prospect lists for agencies, SaaS and service firms
           </h2>
         </div>
         <p>
@@ -137,10 +138,7 @@ const faqs = [
     <div class="ed-wrap ed-split">
       <div>
         <p class="ed-kicker">HOW IT WORKS</p>
-        <h2 id="about-how">
-          From brief
-          <br />to delivered file.
-        </h2>
+        <h2 id="about-how">How our custom B2B lead list service works</h2>
         <p>
           The same five steps for every order, set out in our{" "}
           <a class="ed-inline" href="/terms">Terms of Service</a> and{" "}
@@ -174,7 +172,7 @@ const faqs = [
             <h3>Order</h3>
             <p>
               Confirmed once criteria, volume and price are agreed in writing.
-              Email or WhatsApp is enough.
+              Email or Slack is enough.
             </p>
           </div>
         </li>
@@ -206,8 +204,7 @@ const faqs = [
       <div>
         <p class="ed-kicker">OPERATING PRINCIPLES</p>
         <h2 id="about-principles">
-          How we handle
-          <br />data and people.
+          How we handle B2B data privacy and GDPR requests
         </h2>
         <p>
           These commitments come from our{" "}
@@ -249,15 +246,14 @@ const faqs = [
     </div>
   </section>
   <Founder />
-  <FAQ title="About Clean Rows questions." items={faqs} />
+  <FAQ title="Frequently asked questions about Clean Rows" items={faqs} />
   <Contact
     sampleOnly
     team="Other"
-    showSlack={false}
     heading="Talk to the team."
     emphasis="Or start with 100 leads."
     closing=""
-    description="Ask a question by email or WhatsApp, or describe your audience below for a free sample."
+    description="Ask a question by email or Slack, or describe your audience below for a free sample."
   />
   <Related
     items={[

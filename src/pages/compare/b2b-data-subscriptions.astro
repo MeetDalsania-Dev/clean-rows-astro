@@ -1,0 +1,336 @@
+---
+import Layout from "../../layouts/EditorialLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import FAQ from "../../components/editorial/FAQ.astro";
+import Related from "../../components/editorial/Related.astro";
+import Contact from "../../components/Contact.astro";
+import FeatureChart from "../../components/editorial/FeatureChart.astro";
+import PriceDrivers from "../../components/editorial/PriceDrivers.astro";
+const stateOfSales =
+  "https://www.salesforce.com/news/stories/state-of-sales-report-announcement-2026/";
+const faqs = [
+  [
+    "What is a B2B data subscription?",
+    "A B2B data subscription is software that gives your team access to a shared B2B contact database. Users search it, export or reveal contacts with credits, and usually pay per seat or on an annual contract.",
+  ],
+  [
+    "Is Clean Rows cheaper than a B2B data subscription?",
+    "It depends on how you use data. Subscriptions usually charge per seat, often with credit limits; Clean Rows charges once per list, from $25 for 1,000 leads. Compare the total cost for your team size, volume and how often you need new contacts.",
+  ],
+  [
+    "Does Clean Rows have a database my team can search?",
+    "No. Clean Rows is a managed service: we research contacts to your brief when you order and deliver a file. There is no platform to log into or search.",
+  ],
+  [
+    "How fresh is the data in a Clean Rows list?",
+    "Each list is sourced when you order. We research contacts against your ICP at that point and check business emails before delivery, rather than exporting records from a pre-built database.",
+  ],
+  [
+    "Does Clean Rows include sequences or a dialer?",
+    "No. Clean Rows delivers the list only. You run outreach in the email, calling or CRM tools you already use.",
+  ],
+  [
+    "Can I use a Clean Rows list alongside a subscription platform?",
+    "Yes. Clean Rows delivers a standard CSV or Google Sheet. Check the import requirements of whichever tool you plan to use it in.",
+  ],
+];
+---
+
+<Layout
+  title="Clean Rows vs B2B Data Subscriptions: Per List or Per Seat?"
+  description="Compare a done-for-you B2B lead list service with subscription data platforms: pricing models, who does the searching, commitment and when each one fits."
+  modified="2026-09-30"
+  label="Clean Rows vs B2B data subscriptions"
+  faqs={faqs}
+>
+  <Hero
+    label="Clean Rows vs B2B data subscriptions"
+    title="Clean Rows vs B2B data subscriptions"
+    accent="A list service or a platform?"
+    description="A data subscription gives your team a shared B2B contact database to search, usually priced per seat. Clean Rows researches one list to your brief and delivers the file, priced per list. Different tools for different jobs."
+    cta="Compare side by side"
+    href="#comparison"
+    secondary="When a subscription fits better"
+    secondaryHref="#fit"
+    note="Subscription plans vary by provider · Compare your actual quotes"
+    panelLabel="AT A GLANCE"
+    panelTitle="Two ways to buy B2B data."
+    items={[
+      ["Clean Rows", "A researched list, delivered"],
+      ["Subscriptions", "A database your team searches"],
+      ["Pricing", "Per list vs per seat"],
+      ["Commitment", "None vs monthly or annual"],
+    ]}
+  />
+  <section class="ed-section" aria-labelledby="glance-heading">
+    <div class="ed-wrap">
+      <div class="ed-glance">
+        <div>
+          <p class="ed-kicker">FEATURE VS FEATURE</p>
+          <h2 id="glance-heading">
+            Clean Rows vs subscription data platforms at a glance
+          </h2>
+          <p>
+            Clean Rows is a done-for-you B2B data provider: we research a
+            custom B2B lead list to your ICP when you order and deliver it as a
+            file. A subscription data platform is software your team logs into
+            to search a shared B2B contact database.
+          </p>
+        </div>
+        <FeatureChart
+          competitor="Typical subscription"
+          caption="Clean Rows compared with a typical subscription data platform. Features vary by provider, so check the plan you are considering."
+          rows={[
+        ["Researched to your brief", true, false],
+        ["Sourced when you order", true, false, "Subscriptions draw on an existing database"],
+        ["Self-serve database search", false, true],
+        ["Outreach tools, such as sequences", false, true, "Varies by platform"],
+        ["Native CRM integrations", false, true, "Varies by platform"],
+        ["No seat fees", true, false],
+        ["No subscription needed", true, false],
+        ["Free way to try", true, true, "Clean Rows sample · free tiers or trials on many platforms"],
+      ]}
+        />
+      </div>
+      <PriceDrivers
+        id="subscription-drivers"
+        competitor="Subscription platform"
+        model="Per seat or annual contract"
+        drivers={["Number of seats","Plan tier and features","Credit or export limits","Monthly or annual billing"]}
+        alt="Subscription data platforms are usually priced by the number of seats, the plan tier and features, credit or export limits, and monthly or annual billing."
+        caption="What usually drives the price. Subscription terms vary by provider. Clean Rows prices come from our pricing page."
+      />
+    </div>
+  </section>
+  <section class="ed-section" id="approach" aria-labelledby="who-searches">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">THE REAL DIFFERENCE</p>
+          <h2 id="who-searches">
+            Search a B2B contact database yourself, or outsource lead list
+            building?
+          </h2>
+        </div>
+        <p>
+          The biggest difference isn’t the data. It’s who spends the time
+          finding it. Salesforce’s{" "}
+          <a class="ed-inline" href={stateOfSales} rel="noopener">2026 State of Sales report</a>{" "}
+          found the average seller spends 40% of their time selling. Filtering
+          a database and cleaning exports competes for the rest.
+        </p>
+      </div>
+      <div class="ed-flow-pair">
+        <article>
+          <span class="ed-kicker">WITH A SUBSCRIPTION</span>
+          <h3>Your team searches the platform</h3>
+          <ol>
+            <li>Each user gets a seat, often with a credit allowance.</li>
+            <li>Reps filter the shared database for matching contacts.</li>
+            <li>Exports or reveals use credits, depending on the plan.</li>
+            <li>Contacts go into sequences, the dialer or your CRM.</li>
+          </ol>
+        </article>
+        <article>
+          <span class="ed-kicker">WITH CLEAN ROWS</span>
+          <h3>We research to your brief</h3>
+          <ol>
+            <li>You describe the audience and exclusions once.</li>
+            <li>You review a 100-lead sample before paying.</li>
+            <li>We source the full list fresh and check it.</li>
+            <li>You receive a CSV or Google Sheet to use anywhere.</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" id="comparison" aria-labelledby="compare-table">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">SIDE BY SIDE</p>
+          <h2 id="compare-table">
+            How Clean Rows compares with a B2B data subscription
+          </h2>
+        </div>
+        <p>
+          Subscription platforms differ in price, credits and features, so
+          treat this as a guide to the two models, not a quote. A subscription
+          includes far more software; Clean Rows only supplies the list.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="compare-hint">
+        Scroll sideways to see every column.
+      </p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label="Clean Rows and B2B data subscriptions comparison table"
+        aria-describedby="compare-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap ed-compare">
+          <caption>
+            Clean Rows compared with a typical B2B data subscription.
+            Subscription pricing, credits and features vary by provider.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Aspect</th>
+              <th scope="col">Clean Rows</th>
+              <th scope="col">Typical subscription</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">What it is</th>
+              <td>A done-for-you B2B lead list service</td>
+              <td>Software with a shared B2B contact database, often with outreach tools</td>
+            </tr>
+            <tr>
+              <th scope="row">How you get data</th>
+              <td>We research contacts to your brief and deliver a file</td>
+              <td>Your team searches the database and exports or reveals contacts</td>
+            </tr>
+            <tr>
+              <th scope="row">When data is sourced</th>
+              <td>When you order, against your ICP</td>
+              <td>Drawn from the provider’s existing database, updated on its own schedule</td>
+            </tr>
+            <tr>
+              <th scope="row">Pricing model</th>
+              <td>One-time packages: $25 for 1,000 leads, $199 for 10,000, $799 for 50,000; custom quote from 100,000</td>
+              <td>Usually per seat, billed monthly or annually; larger plans are often custom-quoted</td>
+            </tr>
+            <tr>
+              <th scope="row">Minimum commitment</th>
+              <td>No subscription; one package at a time</td>
+              <td>A monthly or annual subscription</td>
+            </tr>
+            <tr>
+              <th scope="row">Credits</th>
+              <td>Not used; the price covers the agreed list</td>
+              <td>Often included per seat, with limits on exports or reveals</td>
+            </tr>
+            <tr>
+              <th scope="row">Self-serve search</th>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <th scope="row">Outreach tools</th>
+              <td>None; use your own tools</td>
+              <td>Often included, such as sequences or a dialer</td>
+            </tr>
+            <tr>
+              <th scope="row">CRM connection</th>
+              <td>File import from CSV or Google Sheet</td>
+              <td>Often native integrations</td>
+            </tr>
+            <tr>
+              <th scope="row">Try before buying</th>
+              <td>100-lead sample before the first paid order</td>
+              <td>A free tier or trial on many platforms</td>
+            </tr>
+            <tr>
+              <th scope="row">Agency client work</th>
+              <td>Agencies may use lists to run campaigns for clients; reselling the data is not permitted</td>
+              <td>Check the license: some plans limit sharing data with clients</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section" id="fit" aria-labelledby="compare-fit">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">CHOOSING HONESTLY</p>
+        <h2 id="compare-fit">
+          When a data subscription fits, and when a custom B2B lead list does
+        </h2>
+        <p>
+          Many teams are better served by a subscription. A delivered list fits
+          a narrower set of situations, and it helps to know which one you’re
+          in.
+        </p>
+      </div>
+      <div class="ed-two-lists ed-fit">
+        <article>
+          <h3>A subscription may fit better if</h3>
+          <ul>
+            <li>Your reps prospect every day and want to search for themselves</li>
+            <li>You want data, sequences and pipeline in one place</li>
+            <li>You rely on intent signals or ongoing CRM enrichment</li>
+            <li>Many people need access to the same database</li>
+          </ul>
+        </article>
+        <article>
+          <h3>A delivered list may fit if</h3>
+          <ul>
+            <li>You need one defined list for a campaign, not a platform</li>
+            <li>Nobody has time to search, filter and clean exports</li>
+            <li>You’d rather pay per list than per seat each month</li>
+            <li>You run campaigns for agency clients from separate lists</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="ed-boundary" aria-labelledby="compare-boundary">
+    <div class="ed-wrap">
+      <p class="ed-kicker">WHAT CLEAN ROWS DOES NOT PROVIDE</p>
+      <h2 id="compare-boundary">A B2B lead list, not a sales platform</h2>
+      <p>
+        Clean Rows has no searchable database, sequencing, dialer, intent data,
+        tech-stack enrichment or live CRM sync. A delivered list does not
+        guarantee inbox placement, replies or meetings. See{" "}
+        <a href="/whats-in-the-file">what’s in the file</a> and{" "}
+        <a href="/pricing">package pricing</a>.
+      </p>
+    </div>
+  </section>
+  <FAQ title="Questions about B2B data subscriptions and delivered lists" items={faqs} />
+  <section class="ed-section ed-sources" aria-labelledby="compare-sources">
+    <div class="ed-wrap">
+      <h2 id="compare-sources" class="ed-kicker">SOURCES</h2>
+      <ul>
+        <li>
+          <a class="ed-inline" href={stateOfSales} rel="noopener">Salesforce, State of Sales report (2026)</a>
+          <span>Survey of 4,050 sales professionals, published 3 February 2026: the average seller spends 40% of their time selling. Checked 30 September 2026.</span>
+        </li>
+        <li>
+          <a class="ed-inline" href="/pricing">Clean Rows pricing</a>
+          <span>Standard packages and what is confirmed before payment.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <Contact
+    sampleOnly
+    team="Other"
+    heading="Try a delivered list."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Describe the audience you would otherwise search for. We’ll confirm sample coverage and timing."
+  />
+  <Related
+    items={[
+      [
+        "/services/custom-lists",
+        "How custom lists work",
+        "Briefs, feasibility and scope.",
+      ],
+      [
+        "/whats-in-the-file",
+        "See what’s in the file",
+        "The standard fields and a CSV preview.",
+      ],
+      [
+        "/pricing",
+        "Clean Rows pricing",
+        "One-time packages, no seat fees.",
+      ],
+    ]}
+  />
+</Layout>

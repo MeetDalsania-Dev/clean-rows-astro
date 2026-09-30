@@ -25,14 +25,15 @@
     const creditSeats = Math.ceil(volume / 1000);
     const needed = Math.max(seats, Math.min(creditSeats, 20));
     const us = estimateCleanRows(volume);
-    const apollo = needed * 149;
-    const zoom = (15000 + Math.max(0, needed - 3) * 2500) / 12;
+    // Illustrative models: a per-seat platform and an annual-contract platform.
+    const seat = needed * 149;
+    const annual = (15000 + Math.max(0, needed - 3) * 2500) / 12;
     const multiplier = selectedPeriod === 'year' ? 12 : 1;
     return {
       us: us === null ? null : us * multiplier,
-      apollo: apollo * multiplier,
-      zoom: zoom * multiplier,
-      savings: us === null ? null : Math.max(0, Math.min(apollo, zoom) - us) * 12,
+      seat: seat * multiplier,
+      annual: annual * multiplier,
+      savings: us === null ? null : Math.max(0, Math.min(seat, annual) - us) * 12,
       from: creditSeats > 20 || seats > 20
     };
   }
@@ -47,8 +48,8 @@
     $('#volume-label').textContent = volume.toLocaleString('en-US');
     $('#volume').setAttribute('aria-valuetext', volume.toLocaleString('en-US') + ' leads per month');
     $('#cost-us').textContent = custom ? 'Custom quote' : money(result.us);
-    $('#cost-apollo').textContent = (result.from ? 'from ' : '') + money(result.apollo);
-    $('#cost-zoom').textContent = (result.from ? 'from ' : '') + money(result.zoom);
+    $('#cost-seat').textContent = (result.from ? 'from ' : '') + money(result.seat);
+    $('#cost-annual').textContent = (result.from ? 'from ' : '') + money(result.annual);
     $('#savings').textContent = custom ? 'Quote required' : money(result.savings);
     $('#savings-label').textContent = custom
       ? 'Confirm your price before comparing costs'
@@ -58,8 +59,8 @@
     $('#pricing-estimate-note').textContent = custom
       ? '100,000+ leads are quoted for your volume, targeting and required fields. Savings depend on your agreed quote.'
       : 'USD. Published package combinations cover your selected volume. Extra records may be included. Yearly assumes 12 monthly orders.';
-    const max = Math.max(result.us || 0, result.apollo, result.zoom);
-    ['us', 'apollo', 'zoom'].forEach(key => {
+    const max = Math.max(result.us || 0, result.seat, result.annual);
+    ['us', 'seat', 'annual'].forEach(key => {
       const bar = $('#bar-' + key);
       bar.hidden = result[key] === null;
       bar.style.width = result[key] === null ? '0%' : Math.max(4, result[key] / max * 100) + '%';
@@ -69,8 +70,8 @@
       volume, period,
       cleanRows: custom ? 'Custom quote' : money(result.us),
       requiresQuote: custom,
-      apolloEstimate: $('#cost-apollo').textContent,
-      zoomInfoEstimate: $('#cost-zoom').textContent,
+      perSeatPlatformEstimate: $('#cost-seat').textContent,
+      annualContractPlatformEstimate: $('#cost-annual').textContent,
       annualSavings: custom ? null : money(result.savings)
     };
   }

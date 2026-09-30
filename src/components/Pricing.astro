@@ -33,7 +33,7 @@ const { heading = 'Pay per list. Never per seat.', description = 'Choose a packa
           class="button plan-choice" 
           href="#contact" 
           data-plan={plan.dataPlan} 
-          aria-label={`Choose ${plan.name}: ${plan.volume} for ${plan.price}`}
+          aria-label={`${plan.ctaText}: ${plan.name}, ${plan.volume}${plan.price.startsWith("$") ? ` for ${plan.price}` : ""}`}
         >
           {plan.ctaText} <span aria-hidden="true">↗︎</span>
         </a>

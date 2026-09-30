@@ -10,10 +10,15 @@ const sources = [
   ["Business directories and registries", "Public directories and company registries."],
   ["Public regulatory filings", "Such as SEC filings, where relevant to the brief."],
 ];
+const decay = "https://www.hubspot.com/database-decay";
 const faqs = [
   [
     "Where does Clean Rows get its data?",
     "From publicly accessible business sources: public professional profiles such as LinkedIn, company websites, public business directories and registries, and public regulatory filings such as SEC filings.",
+  ],
+  [
+    "How fresh is the data?",
+    "Each list is researched when you order, and business emails are checked before delivery. Data still changes after that: HubSpot’s database decay simulation estimates B2B data decays by about 22.5% a year, so plan to use a list soon after delivery.",
   ],
   [
     "Does Clean Rows buy or resell databases?",
@@ -33,7 +38,7 @@ const faqs = [
   ],
   [
     "How can someone be removed from Clean Rows lists?",
-    "Email hello@cleanrows.com with the subject “Remove me”. Removal is permanent: the person is added to a suppression list so they are not added again.",
+    "Email support@cleanrowsdata.com with the subject “Remove me”. Removal is permanent: the person is added to a suppression list so they are not added again.",
   ],
 ];
 ---
@@ -46,9 +51,9 @@ const faqs = [
 >
   <Hero
     label="Data sources"
-    title="Our data sources."
+    title="Where we source our B2B prospect data"
     accent="And what the checks mean."
-    description="Clean Rows lists are built from publicly accessible business sources, scoped to your brief and checked before delivery. Here is the process, what “verified” does and doesn’t mean, and where the limits are."
+    description="Clean Rows lists are researched from publicly accessible business sources when you order, scoped to your brief and checked before delivery. Here is the process, what “verified” does and doesn’t mean, and where the limits are."
     cta="Review the process"
     href="#approach"
     secondary="What “verified” means"
@@ -68,8 +73,7 @@ const faqs = [
         <div>
           <p class="ed-kicker">THE SOURCES</p>
           <h2 id="ds-sources">
-            Public business sources.
-            <br />No private databases.
+            Public business sources, not a private B2B contact database
           </h2>
         </div>
         <p>
@@ -93,12 +97,13 @@ const faqs = [
     <div class="ed-wrap ed-split">
       <div>
         <p class="ed-kicker">THE PROCESS</p>
-        <h2 id="ds-process">
-          From agreed criteria
-          <br />to a checked file.
-        </h2>
+        <h2 id="ds-process">How we source fresh B2B data for every order</h2>
         <p>
-          These steps are the commitments in our{" "}
+          Contact data goes stale quickly.{" "}
+          <a class="ed-inline" href={decay} rel="noopener">HubSpot’s database decay simulation</a>,
+          based on MarketingSherpa research, estimates B2B data decays by about
+          2.1% a month, or 22.5% a year. That’s why each list is researched when
+          you order. These steps are the commitments in our{" "}
           <a class="ed-inline" href="/terms">Terms of Service</a>. They apply
           to every paid list.
         </p>
@@ -119,9 +124,9 @@ const faqs = [
           <div>
             <h3>Research follows the brief</h3>
             <p>
-              Contacts are researched from the public sources above against
-              the agreed criteria, rather than drawn from a large stored
-              database of profiles.
+              Contacts are researched from the public sources above when you
+              order, against the agreed criteria, rather than drawn from a
+              large stored database of profiles.
             </p>
           </div>
         </li>
@@ -153,8 +158,7 @@ const faqs = [
       <div>
         <p class="ed-kicker">WHAT “VERIFIED” MEANS</p>
         <h2 id="ds-verified">
-          A checked email,
-          <br />not a promise.
+          What a verified business email means, and what it doesn’t
         </h2>
         <p>
           “Verified” describes the result of email checks at the time of
@@ -188,10 +192,7 @@ const faqs = [
       <div class="ed-section-head">
         <div>
           <p class="ed-kicker">COVERAGE LIMITS</p>
-          <h2 id="ds-limits">
-            Where the data
-            <br />runs out.
-          </h2>
+          <h2 id="ds-limits">Coverage limits: where public B2B data runs out</h2>
         </div>
         <p>
           Public business information is uneven. These limits are set out in
@@ -232,7 +233,7 @@ const faqs = [
   <section class="ed-boundary" aria-labelledby="ds-boundary">
     <div class="ed-wrap">
       <p class="ed-kicker">PUBLIC IS NOT THE SAME AS PERMISSION</p>
-      <h2 id="ds-boundary">You decide how the data is used.</h2>
+      <h2 id="ds-boundary">You decide how the prospect data is used</h2>
       <p>
         Public availability does not by itself make outreach lawful. Under our{" "}
         <a href="/terms">Terms</a>, customers must follow the outreach laws that
@@ -246,10 +247,7 @@ const faqs = [
     <div class="ed-wrap ed-split">
       <div>
         <p class="ed-kicker">IF YOU APPEAR IN A LIST</p>
-        <h2 id="ds-rights">
-          Your data,
-          <br />your rights.
-        </h2>
+        <h2 id="ds-rights">Your data rights if you appear in a Clean Rows list</h2>
         <p>
           Our{" "}
           <a class="ed-inline" href="/gdpr">GDPR and Your Data Rights</a>{" "}
@@ -265,7 +263,7 @@ const faqs = [
         </div>
         <div>
           <dt>Be removed for good</dt>
-          <dd>Email hello@cleanrows.com with the subject “Remove me”. You are added to a suppression list so you are not added again.</dd>
+          <dd>Email support@cleanrowsdata.com with the subject “Remove me”. You are added to a suppression list so you are not added again.</dd>
         </div>
         <div>
           <dt>Limited retention</dt>
@@ -274,11 +272,21 @@ const faqs = [
       </dl>
     </div>
   </section>
-  <FAQ title="Data sources questions." items={faqs} />
+  <FAQ title="Questions about our B2B data sources" items={faqs} />
+  <section class="ed-section ed-sources" aria-labelledby="ds-cited">
+    <div class="ed-wrap">
+      <h2 id="ds-cited" class="ed-kicker">SOURCES</h2>
+      <ul>
+        <li>
+          <a class="ed-inline" href={decay} rel="noopener">HubSpot, Database Decay Simulation</a>
+          <span>B2B data decays at about 2.1% a month, an annualized 22.5%, citing MarketingSherpa research. Checked 30 September 2026.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
   <Contact
     sampleOnly
     team="Other"
-    showSlack={false}
     heading="Check the data yourself."
     emphasis="Start with 100 leads."
     closing=""

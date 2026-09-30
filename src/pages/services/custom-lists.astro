@@ -4,7 +4,17 @@ import Hero from "../../components/editorial/Hero.astro";
 import FAQ from "../../components/editorial/FAQ.astro";
 import Related from "../../components/editorial/Related.astro";
 import Contact from "../../components/Contact.astro";
+const stateOfSales =
+  "https://www.salesforce.com/news/stories/state-of-sales-report-announcement-2026/";
 const faqs = [
+  [
+    "What is a custom B2B lead list?",
+    "A custom B2B lead list is a prospect list researched to your own brief. The roles, sectors, company sizes, locations, named accounts and exclusions are agreed first, and the contacts are sourced to match them.",
+  ],
+  [
+    "Is each list sourced fresh?",
+    "Yes. Each list is researched when you order, against the brief you approve, and business emails are checked before delivery. It is not pulled from a pre-built database.",
+  ],
   [
     "What should a custom list brief include?",
     "Roles and title variations, sectors, company size, locations, any named accounts, exclusions and the fields you need. The more specific the brief, the more consistent the list.",
@@ -44,7 +54,7 @@ const faqs = [
 >
   <Hero
     label="Custom lists"
-    title="Custom B2B lists."
+    title="Custom B2B lead lists built to your brief"
     accent="Scoped before you pay."
     description="When your audience needs more than a standard package, such as specific titles, named accounts, exclusions or extra research, the brief, feasibility and acceptance criteria are agreed before payment."
     cta="Scope a custom list"
@@ -59,15 +69,87 @@ const faqs = [
       ["Acceptance", "The brief, in writing"],
     ]}
   />
-  <section class="ed-section" id="approach" aria-labelledby="cl-brief">
+  <section class="ed-section" aria-labelledby="cl-compare">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">CUSTOM LIST VS DATABASE EXPORT</p>
+          <h2 id="cl-compare">Custom B2B lead lists vs filtered database exports</h2>
+        </div>
+        <p>
+          A custom B2B lead list is researched to your brief at the time you
+          order. Salesforce’s{" "}
+          <a class="ed-inline" href={stateOfSales} rel="noopener">2026 State of Sales report</a>{" "}
+          found the average seller spends 40% of their time selling. When you
+          outsource lead list building, the searching, checking and formatting
+          stop competing for the rest.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="cl-compare-hint">
+        Scroll sideways to see every column.
+      </p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label="Custom lead lists compared with filtered database exports"
+        aria-describedby="cl-compare-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap ed-compare">
+          <caption>
+            A Clean Rows custom list compared with a list your team filters and
+            exports from a subscription database. Database features vary by
+            provider.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Aspect</th>
+              <th scope="col">Custom list from Clean Rows</th>
+              <th scope="col">Filtered database export</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Starting point</th>
+              <td>Your written brief, including edge cases</td>
+              <td>The filters the database offers</td>
+            </tr>
+            <tr>
+              <th scope="row">When contacts are sourced</th>
+              <td>When you order</td>
+              <td>Whenever the database last updated the record</td>
+            </tr>
+            <tr>
+              <th scope="row">Job titles</th>
+              <td>Title variations agreed with you before research</td>
+              <td>Whatever matches the filter keywords</td>
+            </tr>
+            <tr>
+              <th scope="row">Named accounts and exclusions</th>
+              <td>Built into the research</td>
+              <td>Applied by your team, before or after export</td>
+            </tr>
+            <tr>
+              <th scope="row">Cleaning and formatting</th>
+              <td>We remove duplicates, check business emails and format the file</td>
+              <td>Your team cleans the export</td>
+            </tr>
+            <tr>
+              <th scope="row">If rows miss the brief</th>
+              <td>Free rebuild or refund if reported within 7 days</td>
+              <td>Your team filters and exports again</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" id="approach" aria-labelledby="cl-brief">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
           <p class="ed-kicker">WHAT MAKES A USEFUL BRIEF</p>
-          <h2 id="cl-brief">
-            Vague in, vague out.
-            <br />Specific in, useful out.
-          </h2>
+          <h2 id="cl-brief">Vague in, vague out: how to write a useful ICP brief</h2>
         </div>
         <p>
           Two fictional briefs for the same buyer. The second one tells the
@@ -102,15 +184,12 @@ const faqs = [
       </div>
     </div>
   </section>
-  <section class="ed-section ed-tint" aria-labelledby="cl-parts">
+  <section class="ed-section" aria-labelledby="cl-parts">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
           <p class="ed-kicker">THE PARTS OF A BRIEF</p>
-          <h2 id="cl-parts">
-            Seven decisions
-            <br />behind every list.
-          </h2>
+          <h2 id="cl-parts">The seven parts of a custom B2B lead list brief</h2>
         </div>
         <p>
           You don’t need all seven on day one. Anything left open is settled
@@ -182,7 +261,7 @@ const faqs = [
   <section class="ed-boundary" aria-labelledby="cl-narrow">
     <div class="ed-wrap">
       <p class="ed-kicker">FEASIBILITY</p>
-      <h2 id="cl-narrow">A narrow audience stays narrow.</h2>
+      <h2 id="cl-narrow">Small audiences stay small: we don’t pad your list</h2>
       <p>
         If fewer people match your brief than the volume you had in mind, we
         tell you before payment. We don’t quietly widen titles, sizes or
@@ -196,8 +275,7 @@ const faqs = [
       <div>
         <p class="ed-kicker">STANDARD OR CUSTOM</p>
         <h2 id="cl-scope">
-          Most lists fit a package.
-          <br />Some need a quote.
+          Most B2B lead lists fit a standard package. Some need a quote.
         </h2>
         <p>
           Standard packages cover most briefs at{" "}
@@ -233,8 +311,7 @@ const faqs = [
         <div>
           <p class="ed-kicker">FILES AND EXPORTS</p>
           <h2 id="cl-files">
-            Delivered the way
-            <br />your team works.
+            How your list is delivered: splits, headers and formats
           </h2>
         </div>
         <p>
@@ -274,12 +351,11 @@ const faqs = [
       <div>
         <p class="ed-kicker">BEFORE YOU PAY</p>
         <h2 id="cl-agree">
-          Scope, timing and
-          <br />acceptance, in writing.
+          Scope, timing and acceptance, agreed in writing before you pay
         </h2>
         <p>
           An order is confirmed when criteria, volume and price are agreed in
-          writing; email or WhatsApp is enough. See the{" "}
+          writing; email or Slack is enough. See the{" "}
           <a class="ed-inline" href="/refund">Refund Policy</a> for the full
           terms.
         </p>
@@ -319,10 +395,20 @@ const faqs = [
       </ol>
     </div>
   </section>
-  <FAQ title="Custom list questions." items={faqs} />
+  <FAQ title="Questions about custom B2B lead lists" items={faqs} />
+  <section class="ed-section ed-sources" aria-labelledby="cl-sources">
+    <div class="ed-wrap">
+      <h2 id="cl-sources" class="ed-kicker">SOURCES</h2>
+      <ul>
+        <li>
+          <a class="ed-inline" href={stateOfSales} rel="noopener">Salesforce, State of Sales report (2026)</a>
+          <span>Survey of 4,050 sales professionals, published 3 February 2026: the average seller spends 40% of their time selling. Checked 30 September 2026.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
   <Contact
     team="Other"
-    showSlack={false}
     heading="Scope your custom list."
     emphasis="Start with 100 leads."
     closing=""

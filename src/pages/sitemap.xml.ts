@@ -4,7 +4,7 @@ import type { APIRoute } from "astro";
 const pages = Object.keys(import.meta.glob("./**/*.astro"));
 
 export const GET: APIRoute = ({ site }) => {
-  const origin = site ?? new URL("https://clean-rows-astro.vercel.app");
+  const origin = site ?? new URL("https://www.cleanrowsdata.com");
   const urls = pages
     .filter((file) => !file.endsWith("/404.astro"))
     .map((file) =>

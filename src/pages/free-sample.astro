@@ -11,7 +11,7 @@ const faqs = [
   ],
   [
     "Is the sample a generic demo file?",
-    "No. The requested sample is built around your agreed audience. Examples elsewhere on this website are labelled illustrative and are not the sample itself.",
+    "No. The sample is researched fresh around your agreed audience. Examples elsewhere on this website are labelled illustrative and are not the sample itself.",
   ],
   [
     "When will I receive the sample?",
@@ -36,7 +36,7 @@ const faqs = [
 >
   <Hero
     label="100-lead sample"
-    title="100 free B2B leads."
+    title="Try 100 free B2B leads before you buy"
     accent="Your ICP. Your call."
     description="Tell us who you want to reach. Review a real sample against your ideal customer profile before deciding whether a larger list makes sense."
     cta="Brief my free sample"
@@ -81,21 +81,17 @@ const faqs = [
   </section>
   <Contact
     sampleOnly
-    showSlack={false}
     team="Other"
     heading="Your audience."
     emphasis="Your first 100."
     closing=""
     description="Include roles, industries, company sizes and locations. We’ll review the brief and confirm sample coverage and timing. We’ll reply by email."
   />
-  <section class="ed-section ed-tint">
+  <section class="ed-section ed-tint" aria-labelledby="fs-brief">
     <div class="ed-wrap ed-split">
       <div>
         <p class="ed-kicker">MAKE THE BRIEF SPECIFIC</p>
-        <h2>
-          A few details.
-          <br />A much better starting point.
-        </h2>
+        <h2 id="fs-brief">How to brief your free sample of <span class="nowrap">ICP-based</span> leads</h2>
         <p>
           Include your exclusions and any must-have fields. We’ll confirm what
           can be sourced before the sample is built.
@@ -114,12 +110,12 @@ const faqs = [
       </aside>
     </div>
   </section>
-  <section class="ed-section" id="approach">
+  <section class="ed-section" id="approach" aria-labelledby="fs-review">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
           <p class="ed-kicker">HOW TO REVIEW YOUR SAMPLE</p>
-          <h2>Check more than the email column.</h2>
+          <h2 id="fs-review">How to evaluate your B2B data sample</h2>
         </div>
         <p>
           A useful sample answers a simple question: would your team want to
@@ -154,7 +150,7 @@ const faqs = [
       </div>
     </div>
   </section>
-  <FAQ title="Before you request the sample." items={faqs} />
+  <FAQ title="Questions about the free 100-lead sample" items={faqs} />
   <Related
     items={[
       [

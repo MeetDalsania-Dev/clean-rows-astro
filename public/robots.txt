@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://clean-rows-astro.vercel.app/sitemap.xml
+Sitemap: https://www.cleanrowsdata.com/sitemap.xml

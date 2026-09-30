@@ -43,7 +43,7 @@ form input,form textarea,form select{scroll-margin-top:125px}
 
 .slack-invite{border-top:1px solid #406e50;padding-top:22px;margin:0 0 25px;max-width:440px}.slack-invite>p:first-child{font-size:1rem;color:#d5ebdc;margin:0 0 12px}.slack-invite-action{display:flex;align-items:center;gap:14px;flex-wrap:wrap}#slack-email{font-size:.875rem;color:#bee0ca;overflow-wrap:anywhere;user-select:all}#copy-slack-email{background:transparent;border:1px solid #648c70;border-radius:7px;color:#d5ebdc;padding:8px 13px;font-size:.8125rem;min-height:44px}#copy-slack-email:hover{background:#295039}.slack-invite-help{font-size:.75rem;color:#a8c6b2;line-height:1.6;margin:10px 0 0}#slack-copy-status{display:block;font-size:.75rem;line-height:1.6;color:#baf4ce;margin-top:8px}#slack-copy-status:empty{display:none}
 
-/* Equal repeated groups keep the original brand logos moving seamlessly to the right. */
+/* Equal repeated groups keep the original brand logos moving smoothly to the right. */
 .logo-marquee{--logo-gap:clamp(32px,4vw,64px);overflow:hidden;max-width:100%;padding-block:10px;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
 .logo-marquee:focus-visible{outline:2px solid var(--green);outline-offset:4px;border-radius:4px}
 .logo-track{display:flex;width:max-content;animation:logos-flow-right 36s linear infinite;will-change:transform}
@@ -148,12 +148,12 @@ form input,form textarea,form select{scroll-margin-top:125px}
 @media(max-width:800px){.legal-toc li{padding:0}.legal-toc a{display:flex;align-items:center;min-height:44px}}
 .legal-body ul,.legal-summary ul{list-style:disc}.legal-body ol{list-style:decimal}.legal-body li::marker,.legal-summary li::marker{color:#00704f}
 
-/* Shared footer: brand introduction beside four readable navigation columns. */
+/* Shared footer: brand introduction beside three readable navigation columns. */
 .site-footer{display:grid;grid-template-columns:minmax(220px,.85fr) minmax(0,2fr);gap:48px 64px;padding:64px max(6%,calc((100vw - 1240px)/2)) 28px;align-items:start}
 .site-footer .footer-brand{min-width:0}
 .site-footer .footer-brand .logo{font-size:1.5625rem}
 .site-footer .footer-brand p{max-width:310px;margin:22px 0 0;font-size:.8125rem;line-height:1.85;color:#a2bfae}
-.site-footer .footer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:0;min-width:0;width:100%}
+.site-footer .footer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0;min-width:0;width:100%}
 .site-footer .footer-col{min-width:0}
 .site-footer .footer-col strong{display:block;margin:0 0 14px;color:#e1efe5;font-size:.8125rem;font-weight:600}
 .site-footer .footer-col a{display:flex;align-items:center;min-height:44px;padding:7px 0;color:#b6d3bf;font-size:.8125rem;line-height:1.5;overflow-wrap:break-word}
@@ -254,3 +254,8 @@ body.home .diagram-note a{color:#176a48;text-decoration:underline;text-underline
 #sample-table td:nth-child(2){background:transparent}#sample-table thead th:nth-child(2){background:#f5f9f6}
 body.home #sample-table td:nth-child(2){color:#56695e}
 body.home #sample-table thead th:nth-child(2){color:#4c6e58}
+/* Headings wrap into even lines instead of leaving one word on the last line. */
+h1,h2{text-wrap:balance}
+.nowrap{white-space:nowrap}
+@media(max-width:420px){.contact-copy h2{font-size:2.4rem}}
+@media(max-width:340px){.contact-copy h2{font-size:2.15rem}}

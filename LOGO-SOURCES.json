@@ -17,12 +17,6 @@
     "originalFilename": "lemlist.avif"
   },
   {
-    "filename": "apollo.svg",
-    "pageUrl": "https://www.apollo.io/",
-    "assetUrl": "https://www.apollo.io/",
-    "source": "Unmodified path artwork extracted from inline desktop header SVG inside the homepage link; CSS class removed for standalone SVG."
-  },
-  {
     "filename": "hubspot.svg",
     "pageUrl": "https://www.hubspot.com/",
     "note": "Original full header wordmark decoded unchanged from the global-nav-logo -static image data URL."

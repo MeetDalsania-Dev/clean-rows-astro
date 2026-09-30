@@ -7,7 +7,6 @@ const {
   placeholder = "e.g. VP Sales at US SaaS companies, 50–500 staff. LinkedIn profiles and business emails.",
   team = "Agency",
   sampleOnly = false,
-  showSlack = true,
 } = Astro.props;
 ---
 
@@ -29,30 +28,25 @@ const {
     </h2>
     <p>{description}</p>
     <div class="contact-links">
-      <a href="mailto:hello@cleanrows.com">hello@cleanrows.com ↗︎</a>
-      <a href="https://wa.me/918469847308" target="_blank" rel="noopener">
-        WhatsApp · +91 8469847308 ↗︎
-      </a>
+      <a href="mailto:hello@cleanrowsdata.com">hello@cleanrowsdata.com ↗︎</a>
     </div>
-    {showSlack && (
-      <div class="slack-invite">
-        <p>Prefer Slack? Invite me to your workspace.</p>
-        <div class="slack-invite-action">
-          <span id="slack-email">dalsaniam3@gmail.com</span>
-          <button
-            type="button"
-            id="copy-slack-email"
-            aria-label="Copy email for Slack invitation"
-          >
-            Copy email
-          </button>
-        </div>
-        <p class="slack-invite-help">
-          Use this email when sending an invitation through Slack.
-        </p>
-        <span id="slack-copy-status" role="status" aria-live="polite"></span>
+    <div class="slack-invite">
+      <p>Prefer Slack? Invite us to your workspace.</p>
+      <div class="slack-invite-action">
+        <span id="slack-email">meet@cleanrowsdata.com</span>
+        <button
+          type="button"
+          id="copy-slack-email"
+          aria-label="Copy email for Slack invitation"
+        >
+          Copy email
+        </button>
       </div>
-    )}
+      <p class="slack-invite-help">
+        Use this email when sending an invitation through Slack.
+      </p>
+      <span id="slack-copy-status" role="status" aria-live="polite"></span>
+    </div>
     <p class="micro">
       Your details go to a person, not a CRM sequence. We don’t sell, share or
       resell what you send us, including your ICP. See our{" "}

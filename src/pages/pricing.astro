@@ -11,8 +11,8 @@ const faqs = [
     "Standard packages are $25 for 1,000 leads, $199 for 10,000 and $799 for 50,000, in USD. Orders of 100,000+ leads and specialist research receive a custom quote.",
   ],
   [
-    "Is this a subscription?",
-    "No. Standard packages are one-time purchases with no seat fees or automatic renewal. Recurring delivery is agreed separately if you need it.",
+    "Can I buy a B2B email list without a subscription?",
+    "Yes. Standard packages are one-time purchases with no seat fees or automatic renewal. Recurring delivery is agreed separately if you need it.",
   ],
   [
     "What is included in the price?",
@@ -46,7 +46,7 @@ const faqs = [
 >
   <Hero
     label="Pricing"
-    title="B2B lead lists."
+    title="B2B lead list pricing"
     accent="One clear price."
     description="One-time B2B prospect list packages. Choose the volume your campaign needs, agree the brief, and get a file your team can share."
     cta="Compare packages"
@@ -63,20 +63,14 @@ const faqs = [
     ]}
   />
   <Pricing
-    heading="Pick the volume. Keep control of the spend."
+    heading="Buy verified B2B email lists by volume, not by seat"
     description="The same standard field groups across every package. Your targeting, coverage and delivery date are confirmed before payment; narrow audiences and specialist research may need a custom quote."
   />
   <section class="ed-section ed-tint" id="approach">
     <div class="ed-wrap ed-split">
       <div>
         <p class="ed-kicker">WHAT YOU ARE BUYING</p>
-        <h2>
-          The research.
-          <br />
-          The reviewed file.
-          <br />
-          The handoff.
-        </h2>
+        <h2>What’s included in every B2B prospect list order</h2>
         <p>
           See the{" "}
           <a class="ed-inline" href="/whats-in-the-file">
@@ -93,6 +87,7 @@ const faqs = [
         <article>
           <h3>Included as standard</h3>
           <ul>
+            <li>Research done fresh for your order</li>
             <li>Targeting against your agreed ICP</li>
             <li>Prospect and company field groups</li>
             <li>Business email contact checks</li>
@@ -113,12 +108,84 @@ const faqs = [
       </div>
     </div>
   </section>
-  <section class="ed-section">
+  <section class="ed-section" aria-labelledby="pricing-compare">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">PER LIST VS PER SEAT</p>
+          <h2 id="pricing-compare">Per-list pricing vs a data subscription priced per seat</h2>
+        </div>
+        <p>
+          Clean Rows prices each B2B lead list once, by volume. There are no
+          seat fees, no credits and no renewal. Subscription terms vary by
+          provider, so compare against your actual quotes, or read the{" "}
+          <a class="ed-inline" href="/compare/b2b-data-subscriptions">full comparison</a>.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="pricing-compare-hint">
+        Scroll sideways to see every column.
+      </p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label="Per-list pricing compared with a per-seat subscription"
+        aria-describedby="pricing-compare-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap ed-compare">
+          <caption>
+            Clean Rows per-list pricing compared with a typical per-seat data
+            subscription. Subscription terms vary by provider.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Aspect</th>
+              <th scope="col">Clean Rows</th>
+              <th scope="col">Typical subscription</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">What you pay for</th>
+              <td>One researched list, priced by volume</td>
+              <td>Access to a shared database, priced per user</td>
+            </tr>
+            <tr>
+              <th scope="row">Seat fees</th>
+              <td>None</td>
+              <td>Usually charged for each seat</td>
+            </tr>
+            <tr>
+              <th scope="row">Commitment</th>
+              <td>None; buy one package at a time</td>
+              <td>A monthly or annual subscription</td>
+            </tr>
+            <tr>
+              <th scope="row">Credits</th>
+              <td>Not used; the price covers the agreed list</td>
+              <td>Often limit exports or reveals per seat</td>
+            </tr>
+            <tr>
+              <th scope="row">Quiet months</th>
+              <td>No order, no charge</td>
+              <td>The subscription still bills</td>
+            </tr>
+            <tr>
+              <th scope="row">Who builds the list</th>
+              <td>We research it fresh to your brief</td>
+              <td>Your team searches and exports</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="ed-section ed-tint" aria-labelledby="pricing-order">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
           <p class="ed-kicker">NO CHECKOUT GUESSWORK</p>
-          <h2>A clear path to your first order.</h2>
+          <h2 id="pricing-order">How to order your custom B2B lead list</h2>
         </div>
         <p>
           Choosing a plan opens a request. It does not charge you or start a
@@ -157,7 +224,7 @@ const faqs = [
       </div>
     </div>
   </section>
-  <FAQ title="Pricing, without the small-print hunt." items={faqs} />
+  <FAQ title="Questions about pricing and buying a B2B lead list" items={faqs} />
   <Contact
     heading="Choose a package."
     emphasis="Check the fit first."
@@ -167,9 +234,9 @@ const faqs = [
   <Related
     items={[
       [
-        "/compare/apollo",
-        "Compare with Apollo",
-        "List service or sales platform?",
+        "/compare/b2b-data-subscriptions",
+        "Lists vs data subscriptions",
+        "Per list or per seat?",
       ],
       [
         "/services/custom-lists",

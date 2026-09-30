@@ -124,6 +124,6 @@
 
   // Wording for a failed submission. A timeout may still have reached us.
   window.CleanRowsSubmitError = (error) => error && error.code === 'timeout'
-    ? 'This is taking longer than usual and your request may still reach us. Please wait a minute before trying again, or email hello@cleanrows.com.'
-    : 'We couldn’t confirm your request. Your details are still on this page. Please try again or email hello@cleanrows.com.';
+    ? 'This is taking longer than usual and your request may still reach us. Please wait a minute before trying again, or email hello@cleanrowsdata.com.'
+    : 'We couldn’t confirm your request. Your details are still on this page. Please try again or email hello@cleanrowsdata.com.';
 })();

@@ -2,7 +2,7 @@
 import BaseLayout from "./BaseLayout.astro";
 import { plans } from "../data/plans";
 const { title, description, label, faqs = [], service = false, serviceName, audience, planHref, serviceOffers = true, pageType = "WebPage", modified } = Astro.props;
-const origin = Astro.site || new URL("https://clean-rows-astro.vercel.app");
+const origin = Astro.site || new URL("https://www.cleanrowsdata.com");
 const url = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", origin).href;
 const schema = [
   {
@@ -53,8 +53,6 @@ const schema = [
           url,
           provider: { "@id": new URL("/#organization", origin).href },
           serviceType: "Custom B2B prospect list research",
-          // Markets named in the Privacy Policy ("serve customers mainly in ...").
-          areaServed: ["United States", "United Kingdom", "European Union", "Canada", "Australia"],
           ...(serviceOffers ? { offers: plans
             .filter((plan) => plan.price.startsWith("$"))
             .map((plan) => ({

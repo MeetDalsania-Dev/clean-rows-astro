@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/compare/apollo", "destination": "/compare/b2b-data-subscriptions", "statusCode": 301 },
+    { "source": "/compare/zoominfo", "destination": "/compare/b2b-data-subscriptions", "statusCode": 301 }
+  ],
   "headers": [
     {
       "source": "/(.*)",

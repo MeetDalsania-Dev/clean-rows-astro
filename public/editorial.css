@@ -1481,3 +1481,45 @@ html:has(body.editorial) {
 .editorial .ed-brief-title {
   text-wrap: balance;
 }
+
+/* Hero headline: the keyword h1 and its tagline read as one two-tone headline. */
+.editorial .ed-hero h1,
+.editorial .ed-accent {
+  font-size: clamp(2.5rem, 4.1vw, 3.8rem);
+  line-height: 1.08;
+  max-width: 700px;
+}
+.editorial .ed-accent {
+  font-family: Manrope, Inter, sans-serif;
+  font-weight: 550;
+  letter-spacing: -0.045em;
+  color: #387d60;
+  margin: 0;
+  text-wrap: balance;
+}
+@media (max-width: 560px) {
+  .editorial .ed-hero h1,
+  .editorial .ed-accent {
+    font-size: 2.4rem;
+  }
+}
+
+/* Section headings are full sentences; balance the lines so none ends on an orphan. */
+.editorial h2 {
+  text-wrap: balance;
+}
+@media (max-width: 380px) {
+  .editorial .ed-hero h1,
+  .editorial .ed-accent {
+    font-size: 2.15rem;
+  }
+}
+@media (max-width: 340px) {
+  .editorial .ed-hero h1,
+  .editorial .ed-accent {
+    font-size: 2rem;
+  }
+  .editorial .contact-copy h2 {
+    font-size: 1.8rem;
+  }
+}

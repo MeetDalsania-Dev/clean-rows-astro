@@ -100,9 +100,9 @@
       const message = document.createElement("p");
       message.textContent = window.CleanRowsSubmitError
         ? window.CleanRowsSubmitError(e)
-        : "Your request didn’t send. Please try again or email hello@cleanrows.com.";
+        : "Your request didn’t send. Please try again or email hello@cleanrowsdata.com.";
       const link = document.createElement("a");
-      link.href = "mailto:hello@cleanrows.com";
+      link.href = "mailto:hello@cleanrowsdata.com";
       link.className = "ed-inline";
       link.textContent = "Email Clean Rows ↗";
       status.replaceChildren(message, link);

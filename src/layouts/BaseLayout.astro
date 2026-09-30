@@ -7,7 +7,7 @@ import { founder } from '../data/founder';
 // so long-lived caching is safe and no version number has to be bumped by hand.
 const asset = (path: string) => path + '?v=' + createHash('sha1').update(readFileSync(join(process.cwd(), 'public', path))).digest('hex').slice(0, 10);
 const { title, description, editorial = false, schema = [], planHref, bodyClass, mainClass, scripts = editorial ? 'editorial' : 'home', noindex = false, sampleHref } = Astro.props;
-const origin = Astro.site || new URL('https://clean-rows-astro.vercel.app');
+const origin = Astro.site || new URL('https://www.cleanrowsdata.com');
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).href;
 const current = (href: string) => (editorial && Astro.url.pathname.replace(/\/$/, '') === href ? 'page' : undefined);
 const pageTitle = title || 'Clean Rows | B2B Prospect Lists Built for Your ICP';
@@ -15,7 +15,7 @@ const pageDescription = description || 'ICP-based B2B prospect lists for enterpr
 // Editorial pages describe their own WebSite node; other pages get a minimal one.
 const website = { '@type': 'WebSite', '@id': new URL('/#website', origin).href, name: 'Clean Rows', url: origin.href, publisher: { '@id': new URL('/#organization', origin).href } };
 const graph = [
-  { '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrows.com', logo: { '@type': 'ImageObject', url: new URL('/apple-touch-icon.png', origin).href, width: 180, height: 180 }, ...(founder.verified ? { founder: { '@type': 'Person', name: founder.name, jobTitle: founder.role, ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}) } } : {}) },
+  { '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrowsdata.com', logo: { '@type': 'ImageObject', url: new URL('/apple-touch-icon.png', origin).href, width: 180, height: 180 }, ...(founder.verified ? { founder: { '@type': 'Person', name: founder.name, jobTitle: founder.role, ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}) } } : {}) },
   ...(schema.some((node: { '@type'?: string }) => node['@type'] === 'WebSite') ? [] : [website]),
   ...schema,
 ];
@@ -66,7 +66,7 @@ const graph = [
     </a>
     <nav id="menu" aria-label="Primary">
       <a href="/for/agencies" aria-current={current('/for/agencies')}>For Agencies</a>
-      <a href="/lists/ceos" aria-current={current('/lists/ceos')}>CEO Lists</a>
+      <a href="/services/custom-lists" aria-current={current('/services/custom-lists')}>Services</a>
       <a href="/pricing" aria-current={current('/pricing')}>Pricing</a>
       <a href="/about" aria-current={current('/about')}>About</a>
     </nav>
@@ -91,20 +91,15 @@ const graph = [
     <nav class="footer-grid" aria-label="Footer">
       <div class="footer-col">
         <strong>Use Cases</strong>
-        <a href="/for/agencies">Marketing Agencies</a>
+        <a href="/for/agencies">Agencies</a>
         <a href="/for/saas">B2B SaaS</a>
         <a href="/for/recruitment">Recruitment</a>
       </div>
       <div class="footer-col">
-        <strong>Target Lists</strong>
+        <strong>Popular Lists</strong>
         <a href="/lists/ceos">CEOs & Founders</a>
         <a href="/lists/vp-sales">VP of Sales</a>
         <a href="/lists/fintech">Fintech Companies</a>
-      </div>
-      <div class="footer-col">
-        <strong>Compare</strong>
-        <a href="/compare/apollo">vs Apollo.io</a>
-        <a href="/compare/zoominfo">vs ZoomInfo</a>
       </div>
       <div class="footer-col">
         <strong>Company</strong>
@@ -112,6 +107,7 @@ const graph = [
         <a href="/pricing">Pricing</a>
         <a href="/whats-in-the-file">Data Fields</a>
         <a href="/data-sources">Data Sources</a>
+        <a href="/compare/b2b-data-subscriptions">Lists vs Subscriptions</a>
       </div>
     </nav>
     <div class="footer-bottom">

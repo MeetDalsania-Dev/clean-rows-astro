@@ -25,7 +25,7 @@ export const plans = [
     features: [
       "Standard prospect and company fields",
       "Built to your agreed ICP",
-      "Email + WhatsApp support",
+      "Email + Slack support",
     ],
     ctaText: "Choose this plan",
     dataPlan: "10000",
@@ -43,7 +43,7 @@ export const plans = [
       "Built to your agreed ICP",
       "Delivery schedule agreed upfront",
       "Per-client file splits on request",
-      "Direct WhatsApp support",
+      "Direct Slack support",
     ],
     ctaText: "Choose this plan",
     dataPlan: "50000",
