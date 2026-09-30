@@ -126,6 +126,25 @@ const graph = [
 </head>
 <body class:list={[bodyClass, { editorial }]}>
   <a class="skip" href="#main">Skip to content</a>
+  <script is:inline>
+    // Offscreen sections skip rendering (content-visibility). Render them all before an
+    // in-page jump such as #contact, so the scroll target position is exact.
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (a && a.pathname === location.pathname) document.documentElement.classList.add('cv-off');
+    }, true);
+  </script>
+  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie preferences" hidden>
+    <p><strong>Can we use analytics cookies?</strong> They show us which pages help visitors. No advertising cookies. See our <a href="/privacy#cookies">Privacy Policy</a>.</p>
+    <div class="cookie-actions">
+      <button type="button" class="button" data-consent="denied">Reject</button>
+      <button type="button" class="button" data-consent="granted">Accept</button>
+    </div>
+  </div>
+  <script is:inline>
+    // Show the banner in the first paint when no choice is stored (site-ui.js handles the buttons).
+    (function () { var c = null; try { c = localStorage.getItem('cr_consent'); } catch (e) {} if (c !== 'granted' && c !== 'denied') document.getElementById('cookie-banner').hidden = false; })();
+  </script>
   <div id="reading-progress" aria-hidden="true"></div>
   
   <header class="header">
@@ -191,13 +210,7 @@ const graph = [
     </div>
   </footer>
 
-  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie preferences" hidden>
-    <p><strong>Can we use analytics cookies?</strong> They show us which pages help visitors. No advertising cookies. See our <a href="/privacy#cookies">Privacy Policy</a>.</p>
-    <div class="cookie-actions">
-      <button type="button" class="button" data-consent="denied">Reject</button>
-      <button type="button" class="button" data-consent="granted">Accept</button>
-    </div>
-  </div>
+
 
   {/* Page scripts: 'home' (content + app), 'editorial', 'calculator' or 'none' (legal pages). */}
   {scripts === 'home' && <script is:inline defer src={asset("/content.js")}></script>}

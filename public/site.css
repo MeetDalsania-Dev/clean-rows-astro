@@ -278,5 +278,8 @@ h1,h2{text-wrap:balance}
 .cookie-settings{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;display:inline-flex;align-items:center;min-height:44px}
 .cookie-settings:hover{text-decoration:underline;text-underline-offset:4px}
 @media(max-width:560px){.cookie-banner{left:12px;right:12px;bottom:12px;width:auto;padding:18px}}
-/* Render below-the-fold sections only when they approach the viewport; the browser skips their layout and paint on load. */
-main>section:not(.hero):not(.metrics):not(.ed-hero),main>.ed-section,.site-footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
+/* Render below-the-fold sections only when they approach the viewport; the browser skips their layout and paint on load.
+   The placeholder height is larger than any section so skipped content never overlaps the next section. */
+main>section:not(.hero):not(.metrics):not(.ed-hero),main>.ed-section,.site-footer{content-visibility:auto;contain-intrinsic-size:auto 3600px}
+/* Before an in-page jump, every section renders so smooth scrolling lands on the right place. */
+html.cv-off main>section,html.cv-off main>.ed-section,html.cv-off .site-footer{content-visibility:visible!important}
