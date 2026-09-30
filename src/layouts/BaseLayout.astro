@@ -3,11 +3,14 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { founder } from '../data/founder';
+import { getPosts } from '../lib/blog';
 // Cache-busting URL for a file in public/: the query is a hash of its contents,
 // so long-lived caching is safe and no version number has to be bumped by hand.
 const asset = (path: string) => path + '?v=' + createHash('sha1').update(readFileSync(join(process.cwd(), 'public', path))).digest('hex').slice(0, 10);
-const { title, description, editorial = false, schema = [], planHref, bodyClass, mainClass, scripts = editorial ? 'editorial' : 'home', noindex = false, sampleHref } = Astro.props;
+const { title, description, editorial = false, schema = [], planHref, bodyClass, mainClass, scripts = editorial ? 'editorial' : 'home', noindex = false, sampleHref, ogType = 'website', ogImage } = Astro.props;
+const hasBlog = (await getPosts()).length > 0;
 const origin = Astro.site || new URL('https://www.cleanrowsdata.com');
+const og = ogImage || { src: new URL('/og-image.png', origin).href, width: 1200, height: 630, alt: 'Clean Rows: custom B2B prospect lists, built to your ICP and priced per list.' };
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).href;
 const current = (href: string) => (editorial && Astro.url.pathname.replace(/\/$/, '') === href ? 'page' : undefined);
 const pageTitle = title || 'Clean Rows | B2B Prospect Lists Built for Your ICP';
@@ -31,17 +34,17 @@ const graph = [
   <title>{pageTitle}</title>
   <meta name="description" content={pageDescription} />
   {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content="Clean Rows" />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:image" content={new URL('/og-image.png', origin).href} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Clean Rows: custom B2B prospect lists, built to your ICP and priced per list." />
+  <meta property="og:image" content={og.src} />
+  <meta property="og:image:width" content={String(og.width)} />
+  <meta property="og:image:height" content={String(og.height)} />
+  <meta property="og:image:alt" content={og.alt} />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content={new URL('/og-image.png', origin).href} />
+  <meta name="twitter:image" content={og.src} />
   <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -63,6 +66,15 @@ const graph = [
     gtag('js', new Date());
 
     gtag('config', 'G-HH1KL43KHB');
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Clean Rows blog" href="/rss.xml" />
+  <slot name="head" />
+  
+  <!-- WebMCP Agent Support -->
+  <script is:inline>
+    if (typeof document !== 'undefined' && !document.modelContext) {
+      document.modelContext = { registerTool: () => Promise.resolve() };
+    }
   </script>
 </head>
 <body class:list={[bodyClass, { editorial }]}>
@@ -116,6 +128,7 @@ const graph = [
         <a href="/pricing">Pricing</a>
         <a href="/whats-in-the-file">Data Fields</a>
         <a href="/data-sources">Data Sources</a>
+        {hasBlog && <a href="/blog">Blog</a>}
         <a href="/compare/b2b-data-subscriptions">Lists vs Subscriptions</a>
       </div>
     </nav>

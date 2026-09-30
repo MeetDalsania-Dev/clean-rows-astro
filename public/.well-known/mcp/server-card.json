@@ -1,0 +1,13 @@
+{
+  "serverInfo": {
+    "name": "CleanRows-MCP",
+    "version": "1.0.0"
+  },
+  "transport": {
+    "type": "sse",
+    "endpoint": "https://www.cleanrowsdata.com/mcp/sse"
+  },
+  "capabilities": {
+    "tools": {}
+  }
+}

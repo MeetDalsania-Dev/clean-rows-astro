@@ -14,15 +14,18 @@
   "dependencies": {
     "@astrojs/markdoc": "^2.0.9",
     "@astrojs/react": "^7.0.0",
-    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/vercel": "^11.0.11",
     "@keystatic/astro": "^6.0.0",
     "@keystatic/core": "^0.6.9",
     "astro": "^7.3.5",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "turndown": "^7.2.4"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@types/turndown": "^5.0.6"
   }
 }
