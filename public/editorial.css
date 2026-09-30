@@ -33,7 +33,7 @@
 }
 .editorial .ed-kicker {
   font:
-    600 0.72rem/1.6 "JetBrains Mono",
+    600 0.72rem/1.6 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
   letter-spacing: 0.08em;
   color: #527363;
@@ -122,7 +122,7 @@
   background: #eef3ed;
   color: #557061;
   font:
-    500 0.63rem/1.5 "JetBrains Mono",
+    500 0.63rem/1.5 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
 }
 .editorial .ed-dots {
@@ -138,7 +138,7 @@
 }
 /* Panel title is decorative, so it is a paragraph styled like the h2 it replaced. */
 .editorial .ed-brief-title {
-  font-family: Manrope, Inter, sans-serif;
+  font-family: Manrope,"Manrope Fallback", Inter,"Inter Fallback", sans-serif;
   font-weight: 550;
   letter-spacing: -0.045em;
   font-size: 1.8rem;
@@ -258,7 +258,7 @@
 }
 .editorial .ed-index {
   font:
-    500 0.8rem "JetBrains Mono",
+    500 0.8rem "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
   color: #38795a;
   display: block;
@@ -538,7 +538,7 @@ html:has(body.editorial) {
 }
 .editorial .ed-sample-path li > span {
   font:
-    500 0.8rem/1 "JetBrains Mono",
+    500 0.8rem/1 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
   color: #367653;
   border: 1px solid #c5dacc;
@@ -580,7 +580,7 @@ html:has(body.editorial) {
   border: 1px solid #d2dfd4;
   border-radius: 10px 10px 0 0;
   font:
-    500 0.72rem/1.6 "JetBrains Mono",
+    500 0.72rem/1.6 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
   color: #405c4a;
 }
@@ -677,7 +677,7 @@ html:has(body.editorial) {
 .editorial .ed-field-example > span {
   display: block;
   font:
-    500 0.65rem/1.5 "JetBrains Mono",
+    500 0.65rem/1.5 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
   color: #54725c;
   margin-bottom: 7px;
@@ -723,7 +723,7 @@ html:has(body.editorial) {
 .editorial .ed-checklist li > span {
   color: #38795a;
   font:
-    500 0.8rem/2 "JetBrains Mono",
+    500 0.8rem/2 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
 }
 .editorial .ed-checklist h3 {
@@ -848,7 +848,7 @@ html:has(body.editorial) {
 }
 .editorial .ed-plan-price strong {
   display: block;
-  font-family: Manrope, Inter, sans-serif;
+  font-family: Manrope,"Manrope Fallback", Inter,"Inter Fallback", sans-serif;
   font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -1113,7 +1113,7 @@ html:has(body.editorial) {
 .editorial .ed-flow-pair li::before {
   content: counter(flow, decimal-leading-zero);
   font:
-    500 0.75rem/1.9 "JetBrains Mono",
+    500 0.75rem/1.9 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
   color: #38795a;
 }
@@ -1162,7 +1162,7 @@ html:has(body.editorial) {
 }
 .editorial .ed-sources h2.ed-kicker {
   font:
-    600 0.72rem/1.6 "JetBrains Mono",
+    600 0.72rem/1.6 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
   letter-spacing: 0.08em;
   margin-bottom: 20px;
@@ -1303,7 +1303,7 @@ html:has(body.editorial) {
 }
 .editorial .ed-related h2.ed-kicker {
   font:
-    600 0.72rem/1.6 "JetBrains Mono",
+    600 0.72rem/1.6 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
   letter-spacing: 0.08em;
   margin-bottom: 20px;
@@ -1411,30 +1411,30 @@ html:has(body.editorial) {
   display: block;
 }
 .editorial .ed-figure .k {
-  font: 600 15px "JetBrains Mono", monospace;
+  font: 600 15px "JetBrains Mono","JetBrains Mono Fallback", monospace;
   letter-spacing: 1px;
   fill: #51685d;
 }
 .editorial .ed-figure .h {
-  font: 600 24px Manrope, Inter, sans-serif;
+  font: 600 24px Manrope,"Manrope Fallback", Inter,"Inter Fallback", sans-serif;
   fill: #173c2e;
 }
 .editorial .ed-figure .c {
-  font: 500 18px Inter, sans-serif;
+  font: 500 18px Inter,"Inter Fallback", sans-serif;
   fill: #45604f;
 }
 .editorial .ed-figure .g {
   fill: #176a48;
 }
 .editorial .ed-figure .s {
-  font: 700 17px Inter, sans-serif;
+  font: 700 17px Inter,"Inter Fallback", sans-serif;
   fill: #45604f;
 }
 .editorial .ed-figure .w {
   fill: white;
 }
 .editorial .ed-figure .n {
-  font: 500 17px Inter, sans-serif;
+  font: 500 17px Inter,"Inter Fallback", sans-serif;
   fill: #45604f;
 }
 .editorial .ed-figure figcaption {
@@ -1490,7 +1490,7 @@ html:has(body.editorial) {
   max-width: 700px;
 }
 .editorial .ed-accent {
-  font-family: Manrope, Inter, sans-serif;
+  font-family: Manrope,"Manrope Fallback", Inter,"Inter Fallback", sans-serif;
   font-weight: 550;
   letter-spacing: -0.045em;
   color: #387d60;
@@ -1778,7 +1778,7 @@ html:has(body.editorial) {
   place-items: center;
   background: #173c2e;
   color: #a0eaba;
-  font: 600 1.05rem/1 Manrope, Inter, sans-serif;
+  font: 600 1.05rem/1 Manrope,"Manrope Fallback", Inter,"Inter Fallback", sans-serif;
 }
 @media (max-width: 560px) {
   .editorial .blog-card {
@@ -1801,4 +1801,12 @@ html:has(body.editorial) {
 .editorial .blog-prose td:nth-child(2) {
   background: transparent;
   color: #2b4a3b;
+}
+/* On phones the hero button and link always stack, so the layout never depends on font width. */
+@media (max-width: 560px) {
+  .editorial .ed-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
 }

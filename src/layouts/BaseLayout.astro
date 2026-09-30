@@ -49,12 +49,47 @@ const graph = [
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Fonts load without blocking first paint; text shows in the fallback font until they arrive. -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
+  <!-- Self-hosted fonts load after the page has rendered, so they never delay the first paint.
+       Once a visitor has them cached, they load immediately on later pages. -->
+  <script is:inline>
+    (function () {
+      var faces = [
+        ['Manrope', '/fonts/manrope.woff2', '200 800'],
+        ['Inter', '/fonts/inter.woff2', '100 900'],
+        ['JetBrains Mono', '/fonts/jetbrains-mono.woff2', '100 800']
+      ];
+      function loadFonts() {
+        if (!('fonts' in document) || typeof FontFace !== 'function') return;
+        faces.forEach(function (f) {
+          var face = new FontFace(f[0], 'url(' + f[1] + ') format("woff2")', { weight: f[2], display: 'swap' });
+          document.fonts.add(face);
+          face.load().then(function () {
+            try { localStorage.setItem('cr_fonts', '1'); } catch (e) {}
+          }, function () {});
+        });
+      }
+      var cached = false;
+      try { cached = localStorage.getItem('cr_fonts') === '1'; } catch (e) {}
+      // First visit: start the font downloads only after the page has painted.
+      function afterFirstPaint() {
+        var done = false;
+        function go() { if (!done) { done = true; setTimeout(loadFonts, 100); } }
+        try {
+          new PerformanceObserver(function (list) {
+            if (list.getEntriesByName('first-contentful-paint').length) go();
+          }).observe({ type: 'paint', buffered: true });
+        } catch (e) {}
+        setTimeout(go, 1500);
+      }
+      if (cached) loadFonts();
+      else addEventListener('load', afterFirstPaint);
+    })();
+  </script>
+  <noscript><style>
+    @font-face{font-family:Manrope;src:url(/fonts/manrope.woff2) format("woff2");font-weight:200 800;font-display:swap}
+    @font-face{font-family:Inter;src:url(/fonts/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
+    @font-face{font-family:"JetBrains Mono";src:url(/fonts/jetbrains-mono.woff2) format("woff2");font-weight:100 800;font-display:swap}
+  </style></noscript>
 
   <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'site.css'), 'utf-8')}></style>
   {editorial && <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'editorial.css'), 'utf-8')}></style>}
