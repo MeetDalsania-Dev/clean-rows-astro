@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+---
+
+<BaseLayout 
+  title="B2B Lead Generation Blog | Clean Rows" 
+  description="Tips, strategies, and insights on B2B outbound, list building, and finding your ICP."
+  mainClass="blog-index"
+>
+  <header class="hero">
+    <div class="content">
+      <p class="label">Our Blog</p>
+      <h1>Insights on B2B outbound and data</h1>
+      <p class="description">Actionable strategies for sales teams, agencies, and SaaS founders to scale their outbound engine.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="content">
+      <div class="grid" style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        {posts.map((post) => (
+          <article class="card" style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-alt);">
+            <p class="meta" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">{post.data.date} • By {post.data.author}</p>
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">
+              <a href={`/blog/${post.slug}`} style="text-decoration: none; color: inherit;">{post.data.title}</a>
+            </h2>
+            {post.data.description && <p style="color: var(--text-muted);">{post.data.description}</p>}
+            <a href={`/blog/${post.slug}`} class="button cta-secondary" style="margin-top: 1.5rem; display: inline-block;">Read article</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

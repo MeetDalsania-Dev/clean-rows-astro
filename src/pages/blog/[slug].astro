@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import EditorialLayout from '../../layouts/EditorialLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<EditorialLayout 
+  title={`${post.data.title} | Clean Rows Blog`}
+  description={post.data.description || `Read ${post.data.title} on the Clean Rows blog.`}
+  label="Blog Post"
+  pageType="Article"
+>
+  <div class="content" style="max-width: 800px; margin: 0 auto; padding: 4rem 1rem;">
+    <p style="color: var(--emerald); font-weight: 600; margin-bottom: 1rem;">
+      {post.data.date} • {post.data.author}
+    </p>
+    <h1 style="font-size: 3rem; margin-bottom: 2rem; line-height: 1.1;">{post.data.title}</h1>
+    {post.data.image && (
+      <img src={post.data.image} alt={post.data.title} style="width: 100%; border-radius: 8px; margin-bottom: 2rem;" />
+    )}
+    
+    <div class="prose" style="line-height: 1.8; font-size: 1.1rem; color: var(--text-muted);">
+      <Content />
+    </div>
+    
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center;">
+      <h3>Ready to put this into practice?</h3>
+      <p style="margin: 1rem 0 2rem;">Get a custom B2B prospect list built for your exact ICP.</p>
+      <a href="/#contact" class="button lime cta-primary">Get 100 free leads</a>
+    </div>
+  </div>
+</EditorialLayout>

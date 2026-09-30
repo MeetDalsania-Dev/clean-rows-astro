@@ -1,12 +1,15 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-
 import sitemap from '@astrojs/sitemap';
+import react from '@astrojs/react';
+import markdoc from '@astrojs/markdoc';
+import keystatic from '@keystatic/astro';
 
-// https://astro.build/config
 export default defineConfig({
-  // Production origin for canonical URLs, structured data and the sitemap.
   site: 'https://www.cleanrowsdata.com',
-
-  integrations: [sitemap()],
+  integrations: [
+    sitemap(),
+    react(),
+    markdoc(),
+    keystatic()
+  ],
 });
