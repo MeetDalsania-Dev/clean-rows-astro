@@ -8,7 +8,7 @@
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){closeMenu();menuButton.focus();}});
   let framePending=false;
-  function onScroll(){const max=document.documentElement.scrollHeight-innerHeight;$('#reading-progress').style.transform=`scaleX(${max>0?scrollY/max:0})`;const contact=$('#contact')?.getBoundingClientRect();$('.mobile-cta')?.classList.toggle('visible',!!contact&&scrollY>700&&contact.top>innerHeight*.8);framePending=false;}
+  function onScroll(){const max=document.documentElement.scrollHeight-innerHeight;const scale=max>0?scrollY/max:0;const contact=$('#contact')?.getBoundingClientRect();const isVis=!!contact&&scrollY>700&&contact.top>innerHeight*0.8;$('#reading-progress').style.transform=`scaleX(${scale})`;$('.mobile-cta')?.classList.toggle('visible',isVis);framePending=false;}
   addEventListener('scroll',()=>{if(!framePending){framePending=true;requestAnimationFrame(onScroll);}},{passive:true});onScroll();
 })();
 

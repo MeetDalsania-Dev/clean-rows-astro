@@ -56,8 +56,9 @@ const graph = [
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
 
-  <link rel="stylesheet" href={asset("/site.css")}>
-  {editorial && <link rel="stylesheet" href={asset("/editorial.css")} />}
+  <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'site.css'), 'utf-8')}></style>
+  {editorial && <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'editorial.css'), 'utf-8')}></style>}
+  
   <!-- Google Analytics 4 with Consent Mode: no analytics cookies until the visitor accepts in the cookie banner. -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
@@ -174,11 +175,11 @@ const graph = [
   </div>
 
   {/* Page scripts: 'home' (content + app), 'editorial', 'calculator' or 'none' (legal pages). */}
-  {scripts === 'home' && <script is:inline src={asset("/content.js")}></script>}
-  <script is:inline src={asset("/site-ui.js")}></script>
-  <script is:inline src={asset("/tracking.js")}></script>
-  {scripts === 'home' && <script is:inline src={asset("/app.js")}></script>}
-  {scripts === 'editorial' && <script is:inline src={asset("/editorial.js")}></script>}
-  {scripts === 'calculator' && <script is:inline src={asset("/calculator.js")}></script>}
+  {scripts === 'home' && <script is:inline defer src={asset("/content.js")}></script>}
+  <script is:inline defer src={asset("/site-ui.js")}></script>
+  <script is:inline defer src={asset("/tracking.js")}></script>
+  {scripts === 'home' && <script is:inline defer src={asset("/app.js")}></script>}
+  {scripts === 'editorial' && <script is:inline defer src={asset("/editorial.js")}></script>}
+  {scripts === 'calculator' && <script is:inline defer src={asset("/calculator.js")}></script>}
 </body>
 </html>
