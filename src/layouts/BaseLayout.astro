@@ -73,8 +73,19 @@ const graph = [
     });
     gtag('js', new Date());
     gtag('config', 'G-HH1KL43KHB');
+    
+    let gaLoaded = false;
+    function loadGA() {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-HH1KL43KHB';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    setTimeout(loadGA, 4000);
+    ['scroll','mousemove','touchstart','keydown'].forEach(e => window.addEventListener(e, loadGA, {once: true, passive: true}));
   </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HH1KL43KHB"></script>
   <link rel="alternate" type="application/rss+xml" title="Clean Rows blog" href="/rss.xml" />
   <slot name="head" />
 
