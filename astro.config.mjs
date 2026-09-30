@@ -9,4 +9,7 @@ export default defineConfig({
   site: 'https://www.cleanrowsdata.com',
   integrations: [markdoc(), react(), keystatic()],
   adapter: vercel(),
+  redirects: {
+    "/admin": "/keystatic"
+  },
 });
