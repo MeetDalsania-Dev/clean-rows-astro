@@ -88,27 +88,6 @@ const graph = [
   </script>
   <link rel="alternate" type="application/rss+xml" title="Clean Rows blog" href="/rss.xml" />
   <slot name="head" />
-
-  <!-- WebMCP Agent Support -->
-  <script is:inline>
-    if (typeof document !== 'undefined') {
-      if (!document.modelContext) {
-        document.modelContext = { registerTool: async () => {} };
-      }
-      setTimeout(() => {
-        if (document.modelContext && typeof document.modelContext.registerTool === 'function') {
-          try {
-            document.modelContext.registerTool({
-              name: 'get_b2b_leads',
-              description: 'Fetch B2B leads matching specific ICP criteria',
-              inputSchema: { type: 'object', properties: {} },
-              execute: async () => ({ content: 'Sample leads fetched successfully' })
-            });
-          } catch(e) {}
-        }
-      }, 100);
-    }
-  </script>
 </head>
 <body class:list={[bodyClass, { editorial }]}>
   <a class="skip" href="#main">Skip to content</a>
