@@ -1,10 +1,9 @@
 import { config, fields, collection } from '@keystatic/core';
 
-// The admin runs locally (`npm run dev`, then /keystatic) and saves posts as files
-// in this repo. To edit online later, switch storage to GitHub or Keystatic Cloud
-// and load the Keystatic integration in production (see astro.config.mjs).
 export default config({
-  storage: { kind: 'local' },
+  storage: process.env.NODE_ENV === 'development' 
+    ? { kind: 'local' } 
+    : { kind: 'github', repo: 'MeetDalsania-Dev/clean-rows-astro' },
   ui: {
     brand: { name: 'Clean Rows Admin' },
   },
