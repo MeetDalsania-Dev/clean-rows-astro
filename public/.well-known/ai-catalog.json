@@ -1,0 +1,15 @@
+{
+  "specVersion": "0.1.0",
+  "host": {
+    "name": "Clean Rows Data",
+    "description": "B2B Lead Generation and ICP Data Provider"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:cleanrowsdata.com:api:core",
+      "displayName": "Clean Rows Core API",
+      "type": "application/vnd.oai.openapi+json",
+      "url": "https://www.cleanrowsdata.com/.well-known/openapi.json"
+    }
+  ]
+}
