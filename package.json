@@ -19,13 +19,9 @@
     "@keystatic/core": "^0.6.9",
     "astro": "^7.3.5",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "turndown": "^7.2.4"
+    "react-dom": "^19.3.0"
   },
   "allowScripts": {
     "esbuild": true
-  },
-  "devDependencies": {
-    "@types/turndown": "^5.0.6"
   }
 }

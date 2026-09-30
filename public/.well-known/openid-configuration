@@ -1,7 +1,0 @@
-{
-  "issuer": "https://www.cleanrowsdata.com",
-  "authorization_endpoint": "https://www.cleanrowsdata.com/oauth/authorize",
-  "token_endpoint": "https://www.cleanrowsdata.com/oauth/token",
-  "jwks_uri": "https://www.cleanrowsdata.com/.well-known/jwks.json",
-  "grant_types_supported": ["authorization_code", "client_credentials"]
-}

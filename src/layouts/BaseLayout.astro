@@ -58,24 +58,25 @@ const graph = [
 
   <link rel="stylesheet" href={asset("/site.css")}>
   {editorial && <link rel="stylesheet" href={asset("/editorial.css")} />}
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HH1KL43KHB"></script>
+  <!-- Google Analytics 4 with Consent Mode: no analytics cookies until the visitor accepts in the cookie banner. -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    var crConsent = null;
+    try { crConsent = localStorage.getItem('cr_consent'); } catch (e) {}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: crConsent === 'granted' ? 'granted' : 'denied'
+    });
     gtag('js', new Date());
-
     gtag('config', 'G-HH1KL43KHB');
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HH1KL43KHB"></script>
   <link rel="alternate" type="application/rss+xml" title="Clean Rows blog" href="/rss.xml" />
   <slot name="head" />
-  
-  <!-- WebMCP Agent Support -->
-  <script is:inline>
-    if (typeof document !== 'undefined' && !document.modelContext) {
-      document.modelContext = { registerTool: () => Promise.resolve() };
-    }
-  </script>
+
 </head>
 <body class:list={[bodyClass, { editorial }]}>
   <a class="skip" href="#main">Skip to content</a>
@@ -135,6 +136,7 @@ const graph = [
     <div class="footer-bottom">
       <span>© 2026 Clean Rows.</span>
       <div>
+        <button type="button" class="cookie-settings" data-cookie-settings>Cookie settings</button>
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
         <a href="/refund">Refund</a>
@@ -142,6 +144,14 @@ const graph = [
       </div>
     </div>
   </footer>
+
+  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie preferences" hidden>
+    <p><strong>Can we use analytics cookies?</strong> They show us which pages help visitors. No advertising cookies. See our <a href="/privacy#cookies">Privacy Policy</a>.</p>
+    <div class="cookie-actions">
+      <button type="button" class="button" data-consent="denied">Reject</button>
+      <button type="button" class="button" data-consent="granted">Accept</button>
+    </div>
+  </div>
 
   {/* Page scripts: 'home' (content + app), 'editorial', 'calculator' or 'none' (legal pages). */}
   {scripts === 'home' && <script is:inline src={asset("/content.js")}></script>}

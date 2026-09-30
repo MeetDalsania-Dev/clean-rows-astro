@@ -127,3 +127,28 @@
     ? 'This is taking longer than usual and your request may still reach us. Please wait a minute before trying again, or email hello@cleanrowsdata.com.'
     : 'We couldn’t confirm your request. Your details are still on this page. Please try again or email hello@cleanrowsdata.com.';
 })();
+
+// Cookie consent: analytics cookies stay off until the visitor accepts.
+// The choice is stored locally and can be changed from "Cookie settings".
+(() => {
+  const banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+  let saved = null;
+  try { saved = localStorage.getItem('cr_consent'); } catch {}
+  const show = () => { banner.hidden = false; };
+  if (saved !== 'granted' && saved !== 'denied') show();
+  banner.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-consent]');
+    if (!button) return;
+    const choice = button.dataset.consent;
+    try { localStorage.setItem('cr_consent', choice); } catch {}
+    if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: choice });
+    banner.hidden = true;
+  });
+  document.querySelectorAll('[data-cookie-settings]').forEach((button) => {
+    button.addEventListener('click', () => {
+      show();
+      banner.querySelector('[data-consent="granted"]').focus();
+    });
+  });
+})();

@@ -1,5 +1,0 @@
-{
-  "resource": "https://www.cleanrowsdata.com/api",
-  "authorization_servers": ["https://www.cleanrowsdata.com"],
-  "scopes_supported": ["read:leads", "write:leads"]
-}
