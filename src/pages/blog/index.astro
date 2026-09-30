@@ -26,10 +26,10 @@ posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).val
           <article class="card" style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-alt);">
             <p class="meta" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">{post.data.date} • By {post.data.author}</p>
             <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">
-              <a href={`/blog/${post.slug}`} style="text-decoration: none; color: inherit;">{post.data.title}</a>
+              <a href={`/blog/${post.id}`} style="text-decoration: none; color: inherit;">{post.data.title}</a>
             </h2>
             {post.data.description && <p style="color: var(--text-muted);">{post.data.description}</p>}
-            <a href={`/blog/${post.slug}`} class="button cta-secondary" style="margin-top: 1.5rem; display: inline-block;">Read article</a>
+            <a href={`/blog/${post.id}`} class="button cta-secondary" style="margin-top: 1.5rem; display: inline-block;">Read article</a>
           </article>
         ))}
       </div>

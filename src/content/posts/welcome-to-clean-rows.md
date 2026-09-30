@@ -1,6 +1,6 @@
 ---
 title: Welcome to Clean Rows
-date: 2026-09-30
+date: "2026-09-30"
 author: Clean Rows Team
 description: Our new B2B prospect data service is finally live.
 ---
