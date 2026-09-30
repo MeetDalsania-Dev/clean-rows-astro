@@ -283,3 +283,5 @@ h1,h2{text-wrap:balance}
 main>section:not(.hero):not(.metrics):not(.ed-hero),main>.ed-section,.site-footer{content-visibility:auto;contain-intrinsic-size:auto 3600px}
 /* Before an in-page jump, every section renders so smooth scrolling lands on the right place. */
 html.cv-off main>section,html.cv-off main>.ed-section,html.cv-off .site-footer{content-visibility:visible!important}
+/* The big decorative step number is drawn by CSS so it is not read or checked as page text. */
+.step-big::before{content:attr(data-num)}
