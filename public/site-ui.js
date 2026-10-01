@@ -109,6 +109,18 @@
       }
       pending.delete(key);
       try { sessionStorage.removeItem(key); } catch {}
+      // GA4: one event per confirmed new lead (a resend of the same request is not counted).
+      // No personal details are sent. Mark "generate_lead" as a key event in GA4.
+      if (!result.duplicate && typeof window.gtag === 'function') {
+        const volume = formData.get('volume') || '';
+        window.gtag('event', 'generate_lead', {
+          lead_type: volume === '100' ? 'free_sample' : 'order',
+          lead_volume: volume,
+          team_type: formData.get('type') || '',
+          cta: formData.get('cta') || '',
+          form_page: location.pathname,
+        });
+      }
       return result;
     } catch (error) {
       if (error.name === 'AbortError') {

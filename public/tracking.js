@@ -23,7 +23,7 @@
   }
 
   // 2. Label every call to action by page, section and purpose, e.g. "home-hero-free-leads".
-  const page=/calculator/.test(location.pathname)?'calculator':'home';
+  const page=location.pathname==='/'?'home':location.pathname.replace(/^\/|\/$/g,'').replace(/\//g,'-');
   const planNames={'1000':'starter','10000':'growth','50000':'scale','100000+':'enterprise'};
   function placement(el){if(el.closest('nav'))return 'nav';if(el.closest('header'))return 'header';if(el.closest('footer'))return 'footer';if(el.closest('.hero'))return 'hero';const s=el.closest('section[id]');return s?s.id:'page';}
   function purpose(el){const href=el.getAttribute('href')||'';if(el.dataset.plan)return 'plan-'+(planNames[el.dataset.plan]||el.dataset.plan);if(el.hasAttribute('data-sample')||href.endsWith('#contact'))return 'free-leads';if(/#(pricing|plan-options)$/.test(href))return 'choose-plan';if(href.startsWith('mailto:')&&!/policy/i.test(href))return 'email';return '';}
@@ -31,8 +31,9 @@
 
   function data(){const last=local.get('cr_last_touch')||{},first=local.get('cr_first_touch')||{};const out={};UTM_KEYS.forEach(k=>out[k]=last[k]||'');out.click_id=CLICK_IDS.filter(k=>last[k]).map(k=>k+'='+last[k]).join(' ');out.cta=session.get('cr_cta')||'none (scrolled to form)';out.landing_page=last.landing_page||'';out.referrer=last.referrer||'';out.first_touch=[first.utm_source,first.utm_medium,first.utm_campaign,first.at].filter(Boolean).join(' / ');return out;}
 
-  // 3. Remember the last button pressed.
-  document.addEventListener('click',e=>{const el=e.target.closest('[data-cta]');if(el)session.set('cr_cta',el.dataset.cta);});
+  // 3. Remember the last button pressed, and count it in GA4 as a cta_click event.
+  document.addEventListener('click',e=>{const el=e.target.closest('[data-cta]');if(el){session.set('cr_cta',el.dataset.cta);if(typeof gtag==='function')gtag('event','cta_click',{cta:el.dataset.cta});}
+    if(e.target.closest('#copy-slack-email')&&typeof gtag==='function')gtag('event','cta_click',{cta:page+'-'+placement(e.target)+'-slack-copy'});});
 
   window.CleanRowsTracking={data};
 })();
