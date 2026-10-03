@@ -39,7 +39,11 @@
       panel.querySelector('.form-success-again').addEventListener('click', () => reset(form));
       form.append(panel);
     }
-    panel.querySelector('.form-success-copy').textContent = sample ? copy.sample : copy.order;
+    // When the portal also took the request, say where to follow it.
+    const portal = form.dataset.portal === '1'
+      ? ' We also emailed you a link to follow it in your Clean Rows portal.'
+      : '';
+    panel.querySelector('.form-success-copy').textContent = (sample ? copy.sample : copy.order) + portal;
     // Keep the card's height so the page below does not jump when the fields disappear.
     form.style.minHeight = Math.min(form.getBoundingClientRect().height, innerWidth < 600 ? 420 : 560) + 'px';
     form.classList.add('is-sent');
@@ -66,6 +70,20 @@
 (() => {
   'use strict';
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec';
+  // The client portal (app.cleanrowsdata.com) also receives each request, creates
+  // the order and emails the visitor a sign-in link. The lead webhook above stays
+  // the source of truth: if the portal is slow or down, the form still succeeds.
+  const PORTAL = window.CleanRowsPortalEndpoint || 'https://doaejavwazvrkfpxvlyo.supabase.co/functions/v1/website-lead';
+  const PORTAL_WAIT_MS = 8000;
+  function sendToPortal(body) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), PORTAL_WAIT_MS);
+    // Form-encoded with no custom headers: a CORS "simple request", no preflight.
+    return fetch(PORTAL, { method: 'POST', body: new URLSearchParams(body), signal: controller.signal })
+      .then((r) => r.json().then((j) => r.ok && !!j && j.ok === true))
+      .catch(() => false)
+      .finally(() => clearTimeout(timer));
+  }
   // Apps Script cold starts plus the sheet write and email can take several seconds.
   const TIMEOUT_MS = 30000;
   // A retry of the same request reuses its id, so the webhook can drop a duplicate
@@ -96,6 +114,8 @@
     pending.set(key, id);
     try { sessionStorage.setItem(key, id); } catch {}
     body.set('request_id', id);
+    form.dataset.portal = '';
+    const portal = sendToPortal(body);
 
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -109,6 +129,7 @@
       }
       pending.delete(key);
       try { sessionStorage.removeItem(key); } catch {}
+      form.dataset.portal = (await portal) ? '1' : '';
       // GA4: one event per confirmed new lead (a resend of the same request is not counted).
       // No personal details are sent. Mark "generate_lead" as a key event in GA4.
       if (!result.duplicate && typeof window.gtag === 'function') {

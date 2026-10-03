@@ -285,3 +285,6 @@ main>section:not(.hero):not(.metrics):not(.ed-hero),main>.ed-section,.site-foote
 html.cv-off main>section,html.cv-off main>.ed-section,html.cv-off .site-footer{content-visibility:visible!important}
 /* The big decorative step number is drawn by CSS so it is not read or checked as page text. */
 .step-big::before{content:attr(data-num)}
+/* Header "Client login": hidden where the desktop nav has no room for it (still in the footer and mobile menu). */
+.nav-login{white-space:nowrap}
+@media (min-width:801px) and (max-width:1000px){#menu .nav-login{display:none}}
