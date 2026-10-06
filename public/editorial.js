@@ -41,7 +41,7 @@
     link.addEventListener("click", () => {
       reopenRequest();
       volume.value = link.dataset.plan;
-      form.querySelector(".form-options").open = true;
+      window.CleanRowsFormSteps?.show(1, false);
       updateSelection();
     });
   });
@@ -51,6 +51,7 @@
       link.addEventListener("click", () => {
         reopenRequest();
         volume.value = "100";
+        window.CleanRowsFormSteps?.show(1, false);
         updateSelection();
       });
     });

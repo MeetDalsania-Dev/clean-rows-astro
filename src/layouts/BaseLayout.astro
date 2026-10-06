@@ -218,6 +218,7 @@ const graph = [
   {scripts === 'home' && <script is:inline defer src={asset("/content.js")}></script>}
   <script is:inline defer src={asset("/site-ui.js")}></script>
   <script is:inline defer src={asset("/tracking.js")}></script>
+  {(scripts === 'home' || scripts === 'editorial') && <script is:inline defer src={asset("/form-steps.js")}></script>}
   {scripts === 'home' && <script is:inline defer src={asset("/app.js")}></script>}
   {scripts === 'editorial' && <script is:inline defer src={asset("/editorial.js")}></script>}
   {scripts === 'calculator' && <script is:inline defer src={asset("/calculator.js")}></script>}

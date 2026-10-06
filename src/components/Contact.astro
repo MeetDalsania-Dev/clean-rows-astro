@@ -80,52 +80,65 @@ const {
       <h3 id="request-heading">Your first 100 are on us.</h3>
       <span>~2 min</span>
     </div>
-    <div class="form-row">
+    <ol class="form-progress" aria-label="Request steps" hidden>
+      <li data-progress-step="1" aria-current="step">
+        <span class="form-progress-number" aria-hidden="true">1</span>
+        <span>Your brief</span>
+      </li>
+      <li data-progress-step="2">
+        <span class="form-progress-number" aria-hidden="true">2</span>
+        <span>Preferences</span>
+      </li>
+    </ol>
+    <p class="form-step-announcement" aria-live="polite" aria-atomic="true"></p>
+    <fieldset class="form-step" data-form-step="1">
+      <legend class="form-step-legend">Step 1: Your brief</legend>
+      <div class="form-row">
+        <label>
+          Your name
+          <input
+            name="name"
+            maxlength="200"
+            autocomplete="name"
+            required
+            placeholder="Alex Morgan"
+          />
+        </label>
+        <label>
+          Work email
+          <input
+            name="email"
+            maxlength="200"
+            type="email"
+            autocomplete="email"
+            required
+            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+            title="Enter a work email with a domain, such as you@company.com"
+            placeholder="you@company.com"
+          />
+        </label>
+      </div>
       <label>
-        Your name
-        <input
-          name="name"
-          maxlength="200"
-          autocomplete="name"
+        Your ideal customer profile
+        <textarea
+          name="icp"
+          maxlength="5000"
           required
-          placeholder="Alex Morgan"
-        />
+          rows="3"
+          placeholder={placeholder}
+        ></textarea>
+        <span class="field-help">
+          Roles, industry, company size and location. Tell us your preferred
+          channels too.
+        </span>
       </label>
-      <label>
-        Work email
-        <input
-          name="email"
-          maxlength="200"
-          type="email"
-          autocomplete="email"
-          required
-          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-          title="Enter a work email with a domain, such as you@company.com"
-          placeholder="you@company.com"
-        />
-      </label>
-    </div>
-    <label>
-      Your ideal customer profile
-      <textarea
-        name="icp"
-        maxlength="5000"
-        required
-        rows="4"
-        placeholder={placeholder}
-      ></textarea>
-      <span class="field-help">
-        Roles, industry, company size and location. Tell us your preferred
-        channels too.
-      </span>
-    </label>
-    <details class="form-options">
-      <summary>
-        {sampleOnly
-          ? "Add company or delivery preferences"
-          : "Add company, volume or delivery preferences"}{" "}
-        <span aria-hidden="true">+</span>
-      </summary>
+    </fieldset>
+    <fieldset class="form-step" data-form-step="2">
+      <legend class="form-step-legend">Step 2: Preferences</legend>
+      <div class="form-step-intro">
+        <h4 tabindex="-1" data-step-heading>A few final details.</h4>
+        <p>These are optional. Share what helps us tailor your list.</p>
+      </div>
       <label>
         Company or agency
         <input
@@ -180,13 +193,111 @@ const {
           placeholder="Suppression lists, custom columns, per-client splits…"
         ></textarea>
       </label>
-    </details>
-    <button class="button lime" type="submit" id="send-request">
-      Send Request <span aria-hidden="true">↗︎</span>
-    </button>
+    </fieldset>
+    <div class="form-step-actions">
+      <button class="button form-back" type="button" data-form-back hidden>
+        <span aria-hidden="true">←</span> Back
+      </button>
+      <button class="button lime" type="button" data-form-next hidden>
+        Next <span aria-hidden="true">→</span>
+      </button>
+      <button class="button lime" type="submit" id="send-request">
+        Send Request <span aria-hidden="true">↗︎</span>
+      </button>
+    </div>
     <p class="micro" id="form-note">
       We will review your requirements and email you shortly.
     </p>
     <div id="form-status" role="status" tabindex="-1"></div>
   </form>
 </section>
+
+<style>
+  /* The form changes height between steps; never reserve an offscreen estimate here. */
+  #contact {
+    content-visibility: visible;
+    contain-intrinsic-size: none;
+    align-items: start;
+    padding-block: clamp(48px, 6vw, 80px);
+    /* Clip the decorative circle without making the section an inner scroll container. */
+    overflow: clip;
+  }
+  #lead-form [hidden] { display: none !important; }
+  #lead-form { scroll-margin-top: 110px; }
+  #lead-form .form-title { gap: 12px; margin-bottom: 22px; }
+  #lead-form .form-title h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.3; }
+  #lead-form .form-progress {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 0 0 26px;
+    padding: 0 0 20px;
+    border-bottom: 1px solid #d8e5db;
+    list-style: none;
+  }
+  #lead-form .form-progress li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #64776a;
+    font-size: .8125rem;
+    line-height: 1.4;
+  }
+  #lead-form .form-progress-number {
+    display: grid;
+    place-items: center;
+    flex: 0 0 28px;
+    height: 28px;
+    border: 1px solid #c9d9ce;
+    border-radius: 50%;
+    font-size: .75rem;
+    font-weight: 600;
+  }
+  #lead-form .form-progress [aria-current="step"] { color: #145d41; font-weight: 600; }
+  #lead-form [aria-current="step"] .form-progress-number { background: #007f5b; border-color: #007f5b; color: white; }
+  #lead-form .form-progress .is-complete .form-progress-number { background: #e8f5ed; color: #145d41; border-color: #b7d9c3; }
+  #lead-form .form-step { border: 0; padding: 0; margin: 0; min-width: 0; }
+  #lead-form .form-row > label:only-of-type { grid-column: 1 / -1; }
+  #lead-form .form-step-legend,
+  #lead-form .form-step-announcement {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  #lead-form .form-step-intro { margin-bottom: 20px; }
+  #lead-form .form-step-intro h4 { color: #295238; font-size: 1.05rem; line-height: 1.5; margin: 0 0 4px; }
+  #lead-form .form-step-intro p { color: #5c7264; font-size: .8125rem; line-height: 1.6; margin: 0; }
+  #lead-form label { color: #526b5b; font-size: .8125rem; }
+  #lead-form .field-help, #lead-form .micro, #lead-form .form-title > span { color: #5c7264; }
+  #lead-form input::placeholder, #lead-form textarea::placeholder { color: #74887b; opacity: 1; }
+  #lead-form input[aria-invalid="true"], #lead-form textarea[aria-invalid="true"] { border-color: #b13d37; }
+  #lead-form .form-step-actions { display: flex; align-items: center; gap: 12px; }
+  #lead-form .form-step-actions .button { min-height: 50px; gap: 12px; flex: 1; }
+  #lead-form .form-step-actions .form-back {
+    flex: 0 0 auto;
+    width: auto;
+    padding-inline: 18px;
+    background: white;
+    border: 1px solid #c9d9ce;
+    color: #345f45;
+  }
+  #lead-form .form-back:hover { background: #f0f6f2; }
+  #lead-form .button:disabled { cursor: wait; opacity: .65; }
+  #lead-form :global(.ed-selection) { font-size: .75rem; padding: 10px 12px; margin: 0 0 18px; }
+  @media (max-width: 560px) {
+    #lead-form { padding: 24px 20px; border-radius: 16px; }
+    #lead-form .form-title { align-items: flex-start; }
+    #lead-form .form-title > span { padding-top: 3px; }
+    #lead-form .form-progress { gap: 10px; margin-bottom: 22px; padding-bottom: 18px; }
+    #lead-form .form-row { grid-template-columns: 1fr; gap: 0; }
+    #lead-form input, #lead-form textarea, #lead-form select { font-size: 16px; }
+    #lead-form label { margin-bottom: 18px; }
+    #lead-form .form-step-actions { gap: 10px; }
+  }
+</style>

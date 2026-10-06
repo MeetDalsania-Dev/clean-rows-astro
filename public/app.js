@@ -29,8 +29,8 @@
   function updateRequest(){const volume=volumeField.value;$('#request-heading').textContent=volume==='100'?'Your first 100 are on us.':volume==='100000+'?'Request an Enterprise quote':planNames[volume]?'Request the '+planNames[volume]+' plan':'Request a prospect list';}
   // After a successful request, a plan or sample button reopens the form first.
   function reopenRequest(){if(form.classList.contains('is-sent'))window.CleanRowsSuccess?.reset(form);}
-  $$('[data-plan]').forEach(a=>a.addEventListener('click',()=>{reopenRequest();volumeField.value=a.dataset.plan;$('.form-options').open=true;updateRequest();}));
-  $$('[data-sample]').forEach(a=>a.addEventListener('click',()=>{reopenRequest();volumeField.value='100';updateRequest();}));
+  $$('[data-plan]').forEach(a=>a.addEventListener('click',()=>{reopenRequest();volumeField.value=a.dataset.plan;window.CleanRowsFormSteps?.show(1,false);updateRequest();}));
+  $$('[data-sample]').forEach(a=>a.addEventListener('click',()=>{reopenRequest();volumeField.value='100';window.CleanRowsFormSteps?.show(1,false);updateRequest();}));
   volumeField.addEventListener('change',updateRequest);
   const onNetlify=location.hostname.endsWith('.netlify.app')||document.body.dataset.contactMode==='netlify';
   if(onNetlify){submit.innerHTML='Send my request <span aria-hidden="true">↗︎</span>';$('#form-note').textContent='No card required. We reply within hours, often minutes.';}
