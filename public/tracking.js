@@ -21,6 +21,9 @@
     local.set('cr_last_touch',touch);
     if(!local.get('cr_first_touch'))local.set('cr_first_touch',touch);
   }
+  // A client's referral link (?ref=CODE) is remembered for 60 days and sent with the request.
+  const ref=clean(params.get('ref')).toUpperCase();
+  if(/^[A-Z0-9]{6,16}$/.test(ref))local.set('cr_ref',{code:ref,at:Date.now()});
 
   // 2. Label every call to action by page, section and purpose, e.g. "home-hero-free-leads".
   const page=location.pathname==='/'?'home':location.pathname.replace(/^\/|\/$/g,'').replace(/\//g,'-');
@@ -29,7 +32,7 @@
   function purpose(el){const href=el.getAttribute('href')||'';if(el.dataset.plan)return 'plan-'+(planNames[el.dataset.plan]||el.dataset.plan);if(el.hasAttribute('data-sample')||href.endsWith('#contact'))return 'free-leads';if(/#(pricing|plan-options)$/.test(href))return 'choose-plan';if(href.startsWith('mailto:')&&!/policy/i.test(href))return 'email';return '';}
   document.querySelectorAll('a[href]').forEach(el=>{if(el.dataset.cta)return;const p=purpose(el);if(p)el.dataset.cta=page+'-'+placement(el)+'-'+p;});
 
-  function data(){const last=local.get('cr_last_touch')||{},first=local.get('cr_first_touch')||{};const out={};UTM_KEYS.forEach(k=>out[k]=last[k]||'');out.click_id=CLICK_IDS.filter(k=>last[k]).map(k=>k+'='+last[k]).join(' ');out.cta=session.get('cr_cta')||'none (scrolled to form)';out.landing_page=last.landing_page||'';out.referrer=last.referrer||'';out.first_touch=[first.utm_source,first.utm_medium,first.utm_campaign,first.at].filter(Boolean).join(' / ');return out;}
+  function data(){const last=local.get('cr_last_touch')||{},first=local.get('cr_first_touch')||{};const out={};UTM_KEYS.forEach(k=>out[k]=last[k]||'');out.click_id=CLICK_IDS.filter(k=>last[k]).map(k=>k+'='+last[k]).join(' ');out.cta=session.get('cr_cta')||'none (scrolled to form)';out.landing_page=last.landing_page||'';out.referrer=last.referrer||'';out.first_touch=[first.utm_source,first.utm_medium,first.utm_campaign,first.at].filter(Boolean).join(' / ');const r=local.get('cr_ref');out.ref=r&&r.code&&Date.now()-r.at<60*864e5?r.code:'';return out;}
 
   // 3. Remember the last button pressed, and count it in GA4 as a cta_click event.
   document.addEventListener('click',e=>{const el=e.target.closest('[data-cta]');if(el){session.set('cr_cta',el.dataset.cta);if(typeof gtag==='function')gtag('event','cta_click',{cta:el.dataset.cta});}
