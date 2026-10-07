@@ -19,6 +19,13 @@
     sample: 'We are reviewing your ICP. Expect an email with your sample file within 24 hours.',
     order: 'We are reviewing your request. Expect an email to confirm the scope, timing and price.',
   };
+  // When the portal answered with a live order page, the visitor goes straight there.
+  const trackCopy = {
+    sample: 'We are reviewing your ICP. Follow your sample live on your order page.',
+    order: 'We are reviewing your request. Follow it live on your order page.',
+  };
+  const REDIRECT_MS = 2600;
+  const timers = new WeakMap();
   const markup = `
     <svg class="form-success-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
       <circle class="form-success-ring" cx="32" cy="32" r="29" />
@@ -26,6 +33,8 @@
     </svg>
     <h3 class="form-success-title">Request Received.</h3>
     <p class="form-success-copy"></p>
+    <a class="form-success-open" hidden>Open my order page <span aria-hidden="true">→</span></a>
+    <p class="form-success-redirect" hidden>Opening your order page…</p>
     <button type="button" class="form-success-again">Send another request</button>`;
 
   function show(form, { sample = true } = {}) {
@@ -39,11 +48,25 @@
       panel.querySelector('.form-success-again').addEventListener('click', () => reset(form));
       form.append(panel);
     }
-    // When the portal also took the request, say where to follow it.
-    const portal = form.dataset.portal === '1'
-      ? ' We also emailed you a link to follow it in your Clean Rows portal.'
-      : '';
-    panel.querySelector('.form-success-copy').textContent = (sample ? copy.sample : copy.order) + portal;
+    const track = form.dataset.track || '';
+    const open = panel.querySelector('.form-success-open');
+    const redirect = panel.querySelector('.form-success-redirect');
+    clearTimeout(timers.get(form));
+    if (track) {
+      panel.querySelector('.form-success-copy').textContent = sample ? trackCopy.sample : trackCopy.order;
+      open.href = track;
+      open.hidden = false;
+      redirect.hidden = false;
+      timers.set(form, setTimeout(() => window.location.assign(track), REDIRECT_MS));
+    } else {
+      // When the portal also took the request, say where to follow it.
+      const portal = form.dataset.portal === '1'
+        ? ' We also emailed you a link to follow it in your Clean Rows portal.'
+        : '';
+      panel.querySelector('.form-success-copy').textContent = (sample ? copy.sample : copy.order) + portal;
+      open.hidden = true;
+      redirect.hidden = true;
+    }
     // Keep the card's height so the page below does not jump when the fields disappear.
     form.style.minHeight = Math.min(form.getBoundingClientRect().height, innerWidth < 600 ? 420 : 560) + 'px';
     form.classList.add('is-sent');
@@ -57,6 +80,9 @@
   }
 
   function reset(form) {
+    clearTimeout(timers.get(form));
+    timers.delete(form);
+    delete form.dataset.track;
     form.classList.remove('is-sent');
     form.style.minHeight = '';
     form.reset();
@@ -71,25 +97,23 @@
   'use strict';
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyzuAM0Ru6S-W-wwn1M3KuXyAGsV03cSuE6BgxXYVL8r2G3_WdGxDkQZxc3XHugrcBB/exec';
   // The client portal (app.cleanrowsdata.com) also receives each request, creates
-  // the order and emails the visitor a sign-in link. The lead webhook above stays
-  // the source of truth: if the portal is slow or down, the form still succeeds.
+  // the order and answers with a private link to its live order page. The webhook
+  // and the portal run at the same time; whichever confirms first is enough.
   const PORTAL = window.CleanRowsPortalEndpoint || 'https://doaejavwazvrkfpxvlyo.supabase.co/functions/v1/website-lead';
-  const PORTAL_WAIT_MS = 8000;
-  function sendToPortal(body) {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), PORTAL_WAIT_MS);
+  const TRACK_PREFIX = (window.CleanRowsPortalApp || 'https://app.cleanrowsdata.com') + '/track/';
+  // Resolves with the portal's JSON reply, or null when it fails or times out.
+  function sendToPortal(body, signal) {
     // Form-encoded with no custom headers: a CORS "simple request", no preflight.
-    return fetch(PORTAL, { method: 'POST', body: new URLSearchParams(body), signal: controller.signal })
-      .then((r) => r.json().then((j) => r.ok && !!j && j.ok === true))
-      .catch(() => false)
-      .finally(() => clearTimeout(timer));
+    return fetch(PORTAL, { method: 'POST', body: new URLSearchParams(body), signal })
+      .then((r) => r.json().then((j) => (r.ok && j && typeof j === 'object' ? j : null)))
+      .catch(() => null);
   }
   // Apps Script cold starts plus the sheet write and email can take several seconds.
   const TIMEOUT_MS = 30000;
-  // A retry of the same request reuses its id, so the webhook can drop a duplicate
-  // when an earlier attempt was saved but its reply arrived too late. The id is tied
-  // to what the visitor typed (not attribution), and kept in this tab so a reload
-  // does not create a second lead. Only a digest is stored, never the brief itself.
+  // A retry of the same request reuses its id, so the webhook and the portal can drop
+  // a duplicate when an earlier attempt was saved but its reply arrived too late. The
+  // id is tied to what the visitor typed (not attribution), and kept in this tab so a
+  // reload does not create a second lead. Only a digest is stored, never the brief itself.
   const IDENTITY = ['name', 'email', 'company', 'type', 'icp', 'volume', 'timeline', 'notes'];
   const pending = new Map();
   const newId = () => (window.crypto && crypto.randomUUID
@@ -115,21 +139,43 @@
     try { sessionStorage.setItem(key, id); } catch {}
     body.set('request_id', id);
     form.dataset.portal = '';
-    const portal = sendToPortal(body);
+    delete form.dataset.track;
 
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-    try {
-      // A form-encoded POST without custom headers is a CORS "simple request",
-      // so Apps Script's JSON reply can be read without a preflight.
-      const response = await fetch(ENDPOINT, { method: 'POST', body, signal: controller.signal });
-      const result = await response.json().catch(() => null);
-      if (!response.ok || !result || result.status !== 'success') {
-        throw new Error('Lead webhook error: ' + (result && result.message || response.status));
+
+    // keepalive lets the webhook finish even after the visitor leaves for the order page.
+    // A form-encoded POST without custom headers is a CORS "simple request",
+    // so Apps Script's JSON reply can be read without a preflight.
+    const webhook = fetch(ENDPOINT, { method: 'POST', body, signal: controller.signal, keepalive: true })
+      .then(async (response) => {
+        const result = await response.json().catch(() => null);
+        if (!response.ok || !result || result.status !== 'success') {
+          throw new Error('Lead webhook error: ' + (result && result.message || response.status));
+        }
+        return result;
+      })
+      .catch((error) => {
+        if (error.name === 'AbortError') {
+          const timeout = new Error('Lead webhook timed out');
+          timeout.code = 'timeout';
+          throw timeout;
+        }
+        throw error;
+      });
+    const portal = sendToPortal(body, controller.signal).then((reply) => {
+      if (!reply || reply.ok !== true) throw new Error('Portal did not confirm the request');
+      form.dataset.portal = '1';
+      if (typeof reply.track_url === 'string' && reply.track_url.startsWith(TRACK_PREFIX)) {
+        form.dataset.track = reply.track_url;
       }
+      return reply;
+    });
+
+    try {
+      const result = await Promise.any([webhook, portal]);
       pending.delete(key);
       try { sessionStorage.removeItem(key); } catch {}
-      form.dataset.portal = (await portal) ? '1' : '';
       // GA4: one event per confirmed new lead (a resend of the same request is not counted).
       // No personal details are sent. Mark "generate_lead" as a key event in GA4.
       if (!result.duplicate && typeof window.gtag === 'function') {
@@ -143,15 +189,13 @@
         });
       }
       return result;
-    } catch (error) {
-      if (error.name === 'AbortError') {
-        const timeout = new Error('Lead webhook timed out');
-        timeout.code = 'timeout';
-        throw timeout;
-      }
-      throw error;
+    } catch (failure) {
+      // Both failed. Report the webhook's error, so a timeout keeps its wording.
+      const errors = failure && failure.errors ? failure.errors : [failure];
+      throw errors.find((e) => e && e.code === 'timeout') || errors[0];
     } finally {
-      clearTimeout(timer);
+      // The webhook may still be running: it must not be cut off by a later abort.
+      webhook.finally(() => clearTimeout(timer)).catch(() => {});
     }
   };
 
