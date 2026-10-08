@@ -129,7 +129,29 @@
     }
   }
 
+  // The free sample is for work addresses: a new Gmail takes seconds to make.
+  // Same list as the portal's is_personal_email_domain().
+  const PERSONAL = new Set(('gmail.com googlemail.com icloud.com me.com mac.com proton.me pm.me tutanota.com tutanota.de tutamail.com ' +
+    'tuta.io tuta.com zoho.com zohomail.com zohomail.in mail.com email.com inbox.com fastmail.com fastmail.fm hey.com hushmail.com ' +
+    'mailfence.com rediffmail.com rediff.com qq.com 163.com 126.com yeah.net sina.com naver.com daum.net hanmail.net seznam.cz wp.pl ' +
+    'o2.pl interia.pl onet.pl libero.it virgilio.it alice.it tiscali.it orange.fr wanadoo.fr free.fr laposte.net sfr.fr t-online.de ' +
+    'web.de freenet.de mail.ru bk.ru list.ru inbox.ru rambler.ru ukr.net bigpond.com optusnet.com.au btinternet.com sky.com ' +
+    'virginmedia.com talktalk.net ntlworld.com comcast.net verizon.net att.net sbcglobal.net cox.net charter.net earthlink.net juno.com ' +
+    'shaw.ca rogers.com sympatico.ca telus.net terra.com.br uol.com.br bol.com.br yopmail.com mailinator.com guerrillamail.com ' +
+    'sharklasers.com 10minutemail.com temp-mail.org tempmail.com trashmail.com dispostable.com getnada.com maildrop.cc mohmal.com ' +
+    'emailondeck.com throwawaymail.com fakeinbox.com mintemail.com mailnesia.com tempr.email discard.email mailpoof.com').split(' '));
+  const isPersonalEmail = (email) => {
+    const domain = String(email || '').trim().toLowerCase().split('@')[1] || '';
+    return PERSONAL.has(domain) || /^(yahoo|ymail|hotmail|outlook|live|windowslive|msn|aol|gmx|yandex|rocketmail|protonmail)\.[a-z.]+$/.test(domain);
+  };
+
   window.CleanRowsSubmit = async (form, formData) => {
+    if (formData.get('volume') === '100' && isPersonalEmail(formData.get('email'))) {
+      const error = new Error('Free sample needs a work email');
+      error.code = 'work_email';
+      error.canChangeVolume = !!form.querySelector('select[name="volume"]');
+      throw error;
+    }
     const body = new URLSearchParams(formData);
     const key = await requestKey(body);
     let id = pending.get(key);
@@ -200,7 +222,11 @@
   };
 
   // Wording for a failed submission. A timeout may still have reached us.
-  window.CleanRowsSubmitError = (error) => error && error.code === 'timeout'
+  window.CleanRowsSubmitError = (error) => error && error.code === 'work_email'
+    ? (error.canChangeVolume
+      ? 'The free sample is for work email addresses, such as you@yourcompany.com. Go back and use your work email, or choose a paid package under Lead volume.'
+      : 'The free sample is for work email addresses, such as you@yourcompany.com. Go back and use your work email.')
+    : error && error.code === 'timeout'
     ? 'This is taking longer than usual and your request may still reach us. Please wait a minute before trying again, or email hello@cleanrowsdata.com.'
     : 'We couldn’t confirm your request. Your details are still on this page. Please try again or email hello@cleanrowsdata.com.';
 })();
