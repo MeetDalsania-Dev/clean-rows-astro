@@ -153,6 +153,11 @@
   };
 
   window.CleanRowsSubmit = async (form, formData) => {
+    if (formData.get('volume') === 'custom' && window.CleanRowsCustomLeads?.price(formData.get('leads')) == null) {
+      const error = new Error('Custom amount out of range');
+      error.code = 'custom_amount';
+      throw error;
+    }
     if (formData.get('volume') === '100' && isPersonalEmail(formData.get('email'))) {
       const error = new Error('Free sample needs a work email');
       error.code = 'work_email';
@@ -234,7 +239,9 @@
   };
 
   // Wording for a failed submission. A timeout may still have reached us.
-  window.CleanRowsSubmitError = (error) => error && error.code === 'work_email'
+  window.CleanRowsSubmitError = (error) => error && error.code === 'custom_amount'
+    ? 'Enter between 1,000 and 99,900 leads, in steps of 100 (for example 2,500). For more, choose 100,000+ leads.'
+    : error && error.code === 'work_email'
     ? (error.canChangeVolume
       ? 'The free sample is for work email addresses, such as you@yourcompany.com. Go back and use your work email, or choose a paid package under Lead volume.'
       : 'The free sample is for work email addresses, such as you@yourcompany.com. Go back and use your work email.')
@@ -265,5 +272,52 @@
       show();
       banner.querySelector('[data-consent="granted"]').focus();
     });
+  });
+})();
+
+/* Custom amount: any number of leads from 1,000 to 99,900, priced with the same
+   discounts as the packages ($25 per 1,000; 20% less above 10,000; 36% less above 50,000). */
+(() => {
+  'use strict';
+  const digits = (value) => Number(String(value || '').replace(/\D/g, ''));
+  const price = (value) => {
+    const leads = digits(value);
+    if (!Number.isInteger(leads) || leads < 1000 || leads > 99900 || leads % 100 !== 0) return null;
+    if (leads < 10000) return (leads * 5) / 2;
+    if (leads < 50000) return 19900 + (leads - 10000) * 2;
+    return 79900 + ((leads - 50000) * 8) / 5;
+  };
+  const money = (cents) => '$' + (cents / 100).toLocaleString('en-US', { minimumFractionDigits: cents % 100 ? 2 : 0, maximumFractionDigits: 2 });
+  window.CleanRowsCustomLeads = { price };
+
+  document.querySelectorAll('form').forEach((form) => {
+    const volume = form.querySelector('select[name="volume"]');
+    const wrap = form.querySelector('.custom-leads');
+    if (!volume || !wrap) return;
+    const input = wrap.querySelector('input[name="leads"]');
+    const note = wrap.querySelector('.custom-leads-price');
+    const update = () => {
+      const custom = volume.value === 'custom';
+      wrap.style.display = custom ? '' : 'none';
+      input.required = custom;
+      if (!custom) return;
+      const leads = digits(input.value);
+      const cents = price(input.value);
+      if (!input.value.trim()) note.textContent = 'From 1,000 to 99,900 leads, in steps of 100.';
+      else if (cents == null) note.textContent = 'Enter 1,000 to 99,900, in steps of 100 (for example 2,500).';
+      else {
+        let text = leads.toLocaleString('en-US') + ' leads: ' + money(cents) + ' (' + money(Math.round((cents / leads) * 1000)) + ' per 1,000).';
+        if (leads < 10000 && cents >= 19900) text += ' Tip: 10,000 leads cost $199.';
+        if (leads > 10000 && leads < 50000 && cents >= 79900) text += ' Tip: 50,000 leads cost $799.';
+        note.textContent = text;
+      }
+    };
+    volume.addEventListener('change', update);
+    input.addEventListener('input', () => {
+      const leads = digits(input.value);
+      input.value = leads ? leads.toLocaleString('en-US') : '';
+      update();
+    });
+    update();
   });
 })();

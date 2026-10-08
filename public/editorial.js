@@ -21,6 +21,7 @@
     1000: "Starter: 1,000 leads for $25 USD",
     10000: "Growth: 10,000 leads for $199 USD",
     50000: "Scale: 50,000 leads for $799 USD",
+    custom: "Custom amount of leads",
     "100000+": "Enterprise: 100,000+ leads, custom quote",
     "Recurring monthly": "Recurring monthly delivery, scope to be agreed",
   };
