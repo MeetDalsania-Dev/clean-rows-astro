@@ -12,6 +12,11 @@
       "source": "/compare/zoominfo",
       "destination": "/compare/b2b-data-subscriptions",
       "statusCode": 301
+    },
+    {
+      "source": "/login",
+      "destination": "https://app.cleanrowsdata.com/login",
+      "statusCode": 302
     }
   ],
   "headers": [

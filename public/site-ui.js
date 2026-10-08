@@ -23,6 +23,8 @@
   const trackCopy = {
     sample: 'We are reviewing your ICP. Follow your sample live on your order page.',
     order: 'We are reviewing your request. Follow it live on your order page.',
+    // A paid plan is paid straight away, on the next page, by card or PayPal.
+    pay: 'One step left: pay by card or PayPal on the next page, and we start building your list.',
   };
   const REDIRECT_MS = 2600;
   const timers = new WeakMap();
@@ -48,13 +50,16 @@
       panel.querySelector('.form-success-again').addEventListener('click', () => reset(form));
       form.append(panel);
     }
-    const track = form.dataset.track || '';
+    const pay = form.dataset.pay || '';
+    const track = pay || form.dataset.track || '';
     const open = panel.querySelector('.form-success-open');
     const redirect = panel.querySelector('.form-success-redirect');
     clearTimeout(timers.get(form));
     if (track) {
-      panel.querySelector('.form-success-copy').textContent = sample ? trackCopy.sample : trackCopy.order;
+      panel.querySelector('.form-success-copy').textContent = pay ? trackCopy.pay : sample ? trackCopy.sample : trackCopy.order;
       open.href = track;
+      open.firstChild.textContent = pay ? 'Continue to payment ' : 'Open my order page ';
+      redirect.textContent = pay ? 'Opening the payment page…' : 'Opening your order page…';
       open.hidden = false;
       redirect.hidden = false;
       timers.set(form, setTimeout(() => window.location.assign(track), REDIRECT_MS));
@@ -83,6 +88,7 @@
     clearTimeout(timers.get(form));
     timers.delete(form);
     delete form.dataset.track;
+    delete form.dataset.pay;
     form.classList.remove('is-sent');
     form.style.minHeight = '';
     form.reset();
@@ -101,6 +107,7 @@
   // and the portal run at the same time; whichever confirms first is enough.
   const PORTAL = window.CleanRowsPortalEndpoint || 'https://doaejavwazvrkfpxvlyo.supabase.co/functions/v1/website-lead';
   const TRACK_PREFIX = (window.CleanRowsPortalApp || 'https://app.cleanrowsdata.com') + '/track/';
+  const PAY_PREFIX = (window.CleanRowsPortalApp || 'https://app.cleanrowsdata.com') + '/pay/';
   // Resolves with the portal's JSON reply, or null when it fails or times out.
   function sendToPortal(body, signal) {
     // Form-encoded with no custom headers: a CORS "simple request", no preflight.
@@ -162,6 +169,7 @@
     body.set('request_id', id);
     form.dataset.portal = '';
     delete form.dataset.track;
+    delete form.dataset.pay;
 
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -190,6 +198,10 @@
       form.dataset.portal = '1';
       if (typeof reply.track_url === 'string' && reply.track_url.startsWith(TRACK_PREFIX)) {
         form.dataset.track = reply.track_url;
+      }
+      // A paid plan: the visitor pays on the portal's payment page before the order starts.
+      if (typeof reply.pay_url === 'string' && reply.pay_url.startsWith(PAY_PREFIX)) {
+        form.dataset.pay = reply.pay_url;
       }
       return reply;
     });
