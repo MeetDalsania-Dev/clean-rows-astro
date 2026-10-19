@@ -128,7 +128,10 @@ const graph = [
       script.async = true;
       document.head.appendChild(script);
     }
-    setTimeout(loadGA, 4000);
+    // Loaded as soon as the page has finished loading (not after a fixed delay), so quick visits
+    // are counted while GA still never competes with the page's own files for the first paint.
+    if (document.readyState === 'complete') loadGA();
+    else window.addEventListener('load', loadGA, {once: true});
     ['scroll','mousemove','touchstart','keydown'].forEach(e => window.addEventListener(e, loadGA, {once: true, passive: true}));
   </script>
   <Clarity />
