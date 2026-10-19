@@ -265,6 +265,7 @@
     const choice = button.dataset.consent;
     try { localStorage.setItem('cr_consent', choice); } catch {}
     if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: choice });
+    if (typeof window.clarity === 'function') window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: choice });
     banner.hidden = true;
   });
   document.querySelectorAll('[data-cookie-settings]').forEach((button) => {

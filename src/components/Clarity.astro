@@ -1,0 +1,28 @@
+---
+// Microsoft Clarity (heatmaps and session recordings), linked to GA4 in the Clarity settings.
+// Paste the Project ID from Clarity > Settings > Overview. While it is empty, nothing is rendered.
+const CLARITY_ID = '';
+---
+{CLARITY_ID && (
+  <script is:inline define:vars={{ CLARITY_ID }}>
+    // Queue calls until the tag loads, and pass the cookie banner choice: without consent,
+    // Clarity runs without cookies (site-ui.js sends the update when the visitor chooses).
+    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+    var crClarityConsent = null;
+    try { crClarityConsent = localStorage.getItem('cr_consent'); } catch (e) {}
+    window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: crClarityConsent === 'granted' ? 'granted' : 'denied' });
+
+    // Loaded late, like GA4, so it stays out of the first paint.
+    var clarityLoaded = false;
+    function loadClarity() {
+      if (clarityLoaded) return;
+      clarityLoaded = true;
+      var script = document.createElement('script');
+      script.src = 'https://www.clarity.ms/tag/' + CLARITY_ID;
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    setTimeout(loadClarity, 4000);
+    ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function (e) { window.addEventListener(e, loadClarity, { once: true, passive: true }); });
+  </script>
+)}
