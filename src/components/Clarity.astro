@@ -4,25 +4,88 @@
 const CLARITY_ID = 'z0a1bzdzgx';
 ---
 {CLARITY_ID && (
-  <script is:inline define:vars={{ CLARITY_ID }}>
-    // Queue calls until the tag loads, and pass the cookie banner choice: without consent,
-    // Clarity runs without cookies (site-ui.js sends the update when the visitor chooses).
-    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
-    var crClarityConsent = null;
-    try { crClarityConsent = localStorage.getItem('cr_consent'); } catch (e) {}
-    window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: crClarityConsent === 'granted' ? 'granted' : 'denied' });
+  <>
+    <script is:inline define:vars={{ CLARITY_ID }}>
+      // Queue calls until the tag loads, and pass the cookie banner choice: without consent,
+      // Clarity runs without cookies (site-ui.js sends the update when the visitor chooses).
+      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+      var crClarityConsent = null;
+      try { crClarityConsent = localStorage.getItem('cr_consent'); } catch (e) {}
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: crClarityConsent === 'granted' ? 'granted' : 'denied' });
 
-    // Loaded late, like GA4, so it stays out of the first paint.
-    var clarityLoaded = false;
-    function loadClarity() {
-      if (clarityLoaded) return;
-      clarityLoaded = true;
-      var script = document.createElement('script');
-      script.src = 'https://www.clarity.ms/tag/' + CLARITY_ID;
-      script.async = true;
-      document.head.appendChild(script);
-    }
-    setTimeout(loadClarity, 4000);
-    ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function (e) { window.addEventListener(e, loadClarity, { once: true, passive: true }); });
-  </script>
+      // Loaded late, like GA4, so it stays out of the first paint.
+      var clarityLoaded = false;
+      function loadClarity() {
+        if (clarityLoaded) return;
+        clarityLoaded = true;
+        var script = document.createElement('script');
+        script.src = 'https://www.clarity.ms/tag/' + CLARITY_ID;
+        script.async = true;
+        document.head.appendChild(script);
+      }
+      setTimeout(loadClarity, 4000);
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function (e) { window.addEventListener(e, loadClarity, { once: true, passive: true }); });
+    </script>
+    {/* Clarity events: page tags, CTA clicks, lead form start and submit (queued until the tag loads). */}
+    <script is:inline>
+      (function () {
+        var cl = function () {
+          window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+          window.clarity.apply(null, arguments);
+        };
+
+        // ---------- Session tags ----------
+        var path = location.pathname.replace(/\/+$/, "") || "/";
+        var seg = path.split("/")[1] || "home";
+        var pageType = {
+          home: "home", pricing: "pricing", for: "audience", lists: "list-page",
+          compare: "compare", blog: "blog", services: "services", about: "about",
+          "whats-in-the-file": "data-fields", "data-sources": "data-sources"
+        }[seg] || "other";
+        cl("set", "page_type", pageType);
+        cl("set", "landing_path", path);
+
+        // ---------- Click intent events ----------
+        function fire(name) { cl("event", name); }
+        document.addEventListener("click", function (e) {
+          var el = e.target.closest && e.target.closest("a, button");
+          if (!el) return;
+          var txt = (el.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+          var href = el.getAttribute("href") || "";
+
+          if (/get 100 free leads/.test(txt)) fire("cta_free_sample");
+          else if (/choose (a|this) plan/.test(txt)) fire("cta_choose_plan");
+          else if (/request a quote/.test(txt)) fire("cta_request_quote");
+          else if (el.id === "send-request") fire("lead_form_send_click");
+          else if (/^next/.test(txt) && el.closest("#lead-form")) fire("lead_form_step2");
+          else if (/app\.cleanrowsdata\.com\/login/.test(href)) fire("client_login_click");
+          else if (/^mailto:/.test(href)) fire("email_click");
+          else if (el.id === "copy-slack-email") fire("email_copy");
+          else if (el.id === "claude-static-chat-button") fire("chat_open");
+        }, true);
+
+        // ---------- Lead form: started + confirmed submit ----------
+        function watchForm() {
+          var form = document.getElementById("lead-form");
+          if (!form) return;
+          var started = false;
+          form.addEventListener("input", function () {
+            if (!started) { started = true; fire("lead_form_start"); }
+          });
+          var sent = false;
+          new MutationObserver(function () {
+            var nowSent = form.classList.contains("is-sent");
+            if (nowSent && !sent) {
+              fire("lead_submitted");
+              cl("set", "lead", "submitted");
+              cl("upgrade", "lead_submitted"); // always keep this recording
+            }
+            sent = nowSent;
+          }).observe(form, { attributes: true, attributeFilter: ["class"] });
+        }
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", watchForm);
+        else watchForm();
+      })();
+    </script>
+  </>
 )}
