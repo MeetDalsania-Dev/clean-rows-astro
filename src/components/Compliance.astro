@@ -1,23 +1,226 @@
 ---
+// "The privacy check": the three promises become rules R1–R3, and an illustrative
+// sheet runs them on five fictional records. The finished sheet is the default
+// state; the one-shot run is progressive enhancement (see the script below).
+const rows = [
+  { name: 'Maya Patel', detail: 'VP of Sales · Northwind', cells: ['pass', 'pass', 'pass'] },
+  { name: 'Alex Moreno', detail: 'Ops Director · source unknown', cells: ['fail', 'skip', 'skip'], mask: ['A•••• M•••••', '••• •••••••• · ••••••'], rule: 'R1', why: 'Non-public source' },
+  { name: 'Daniel Okafor', detail: 'CFO · removal requested', cells: ['pass', 'fail', 'skip'], mask: ['D••••• O•••••', '••• · ••••••• •••••••••'], rule: 'R2', why: 'Removal request' },
+  { name: 'Jane Doe', detail: 'jane.doe@gmail.com · personal', cells: ['pass', 'pass', 'fail'], mask: ['J••• D••', 'j•••••@gmail.com · ••••••••'], rule: 'R3', why: 'Personal email' },
+  { name: 'Elena Rossi', detail: 'Head of Growth · Forge Labs', cells: ['pass', 'pass', 'pass'] },
+];
+const heads = [['R1', 'Public'], ['R2', 'Removal'], ['R3', 'B2B']];
 ---
-<section class="section ink" id="compliance">
-  <div class="section-heading">
-    <p class="eyebrow"><span>🛡️</span> ENTERPRISE GRADE</p>
-    <h2>Built with privacy law in mind.</h2>
-    <p>B2B data shouldn’t become a legal headache. We work from public business sources, keep to work-related details and honor every removal request, so your campaigns start from a cleaner list.</p>
-  </div>
-  <div class="hero-proof" style="margin-top: 3rem;">
-    <div>
-      <span class="proof-icon" aria-hidden="true">✓</span>
-      <p><strong>Public Sources Only.</strong><span>We only aggregate publicly available B2B data.</span></p>
+<section class="section ink cg" id="compliance" aria-labelledby="compliance-title">
+  <div class="cg-grid">
+    <div class="cg-copy">
+      <div class="section-heading">
+        <p class="eyebrow"><span><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.5l5.5 2V8c0 3.2-2.3 5.6-5.5 6.5C4.8 13.6 2.5 11.2 2.5 8V3.5z"/><path d="M5.6 8.1l1.7 1.7 3.3-3.4"/></svg></span>ENTERPRISE GRADE</p>
+        <h2 id="compliance-title">Built with privacy law in mind.</h2>
+        <p>B2B data shouldn’t become a legal headache. We work from public business sources, keep to work-related details and honor every removal request, so your campaigns start from a cleaner list.</p>
+      </div>
+      <ol class="cg-rules" role="list">
+        <li class="cg-rule reveal" data-rule="1" style="--i:0"><span class="cg-badge" aria-hidden="true">R1</span><p><strong>Public sources only.</strong><span>We only aggregate publicly available B2B data.</span></p></li>
+        <li class="cg-rule reveal" data-rule="2" style="--i:1"><span class="cg-badge" aria-hidden="true">R2</span><p><strong>Built with <span class="cg-keep">GDPR &amp; CCPA in mind.</span></strong><span>Removal requests honored across future lists.</span></p></li>
+        <li class="cg-rule reveal" data-rule="3" style="--i:2"><span class="cg-badge" aria-hidden="true">R3</span><p><strong>No consumer data.</strong><span>Strictly B2B professional contact information.</span></p></li>
+      </ol>
     </div>
-    <div>
-      <span class="proof-icon" aria-hidden="true">✓</span>
-      <p><strong>Built with GDPR &amp; CCPA in mind.</strong><span>Removal requests honored across future lists.</span></p>
-    </div>
-    <div>
-      <span class="proof-icon" aria-hidden="true">✓</span>
-      <p><strong>No Consumer Data.</strong><span>Strictly B2B professional contact information.</span></p>
-    </div>
+    <figure class="cg-figure">
+      <div class="cg-sheet reveal" aria-hidden="true" style="--i:1">
+        <div class="cg-chrome"><i></i><i></i><i></i><span class="cg-file">privacy-check</span><span class="cg-tag">Illustrative<span class="cg-wide"> rows</span></span></div>
+        <div class="cg-head">
+          <span>Record</span>
+          {heads.map(([badge, label], i) => <span class="cg-hc" data-rule={i + 1}><b class="cg-badge">{badge}</b><em>{label}</em></span>)}
+          <span class="cg-hres">Result</span>
+        </div>
+        <div class="cg-rows">
+          <span class="cg-scan"></span>
+          {rows.map((row, r) => (
+            <div class={`cg-row ${row.mask ? 'is-out' : 'is-in'}`} style={`--r:${r}`}>
+              <div class="cg-rec">
+                <div class="cg-raw"><b class="cg-name">{row.name}</b><span class="cg-detail">{row.detail}</span></div>
+                {row.mask && <div class="cg-mask"><b class="cg-name">{row.mask[0]}</b><span class="cg-detail">{row.mask[1]}</span></div>}
+              </div>
+              {row.cells.map((state, c) => (
+                <span class={`cg-cell is-${state}`} data-rule={c + 1} style={`--c:${c}`}>
+                  {state === 'pass' && <svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-6.5"/></svg>}
+                  {state === 'fail' && <svg viewBox="0 0 16 16"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg>}
+                </span>
+              ))}
+              <div class="cg-res">
+                {row.mask
+                  ? <><span class="cg-chip is-out">Excluded</span><span class="cg-why"><b>{row.rule}</b> · {row.why}</span></>
+                  : <span class="cg-chip is-in">In your file</span>}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="cg-out">
+          <svg class="cg-ico" viewBox="0 0 16 16"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13"/></svg>
+          <span class="cg-out-file">your-list.csv</span>
+          <i class="cg-dot"></i>
+          <span class="cg-out-note">Only rows that pass all three rules</span>
+          <span class="cg-kept">
+            <span><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-6.5"/></svg>M. Patel</span>
+            <span><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-6.5"/></svg>E. Rossi</span>
+          </span>
+        </div>
+      </div>
+      <figcaption class="cg-cap">Illustrative example · fictional records<span class="cg-sr"> Five fictional records are checked against the three rules above. A record from a non-public source, a person who asked to be removed and a personal Gmail address are excluded; the two business contacts that pass all three rules go into your list.</span></figcaption>
+    </figure>
   </div>
 </section>
+
+<script>
+  const s = document.getElementById('compliance'), sh = s?.querySelector('.cg-sheet');
+  if (s && sh && 'IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches && sh.getBoundingClientRect().top > innerHeight * .85) {
+    s.classList.add('cg-armed');
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); sh.classList.add('is-run'); } }, { threshold: .4 });
+    io.observe(sh);
+  }
+</script>
+
+<style>
+  .cg{--cg-mono:"JetBrains Mono","JetBrains Mono Fallback",ui-monospace,monospace}
+  .cg svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .cg-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);column-gap:72px;align-items:start}
+  .cg .section-heading{max-width:none;margin:0;display:block;text-align:left}
+  .cg h2{max-width:none;text-wrap:balance}
+  .cg .eyebrow svg{width:14px;height:14px;stroke-width:1.5}
+
+  /* Legend R1–R3 */
+  .cg-rules{list-style:none;margin:40px 0 0;padding:0;border-bottom:1px solid #2b4a3c}
+  .cg-rule{display:grid;grid-template-columns:28px 1fr;align-content:start;gap:16px;padding:18px 0;border-top:1px solid #2b4a3c}
+  .cg-rule p{margin:0}
+  .cg-rule strong{display:block;font:550 19px/1.3 Manrope,"Manrope Fallback",sans-serif;letter-spacing:-.02em;color:#eff7f1}
+  .cg-rule p>span{display:block;margin-top:4px;font-size:15px;line-height:1.6;color:#a2b7aa}
+  .cg-badge{display:grid;place-items:center;position:relative;width:28px;height:28px;border:1px solid #416651;border-radius:7px;background:rgba(140,232,177,.06);font:600 11px/1 var(--cg-mono);letter-spacing:0;color:#8ce8b1}
+  .cg-rule .cg-badge::after{content:"";position:absolute;inset:-1px;border:1.5px solid #e8a18b;border-radius:8px;opacity:0}
+
+  /* Sheet (final state is the default) */
+  .cg-figure{margin:48px 0 0;min-width:0}
+  .cg-sheet{--cg-cols:minmax(0,1fr) 64px 64px 64px 140px;--cg-px:22px;background:#1c382d;border:1px solid #335343;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -32px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04)}
+  .cg-sheet span,.cg-sheet b,.cg-sheet em{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cg-chrome,.cg-out{display:flex;align-items:center;background:#18332a}
+  .cg-chrome,.cg-head,.cg-row,.cg-out{padding:0 var(--cg-px)}
+  .cg-chrome{height:46px;gap:8px;border-bottom:1px solid #2b4a3c}
+  .cg-chrome i{width:6px;height:6px;border-radius:50%;background:#3d5e4d;flex:none}
+  .cg-file,.cg-detail,.cg-out-file,.cg-why b,.cg-kept{font-family:var(--cg-mono)}
+  .cg-file{margin-left:10px;font-size:12px;color:#a2b7aa}
+  .cg-tag,.cg-head,.cg-chip,.cg-cap{font:600 11px/1.3 var(--cg-mono);letter-spacing:.08em;text-transform:uppercase;color:#99b6a6}
+  .cg-tag{margin-left:auto;letter-spacing:.12em}
+  .cg-head,.cg-row{display:grid;grid-template-columns:var(--cg-cols);column-gap:8px;align-items:center}
+  .cg-head{height:56px;border-bottom:1px solid #2b4a3c}
+  .cg-head>span:not(.cg-hc){padding-top:27px}
+  .cg-hc{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;align-self:stretch}
+  .cg-head .cg-badge{width:22px;height:22px;border-radius:6px}
+  .cg-hc em{font-style:normal}
+  .cg-hres{justify-self:end}
+  .cg-rows{position:relative;overflow:hidden}
+  .cg-row{min-height:64px;position:relative;border-bottom:1px solid #264638}
+  .cg-row:last-child{border:0}
+  .cg-row::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:2px;border-radius:2px;background:#8ce8b1;transform-origin:top}
+  .cg-row.is-out::before{background:#e8a18b}
+  .cg-rec{position:relative;overflow:hidden;display:grid;align-self:stretch;align-content:center;justify-self:start;max-width:100%}
+  .cg-raw,.cg-mask{grid-area:1/1;min-width:0}
+  .cg-name{display:block;font-size:14px;line-height:1.35;font-weight:600;color:#eff7f1}
+  .cg-detail{display:block;font-size:12px;line-height:1.4;color:#a2b7aa}
+  .cg-mask *{color:#86a294;letter-spacing:.04em}
+  .is-out .cg-raw{opacity:0}
+  .is-out .cg-rec::after{content:"";position:absolute;inset:9px 0;border-radius:4px;background:rgba(232,161,139,.85);opacity:0;transform:translateX(101%)}
+  .cg-cell{display:grid;place-items:center;align-self:stretch}
+  .cg-cell>*,.cg-cell::before,.cg-cell::after{grid-area:1/1}
+  .cg-cell::before{content:"";width:6px;height:6px;border-radius:50%;background:#335343;opacity:0}
+  .cg-cell svg{width:24px;height:24px;padding:4px;border-radius:50%;background:rgba(140,232,177,.12);color:#8ce8b1}
+  .is-fail svg{background:rgba(232,161,139,.14);color:#e8a18b}
+  .is-skip::after{content:"";width:10px;height:2px;border-radius:1px;background:#6f8a7b}
+  .cg-res{display:flex;flex-direction:column;align-items:flex-end;gap:4px;min-width:0}
+  .cg-res>*{max-width:100%}
+  .cg-chip{padding:4px 8px;border:1px solid transparent;border-radius:6px}
+  .cg-chip.is-in{background:#baf4ce;color:#16432c}
+  .cg-chip.is-out{background:rgba(232,161,139,.1);border-color:rgba(232,161,139,.35);color:#e8a18b}
+  .cg-why{font-size:12px;line-height:1.35;color:#e8a18b}
+  .cg-why b{font-weight:600}
+  .cg-out{min-height:60px;gap:10px;border-top:1px dashed #335343}
+  .cg-ico{width:16px;height:16px;flex:none;color:#8ce8b1;stroke-width:1.4}
+  .cg-out-file{font-size:12px;color:#eff7f1}
+  .cg-dot{width:3px;height:3px;border-radius:50%;background:#4a6b5a;flex:none}
+  .cg-out-note{font-size:13px;color:#a2b7aa}
+  .cg-kept{margin-left:auto;display:flex;gap:6px;flex:none}
+  .cg-kept>span{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border:1px solid #335343;border-radius:6px;background:#244535;font-size:11px;line-height:1.4;color:#c9d9ce}
+  .cg-kept svg{width:10px;height:10px;stroke-width:2;color:#8ce8b1}
+  .cg-cap{margin-top:14px;font-weight:500;line-height:1.5;letter-spacing:.1em;color:#92af9c}
+  .cg-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .cg-scan{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transform:translateY(-100%);background:linear-gradient(rgba(140,232,177,0) calc(100% - 56px),rgba(140,232,177,.1) calc(100% - 2px),#8ce8b1 0)}
+
+  @media (min-width:780px),(max-width:720px){.cg-keep{white-space:nowrap}}
+  @media (min-width:1180px) and (max-width:1299px){
+    .cg-grid{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);column-gap:56px}
+    .cg-sheet{--cg-cols:minmax(0,1fr) 56px 56px 56px 132px}
+  }
+  @media (max-width:1179px){
+    .cg-grid{display:block}
+    .cg .section-heading{max-width:760px}
+    .cg-figure{margin-top:44px;max-width:860px}
+  }
+  @media (min-width:721px) and (max-width:1179px){
+    .cg-rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:36px;max-width:860px;border:0}
+    .cg-rule{grid-template-columns:1fr;row-gap:12px;padding:18px 0 0}
+  }
+  @media (max-width:720px){
+    .cg-rules{margin-top:32px}
+    .cg-rule{gap:14px;padding:16px 0}
+    .cg-rule strong{font-size:17px}
+    .cg-rule p>span{font-size:14px;line-height:1.55}
+    .cg-figure{margin-top:36px}
+    .cg-sheet{--cg-cols:minmax(0,1fr) repeat(3,32px);--cg-px:14px;border-radius:14px}
+    .cg-chrome{height:44px}
+    .cg-chrome i{width:5px;height:5px}
+    .cg-wide,.cg-hc em,.cg-hres,.cg-dot{display:none}
+    .cg-head,.cg-row{column-gap:6px}
+    .cg-head{height:48px}
+    .cg-head>span:not(.cg-hc){padding-top:0}
+    .cg-row{row-gap:8px;padding-block:12px;min-height:0}
+    .cg-res{grid-column:1/-1;flex-direction:row;align-items:center;gap:8px}
+    .cg-cell svg{width:22px;height:22px}
+    .cg-detail{font-size:11px}
+    .is-out .cg-rec::after{inset:0}
+    .cg-out{display:grid;grid-template-columns:auto 1fr;justify-items:start;gap:6px 10px;padding:14px var(--cg-px)}
+    .cg-out-note,.cg-kept{grid-column:1/-1}
+    .cg-kept{margin:0;flex-wrap:wrap}
+  }
+
+  @media (max-width:389px){
+    .cg-sheet{--cg-cols:minmax(0,1fr) repeat(3,28px);--cg-px:12px}
+    .cg-head,.cg-row{column-gap:4px}
+  }
+
+  /* Motion, one shot. Animations exist only once the script armed the section; until the sheet
+     is in view they sit paused in their delay phase, where fill-mode shows the pending state. */
+  @media (prefers-reduced-motion:no-preference){
+    .cg-row{--t:calc(500ms + var(--r) * 480ms)}
+    .cg-armed .cg-scan{animation:cg-scan 2.4s linear .3s both}
+    .cg-armed .cg-cell::before{animation:cg-out .2s linear calc(var(--t) + var(--c) * 70ms) both}
+    .cg-armed .cg-cell svg{animation:cg-pop .34s var(--ease) calc(var(--t) + var(--c) * 70ms) both}
+    .cg-armed .is-skip::after{animation:cg-from .24s linear calc(var(--t) + 160ms) both}
+    .cg-armed .cg-row::before{--from:scaleY(0);animation:cg-from .3s var(--ease) calc(var(--t) + 220ms) both}
+    .cg-armed .cg-res{--from:translateX(-6px);animation:cg-from .38s var(--ease) calc(var(--t) + 240ms) both}
+    .cg-armed .is-out .cg-rec::after{animation:cg-wipe .56s cubic-bezier(.65,0,.35,1) calc(var(--t) + 260ms) both}
+    .cg-armed .is-out .cg-raw{animation:cg-out .08s linear calc(var(--t) + 480ms) both}
+    .cg-armed .is-out .cg-mask{animation:cg-from .2s linear calc(var(--t) + 560ms) both}
+    .cg-armed .cg-kept>span{--from:translateY(6px);animation:cg-from .42s var(--ease) .8s both}
+    .cg-armed .cg-kept>span+span{animation-delay:2.72s}
+    .cg-armed .cg-sheet:not(.is-run) *,.cg-armed .cg-sheet:not(.is-run) ::before,.cg-armed .cg-sheet:not(.is-run) ::after{animation-play-state:paused!important}
+    .cg:has(.is-run) .cg-rule .cg-badge::after{animation:cg-ripple .8s var(--ease) .98s forwards}
+    .cg:has(.is-run) [data-rule="2"] .cg-badge::after{animation-delay:1.53s}
+    .cg:has(.is-run) [data-rule="3"] .cg-badge::after{animation-delay:2.08s}
+    @keyframes cg-scan{6%,94%{opacity:1}to{transform:none}}
+    @keyframes cg-pop{0%{opacity:0;transform:scale(.5)}60%{opacity:1;transform:scale(1.12)}}
+    @keyframes cg-from{0%{opacity:0;transform:var(--from)}}
+    @keyframes cg-out{0%{opacity:1}to{opacity:0}}
+    @keyframes cg-wipe{0%,to{opacity:1}0%{transform:translateX(-101%)}50%{transform:none}}
+    @keyframes cg-ripple{0%{opacity:.9}to{opacity:0;transform:scale(1.7)}}
+  }
+  @media (prefers-reduced-motion:reduce),(forced-colors:active){.cg-scan,.cg-rec::after{display:none}}
+  @media (forced-colors:active){.cg-chip,.cg-badge{border:1px solid CanvasText}}
+</style>
