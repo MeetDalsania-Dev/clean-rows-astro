@@ -264,6 +264,8 @@
     if (!button) return;
     const choice = button.dataset.consent;
     try { localStorage.setItem('cr_consent', choice); } catch {}
+    // Shared with app.cleanrowsdata.com, so the client portal does not ask again.
+    if (location.hostname.endsWith('cleanrowsdata.com')) document.cookie = `cr_consent=${choice}; Domain=.cleanrowsdata.com; Path=/; Max-Age=31536000; SameSite=Lax; Secure`;
     if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: choice });
     if (typeof window.clarity === 'function') window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: choice });
     banner.hidden = true;

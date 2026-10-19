@@ -101,6 +101,15 @@ const graph = [
     function gtag(){dataLayer.push(arguments);}
     var crConsent = null;
     try { crConsent = localStorage.getItem('cr_consent'); } catch (e) {}
+    // A choice made in the client portal (app.cleanrowsdata.com) arrives as a shared cookie.
+    if (crConsent !== 'granted' && crConsent !== 'denied') {
+      var crShared = document.cookie.match(/(?:^|;\s*)cr_consent=(granted|denied)/);
+      if (crShared) { crConsent = crShared[1]; try { localStorage.setItem('cr_consent', crConsent); } catch (e) {} }
+    }
+    // And a choice made here, before the cookie existed, is shared with the portal too.
+    else if (location.hostname.endsWith('cleanrowsdata.com') && document.cookie.indexOf('cr_consent=') === -1) {
+      document.cookie = 'cr_consent=' + crConsent + '; Domain=.cleanrowsdata.com; Path=/; Max-Age=31536000; SameSite=Lax; Secure';
+    }
     gtag('consent', 'default', {
       ad_storage: 'denied',
       ad_user_data: 'denied',
