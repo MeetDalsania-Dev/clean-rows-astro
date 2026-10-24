@@ -94,6 +94,7 @@ const graph = [
 
   <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'site.css'), 'utf-8')}></style>
   {editorial && <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'editorial.css'), 'utf-8')}></style>}
+  {Astro.url.pathname.startsWith('/b2b-data/uk') && <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'uk.astro.css'), 'utf-8')}></style>}
   
   <!-- Google Analytics 4 with Consent Mode: no analytics cookies until the visitor accepts in the cookie banner. -->
   <script is:inline>

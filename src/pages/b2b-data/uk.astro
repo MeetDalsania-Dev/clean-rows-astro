@@ -93,16 +93,6 @@ const schema = [
     ]}
   />
 
-<section class="ed-section ed-tint" aria-labelledby="uk-stats">
-    <div class="ed-wrap">
-      <p class="ed-kicker" id="uk-stats">AT A GLANCE</p>
-      <div class="ed-cards">
-        <article><span class="ed-index">01</span><h3>$0.025 per lead</h3><p>Starter package: 1,000 verified UK leads, one-time.</p></article>
-        <article><span class="ed-index">02</span><h3>100 free leads</h3><p>Built to your UK brief before you pay. One sample per business.</p></article>
-        <article><span class="ed-index">03</span><h3>No seat fees</h3><p>Pay per finished list, not per user per month. No subscription.</p></article>
-      </div>
-    </div>
-  </section>
   <section class="ed-section" aria-labelledby="uk-filters">
     <div class="ed-wrap">
       <div class="ed-section-head">
@@ -111,62 +101,16 @@ const schema = [
           <h2 id="uk-filters">What you can filter a UK list by</h2>
         </div>
         <p>
-          Each row below is a way to narrow the brief. The example is a
-          realistic starting point; coverage is confirmed against your sample
-          before you pay.
+          These are the levers you pull when you brief a UK list. Agree them
+          in writing; coverage is confirmed against your sample before you pay.
         </p>
       </div>
-      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Filters for a UK list" tabindex="0">
-        <table class="ed-table ed-table-wrap">
-          <caption>Filters you can use when briefing a UK B2B list.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Filter</th>
-              <th scope="col">How to use it</th>
-              <th scope="col">Example brief</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Nation and city</th>
-              <td>Target where your buyers actually operate, not just where HQ sits</td>
-              <td>SaaS buyers in London and Manchester, or firms across Scotland</td>
-            </tr>
-            <tr>
-              <th scope="row">Postcode area</th>
-              <td>Tight local or regional campaigns, trade-show and territory lists</td>
-              <td>Companies in a named postcode area or a city-centre brief</td>
-            </tr>
-            <tr>
-              <th scope="row">SIC code</th>
-              <td>Industry targeting using the UK standard classification</td>
-              <td>SIC section J (information and communication) or section M (professional, scientific and technical activities)</td>
-            </tr>
-            <tr>
-              <th scope="row">Company size</th>
-              <td>Headcount or revenue band, so small teams do not pay for enterprise-only lists</td>
-              <td>11-50 employee professional services firms</td>
-            </tr>
-            <tr>
-              <th scope="row">Job title and seniority</th>
-              <td>Decision makers by role, not just company domain</td>
-              <td>Heads of Operations, Finance Directors, practice owners</td>
-            </tr>
-            <tr>
-              <th scope="row">Company type</th>
-              <td>Limited companies, LLPs and other entity types, kept separate in the brief</td>
-              <td>Limited companies only, so sole-trader rules do not get mixed into the same send</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="ed-filter-chips" role="list" aria-label="Filters you can use when briefing a UK list">
+        <div role="listitem"><span>Geography</span><p>Nation, city, postcode area.</p></div>
+        <div role="listitem"><span>Industry</span><p>SIC code, agreed in the brief.</p></div>
+        <div role="listitem"><span>Company</span><p>Size band and entity type.</p></div>
+        <div role="listitem"><span>Titles</span><p>By role and seniority, not domain.</p></div>
       </div>
-      <p class="ed-note">
-        The postcode-area and company-type rows describe brief options, not a
-        guarantee that every signal exists for every industry. Confirm
-        availability when the brief is written; do not promise a signal the
-        sample cannot show. Entity type also matters in the UK for a legal
-        reason. See the <a class="ed-inline" href="#uk-compliance">compliance</a> section.
-      </p>
     </div>
   </section>
 
@@ -184,20 +128,10 @@ const schema = [
           confirmation statement.
         </p>
       </div>
-      <div class="ed-field-grid ed-subsectors">
-        <article class="ed-field-card">
-          <div class="ed-field-top"><span class="ed-index">01</span><h3>How a SIC code works</h3></div>
-          <ul>
-            <li>A UK SIC code is five digits long.</li>
-            <li>A company selects between one and four SIC codes, covering its main activities.</li>
-            <li>Companies House uses a condensed list drawn from the full ONS classification.</li>
-            <li>The code describes the activity, not the company registration number. The registration number identifies the company; the SIC code describes what it does.</li>
-          </ul>
-        </article>
-        <article class="ed-field-card">
-          <div class="ed-field-top"><span class="ed-index">02</span><h3>Useful SIC 2007 sections for prospecting</h3></div>
-          <p>Section letters and names, checked 2026-10-24 against the ONS section list.</p>
-          <dl>
+      <article class="ed-field-card">
+        <div class="ed-field-top"><span class="ed-index">01</span><h3>SIC 2007 sections, A to U</h3></div>
+        <p>Section letters and names, checked 2026-10-24 against the ONS section list.</p>
+        <dl>
             <div><dt>A</dt><dd>Agriculture, forestry and fishing</dd></div>
             <div><dt>B</dt><dd>Mining and quarrying</dd></div>
             <div><dt>C</dt><dd>Manufacturing</dd></div>
@@ -218,7 +152,6 @@ const schema = [
             <div><dt>S</dt><dd>Other service activities</dd></div>
           </dl>
         </article>
-      </div>
       <p class="ed-note">
         A SIC code is the activity a company reports, not a guarantee that every
         company in a section buys the same way. Different companies in one
@@ -244,18 +177,7 @@ const schema = [
           committing.
         </p>
       </div>
-      <div class="ed-two-lists">
-        <article>
-          <h3>Regional briefs that work well</h3>
-          <ul>
-            <li>National UK lists by industry and title</li>
-            <li>Nation lists (England, Scotland, Wales or Northern Ireland)</li>
-            <li>City lists, for example London, Manchester, Birmingham, Leeds, Edinburgh, Glasgow, Cardiff, Belfast</li>
-            <li>Postcode-area and local lists for field-sales and regional campaigns</li>
-            <li>Multi-city region lists defined in the brief, not assumed</li>
-          </ul>
-        </article>
-      </div>
+      
     </div>
   </section>
 
@@ -271,15 +193,7 @@ const schema = [
           starts with Companies House, the UK registrar of companies.
         </p>
       </div>
-      <p>
-        Limited companies and LLPs file public information there, including
-        their registered office, company number and SIC codes. That public
-        register is a useful background source, but it is not the whole list: a
-        delivered Clean Rows file is built fresh to the brief from public and
-        licensed business sources plus human review, and it shows the fields
-        the buyer asked for. This page does not claim Companies House as the
-        single source of every row.
-      </p>
+      
       <div class="ed-source-grid">
         <article><span class="ed-index">01</span>
           <h3>Companies House</h3>
@@ -301,64 +215,25 @@ const schema = [
     </div>
   </section>
 
-  <section class="ed-section" aria-labelledby="uk-sample">
+  <section class="ed-section" aria-labelledby="uk-file">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
           <p class="ed-kicker">WHAT THE FILE LOOKS LIKE</p>
-          <h2 id="uk-sample">Sample rows: structure only</h2>
+          <h2 id="uk-file">Every row, ready to use</h2>
         </div>
         <p>
-          These rows show the file structure of a delivered UK list. They are
-          illustrative only and not real contacts.
+          A delivered UK list carries the fields below, plus the ICP fields you
+          agree in the brief (industry, size, location, and any extras).
         </p>
       </div>
-      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Illustrative sample rows" tabindex="0">
-        <table class="ed-table ed-table-wrap">
-          <caption>Illustrative sample rows, not real client data.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Title</th>
-              <th scope="col">Company type</th>
-              <th scope="col">Location</th>
-              <th scope="col">SIC section</th>
-              <th scope="col">Email format shown in file</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Example only</td>
-              <td>Head of Operations</td>
-              <td>Limited company</td>
-              <td>Manchester</td>
-              <td>M</td>
-              <td>Verified business email</td>
-            </tr>
-            <tr>
-              <td>Example only</td>
-              <td>Finance Director</td>
-              <td>Limited company</td>
-              <td>London</td>
-              <td>K</td>
-              <td>Verified business email</td>
-            </tr>
-            <tr>
-              <td>Example only</td>
-              <td>Practice Manager</td>
-              <td>Limited company</td>
-              <td>Edinburgh</td>
-              <td>Q</td>
-              <td>Verified business email</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="ed-file-fields" role="list" aria-label="Fields on a delivered UK list">
+        <div role="listitem"><span>Name</span><p>Contact name, where available.</p></div>
+        <div role="listitem"><span>Title</span><p>Current role, matched to the brief.</p></div>
+        <div role="listitem"><span>Company</span><p>Name, entity type, SIC sector.</p></div>
+        <div role="listitem"><span>Location</span><p>Nation, city and agreed detail.</p></div>
+        <div role="listitem"><span>Verified email</span><p>Business email, checked before delivery.</p></div>
       </div>
-      <p class="ed-note">
-        File fields on a real delivered list: name, title, company, verified
-        business email, LinkedIn URL, plus the ICP fields agreed in the brief
-        (industry, size, location, and any extra requested fields).
-      </p>
     </div>
   </section>
 

@@ -1,0 +1,35 @@
+/* /b2b-data/uk only: compact chip and field patterns that read as designed,
+   not as walls of table cells. Loaded by BaseLayout when the path matches. */
+.uk-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+.uk-chip-grid > div {
+  border: 1px solid #d8e3d8;
+  background: #fbfcfa;
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.uk-chip-grid > div > span {
+  font-weight: 650;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+.uk-chip-grid > div > p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6a7a70;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .uk-chip-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) {
+  .uk-chip-grid { grid-template-columns: 1fr; }
+}
