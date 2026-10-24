@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/editorial/Hero.astro";
+import PlanStrip from "../../components/editorial/PlanStrip.astro";
+import Contact from "../../components/Contact.astro";
 const faqs = [
   [
     "Can I get a UK B2B list by city or postcode, or only nationally?",
@@ -91,6 +93,16 @@ const schema = [
     ]}
   />
 
+<section class="ed-section ed-tint" aria-labelledby="uk-stats">
+    <div class="ed-wrap">
+      <p class="ed-kicker" id="uk-stats">AT A GLANCE</p>
+      <div class="ed-cards">
+        <article><span class="ed-index">01</span><h3>$0.025 per lead</h3><p>Starter package: 1,000 verified UK leads, one-time.</p></article>
+        <article><span class="ed-index">02</span><h3>100 free leads</h3><p>Built to your UK brief before you pay. One sample per business.</p></article>
+        <article><span class="ed-index">03</span><h3>No seat fees</h3><p>Pay per finished list, not per user per month. No subscription.</p></article>
+      </div>
+    </div>
+  </section>
   <section class="ed-section" aria-labelledby="uk-filters">
     <div class="ed-wrap">
       <div class="ed-section-head">
@@ -350,63 +362,16 @@ const schema = [
     </div>
   </section>
 
-  <section class="ed-section ed-tint" aria-labelledby="uk-pricing">
-    <div class="ed-wrap">
-      <div class="ed-section-head">
-        <div>
-          <p class="ed-kicker">PRICING IN USD</p>
-          <h2 id="uk-pricing">Per-package pricing, exactly as on the pricing page</h2>
-        </div>
-        <p>
-          All prices are in USD, per package, as on the live pricing page. No
-          seat fees, no subscription, no credits. The per-lead price is the
-          final price for the agreed list. A free 100-lead sample comes before
-          payment, one per business.
-        </p>
-      </div>
-      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Pricing table" tabindex="0">
-        <table class="ed-table ed-table-wrap">
-          <caption>Standard packages, in USD.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Package</th>
-              <th scope="col">Price (USD)</th>
-              <th scope="col">Leads</th>
-              <th scope="col">Effective cost per lead</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Starter</th>
-              <td>$25</td>
-              <td>1,000</td>
-              <td>$0.025</td>
-            </tr>
-            <tr>
-              <th scope="row">Growth</th>
-              <td>$199</td>
-              <td>10,000</td>
-              <td>$0.0199</td>
-            </tr>
-            <tr>
-              <th scope="row">Scale</th>
-              <td>$799</td>
-              <td>50,000</td>
-              <td>$0.0159</td>
-            </tr>
-            <tr>
-              <th scope="row">Enterprise</th>
-              <td>Custom quote</td>
-              <td>100,000+</td>
-              <td>Quoted per brief</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <a class="ed-inline" href="/pricing">See the full pricing page</a>
-    </div>
-  </section>
-
+    <PlanStrip
+    kicker="UK LIST PRICING"
+    heading="UK B2B lists: same price per lead, any city or sector"
+    points={[
+      ["Priced by volume", "UK lists use the same standard packages as every other market."],
+      ["Brief rules included", "Agreeing SIC sectors, entity types and exclusions is part of the brief, not an extra."],
+      ["Narrow UK audiences quoted first", "If your UK criteria leave too few prospects to fill a package, we say so before payment."],
+    ]}
+    note="Prices in USD. One-time packages, no seat fees. SIC sector, entity type and targeting are confirmed before payment."
+  />
   <section class="ed-section ed-boundary" id="uk-compliance" aria-labelledby="uk-compliance-title">
     <div class="ed-wrap">
       <p class="ed-kicker">UK COMPLIANCE</p>
@@ -518,6 +483,14 @@ const schema = [
     </div>
   </section>
 
+  <Contact
+    team="Other"
+    heading="Brief your UK list."
+    emphasis="Start with 100 leads."
+    closing=""
+    description="Share the SIC sectors, cities, entity types and titles you want, plus anyone to leave out. We will confirm UK coverage and timing before you pay."
+    placeholder="e.g. Heads of Operations at UK professional services firms, 11-50 staff, Manchester and Leeds. SIC section M. Exclude sole traders."
+  />
   <section class="ed-section ed-related" aria-labelledby="uk-related-heading">
     <div class="ed-wrap">
       <h2 class="ed-kicker" id="uk-related-heading">KEEP EXPLORING</h2>
