@@ -33,3 +33,31 @@
 @media (max-width: 420px) {
   .uk-chip-grid { grid-template-columns: 1fr; }
 }
+
+/* SIC 2007 section list: each letter and name reads as one row, letter pinned
+   to the left so the grid stays aligned down the full A-to-U run. */
+.uk-sic-rows {
+  margin: 20px 0 0;
+  display: grid;
+}
+.uk-sic-rows > div {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid #dce6df;
+}
+.uk-sic-rows dt {
+  font: 500 0.9rem "JetBrains Mono","JetBrains Mono Fallback", monospace;
+  color: #176a48;
+}
+.uk-sic-rows dd {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+@media (max-width: 640px) {
+  .uk-sic-rows > div {
+    grid-template-columns: 30px 1fr;
+  }
+}

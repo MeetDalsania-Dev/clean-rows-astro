@@ -279,8 +279,11 @@ h1,h2{text-wrap:balance}
 .cookie-settings:hover{text-decoration:underline;text-underline-offset:4px}
 @media(max-width:560px){.cookie-banner{left:12px;right:12px;bottom:12px;width:auto;padding:18px}}
 /* Render below-the-fold sections only when they approach the viewport; the browser skips their layout and paint on load.
-   The placeholder height is larger than any section so skipped content never overlaps the next section. */
-main>section:not(.hero):not(.metrics):not(.ed-hero),main>.ed-section,.site-footer{content-visibility:auto;contain-intrinsic-size:auto 3600px}
+   The placeholder height is larger than any section so skipped content never overlaps the next section.
+   .tools-page sections always render eagerly - their content-visibility placeholder height otherwise overlaps with
+   the following section while off-screen. */
+main>section:not(.hero):not(.metrics):not(.ed-hero):not(.tool-hero):not(.tool-section):not(.tool-cta-strip),main>.ed-section,.site-footer{content-visibility:auto;contain-intrinsic-size:auto 3600px}
+body.tools-page main>section,body.tools-page .site-footer{content-visibility:visible}
 /* Before an in-page jump, every section renders so smooth scrolling lands on the right place. */
 html.cv-off main>section,html.cv-off main>.ed-section,html.cv-off .site-footer{content-visibility:visible!important}
 /* The big decorative step number is drawn by CSS so it is not read or checked as page text. */
