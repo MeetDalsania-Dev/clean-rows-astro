@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
 const faqs = [
   [
     "Can I get a UK B2B list by city or postcode, or only nationally?",
@@ -70,30 +71,25 @@ const schema = [
   schema={schema}
   editorial
 >
-  <section class="ed-section" aria-labelledby="uk-hero">
-    <div class="ed-wrap">
-      <nav class="ed-breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span aria-hidden="true">/</span>
-        <span>B2B Data</span>
-        <span aria-hidden="true">/</span>
-        <span aria-current="page">UK</span>
-      </nav>
-      <h1 id="uk-hero">UK B2B data lists, built to your brief</h1>
-      <p>
-        Clean Rows builds verified UK B2B prospect lists by nation, city,
-        postcode area, industry (SIC code), company size and job title. Every
-        list is built fresh to your brief, human-reviewed, and delivered with
-        name, title, company, verified business email and LinkedIn URL. Pricing
-        starts at $25 for 1,000 leads, and you get 100 free sample leads built
-        to your brief before you pay anything.
-      </p>
-      <a class="ed-button ed-primary" href="/free-sample#contact">
-        Get 100 free UK leads
-        <span aria-hidden="true">↗</span>
-      </a>
-    </div>
-  </section>
+  <Hero
+    label="UK B2B data"
+    title="UK B2B data lists, built to your brief"
+    accent="Nations, cities, postcodes and SIC sectors."
+    description="Clean Rows builds verified UK B2B prospect lists by nation, city, postcode area, industry (SIC code), company size and job title. Every list is built fresh to your brief, human-reviewed, and delivered with name, title, company, verified business email and LinkedIn URL. Pricing starts at $25 for 1,000 leads, and you get 100 free sample leads built to your brief before you pay anything."
+    cta="Get 100 free UK leads"
+    href="/free-sample#contact"
+    secondary="See the filters"
+    secondaryHref="#uk-filters"
+    note="Pay-per-list · No seat fees · Freshly sourced"
+    panelLabel="EXAMPLE UK BRIEF"
+    panelTitle="Professional services, North West."
+    items={[
+      ["Nation", "England"],
+      ["City", "Manchester"],
+      ["SIC section", "M (professional services)"],
+      ["Titles", "Heads of Operations, Finance Director"],
+    ]}
+  />
 
   <section class="ed-section" aria-labelledby="uk-filters">
     <div class="ed-wrap">
@@ -137,7 +133,7 @@ const schema = [
             <tr>
               <th scope="row">Company size</th>
               <td>Headcount or revenue band, so small teams do not pay for enterprise-only lists</td>
-              <td>11–50 employee professional services firms</td>
+              <td>11-50 employee professional services firms</td>
             </tr>
             <tr>
               <th scope="row">Job title and seniority</th>
@@ -191,7 +187,10 @@ const schema = [
           <p>Section letters and names, checked 2026-10-24 against the ONS section list.</p>
           <dl>
             <div><dt>A</dt><dd>Agriculture, forestry and fishing</dd></div>
+            <div><dt>B</dt><dd>Mining and quarrying</dd></div>
             <div><dt>C</dt><dd>Manufacturing</dd></div>
+            <div><dt>D</dt><dd>Electricity, gas, steam and air conditioning supply</dd></div>
+            <div><dt>E</dt><dd>Water supply; sewerage, waste management and remediation activities</dd></div>
             <div><dt>F</dt><dd>Construction</dd></div>
             <div><dt>G</dt><dd>Wholesale and retail trade; repair of motor vehicles and motorcycles</dd></div>
             <div><dt>H</dt><dd>Transportation and storage</dd></div>
