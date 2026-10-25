@@ -34,6 +34,43 @@
   .uk-chip-grid { grid-template-columns: 1fr; }
 }
 
+/* Filter chips: four compact cards so the section reads as a designed grid
+   rather than a bare stacked list of labels. */
+.ed-filter-chips {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 36px;
+}
+.ed-filter-chips > div {
+  border: 1px solid #d8e3d8;
+  background: #fbfcfa;
+  border-radius: 10px;
+  padding: 18px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ed-filter-chips > div > span {
+  font-weight: 650;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  color: #173c2e;
+}
+.ed-filter-chips > div > p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #6a7a70;
+}
+@media (max-width: 900px) {
+  .ed-filter-chips { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .ed-filter-chips { grid-template-columns: 1fr; }
+}
+
 /* SIC 2007 section list: each letter and name reads as one row, letter pinned
    to the left so the grid stays aligned down the full A-to-U run. */
 .uk-sic-rows {
