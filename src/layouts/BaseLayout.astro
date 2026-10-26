@@ -19,7 +19,7 @@ const pageDescription = description || 'ICP-based B2B prospect lists for enterpr
 // Editorial pages describe their own WebSite node; other pages get a minimal one.
 const website = { '@type': 'WebSite', '@id': new URL('/#website', origin).href, name: 'Clean Rows', url: origin.href, publisher: { '@id': new URL('/#organization', origin).href } };
 const graph = [
-  { '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', url: origin.href, email: 'hello@cleanrowsdata.com', logo: { '@type': 'ImageObject', url: new URL('/apple-touch-icon.png', origin).href, width: 180, height: 180 }, ...(founder.verified ? { founder: { '@type': 'Person', name: founder.name, jobTitle: founder.role, ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}) } } : {}) },
+  { '@type': 'Organization', '@id': new URL('/#organization', origin).href, name: 'Clean Rows', alternateName: ['Clean Rows Data', 'cleanrowsdata'], url: origin.href, email: 'sales@cleanrowsdata.com', logo: { '@type': 'ImageObject', url: new URL('/apple-touch-icon.png', origin).href, width: 180, height: 180 }, sameAs: [new URL('https://www.instagram.com/cleanrowsdata/', origin).href], ...(founder.verified ? { founder: { '@type': 'Person', name: founder.name, jobTitle: founder.role, ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}) } } : {}) },
   ...(schema.some((node: { '@type'?: string }) => node['@type'] === 'WebSite') ? [] : [website]),
   ...schema,
 ];

@@ -9,7 +9,7 @@ export const GET: APIRoute = async ({ site }) => {
   const origin = site ?? new URL("https://www.cleanrowsdata.com");
   const posts = await getPosts();
   const routes = pages
-    .filter((file) => !file.endsWith("/404.astro") && !file.includes("["))
+    .filter((file) => !file.endsWith("/404.astro") && !file.includes("[") && !file.startsWith("./v2/"))
     .map((file) => file.replace(/^\.\//, "/").replace(/\.astro$/, "").replace(/\/?index$/, "") || "/")
     .filter((route) => route !== "/blog" || posts.length > 0)
     .sort()

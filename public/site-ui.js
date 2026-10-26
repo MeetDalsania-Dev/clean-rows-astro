@@ -246,8 +246,8 @@
       ? 'The free sample is for work email addresses, such as you@yourcompany.com. Go back and use your work email, or choose a paid package under Lead volume.'
       : 'The free sample is for work email addresses, such as you@yourcompany.com. Go back and use your work email.')
     : error && error.code === 'timeout'
-    ? 'This is taking longer than usual and your request may still reach us. Please wait a minute before trying again, or email hello@cleanrowsdata.com.'
-    : 'We couldn’t confirm your request. Your details are still on this page. Please try again or email hello@cleanrowsdata.com.';
+    ? 'This is taking longer than usual and your request may still reach us. Please wait a minute before trying again, or email sales@cleanrowsdata.com.'
+    : 'We couldn’t confirm your request. Your details are still on this page. Please try again or email sales@cleanrowsdata.com.';
 })();
 
 // Cookie consent: analytics cookies stay off until the visitor accepts.

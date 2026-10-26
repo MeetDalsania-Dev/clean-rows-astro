@@ -8,4 +8,4 @@ Everything on www.cleanrowsdata.com is public and can be read without logging in
 - Sitemap: https://www.cleanrowsdata.com/sitemap.xml
 - Blog feed: https://www.cleanrowsdata.com/rss.xml
 
-To request a free 100-lead sample or a quote, a person can use the form at https://www.cleanrowsdata.com/free-sample or email hello@cleanrowsdata.com. Please do not submit the form automatically on someone's behalf without their consent.
+To request a free 100-lead sample or a quote, a person can use the form at https://www.cleanrowsdata.com/free-sample or email sales@cleanrowsdata.com. Please do not submit the form automatically on someone's behalf without their consent.

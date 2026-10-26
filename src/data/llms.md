@@ -8,7 +8,7 @@ Key facts:
 - Sources: publicly accessible business sources (public professional profiles such as LinkedIn, company websites, public directories and registries, public regulatory filings). Business emails are checked with two independent verification services; duplicates are removed.
 - Not offered: tech-stack enrichment, intent data, a searchable database, native CRM sync, consumer data.
 - Customers: businesses only, mainly agencies, B2B software and B2B service firms.
-- Contact: hello@cleanrowsdata.com, or Slack by inviting meet@cleanrowsdata.com to your workspace.
+- Contact: sales@cleanrowsdata.com, or Slack by inviting meet@cleanrowsdata.com to your workspace.
 
 ## Service
 
