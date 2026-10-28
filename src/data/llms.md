@@ -17,6 +17,16 @@ Key facts:
 - [What's in the file](https://www.cleanrowsdata.com/whats-in-the-file): The 10 standard field groups and a CSV preview.
 - [Custom lists](https://www.cleanrowsdata.com/services/custom-lists): Briefs, feasibility, exclusions and custom quotes.
 - [Data sources](https://www.cleanrowsdata.com/data-sources): Where the data comes from and what "verified" means.
+- [Lead cost calculator](https://www.cleanrowsdata.com/calculator): Estimate the cost of a list per month or per year against subscription models.
+- [Blog](https://www.cleanrowsdata.com/blog): Guides on building B2B prospect lists and choosing lead data.
+
+## Free tools
+
+- [Cold email checker](https://www.cleanrowsdata.com/tools/cold-email-checker): Paste a cold email and get a spam score, warnings and fixes.
+
+## Country data
+
+- [UK B2B data](https://www.cleanrowsdata.com/b2b-data/uk): Lists by SIC industry code, postcode, city or nation.
 
 ## Who it is for
 

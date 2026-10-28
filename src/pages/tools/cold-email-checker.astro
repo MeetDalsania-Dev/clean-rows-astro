@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const origin = Astro.site || new URL('https://www.cleanrowsdata.com');
+const toolUrl = new URL('/tools/cold-email-checker', origin).href;
+const software = {
+  '@type': 'SoftwareApplication',
+  name: 'Clean Rows Cold Email Checker',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  url: toolUrl,
+  publisher: { '@id': new URL('/#organization', origin).href },
+};
+---
+
+<BaseLayout
+  bodyClass="tools-page"
+  scripts="none"
+  title="Cold Email Checker: Free Spam Score | Clean Rows"
+  description="Paste your cold email for a free 100 point spam score, fixes and what is already working. Back your copy with verified B2B lead lists from Clean Rows."
+  schema={[software]}
+>
+<link rel="stylesheet" href="/tools.css">
+
+<!-- HERO -->
+<section class="tool-hero" id="top">
+  <div class="tool-hero-inner">
+    <p class="tool-kicker">Free. No signup. Runs right here.</p>
+    <h1>Cold Email Spam Checker</h1>
+    <p class="tool-hero-desc">Paste your cold email. Get an instant spam score, warnings and specific fixes before you send it to 1,000 prospects.</p>
+    <p class="tool-hero-note">Powered by 120+ spam pattern rules. No account required.</p>
+  </div>
+</section>
+
+<!-- CHECKER -->
+<section class="tool-section" id="checker">
+  <div class="tool-grid">
+    <div class="tool-input-col">
+      <div class="tool-input-panel">
+        <div class="tool-input-header">
+          <span>Subject</span>
+          <input id="email-subject" type="text" placeholder="e.g. Quick question about your team" autocomplete="off" />
+        </div>
+        <div class="tool-input-header">
+          <span>From name</span>
+          <input id="email-from" type="text" placeholder="e.g. Alex from Northwind" autocomplete="off" />
+        </div>
+        <textarea id="email-body" rows="12" placeholder="Paste your cold email body here..."></textarea>
+        <button id="check-btn" class="tool-btn-primary">Check My Email</button>
+        <p class="tool-input-hint">Tip: use your real campaign copy for the most useful results.</p>
+      </div>
+      <details class="tool-examples">
+        <summary>Need a starting point? Try an example</summary>
+        <div class="tool-examples-grid">
+          <button class="tool-example-btn" data-example="bad">
+            <strong>Poor cold email <em>Spammy</em></strong>
+            <span>"Hey, I came across your company and I think we could help you grow..."</span>
+          </button>
+          <button class="tool-example-btn" data-example="good">
+            <strong>Better cold email <em>Clear</em></strong>
+            <span>"Saw your team is scaling in the EU. We help SaaS teams there close 30% faster..."</span>
+          </button>
+        </div>
+      </details>
+    </div>
+    <div class="tool-results-col">
+      <div class="tool-results-panel" id="results" hidden>
+        <div class="tool-score-row">
+          <div class="tool-score-circle" id="score-circle">
+            <span id="score-num">-</span>
+            <small>out of 100</small>
+          </div>
+          <div class="tool-score-label">
+            <strong id="score-verb">Awaiting check</strong>
+            <p id="score-summary">Fill in the fields and hit check to get your score.</p>
+          </div>
+        </div>
+        <div class="tool-warnings">
+          <h3>Fix these before you send</h3>
+          <div id="warning-list"><p class="tool-no-warnings">No checks run yet.</p></div>
+        </div>
+        <div class="tool-positives">
+          <h3>What's working</h3>
+          <div id="positive-list"><p class="tool-no-warnings">-</p></div>
+        </div>
+        <div class="tool-results-cta">
+          <a href="/#contact" data-sample>Get a clean, verified email list</a>
+          <p>Great outreach needs clean data. Our 100 free leads come with verified business emails - so your good email actually lands in the inbox.</p>
+        </div>
+      </div>
+      <div class="tool-results-empty" id="empty-state">
+        <p>Results appear here</p>
+        <span>Check an email to see your spam score, warnings and fixes.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="tool-section" id="how">
+  <div class="tool-how-inner">
+    <p class="tool-kicker">How the score works</p>
+    <h2>120+ spam patterns, one clean score</h2>
+    <div class="tool-how-grid">
+      <div class="tool-how-item">
+        <span class="tool-how-icon">#</span>
+        <h3>Language patterns</h3>
+        <p>We check for spam trigger words, promotional language and generic openers that mark your email as low-effort.</p>
+      </div>
+      <div class="tool-how-item">
+        <span class="tool-how-icon">!</span>
+        <h3>Deliverability flags</h3>
+        <p>Too many links, excessive caps, image-heavy structure - these all raise spam filter scores before they reach a human.</p>
+      </div>
+      <div class="tool-how-item">
+        <span class="tool-how-icon">@</span>
+        <h3>Personalisation check</h3>
+        <p>The highest-performing outreach references something specific about the recipient. We flag generic copy that reads like it was sent to 10,000 people.</p>
+      </div>
+      <div class="tool-how-item">
+        <span class="tool-how-icon">#</span>
+        <h3>Length and structure</h3>
+        <p>Overly long emails, no clear CTA, or buried value proposition - all reduce reply rates. We check for the right balance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="tool-cta-strip">
+  <div class="tool-cta-inner">
+    <h2>Great copy needs clean data.</h2>
+    <p>A perfect cold email still fails if the address bounces. Our lists include verified business emails - so your outreach actually reaches the right person.</p>
+    <div class="tool-cta-actions">
+      <a href="/#contact" data-sample class="tool-btn-primary">Get 100 free leads</a>
+      <a href="/pricing" class="tool-btn-ghost">See pricing</a>
+    </div>
+  </div>
+</section>
+</BaseLayout>
+
+<script>
+  // Load the checker logic
+  window.addEventListener('DOMContentLoaded', function () {
+    var s = document.createElement('script');
+    s.src = '/cold-email-checker.js';
+    document.head.appendChild(s);
+  });
+</script>
