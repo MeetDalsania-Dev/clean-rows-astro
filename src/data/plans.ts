@@ -42,7 +42,7 @@ export const plans = [
       "Standard prospect and company fields",
       "Built to your agreed ICP",
       "Delivery schedule agreed upfront",
-      "Per-client file splits on request",
+      "Per client file splits on request",
       "Direct Slack support",
     ],
     ctaText: "Choose this plan",

@@ -58,9 +58,9 @@ export const fields = [
   {
     name: "Size & industry",
     columns: ["company_size", "industry"],
-    example: "50–200 employees · B2B software",
+    example: "50 to 200 employees · B2B software",
     purpose: "Check the business against your target account profile.",
-    note: "Company size and industry context are not funding, hiring-intent or tech-stack data.",
+    note: "Company size and industry context are not funding, hiring intent or tech stack data.",
   },
   {
     name: "Location",

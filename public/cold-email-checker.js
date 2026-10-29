@@ -314,4 +314,20 @@
       runCheck();
     }
   });
+
+  // Reveal the empty "Results appear here" box only when the input is cleared
+  // (both fields blank); otherwise leave the last check's results in place.
+  function clearResults() {
+    byId('empty-state').hidden = false;
+    byId('results').hidden = true;
+    byId('score-num').textContent = '-';
+    byId('score-verb').textContent = 'Awaiting check';
+    byId('score-summary').textContent = 'Fill in the fields and hit check to get your score.';
+  }
+  function maybeClear() {
+    const blank = !byId('email-subject').value.trim() && !byId('email-body').value.trim();
+    if (blank) clearResults();
+  }
+  byId('email-subject').addEventListener('input', maybeClear);
+  byId('email-body').addEventListener('input', maybeClear);
 })();

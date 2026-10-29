@@ -1,10 +1,10 @@
 ---
-// "The privacy check": the three promises become rules R1–R3, and an illustrative
+// "The privacy check": the three promises become rules R1–R3 and an illustrative
 // sheet runs them on five fictional records. The finished sheet is the default
 // state; the one-shot run is progressive enhancement (see the script below).
 const rows = [
   { name: 'Maya Patel', detail: 'VP of Sales · Northwind', cells: ['pass', 'pass', 'pass'] },
-  { name: 'Alex Moreno', detail: 'Ops Director · source unknown', cells: ['fail', 'skip', 'skip'], mask: ['A•••• M•••••', '••• •••••••• · ••••••'], rule: 'R1', why: 'Non-public source' },
+  { name: 'Alex Moreno', detail: 'Ops Director · source unknown', cells: ['fail', 'skip', 'skip'], mask: ['A•••• M•••••', '••• •••••••• · ••••••'], rule: 'R1', why: 'Non public source' },
   { name: 'Daniel Okafor', detail: 'CFO · removal requested', cells: ['pass', 'fail', 'skip'], mask: ['D••••• O•••••', '••• · ••••••• •••••••••'], rule: 'R2', why: 'Removal request' },
   { name: 'Jane Doe', detail: 'jane.doe@gmail.com · personal', cells: ['pass', 'pass', 'fail'], mask: ['J••• D••', 'j•••••@gmail.com · ••••••••'], rule: 'R3', why: 'Personal email' },
   { name: 'Elena Rossi', detail: 'Head of Growth · Forge Labs', cells: ['pass', 'pass', 'pass'] },
@@ -17,7 +17,7 @@ const heads = [['R1', 'Public'], ['R2', 'Removal'], ['R3', 'B2B']];
       <div class="section-heading">
         <p class="eyebrow"><span><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.5l5.5 2V8c0 3.2-2.3 5.6-5.5 6.5C4.8 13.6 2.5 11.2 2.5 8V3.5z"/><path d="M5.6 8.1l1.7 1.7 3.3-3.4"/></svg></span>ENTERPRISE GRADE</p>
         <h2 id="compliance-title">Built with privacy law in mind.</h2>
-        <p>B2B data shouldn’t become a legal headache. We work from public business sources, keep to work-related details and honor every removal request, so your campaigns start from a cleaner list.</p>
+        <p>B2B data shouldn’t become a legal headache. We work from public business sources, keep to work related details and honor every removal request, so your campaigns start from a cleaner list.</p>
       </div>
       <ol class="cg-rules" role="list">
         <li class="cg-rule reveal" data-rule="1" style="--i:0"><span class="cg-badge" aria-hidden="true">R1</span><p><strong>Public sources only.</strong><span>We only aggregate publicly available B2B data.</span></p></li>
@@ -66,7 +66,7 @@ const heads = [['R1', 'Public'], ['R2', 'Removal'], ['R3', 'B2B']];
           </span>
         </div>
       </div>
-      <figcaption class="cg-cap">Illustrative example · fictional records<span class="cg-sr"> Five fictional records are checked against the three rules above. A record from a non-public source, a person who asked to be removed and a personal Gmail address are excluded; the two business contacts that pass all three rules go into your list.</span></figcaption>
+      <figcaption class="cg-cap">Illustrative example · fictional records<span class="cg-sr"> Five fictional records are checked against the three rules above. A record from a non public source, a person who asked to be removed and a personal Gmail address are excluded; the two business contacts that pass all three rules go into your list.</span></figcaption>
     </figure>
   </div>
 </section>

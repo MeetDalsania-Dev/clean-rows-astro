@@ -15,7 +15,7 @@ const og = ogImage || { src: new URL('/og-image.png', origin).href, width: 1200,
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', origin).href;
 const current = (href: string) => (editorial && Astro.url.pathname.replace(/\/$/, '') === href ? 'page' : undefined);
 const pageTitle = title || 'Clean Rows | B2B Prospect Lists Built for Your ICP';
-const pageDescription = description || 'ICP-based B2B prospect lists for enterprise, SaaS and agency teams.';
+const pageDescription = description || 'ICP based B2B prospect lists for enterprise, SaaS and agency teams.';
 // Official social profiles, one entry each. The Organization schema sameAs and
 // the footer column both render straight from this list.
 const social = [
@@ -214,7 +214,7 @@ const graph = [
     <a class="logo" href="/#top">
       <img src="/mark-emerald-on-dark.svg" width="30" height="30" alt="">cleanrows<span>®</span>
     </a>
-    <p>ICP-based B2B data for LinkedIn, email and account-based prospecting.<br>Professionally researched prospect data, built around your target markets.</p>
+    <p>ICP based B2B data for LinkedIn, email and account based prospecting.<br>Professionally researched prospect data, built around your target markets.</p>
     </div>
     <nav class="footer-grid" aria-label="Footer">
       <div class="footer-col">

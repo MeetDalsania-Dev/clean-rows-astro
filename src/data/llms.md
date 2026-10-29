@@ -1,14 +1,14 @@
 # Clean Rows
 
-> Clean Rows builds custom B2B prospect lists for business customers. Each list is researched when you order, to an agreed brief (ideal customer profile), checked before delivery and delivered as a CSV file or Google Sheet. Pricing is per list with no seat fees and no subscription, and new customers can review 100 free leads before their first paid order.
+> Clean Rows builds custom B2B prospect lists for business customers. Each list is researched when you order, to an agreed brief (ideal customer profile), checked before delivery and delivered as a CSV file or Google Sheet. Pricing is per list with no seat fees and no subscription and new customers can review 100 free leads before their first paid order.
 
 Key facts:
 - Standard packages (USD): $25 for 1,000 leads, $199 for 10,000, $799 for 50,000. Orders of 100,000+ leads and specialist research are quoted.
 - Free sample: up to 100 leads for your ICP, one per business, delivered within 24 hours of the request once the ICP is reviewed.
 - Sources: publicly accessible business sources (public professional profiles such as LinkedIn, company websites, public directories and registries, public regulatory filings). Business emails are checked with two independent verification services; duplicates are removed.
-- Not offered: tech-stack enrichment, intent data, a searchable database, native CRM sync, consumer data.
+- Not offered: tech stack enrichment, intent data, a searchable database, native CRM sync, consumer data.
 - Customers: businesses only, mainly agencies, B2B software and B2B service firms.
-- Contact: sales@cleanrowsdata.com, or Slack by inviting meet@cleanrowsdata.com to your workspace.
+- Contact: sales@cleanrowsdata.com or Slack by inviting meet@cleanrowsdata.com to your workspace.
 
 ## Service
 
@@ -32,7 +32,7 @@ Key facts:
 
 - [Agencies](https://www.cleanrowsdata.com/for/agencies): One brief and file per client campaign.
 - [B2B SaaS](https://www.cleanrowsdata.com/for/saas): Market tests, territories and target accounts.
-- [Recruitment agencies](https://www.cleanrowsdata.com/for/recruitment): Employer business-development lists, not candidate data.
+- [Recruitment agencies](https://www.cleanrowsdata.com/for/recruitment): Employer business development lists, not candidate data.
 
 ## Target lists
 

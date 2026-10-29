@@ -5,24 +5,24 @@ import PlanStrip from "../../components/editorial/PlanStrip.astro";
 import Contact from "../../components/Contact.astro";
 const faqs = [
   [
-    "Can I get a UK B2B list by city or postcode, or only nationally?",
-    "Yes, both. Brief by nation, city or postcode area, or brief nationally by SIC code and title. The free 100-lead sample shows whether your geography and industry combination returns the fit you want before you pay.",
+    "Can I get a UK B2B list by city or postcode or only nationally?",
+    "Yes, both. Brief by nation, city or postcode area or brief nationally by SIC code and title. The free 100 lead sample shows whether your geography and industry combination returns the fit you want before you pay.",
   ],
   [
-    "What is a SIC code, and do I need one to order?",
-    "A SIC code is the five-digit UK classification for what a business does, reported to Companies House. You do not need to know yours: describe your target industry in plain words and Clean Rows maps it to SIC sections in the brief. If you already target by SIC, give the codes and they will be used as the filter.",
+    "What is a SIC code and do I need one to order?",
+    "A SIC code is the five digit UK classification for what a business does, reported to Companies House. You do not need to know yours: describe your target industry in plain words and Clean Rows maps it to SIC sections in the brief. If you already target by SIC, give the codes and they will be used as the filter.",
   ],
   [
     "Do UK lists include postcodes?",
-    "Yes, location fields in the file cover nation and city and, where the brief asks for it, postcode-area targeting. Postcode briefs are written as an area brief, not as a promise that every record carries a verified full postcode.",
+    "Yes, location fields in the file cover nation and city and, where the brief asks for it, postcode area targeting. Postcode briefs are written as an area brief, not as a promise that every record carries a verified full postcode.",
   ],
   [
     "Is cold email to UK businesses legal under UK GDPR and PECR?",
-    "It depends on who you email. PECR treats limited companies and LLPs as corporate subscribers, while sole traders and most partnerships are treated as individual subscribers who need consent or a valid soft opt-in. Even for corporate addresses, a named person's work email is personal data under UK GDPR, so you need a lawful basis and you must offer an opt-out in every message. This is general information, not legal advice, and your sending setup and message matter as much as the list.",
+    "It depends on who you email. PECR treats limited companies and LLPs as corporate subscribers, while sole traders and most partnerships are treated as individual subscribers who need consent or a valid soft opt in. Even for corporate addresses, a named person's work email is personal data under UK GDPR, so you need a lawful basis and you must offer an opt out in every message. This is general information, not legal advice and your sending setup and message matter as much as the list.",
   ],
   [
     "How is a UK list different from a subscription database?",
-    "A subscription charges per seat per month for access to a database you search yourself, with credits for reveals. Clean Rows charges per finished list: you describe your ideal UK customer, check a free 100-lead sample, and pay only for the human-reviewed file. Subscriptions suit daily prospectors; pay-per-list suits campaigns, agencies and founders who want the list done for them.",
+    "A subscription charges per seat per month for access to a database you search yourself, with credits for reveals. Clean Rows charges per finished list: you describe your ideal UK customer, check a free 100 lead sample and pay only for the human reviewed file. Subscriptions suit daily prospectors; pay per list suits campaigns, agencies and founders who want the list done for them.",
   ],
 ];
 const origin = Astro.site || new URL("https://www.cleanrowsdata.com");
@@ -69,7 +69,7 @@ const schema = [
 ---
 <BaseLayout
   title="UK B2B Data Lists | Verified Business Emails by SIC, Postcode and City | Clean Rows"
-  description="Build a verified UK B2B prospect list by SIC code, postcode, city or nation. Human-reviewed lists from $25 per 1,000 leads, with a free 100-lead sample before you pay."
+  description="Build a verified UK B2B prospect list by SIC code, postcode, city or nation. Human-reviewed lists from $25 per 1,000 leads, with a free 100 lead sample before you pay."
   schema={schema}
   editorial
 >
@@ -77,12 +77,12 @@ const schema = [
     label="UK B2B data"
     title="UK B2B data lists, built to your brief"
     accent="Nations, cities, postcodes and SIC sectors."
-    description="Clean Rows builds verified UK B2B prospect lists by nation, city, postcode area, industry (SIC code), company size and job title. Every list is built fresh to your brief, human-reviewed, and delivered with name, title, company, verified business email and LinkedIn URL. Pricing starts at $25 for 1,000 leads, and you get 100 free sample leads built to your brief before you pay anything."
+    description="Clean Rows builds verified UK B2B prospect lists by nation, city, postcode area, industry (SIC code), company size and job title. Every list is built fresh to your brief, human reviewed and delivered with name, title, company, verified business email and LinkedIn URL. Pricing starts at $25 for 1,000 leads and you get 100 free sample leads built to your brief before you pay anything."
     cta="Get 100 free UK leads"
     href="/free-sample#contact"
     secondary="See the filters"
     secondaryHref="#uk-filters"
-    note="Pay-per-list · No seat fees · Freshly sourced"
+    note="Pay per list · No seat fees · Freshly sourced"
     panelLabel="EXAMPLE UK BRIEF"
     panelTitle="Professional services, North West."
     items={[
@@ -123,14 +123,14 @@ const schema = [
         </div>
         <p>
           SIC stands for Standard Industrial Classification. In the UK it is the
-          system used to classify what a business does, and it is the code a
+          system used to classify what a business does and it is the code a
           company reports to Companies House when it registers and on its
           confirmation statement.
         </p>
       </div>
       <article class="ed-field-card">
         <div class="ed-field-top"><span class="ed-index">01</span><h3>SIC 2007 sections, A to U</h3></div>
-        <p class="ed-note">Section letters and names, checked 2026-10-24 against the ONS section list. SIC 2007 has 21 sections, A to U.</p>
+        <p class="ed-note">Section letters and names, checked 24 October 2026 against the ONS section list. SIC 2007 has 21 sections, A to U.</p>
         <dl class="uk-sic-rows">
             <div><dt>A</dt><dd>Agriculture, forestry and fishing</dd></div>
             <div><dt>B</dt><dd>Mining and quarrying</dd></div>
@@ -171,26 +171,26 @@ const schema = [
         </div>
         <p>
           Coverage is agreed in the brief, not promised. A narrow brief returns
-          fewer rows than a broad one, and the free 100-lead sample is how the
+          fewer rows than a broad one and the free 100 lead sample is how the
           buyer sees real coverage before committing.
         </p>
       </div>
       <div class="uk-chip-grid">
         <div>
           <span>England</span>
-          <p>Nation-level lists, or narrow to a city or postcode area.</p>
+          <p>Nation level lists or narrow to a city or postcode area.</p>
         </div>
         <div>
           <span>Scotland</span>
-          <p>Nation-level lists, or narrow to a city or postcode area.</p>
+          <p>Nation level lists or narrow to a city or postcode area.</p>
         </div>
         <div>
           <span>Wales</span>
-          <p>Nation-level lists, or narrow to a city or postcode area.</p>
+          <p>Nation level lists or narrow to a city or postcode area.</p>
         </div>
         <div>
           <span>Northern Ireland</span>
-          <p>Nation-level lists, or narrow to a city or postcode area.</p>
+          <p>Nation level lists or narrow to a city or postcode area.</p>
         </div>
       </div>
     </div>
@@ -226,7 +226,7 @@ const schema = [
           <a class="ed-inline" href="https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/" rel="noopener">ico.org.uk ↗</a>
         </article>
       </div>
-      <p class="ed-note">Sources checked 2026-10-24: ICO direct marketing and PECR guidance, Companies House SIC guidance and ONS SIC 2007 pages. No penalty or fine figure is cited on this page.</p>
+      <p class="ed-note">Sources checked 24 October 2026: ICO direct marketing and PECR guidance, Companies House SIC guidance and ONS SIC 2007 pages. No penalty or fine figure is cited on this page.</p>
     </div>
   </section>
 
@@ -239,7 +239,7 @@ const schema = [
         </div>
         <p>
           A delivered UK list carries the fields below, plus the ICP fields you
-          agree in the brief (industry, size, location, and any extras).
+          agree in the brief (industry, size, location and any extras).
         </p>
       </div>
       <div class="ed-file-fields" role="list" aria-label="Fields on a delivered UK list">
@@ -260,7 +260,7 @@ const schema = [
       ["Brief rules included", "Agreeing SIC sectors, entity types and exclusions is part of the brief, not an extra."],
       ["Narrow UK audiences quoted first", "If your UK criteria leave too few prospects to fill a package, we say so before payment."],
     ]}
-    note="Prices in USD. One-time packages, no seat fees. SIC sector, entity type and targeting are confirmed before payment."
+    note="Prices in USD. One time packages, no seat fees. SIC sector, entity type and targeting are confirmed before payment."
   />
   <section class="ed-section ed-boundary" id="uk-compliance" aria-labelledby="uk-compliance-title">
     <div class="ed-wrap">
@@ -271,7 +271,7 @@ const schema = [
         check the ICO guidance and their own counsel before sending.
       </p>
       <p>
-        UK email marketing sits under two sets of rules, and both matter.
+        UK email marketing sits under two sets of rules and both matter.
       </p>
       <ul>
         <li>PECR (the Privacy and Electronic Communications Regulations) decides who you can send marketing email to.</li>
@@ -284,13 +284,13 @@ const schema = [
           bodies, are treated differently under PECR. The strict PECR consent
           rule for unsolicited marketing email does not apply to corporate
           subscribers in the same way, but every message must still identify
-          the sender, give a valid contact address, and offer a simple opt-out
+          the sender, give a valid contact address and offer a simple opt out
           that is honoured.
         </li>
         <li>
           Individual subscribers are different. Sole traders and most
           partnerships (outside Scotland) are treated as individual subscribers
-          for PECR purposes, so the stricter consent or soft opt-in rules apply
+          for PECR purposes, so the stricter consent or soft opt in rules apply
           to them. Partnerships in Scotland have separate legal personality and
           are treated as corporate subscribers, which is why entity type must
           be a field in the brief, not an assumption.
@@ -300,15 +300,15 @@ const schema = [
           GDPR, even when PECR is more permissive for the corporate address.
           The sender still needs a lawful basis for processing that personal
           data, commonly legitimate interests supported by a documented
-          legitimate interests assessment, and must respect the absolute right
+          legitimate interests assessment and must respect the absolute right
           to object to direct marketing.
         </li>
         <li>
-          The soft opt-in is narrow. It covers existing customers only, where
+          The soft opt in is narrow. It covers existing customers only, where
           details were collected during a sale or negotiations for a sale, the
           marketing is for the sender's own similar products or services, an
-          opt-out was offered when details were collected, and every message
-          offers an opt-out. It does not cover a purchased or rented list,
+          opt out was offered when details were collected and every message
+          offers an opt out. It does not cover a purchased or rented list,
           because those people never gave their details to the sender
           directly.
         </li>
@@ -316,13 +316,13 @@ const schema = [
       <p>
         Practical brief rule that follows from this: never mix corporate
         subscribers and sole traders or partnerships into one send under one
-        rule. Split the list by entity type in the brief, and treat any
+        rule. Split the list by entity type in the brief and treat any
         doubtful record as an individual subscriber unless the brief proves
         otherwise.
       </p>
       <p>
         This page is about email. Live calls, automated calls and SMS have
-        their own PECR rules and preference-service checks, and they are not
+        their own PECR rules and preference service checks and they are not
         covered by this section.
       </p>
       <blockquote>
@@ -332,7 +332,7 @@ const schema = [
         a lawyer before you send.
       </blockquote>
       <p class="ed-note">
-        Sources checked for this section (2026-10-24): ICO guidance as
+        Sources checked for this section (24 October 2026): ICO guidance as
         summarised by multiple secondary sources, plus the ONS and Companies
         House SIC background above. The ICO guide itself should be linked
         directly at publish time after a direct check. No penalty or fine
@@ -376,7 +376,7 @@ const schema = [
   <Contact
     team="Other"
     heading="Brief your UK list."
-    emphasis="Start with 100 leads."
+    emphasis="Start with a free sample."
     closing=""
     description="Share the SIC sectors, cities, entity types and titles you want, plus anyone to leave out. We will confirm UK coverage and timing before you pay."
     placeholder="e.g. Heads of Operations at UK professional services firms, 11-50 staff, Manchester and Leeds. SIC section M. Exclude sole traders."
@@ -388,22 +388,22 @@ const schema = [
         <a href="/pricing">
           <span aria-hidden="true">↗</span>
           <h3>UK list pricing</h3>
-          <p>Packages and per-lead math.</p>
+          <p>Packages and per lead math.</p>
         </a>
         <a href="/free-sample">
           <span aria-hidden="true">↗</span>
           <h3>Free sample</h3>
-          <p>How the 100-lead sample works.</p>
+          <p>How the 100 lead sample works.</p>
         </a>
         <a href="/calculator">
           <span aria-hidden="true">↗</span>
           <h3>Calculator</h3>
-          <p>Compare pay-per-list against a subscription seat model.</p>
+          <p>Compare pay per list against a subscription seat model.</p>
         </a>
         <a href="/compare/b2b-data-subscriptions">
           <span aria-hidden="true">↗</span>
           <h3>Lists vs subscriptions</h3>
-          <p>Head-to-head comparisons, when a subscription fits better.</p>
+          <p>Head to head comparisons, when a subscription fits better.</p>
         </a>
       </div>
     </div>

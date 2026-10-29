@@ -26,7 +26,7 @@
   const volumeField=form.querySelector('[name=volume]');
   const planNames={'1000':'Starter','10000':'Growth','50000':'Scale','100000+':'Enterprise'};
   const planLabels={'100':'100 free sample leads','1000':'Starter: 1,000 leads for $25 USD','10000':'Growth: 10,000 leads for $199 USD','50000':'Scale: 50,000 leads for $799 USD','100000+':'Enterprise: 100,000+ leads, custom quote'};
-  function updateRequest(){const volume=volumeField.value;$('#request-heading').textContent=volume==='100'?'Your first 100 are on us.':volume==='100000+'?'Request an Enterprise quote':planNames[volume]?'Request the '+planNames[volume]+' plan':'Request a prospect list';}
+  function updateRequest(){const volume=volumeField.value;$('#request-heading').textContent=volume==='100'?'Your free sample is on us.':volume==='100000+'?'Request an Enterprise quote':planNames[volume]?'Request the '+planNames[volume]+' plan':'Request a prospect list';}
   // After a successful request, a plan or sample button reopens the form first.
   function reopenRequest(){if(form.classList.contains('is-sent'))window.CleanRowsSuccess?.reset(form);}
   $$('[data-plan]').forEach(a=>a.addEventListener('click',()=>{reopenRequest();volumeField.value=a.dataset.plan;window.CleanRowsFormSteps?.show(1,false);updateRequest();}));

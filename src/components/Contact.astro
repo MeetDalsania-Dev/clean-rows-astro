@@ -7,6 +7,7 @@ const {
   placeholder = "e.g. VP Sales at SaaS companies, 50 to 500 staff. LinkedIn profiles and business emails.",
   team = "Agency",
   sampleOnly = false,
+  slackEmail = "meet@cleanrowsdata.com",
 } = Astro.props;
 ---
 
@@ -33,7 +34,7 @@ const {
     <div class="slack-invite">
       <p>Prefer Slack? Invite us to your workspace.</p>
       <div class="slack-invite-action">
-        <span id="slack-email">meet@cleanrowsdata.com</span>
+        <span id="slack-email">{slackEmail}</span>
         <button
           type="button"
           id="copy-slack-email"
@@ -78,7 +79,7 @@ const {
       </label>
     </p>
     <div class="form-title">
-      <h3 id="request-heading">Your first 100 are on us.</h3>
+      <h3 id="request-heading">Your free sample is on us.</h3>
       <span>~2 min</span>
     </div>
     <ol class="form-progress" aria-label="Request steps" hidden>
@@ -199,7 +200,7 @@ const {
           name="notes"
           maxlength="5000"
           rows="2"
-          placeholder="Suppression lists, custom columns, per-client splits…"
+          placeholder="Suppression lists, custom columns, per client splits…"
         ></textarea>
       </label>
     </fieldset>

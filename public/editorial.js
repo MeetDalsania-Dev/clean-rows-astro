@@ -28,7 +28,7 @@
   function updateSelection() {
     heading.textContent =
       volume.value === "100"
-        ? "Your first 100 are on us."
+        ? "Your free sample is on us."
         : "Let’s scope your order.";
     selection.textContent =
       "Selected: " + (plans[volume.value] || volume.value);
