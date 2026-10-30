@@ -96,8 +96,22 @@ const packageRows: [string, string, string, string, string][] = [
     href="#contact"
     secondary="See packages"
     secondaryHref="#packages"
-    noPanel
     proof="10,000 B2B leads for $199. One time. No seats."
+    filePanel={{
+      fileName: "b2b-leads.csv",
+      subline: "10,000 contacts · 12 fields",
+      rows: [
+        { initials: "VS", title: "VP of Sales" },
+        { initials: "CE", title: "CEO" },
+        { initials: "HR", title: "HR Director" },
+      ],
+      chips: ["Verified emails", "LinkedIn profiles"],
+    }}
+    strip={[
+      { strong: "Two email checks", sub: "Every address passes two verification tools" },
+      { strong: "Free rebuild or refund", sub: "If the list misses the agreed brief" },
+      { strong: "CSV in 24 hours", sub: "10,000 contacts, delivered as a CSV or Google Sheet" },
+    ]}
   />
 
   <!-- 1. Checklist -->
@@ -341,5 +355,11 @@ const packageRows: [string, string, string, string, string][] = [
     </div>
   </section>
 
-  <Contact sampleOnly team="Other" />
+  <Contact
+    sampleOnly
+    team="Other"
+    heading="Test us with"
+    emphasis="a free sample."
+    closing="Costs you nothing."
+  />
 </Layout>

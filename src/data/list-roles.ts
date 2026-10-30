@@ -15,6 +15,7 @@ export interface RolePage {
     audience: string;
   };
   hero: { title: string; accent: string; intro: string; proof: string };
+  heroFile: { fileName: string; subline: string; rows: [string, string][]; chips: string[] };
   sample: { heading: string; intro: string; columns: string[]; rows: string[][] };
   fields: {
     heading: string;
@@ -180,6 +181,16 @@ rolePages.push({
       "A VP of Sales email list is a file of sales leaders with their exact job titles, verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
     proof: "10,000 VP of Sales contacts for $199. One time. No seats.",
   },
+  heroFile: {
+    fileName: "vp-of-sales-email-list.csv",
+    subline: "10,000 contacts · 12 fields",
+    rows: [
+      ["VS", "VP of Sales, SVP Sales, EVP Sales"],
+      ["HS", "Head of Sales"],
+      ["CR", "Chief Revenue Officer (CRO)"],
+    ],
+    chips: ["Verified emails", "LinkedIn profiles"],
+  },
   sample: { heading: "Sample rows from a VP of Sales email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
   fields: {
     heading: "What is in every VP of Sales contact list",
@@ -305,6 +316,16 @@ rolePages.push({
       "A CEO email list is a file of company leaders, such as CEOs, founders, managing directors and owners, with verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
     proof: "10,000 CEO contacts for $199. One time. No seats.",
   },
+  heroFile: {
+    fileName: "ceo-email-list.csv",
+    subline: "10,000 contacts · 12 fields",
+    rows: [
+      ["CE", "CEO, Chief Executive Officer"],
+      ["FO", "Founder, Cofounder"],
+      ["MD", "Managing Director"],
+    ],
+    chips: ["Verified emails", "LinkedIn profiles"],
+  },
   sample: { heading: "Sample rows from a CEO email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
   fields: {
     heading: "What is in every CEO contact list",
@@ -428,6 +449,16 @@ rolePages.push({
     intro:
       "An HR Director email list is a file of HR leaders, such as HR Directors, Heads of People and CHROs, with verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
     proof: "10,000 HR Director contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "hr-director-email-list.csv",
+    subline: "10,000 contacts · 12 fields",
+    rows: [
+      ["CH", "CHRO, Chief People Officer"],
+      ["VP", "VP of HR, VP People"],
+      ["HR", "HR Director, Director of People"],
+    ],
+    chips: ["Verified emails", "LinkedIn profiles"],
   },
   sample: { heading: "Sample rows from an HR Director email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
   fields: {
@@ -557,6 +588,16 @@ rolePages.push({
       "A Marketing Director email list is a file of marketing leaders, such as CMOs, VPs of Marketing and Marketing Directors, with verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
     proof: "10,000 Marketing Director contacts for $199. One time. No seats.",
   },
+  heroFile: {
+    fileName: "marketing-director-email-list.csv",
+    subline: "10,000 contacts · 12 fields",
+    rows: [
+      ["CM", "CMO, Chief Marketing Officer"],
+      ["VM", "VP of Marketing"],
+      ["MK", "Marketing Director, Director of Marketing"],
+    ],
+    chips: ["Verified emails", "LinkedIn profiles"],
+  },
   sample: { heading: "Sample rows from a Marketing Director email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
   fields: {
     heading: "What is in every marketing director contact list",
@@ -684,6 +725,16 @@ rolePages.push({
       "A CFO email list is a file of finance leaders, such as CFOs, VPs of Finance and Finance Directors, with verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
     proof: "10,000 CFO contacts for $199. One time. No seats.",
   },
+  heroFile: {
+    fileName: "cfo-email-list.csv",
+    subline: "10,000 contacts · 12 fields",
+    rows: [
+      ["CF", "CFO, Chief Financial Officer"],
+      ["VF", "VP of Finance"],
+      ["FD", "Finance Director, Director of Finance"],
+    ],
+    chips: ["Verified emails", "LinkedIn profiles"],
+  },
   sample: { heading: "Sample rows from a CFO email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
   fields: {
     heading: "What is in every CFO contact list",
@@ -809,6 +860,16 @@ rolePages.push({
     intro:
       "A CTO email list is a file of technology leaders, such as CTOs, VPs of Engineering and IT Directors, with verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
     proof: "10,000 CTO contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "cto-email-list.csv",
+    subline: "10,000 contacts · 12 fields",
+    rows: [
+      ["CT", "CTO, Chief Technology Officer"],
+      ["VE", "VP of Engineering"],
+      ["HE", "Head of Engineering, Engineering Director"],
+    ],
+    chips: ["Verified emails", "LinkedIn profiles"],
   },
   sample: { heading: "Sample rows from a CTO email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
   fields: {

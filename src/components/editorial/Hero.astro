@@ -1,5 +1,11 @@
 ---
 import InlineLinks from "./InlineLinks.astro";
+interface PanelProps {
+  fileName: string;
+  subline: string;
+  rows: { initials: string; title: string }[];
+  chips: string[];
+}
 interface Props {
   label: string;
   title: string;
@@ -15,6 +21,8 @@ interface Props {
   panelLabel?: string;
   panelTitle?: string;
   items?: string[][];
+  filePanel?: PanelProps;
+  strip?: { strong: string; sub: string }[];
 }
 const {
   label,
@@ -31,7 +39,10 @@ const {
   panelLabel = "YOUR CAMPAIGN BRIEF",
   panelTitle = "A better starting point.",
   items = [],
+  filePanel,
+  strip,
 } = Astro.props;
+const avatarClasses = ["a0", "a1", "a2"];
 ---
 
 <section class="ed-hero" id="top">
@@ -63,7 +74,33 @@ const {
         {proof && <p class="ed-proof">{proof}</p>}
         {note && !proof && <p class="ed-note">{note}</p>}
       </div>
-      {!noPanel && (
+      {!noPanel && filePanel && (
+      <aside class="ed-filecard" aria-label={`${filePanel.fileName} preview`}>
+        <div class="ed-filecard-bar">
+          <span class="ed-file-symbol" aria-hidden="true">▤</span>
+          <div>
+            <strong>{filePanel.fileName}</strong>
+            <span>{filePanel.subline}</span>
+          </div>
+          <span class="ed-file-menu" aria-hidden="true">•••</span>
+        </div>
+        <div class="ed-filecard-rows">
+          {filePanel.rows.map((row, i) => (
+            <div>
+              <span class={`avatar ${avatarClasses[i % 3]}`} aria-hidden="true">{row.initials}</span>
+              <strong>{row.title}</strong>
+              <span class="ed-row-check" aria-label="Included" aria-hidden="true">✓</span>
+            </div>
+          ))}
+        </div>
+        <div class="ed-filecard-chips">
+          {filePanel.chips.map((chip) => (
+            <span>✓ {chip}</span>
+          ))}
+        </div>
+      </aside>
+      )}
+      {!noPanel && !filePanel && (
       <aside class="ed-brief" aria-label={panelLabel}>
         <div class="ed-brief-bar">
           <span class="ed-dots" aria-hidden="true">
@@ -91,4 +128,19 @@ const {
       )}
     </div>
   </div>
+  {strip && strip.length > 0 && (
+  <div class="ed-wrap">
+    <div class="ed-strip" aria-label="What every list includes">
+      {strip.map((item) => (
+        <div>
+          <span class="ed-strip-icon" aria-hidden="true">✓</span>
+          <div>
+            <strong>{item.strong}</strong>
+            {item.sub && <p>{item.sub}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  )}
 </section>

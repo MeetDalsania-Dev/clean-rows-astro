@@ -22,8 +22,18 @@ const sampleVisible = role.sample.rows.length > 0;
   href="#contact"
   secondary="See packages"
   secondaryHref="#packages"
-  noPanel
   proof={role.hero.proof}
+  filePanel={{
+    fileName: role.heroFile.fileName,
+    subline: role.heroFile.subline,
+    rows: role.heroFile.rows.map(([initials, title]) => ({ initials, title })),
+    chips: role.heroFile.chips,
+  }}
+  strip={[
+    { strong: "Two email checks", sub: "Every address passes two verification tools" },
+    { strong: "Free rebuild or refund", sub: "If the list misses the agreed brief" },
+    { strong: "CSV in 24 hours", sub: "10,000 contacts, delivered as a CSV or Google Sheet" },
+  ]}
 />
 
 {sampleVisible && (
@@ -203,11 +213,11 @@ const sampleVisible = role.sample.rows.length > 0;
         <h2 id="role-built">{role.built.heading}</h2>
       </div>
     </div>
-    <div class="ed-wrap ed-split">
-      <ol class="ed-checklist">
+    <div class="ed-built">
+      <ol class="ed-step-cards">
         {role.built.steps.map(([title, text], i) => (
           <li>
-            <span>{String(i + 1).padStart(2, "0")}</span>
+            <span class="ed-step-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
             <div>
               <h3>{title}</h3>
               <p><InlineLinks text={text} /></p>
@@ -215,7 +225,8 @@ const sampleVisible = role.sample.rows.length > 0;
           </li>
         ))}
       </ol>
-      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Delivery time by list size" tabindex="0">
+      <div class="ed-delivery-card" role="region" aria-label="Delivery time by list size" tabindex="0">
+        <p class="ed-kicker">DELIVERY TIME</p>
         <table class="ed-table">
           <thead>
             <tr>
@@ -380,5 +391,11 @@ const sampleVisible = role.sample.rows.length > 0;
   </div>
 </section>
 
-<Contact sampleOnly team="Other" />
+<Contact
+  sampleOnly
+  team="Other"
+  heading="Test us with"
+  emphasis="a free sample."
+  closing="Costs you nothing."
+/>
 <Related items={role.related} />
