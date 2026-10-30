@@ -4,47 +4,95 @@ import Hero from "../../components/editorial/Hero.astro";
 import FAQ from "../../components/editorial/FAQ.astro";
 import Related from "../../components/editorial/Related.astro";
 import Contact from "../../components/Contact.astro";
-const stateOfSales =
-  "https://www.salesforce.com/news/stories/state-of-sales-report-announcement-2026/";
+import InlineLinks from "../../components/editorial/InlineLinks.astro";
+
 const faqs = [
   [
-    "What is a custom B2B lead list?",
-    "A custom B2B lead list is a prospect list researched to your own brief. The roles, sectors, company sizes, locations, named accounts and exclusions are agreed first and the contacts are sourced to match them.",
+    "What is a list building service?",
+    "A list building service researches a B2B lead list for you against a written brief and delivers the finished file. You set the roles, seniority, industries, company sizes, locations, named accounts and exclusions. We do the research, the email checks and the review, then send a CSV or Google Sheet. No database to search and no subscription to sit on.",
   ],
   [
-    "Is each list sourced fresh?",
-    "Yes. Each list is researched when you order, against the brief you approve and business emails are checked before delivery. It is not pulled from a pre built database.",
+    "How long does a list take?",
+    "Delivery depends on the volume and how tight the brief is. About 3 hours for 1,000 contacts, 24 hours for 10,000 and 48 hours for 50,000. Orders of 100,000 or more take 5 to 7 business days. The exact date is agreed before you pay.",
   ],
   [
-    "What should a custom list brief include?",
-    "Roles and title variations, sectors, company size, locations, any named accounts, exclusions and the fields you need. The more specific the brief, the more consistent the list.",
+    "How is a list building service different from a data platform?",
+    "A data platform gives your team a shared database to search, filter and export, usually priced per seat. A list building service hands you the finished file and the work is done when it arrives. You pay once per list, not monthly per person, and nobody on your team has to search.",
   ],
   [
-    "What if my audience is too small for a package?",
-    "We tell you before payment. We don’t widen your criteria to fill a volume; you decide whether to adjust the brief or order fewer leads.",
+    "What does 10,000 contacts for $199 include?",
+    "The 10,000 contact package is one time, $19.90 per 1,000 contacts, delivered in 24 hours. Every row carries the standard fields: name, exact job title, company, domain, verified business email, mobile where public sources show one, company phone, personal and company LinkedIn, company size, industry and location. If the list misses the agreed brief, we rebuild it free or refund you.",
   ],
   [
-    "Can you research fields outside the standard file?",
-    "Additional research can be discussed before ordering, with feasibility and price agreed in advance. Tech stack enrichment is not currently offered.",
+    "Do I need to buy every month?",
+    "No. Each package is a one time price for one list, with no seats and no renewal. Order the next list whenever the next campaign needs it. Recurring delivery is available on request for teams that refresh lists on a schedule.",
   ],
   [
-    "When is a custom quote needed?",
-    "For orders of 100,000+ leads, specialist research or additional columns and recurring schedules. Standard audiences within a package use the published prices.",
+    "What if the list misses my brief?",
+    "The brief you agree before payment is the acceptance standard. Rows outside it, excluded companies, duplicates or missing columns get a free rebuild or a refund if you report them within 7 days of delivery.",
+  ],
+];
+
+const processSteps: [string, string][] = [
+  [
+    "Send the brief",
+    "An email with the roles, seniority, industries, company sizes, locations, named accounts and exclusions is enough. No portal, no onboarding call. sales@cleanrowsdata.com answers it.",
   ],
   [
-    "How is a delivered list accepted?",
-    "The agreed brief is the acceptance standard. If rows fall outside it, report them within 7 days of delivery for a free rebuild or a refund.",
+    "Review a free sample",
+    "Up to 100 leads for your ICP arrive within 24 hours, no card and no call. Check the job titles, companies, LinkedIn profiles and emails before anything is paid.",
   ],
   [
-    "Can one order be split into several files?",
-    "Yes. Splits by client, territory, desk or campaign and your preferred column names, are agreed with the brief before research starts.",
+    "Count and price, confirmed",
+    "We confirm the exact count that matches your ICP and the price for it, in writing, before payment. If fewer people match than you planned, we tell you first. No padded lists.",
   ],
+  [
+    "Research to the brief",
+    "Every row is sourced fresh from public B2B sources: public professional profiles, company websites, public directories and public filings. No personal emails, and no tech stack data.",
+  ],
+  [
+    "Check and clean",
+    "Each business email passes two verification tools. Duplicates are removed and a person reviews the list against the brief before it ships.",
+  ],
+  [
+    "Deliver, or rebuild free",
+    "The list arrives as a CSV or Google Sheet, with the column names agreed in the brief. If it misses the brief, we rebuild it free or refund you.",
+  ],
+];
+
+const deliveryRows: [string, string][] = [
+  ["1,000 contacts", "About 3 hours"],
+  ["10,000 contacts", "24 hours"],
+  ["50,000 contacts", "48 hours"],
+  ["100,000+ contacts", "5 to 7 business days"],
+];
+
+const fieldRows: [string, string, string][] = [
+  ["First name and last name", "The name as the person writes it on their professional profile", "Every row"],
+  ["Exact job title", "The title they use today, for example VP of Sales or Head of Demand Generation", "Checked against your brief"],
+  ["Company", "Company name", "Every row"],
+  ["Domain", "The company website domain, useful for CRM matching", "Every row"],
+  ["Verified business email", "Work email checked with two verification tools. No personal emails", "Every row"],
+  ["Mobile", "Direct mobile where one is found in public sources", "Roughly 50 to 60 percent of rows, marked per row"],
+  ["Company HQ phone", "The main company number, a second route when no mobile is found", "Every row"],
+  ["Personal LinkedIn URL", "The leader's own profile, for research and LinkedIn outreach", "Where public"],
+  ["Company LinkedIn URL", "The company page, for a quick read on headcount and hiring", "Where public"],
+  ["Company size", "Employee range, matched to your brief", "Every row"],
+  ["Industry", "The company's industry, matched to your brief", "Every row"],
+  ["Location", "Location for each row, filtered to your brief", "Every row"],
+];
+
+const packageRows: [string, string, string, string, string][] = [
+  ["Growth", "10,000", "$199", "$19.90 per 1,000", "24 hours"],
+  ["Starter", "1,000", "$25", "$25.00 per 1,000", "About 3 hours"],
+  ["Scale", "50,000", "$799", "$15.98 per 1,000", "48 hours"],
+  ["Enterprise", "100,000+", "Custom quote", "Quoted for your brief", "5 to 7 business days"],
 ];
 ---
 
 <Layout
   title="List Building Service for B2B Teams | Clean Rows"
-  description="A B2B list building service that researches fresh lead lists to your ICP. Verified emails, LinkedIn profiles and human review. Free sample in 24 hours."
+  description="A B2B list building service that researches fresh lead lists to your ICP. Verified emails and human review. 10,000 contacts for $199, one time."
   label="Custom lists"
   serviceName="Custom B2B prospect list research"
   audience="B2B sales, marketing and agency teams"
@@ -56,364 +104,627 @@ const faqs = [
     label="Custom lists"
     title="B2B list building service. Built to your ICP."
     accent="Scoped before you pay."
-    description="Our B2B list building service researches a fresh prospect list to your brief when your audience needs more than a standard package, such as specific titles, named accounts, exclusions or extra research. Feasibility and acceptance criteria are agreed before payment."
-    cta="Scope a custom list"
-    secondary="What makes a useful brief"
-    secondaryHref="#approach"
-    panelLabel="WHAT GETS AGREED"
-    panelTitle="Agreed before research."
-    items={[
-      ["Audience", "Roles, sectors, size, location"],
-      ["Accounts", "Named targets and exclusions"],
-      ["Fields", "Standard or custom columns"],
-      ["Acceptance", "The brief, in writing"],
+    description="A list building service is a done for you replacement for searching a database: we research a fresh prospect list to your brief and deliver the finished file. 10,000 contacts for $199, one time, with no seats and no subscription. [10,000 verified contacts arrive in 24 hours](/buy-b2b-leads), every email checked with two tools and the whole list reviewed by a person. Start with a free sample: no card, no call, no signup."
+    cta="Scope your list"
+    href="#contact"
+    secondary="See the process"
+    secondaryHref="#process"
+    proof="10,000 contacts for $199. One time. No seats."
+    filePanel={{
+      fileName: "b2b-list.csv",
+      subline: "10,000 contacts · 12 fields",
+      rows: [
+        { initials: "VS", title: "VP of Sales" },
+        { initials: "CE", title: "CEO" },
+        { initials: "HR", title: "HR Director" },
+      ],
+      chips: ["Verified emails", "LinkedIn profiles"],
+    }}
+    strip={[
+      { strong: "Two email checks", sub: "Every address passes two verification tools" },
+      { strong: "Free rebuild or refund", sub: "If the list misses the agreed brief" },
+      { strong: "CSV in 24 hours", sub: "10,000 contacts, delivered as a CSV or Google Sheet" },
     ]}
   />
-  <section class="ed-section" aria-labelledby="cl-compare">
+
+  <!-- 1. What it is -->
+  <section class="ed-section ed-tint" aria-labelledby="ls-what">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
-          <p class="ed-kicker">CUSTOM LIST VS DATABASE EXPORT</p>
-          <h2 id="cl-compare">Custom B2B lead lists vs filtered database exports</h2>
+          <p class="ed-kicker">WHAT IT IS</p>
+          <h2 id="ls-what">A list building service does the searching for you</h2>
         </div>
         <p>
-          A custom B2B lead list is researched to your brief at the time you
-          order. Salesforce’s{" "}
-          <a class="ed-inline" href={stateOfSales} rel="noopener">2026 State of Sales report</a>{" "}
-          found the average seller spends 40% of their time selling. When you
-          outsource lead list building, the searching, checking and formatting
-          stop competing for the rest.
+          A list building service takes a written brief and delivers a finished
+          B2B lead list: the people who match it, with verified business
+          emails, ready for your CRM or outreach tool. You do not search,
+          filter or clean anything. You read the file.
         </p>
       </div>
-      <p class="ed-scroll-hint" id="cl-compare-hint">
-        Scroll sideways to see every column.
-      </p>
-      <div
-        class="ed-table-scroll ed-table-light"
-        role="region"
-        aria-label="Custom lead lists compared with filtered database exports"
-        aria-describedby="cl-compare-hint"
-        tabindex="0"
-      >
-        <table class="ed-table ed-table-wrap ed-compare">
-          <caption>
-            A Clean Rows custom list compared with a list your team filters and
-            exports from a subscription database. Database features vary by
-            provider.
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Aspect</th>
-              <th scope="col">Custom list from Clean Rows</th>
-              <th scope="col">Filtered database export</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Starting point</th>
-              <td>Your written brief, including edge cases</td>
-              <td>The filters the database offers</td>
-            </tr>
-            <tr>
-              <th scope="row">When contacts are sourced</th>
-              <td>When you order</td>
-              <td>Whenever the database last updated the record</td>
-            </tr>
-            <tr>
-              <th scope="row">Job titles</th>
-              <td>Title variations agreed with you before research</td>
-              <td>Whatever matches the filter keywords</td>
-            </tr>
-            <tr>
-              <th scope="row">Named accounts and exclusions</th>
-              <td>Built into the research</td>
-              <td>Applied by your team, before or after export</td>
-            </tr>
-            <tr>
-              <th scope="row">Cleaning and formatting</th>
-              <td>We remove duplicates, check business emails and format the file</td>
-              <td>Your team cleans the export</td>
-            </tr>
-            <tr>
-              <th scope="row">If rows miss the brief</th>
-              <td>Free rebuild or refund if reported within 7 days</td>
-              <td>Your team filters and exports again</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-  <section class="ed-section ed-tint" id="approach" aria-labelledby="cl-brief">
-    <div class="ed-wrap">
-      <div class="ed-section-head">
+      <div class="ed-split">
         <div>
-          <p class="ed-kicker">WHAT MAKES A USEFUL BRIEF</p>
-          <h2 id="cl-brief">Vague in, vague out: how to write a useful ICP brief</h2>
-        </div>
-        <p>
-          Two fictional briefs for the same buyer. The second one tells the
-          researcher exactly who counts, who doesn’t and what the file must
-          contain.
-        </p>
-      </div>
-      <div class="ed-brief-pair">
-        <article class="ed-example-brief ed-brief-weak">
-          <span class="ed-kicker">A VAGUE BRIEF</span>
-          <p>“Marketing people at tech companies.”</p>
-          <dl>
-            <div><dt>Titles</dt><dd>Undefined</dd></div>
-            <div><dt>Company size</dt><dd>Undefined</dd></div>
-            <div><dt>Exclusions</dt><dd>None</dd></div>
-          </dl>
-        </article>
-        <article class="ed-example-brief">
-          <span class="ed-kicker">A USEFUL BRIEF</span>
+          <h3 class="ed-subhead">The job, in one paragraph</h3>
           <p>
-            “VP Marketing and Heads of Demand Generation at B2B software
-            companies, 100 to 1,000 staff.
-            Exclude agencies and our current customers. Business email
-            and LinkedIn required.”
+            Most teams that need a list have three options: search a
+            subscription database, build it in house, or hand the work to a
+            service. A data platform is software your team works inside every
+            day. Building it yourself is real work, one person at a time,
+            across LinkedIn, company websites and verification tools. A list
+            building service is the third: the work is handed over and a file
+            comes back.
           </p>
-          <dl>
-            <div><dt>Titles</dt><dd>Two, with seniority</dd></div>
-            <div><dt>Company size</dt><dd>100 to 1,000 staff</dd></div>
-            <div><dt>Exclusions</dt><dd>Agencies, customers</dd></div>
-          </dl>
-        </article>
+          <p>
+            Clean Rows researches each list when you order, to the roles,
+            seniority, industries, company sizes, locations, named accounts
+            and exclusions in your brief. We use public B2B sources only,
+            check every business email with two verification tools, remove
+            duplicates and have a person review the list against your brief.
+            If the list misses what you asked for, we rebuild it free or
+            refund you.
+          </p>
+        </div>
+        <div>
+          <div class="ed-two-lists">
+            <article>
+              <h3>What you send</h3>
+              <ul>
+                <li>A brief: roles, seniority, industries, company sizes, locations</li>
+                <li>Named accounts or exclusions, where you have them</li>
+                <li>The fields and file splits you need</li>
+                <li>Where the list will be used</li>
+              </ul>
+            </article>
+            <article>
+              <h3>What you get back</h3>
+              <ul>
+                <li>A CSV or Google Sheet with 12 standard fields</li>
+                <li>Business emails checked with two verification tools</li>
+                <li>Duplicates removed and a human review of the whole list</li>
+                <li>A free rebuild or refund if it misses the brief</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+          <a class="button cta-secondary" href="#process">See the process</a>
+        </div>
       </div>
     </div>
   </section>
-  <section class="ed-section" aria-labelledby="cl-parts">
+
+  <!-- 1b. Writing the brief -->
+  <section class="ed-section" aria-labelledby="ls-brief">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
-          <p class="ed-kicker">THE PARTS OF A BRIEF</p>
-          <h2 id="cl-parts">The seven parts of a custom B2B lead list brief</h2>
+          <p class="ed-kicker">WHERE THE QUALITY COMES FROM</p>
+          <h2 id="ls-brief">Vague in, vague out: writing a brief that works</h2>
         </div>
         <p>
-          You don’t need all seven on day one. Anything left open is settled
-          with you before research starts, not guessed.
+          A list building service is only as sharp as the brief it works
+          from. Two briefs for the same buyer, one that works and one that
+          does not, show the difference.
         </p>
       </div>
-      <p class="ed-scroll-hint" id="cl-hint">
+      <div class="ed-flow-pair">
+        <article>
+          <span class="ed-kicker">A VAGUE BRIEF</span>
+          <h3>"Marketing people at tech companies"</h3>
+          <ol>
+            <li>No titles, so the list mixes juniors with the people who buy</li>
+            <li>No company size, so solo founders sit next to 5,000 person firms</li>
+            <li>No exclusions, so current customers and competitors end up in the file</li>
+            <li>No fields chosen, so you find out what is missing after the send</li>
+          </ol>
+        </article>
+        <article>
+          <span class="ed-kicker">A WORKING BRIEF</span>
+          <h3>"VP Marketing and Heads of Demand Gen at B2B software companies, 100 to 1,000 staff. Exclude agencies and our current customers. Business email and LinkedIn required"</h3>
+          <ol>
+            <li>Two titles with seniority, so every row is a real buyer</li>
+            <li>A size range, so a dedicated marketing hire actually exists</li>
+            <li>Exclusions named, so they are part of the acceptance standard</li>
+            <li>Required fields set, so a complete row means something</li>
+          </ol>
+        </article>
+      </div>
+      <p>
+        The second brief is not longer, just specific. Specificity is where
+        a list stops being a pile of contacts and becomes a list of people
+        who will actually reply, and it is also what the free sample
+        checks. Two briefs that both say "marketing people" can produce
+        very different files.
+      </p>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Send your brief</a>
+          <a class="button cta-secondary" href="#process">See the process</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Process -->
+  <section class="ed-section" id="process" aria-labelledby="ls-process">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">SIX STEPS FROM BRIEF TO FILE</p>
+          <h2 id="ls-process">How the list building service works</h2>
+        </div>
+        <p>
+          Six steps, none of them inside a portal. The exact count and price
+          are confirmed for your ICP before you pay, and the delivery date is
+          set with you, not estimated on a ticket.
+        </p>
+      </div>
+      <div class="ed-built">
+        <ol class="ed-step-cards">
+          {processSteps.map(([title, text], i) => (
+            <li>
+              <span class="ed-step-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <div class="ed-delivery-card" role="region" aria-label="Delivery time by list size" tabindex="0">
+          <p class="ed-kicker">DELIVERY TIME</p>
+          <table class="ed-table">
+            <thead>
+              <tr>
+                <th scope="col">List size</th>
+                <th scope="col">Delivery time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {deliveryRows.map(([size, time]) => (
+                <tr>
+                  <th scope="row">{size}</th>
+                  <td>{time}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="ed-note">
+        A tight brief researches faster. Named accounts, title variations and
+        exclusions all take extra care, so the date above moves with the
+        brief. It is always confirmed in writing before payment.
+      </p>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Start with the free sample</a>
+          <a class="button cta-secondary" href="#packages">See packages</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Fields -->
+  <section class="ed-section ed-tint" aria-labelledby="ls-fields">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">WHAT YOU GET</p>
+          <h2 id="ls-fields">The 12 fields in every list</h2>
+        </div>
+        <p>
+          The same field groups on every row, so the file imports cleanly
+          whatever you load it into. Mobile coverage is the one that varies,
+          and it is always marked per row.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="ls-fields-hint">
         Scroll sideways to see every column.
       </p>
       <div
         class="ed-table-scroll ed-table-light"
         role="region"
-        aria-label="The parts of a custom list brief"
-        aria-describedby="cl-hint"
+        aria-label="The 12 fields in every list"
+        aria-describedby="ls-fields-hint"
         tabindex="0"
       >
         <table class="ed-table ed-table-wrap">
           <caption>
-            The parts of a custom list brief, with fictional examples.
+            The standard fields in every Clean Rows list. Additional columns
+            can be discussed before ordering. Tech stack enrichment is not
+            offered.
           </caption>
           <thead>
             <tr>
-              <th scope="col">Part of the brief</th>
-              <th scope="col">Example</th>
-              <th scope="col">Why it matters</th>
+              <th scope="col">Field</th>
+              <th scope="col">What it contains</th>
+              <th scope="col">Coverage</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Roles and title variations</th>
-              <td>VP Marketing, Head of Demand Generation</td>
-              <td>The same buyer uses different titles at different companies</td>
-            </tr>
-            <tr>
-              <th scope="row">Sectors</th>
-              <td>B2B software; not IT services</td>
-              <td>Broad labels like “tech” are researched inconsistently</td>
-            </tr>
-            <tr>
-              <th scope="row">Company size</th>
-              <td>100 to 1,000 employees</td>
-              <td>Decides whether a dedicated buyer exists at all</td>
-            </tr>
-            <tr>
-              <th scope="row">Location</th>
-              <td>Company HQ</td>
-              <td>HQ and contact location can differ</td>
-            </tr>
-            <tr>
-              <th scope="row">Named accounts</th>
-              <td>A list of 250 target companies</td>
-              <td>Focuses research on accounts you already prioritize</td>
-            </tr>
-            <tr>
-              <th scope="row">Exclusions</th>
-              <td>Current customers, open deals, competitors</td>
-              <td>Excluded companies and contacts are part of the acceptance criteria</td>
-            </tr>
-            <tr>
-              <th scope="row">Required fields</th>
-              <td>Business email and LinkedIn; phone optional</td>
-              <td>Sets what a complete row means for your campaign</td>
-            </tr>
+            {fieldRows.map(([field, what, coverage]) => (
+              <tr>
+                <th scope="row">{field}</th>
+                <td>{what}</td>
+                <td>{coverage}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-    </div>
-  </section>
-  <section class="ed-boundary" aria-labelledby="cl-narrow">
-    <div class="ed-wrap">
-      <p class="ed-kicker">FEASIBILITY</p>
-      <h2 id="cl-narrow">Small audiences stay small: we don’t pad your list</h2>
       <p>
-        If fewer people match your brief than the volume you had in mind, we
-        tell you before payment. We don’t quietly widen titles, sizes or
-        regions to fill a package. You decide whether to adjust the brief or
-        order fewer leads.
+        Removal requests are honored across future lists, and we never sell
+        consumer data or personal emails. The full field guide lives on the
+        <a class="ed-inline" href="/whats-in-the-file">what is in the file</a> page.
       </p>
     </div>
   </section>
-  <section class="ed-section" aria-labelledby="cl-scope">
+
+  <!-- 4. Packages -->
+  <section class="ed-section" id="packages" aria-labelledby="ls-packages">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">ONE TIME PACKAGES. NO SEAT FEES.</p>
+          <h2 id="ls-packages">Packages led by 10,000 contacts for $199</h2>
+        </div>
+        <p>
+          Each package is a one time price for one list, sized to a typical
+          campaign. The count that matches your ICP is confirmed before you
+          pay, so you never buy a number you cannot fill.
+        </p>
+      </div>
+      <div class="ed-plan-cards">
+        {packageRows.map(([name, leads, price, rate, delivery]) => (
+          <article>
+            <h3>{name}</h3>
+            <strong>{price}</strong>
+            <p>{leads} contacts</p>
+            <p class="ed-plan-rate">{rate}</p>
+            <p class="ed-plan-rate">Delivery {delivery}</p>
+          </article>
+        ))}
+      </div>
+      <p class="ed-note">
+        [Standard packages and full details live on the pricing page](/pricing).
+        Orders of 100,000 or more, specialist research and recurring delivery
+        are quoted for your brief, agreed in writing before payment.
+      </p>
+      <a class="ed-button ed-primary" href="#contact">
+        Scope your list
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 5. Who it is for -->
+  <section class="ed-section ed-tint" aria-labelledby="ls-who">
     <div class="ed-wrap ed-split">
       <div>
-        <p class="ed-kicker">STANDARD OR CUSTOM</p>
-        <h2 id="cl-scope">
-          Most B2B lead lists fit a standard package. Some need a quote.
-        </h2>
+        <p class="ed-kicker">WHO IT IS FOR</p>
+        <h2 id="ls-who">Who a list building service fits</h2>
         <p>
-          Standard packages cover most briefs at{" "}
-          <a class="ed-inline" href="/pricing">published prices</a>. A custom
-          quote is agreed in writing before any payment.
+          The service pays for itself when the research is repetitive, the
+          list needs to match a specific brief, and nobody on the team wants
+          to own a database. Four teams use it the most.
         </p>
       </div>
       <div class="ed-two-lists">
         <article>
-          <h3>Standard package</h3>
+          <h3>B2B sales teams</h3>
           <ul>
-            <li>Built to your agreed ICP</li>
-            <li>The <a class="ed-inline" href="/whats-in-the-file">standard field groups</a></li>
-            <li>CSV or Google Sheet delivery</li>
-            <li>1,000 to 50,000 leads</li>
+            <li>A defined ICP per campaign, refreshed when the market shifts</li>
+            <li>Outbound runs on clean emails without a database licence per rep</li>
+            <li>Target account lists built around a customer base you name yourself</li>
           </ul>
         </article>
         <article>
-          <h3>Custom quote</h3>
+          <h3>Agencies and consultants</h3>
           <ul>
-            <li>100,000+ leads</li>
-            <li>Specialist research or extra columns</li>
-            <li>Recurring delivery schedules</li>
-            <li>Audiences that need feasibility checks</li>
+            <li>One list per client campaign, with per client file splits</li>
+            <li>Briefs agreed in writing per engagement, so the file matches the scope</li>
+            <li>No per seat fees to pass on to clients between campaigns</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Recruitment and hiring teams</h3>
+          <ul>
+            <li>Hiring manager and employer lists, not candidate data</li>
+            <li>Titles and seniority mapped to the roles you are hiring</li>
+            <li>LinkedIn profiles for every row, so outreach starts from a real profile</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Founders and early stage teams</h3>
+          <ul>
+            <li>The 1,000 contact package as a first market test, about 3 hours</li>
+            <li>A free sample first, so the list is judged before anything is paid</li>
+            <li>One list at a time, which suits a budget that grows with the team</li>
           </ul>
         </article>
       </div>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+          <a class="button cta-secondary" href="/for/agencies">For agencies</a>
+        </div>
+      </div>
     </div>
   </section>
-  <section class="ed-section ed-tint" aria-labelledby="cl-files">
+
+  <!-- 5b. Delivery and acceptance -->
+  <section class="ed-section ed-tint" aria-labelledby="ls-delivery">
     <div class="ed-wrap">
       <div class="ed-section-head">
         <div>
-          <p class="ed-kicker">FILES AND EXPORTS</p>
-          <h2 id="cl-files">
-            How your list is delivered: splits, headers and formats
-          </h2>
+          <p class="ed-kicker">DELIVERY AND ACCEPTANCE</p>
+          <h2 id="ls-delivery">What happens between payment and the file in your inbox</h2>
         </div>
         <p>
-          File structure is part of the brief, so the list arrives ready to
-          split, import and assign.
+          Delivery is not an afterthought on a list building service. It is
+          the moment the brief gets checked, and the whole process is
+          designed so the file arrives ready to use, not ready to clean.
         </p>
       </div>
       <div class="ed-cards">
         <article>
           <span class="ed-index">01</span>
-          <h3>Splits</h3>
+          <h3>The file arrives formatted</h3>
           <p>
-            One file or separate files by client, territory, desk or campaign.
+            A CSV or Google Sheet with the column names you agreed. Splits
+            by client, territory, desk or campaign come in separate files,
+            so an agency can hand one to each client without unmixing them.
+            The header row matches what your CRM or outreach tool imports,
+            because you said how it imports.
           </p>
         </article>
         <article>
           <span class="ed-index">02</span>
-          <h3>Headers</h3>
+          <h3>The brief is the standard</h3>
           <p>
-            Column names agreed to match the import format of your CRM or
-            outreach tool.
+            Acceptance is judged against the brief you agreed in writing,
+            not against a database refresh date. Rows outside the criteria,
+            excluded companies, duplicates or missing columns are the
+            failure cases, and they trigger a free rebuild or a refund if
+            you report them within 7 days of delivery.
           </p>
         </article>
         <article>
           <span class="ed-index">03</span>
-          <h3>Format</h3>
+          <h3>Public sources, honored removals</h3>
           <p>
-            A CSV file or a Google Sheet. Delivery times are estimates that
-            depend on the audience and volume.
+            Every row comes from public B2B sources: public professional
+            profiles, company websites, public directories and filings. No
+            personal emails, no consumer data. If someone asks to be
+            removed, they are removed from future lists. The sourcing detail
+            is on the <a class="ed-inline" href="/data-sources">data sources</a> page.
           </p>
         </article>
       </div>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+          <a class="button cta-secondary" href="/refund">Read the refund policy</a>
+        </div>
+      </div>
     </div>
   </section>
-  <section class="ed-section" aria-labelledby="cl-agree">
-    <div class="ed-wrap ed-split">
-      <div>
-        <p class="ed-kicker">BEFORE YOU PAY</p>
-        <h2 id="cl-agree">
-          Scope, timing and acceptance, agreed in writing before you pay
-        </h2>
+
+  <!-- 6. Comparison -->
+  <section class="ed-section" aria-labelledby="ls-vs">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">THREE WAYS TO GET THE LIST</p>
+          <h2 id="ls-vs">List building service vs doing it yourself vs a data platform</h2>
+        </div>
         <p>
-          An order is confirmed when criteria, volume and price are agreed in
-          writing; email or Slack is enough. See the{" "}
-          <a class="ed-inline" href="/refund">Refund Policy</a> for the full
-          terms.
+          The same three ways to reach the right people, compared on the
+          questions that decide. No platform names: the comparison is about
+          the model, and each provider's details vary.
+        </p>
+      </div>
+      <p class="ed-scroll-hint" id="ls-vs-hint">
+        Scroll sideways to see every column.
+      </p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label="List building service compared with doing it yourself and a data platform"
+        aria-describedby="ls-vs-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap ed-compare">
+          <caption>
+            A list building service compared with building the list yourself
+            and with a data platform. Platform features and prices vary by
+            provider.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Question</th>
+              <th scope="col">List building service</th>
+              <th scope="col">Doing it yourself</th>
+              <th scope="col">Data platform</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">What you get</th>
+              <td>A finished file, researched to your brief</td>
+              <td>The file your team puts together, one contact at a time</td>
+              <td>Access to a shared database and the tools around it</td>
+            </tr>
+            <tr>
+              <th scope="row">Who does the research</th>
+              <td>The service, to your written brief</td>
+              <td>Your team, in whoever's free hours</td>
+              <td>Your team, inside the platform</td>
+            </tr>
+            <tr>
+              <th scope="row">How you pay</th>
+              <td>Once per list: $25 for 1,000, $199 for 10,000, $799 for 50,000</td>
+              <td>Time, plus verification tools and search credits</td>
+              <td>Usually per seat, monthly or annually</td>
+            </tr>
+            <tr>
+              <th scope="row">Freshness of each row</th>
+              <td>Researched for your order</td>
+              <td>As fresh as when you looked it up</td>
+              <td>Depends on the platform's update cycle</td>
+            </tr>
+            <tr>
+              <th scope="row">Emails verified</th>
+              <td>Two verification tools, on every address, before delivery</td>
+              <td>Whichever checker your team uses, on the rows it gets to</td>
+              <td>Depends on the plan and its credits</td>
+            </tr>
+            <tr>
+              <th scope="row">Time to a usable list of 10,000</th>
+              <td>24 hours, confirmed before you pay</td>
+              <td>Days to weeks, depending on how many people are doing it</td>
+              <td>Depends on filtering, exporting and cleaning inside the tool</td>
+            </tr>
+            <tr>
+              <th scope="row">Commitment</th>
+              <td>None: one list at a time, no seats, no renewal</td>
+              <td>Ongoing, as long as the team keeps doing it</td>
+              <td>A subscription, usually annual</td>
+            </tr>
+            <tr>
+              <th scope="row">What happens when it misses the brief</th>
+              <td>Free rebuild or refund, reported within 7 days</td>
+              <td>Your team finds and fixes the rows</td>
+              <td>Depends on the provider's data policy</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        A platform can be the right call when your reps prospect every day.
+        It is the wrong call when the job is one clean list for one
+        campaign, or when nobody on the team wants to own the searching.
+        The <a class="ed-inline" href="/compare/b2b-data-subscriptions">per list vs per seat comparison</a>{" "}
+        works the two models out in detail.
+      </p>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Scope your list</a>
+          <a class="button cta-secondary" href="/calculator">Cost it against a subscription</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. What to check -->
+  <section class="ed-section ed-tint" aria-labelledby="ls-check">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">BEFORE YOU CHOOSE ANY PROVIDER</p>
+          <h2 id="ls-check">Six questions to ask a list building service</h2>
+        </div>
+        <p>
+          These apply to any provider, including us. Ask them before you pay,
+          and the answers tell you whether the work is actually being done
+          for you or just sold to you.
         </p>
       </div>
       <ol class="ed-checklist">
         <li>
           <span>01</span>
           <div>
-            <h3>Review a sample</h3>
-            <p>
-              Start with up to 100 free leads, one sample per business and
-              adjust the brief before scaling.
-            </p>
+            <h3>When is each record researched?</h3>
+            <p>When you order, against your brief. Not on the provider's own refresh schedule, and not from a stored export.</p>
           </div>
         </li>
         <li>
           <span>02</span>
           <div>
-            <h3>Agree scope and timing</h3>
-            <p>
-              Criteria, volume, fields, splits, price and an estimated delivery
-              date are confirmed before payment.
-            </p>
+            <h3>Do I know the count before I pay?</h3>
+            <p>Yes, and the count that matches your ICP is confirmed before payment. A count confirmed only after you have paid means you are buying a number, not a list.</p>
           </div>
         </li>
         <li>
           <span>03</span>
           <div>
-            <h3>The brief is the standard</h3>
-            <p>
-              Rows outside the agreed criteria, excluded companies, duplicates
-              or missing columns are rebuilt or refunded if reported within 7
-              days.
-            </p>
+            <h3>How are the emails checked, and how many times?</h3>
+            <p>Business emails checked with two independent verification tools, on every address, before the file is delivered.</p>
+          </div>
+        </li>
+        <li>
+          <span>04</span>
+          <div>
+            <h3>Who reviews the finished list?</h3>
+            <p>A person, against the brief you agreed. Duplicates are removed and the rows are read, not just run through a filter.</p>
+          </div>
+        </li>
+        <li>
+          <span>05</span>
+          <div>
+            <h3>What is the standard if it misses the brief?</h3>
+            <p>The brief you agreed is the acceptance standard. Rows outside it, excluded companies, duplicates or missing columns get a free rebuild or a refund.</p>
+          </div>
+        </li>
+        <li>
+          <span>06</span>
+          <div>
+            <h3>Where does the data come from?</h3>
+            <p>Public B2B sources only. No personal emails, no consumer data, and removal requests honored across future lists.</p>
           </div>
         </li>
       </ol>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Ask us the same six</a>
+          <a class="button cta-secondary" href="/data-sources">Read our sources</a>
+        </div>
+      </div>
     </div>
   </section>
-  <FAQ title="Questions about custom B2B lead lists" items={faqs} />
-  <section class="ed-section ed-sources" aria-labelledby="cl-sources">
+
+  <FAQ title="List building service FAQ" items={faqs} />
+
+  <!-- Closing band -->
+  <section class="ed-section ed-tint" id="close-band" aria-labelledby="ls-close">
     <div class="ed-wrap">
-      <h2 id="cl-sources" class="ed-kicker">SOURCES</h2>
-      <ul>
-        <li>
-          <a class="ed-inline" href={stateOfSales} rel="noopener">Salesforce, State of Sales report (2026)</a>
-          <span>Survey of 4,050 sales professionals, published 3 February 2026: the average seller spends 40% of their time selling. Checked 30 September 2026.</span>
-        </li>
-      </ul>
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">FREE SAMPLE. NO CARD. NO CALL.</p>
+          <h2 id="ls-close">Send the brief today, read the sample tomorrow</h2>
+        </div>
+        <p>
+          Up to 100 leads for your ICP arrive within 24 hours. Check the
+          titles, companies, LinkedIn profiles and emails, then confirm the
+          count and price for the full list before you pay anything.
+        </p>
+      </div>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+          <a class="button cta-secondary" href="#packages">See packages</a>
+        </div>
+      </div>
+      <p class="ed-note">
+        Ready made lists for common roles live on the{" "}
+        <a class="ed-inline" href="/lists/vp-of-sales-email-list">VP of Sales list</a> and
+        the <a class="ed-inline" href="/buy-b2b-leads">buy B2B leads hub</a>. The{" "}
+        <a class="ed-inline" href="/compare/apollo-alternatives">Apollo alternatives page</a>{" "}
+        compares the service against the platforms.
+      </p>
     </div>
   </section>
+
   <Contact
+    sampleOnly
     team="Other"
-    heading="Scope your custom list."
-    emphasis="Start with a free sample."
-    closing=""
-    description="Share the audience, exclusions, required fields and intended volume. We’ll confirm feasibility, timing and price before you pay."
-    placeholder="e.g. VP Marketing at B2B software companies, 100 to 1,000 staff, in your target market. Exclude agencies. Email and LinkedIn required."
+    heading="Test us with"
+    emphasis="a free sample."
+    closing="Costs you nothing."
   />
   <Related
     items={[

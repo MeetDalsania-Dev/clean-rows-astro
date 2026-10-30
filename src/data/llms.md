@@ -48,6 +48,7 @@ Key facts:
 ## Comparisons
 
 - [Clean Rows vs B2B data subscriptions](https://www.cleanrowsdata.com/compare/b2b-data-subscriptions): A delivered list priced per list versus a database subscription priced per seat.
+- [Apollo alternatives](https://www.cleanrowsdata.com/compare/apollo-alternatives): Apollo compared with ZoomInfo, Lusha, UpLead, Cognism, Seamless.AI and Clean Rows on pricing model, published starting price, fit and limits.
 
 ## Company and policies
 

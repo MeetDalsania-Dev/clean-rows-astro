@@ -11,6 +11,36 @@ const software = {
   url: toolUrl,
   publisher: { '@id': new URL('/#organization', origin).href },
 };
+const helpFaqs = [
+  [
+    'Is this a real spam filter score?',
+    'No. The score is a pattern check: it starts at 100 and subtracts weighted points for the 18 rule groups in the table above. It is not a prediction from Gmail or Outlook.',
+  ],
+  [
+    'What score should I aim for?',
+    '75 or above, the "Looks clean" band. 50 to 74 is "Needs work", fine for a small test list but not a full campaign. Below 50 is high spam risk; the rewrite is worth doing first.',
+  ],
+  [
+    'Does it check the subject line?',
+    'Yes, on its own, for spam words such as "free" and "urgent", for emoji, and for length over 60 characters. The built in good example keeps the subject quiet and under 45 characters.',
+  ],
+  [
+    'Why did my short email score low?',
+    'The checker flags bodies under 25 words with no link as too thin. Short is fine, but one specific detail about the reader keeps it from reading like a notice.',
+  ],
+  [
+    'Does a high score guarantee inbox placement?',
+    'No. A clean email sent to a bounced address still reaches nobody, which is why a list of verified business emails matters. A copy and clean data both need to be right for the message to land.',
+  ],
+];
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: helpFaqs.map(([name, text]) => ({
+    '@type': 'Question',
+    name,
+    acceptedAnswer: { '@type': 'Answer', text },
+  })),
+};
 ---
 
 <BaseLayout
@@ -18,7 +48,7 @@ const software = {
   scripts="none"
   title="Cold Email Checker: Free Spam Score | Clean Rows"
   description="Paste your cold email for a free 100 point spam score, fixes and what is already working. Back your copy with verified B2B lead lists from Clean Rows."
-  schema={[software]}
+  schema={[software, faqSchema]}
 >
 <link rel="stylesheet" href="/tools.css">
 
@@ -122,6 +152,149 @@ const software = {
         <h3>Length and structure</h3>
         <p>Overly long emails, no clear CTA or a buried value proposition: all of these reduce reply rates. We check for the right balance.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section class="tool-section" id="help">
+  <div class="tool-help-inner">
+    <p class="tool-kicker">How to use it</p>
+    <h2>Check your copy before you spend on sends</h2>
+    <p class="tool-help-lead">
+      The checker runs in your browser, so nothing you paste is stored.
+      It takes two minutes and shows what to fix, not just what is wrong.
+    </p>
+    <h3 class="tool-help-sub">Four steps, start to finish</h3>
+    <ol class="tool-help-steps">
+      <li><strong>Type your subject line.</strong> Under 45 characters and quiet; the checker flags spam words, emoji and length.</li>
+      <li><strong>Set your from name.</strong> A real person, not "Marketing Team". The rules read body and subject together.</li>
+      <li><strong>Paste the body you would actually send.</strong> The two built in examples show the gap between a weak and a strong email.</li>
+      <li><strong>Read the fixes.</strong> Each warning comes with a specific fix, such as cutting to under 150 words.</li>
+    </ol>
+    <p>No account needed. Clear the fields to reset; Control or Command and Return also runs the check.</p>
+  </div>
+</section>
+
+<!-- WHAT THE SCORE MEANS -->
+<section class="tool-section" id="score-meaning">
+  <div class="tool-help-inner">
+    <p class="tool-kicker">What the score means</p>
+    <h2>One number, three honest bands</h2>
+    <p class="tool-help-lead">
+      The score starts at 100 and loses points for every pattern it finds.
+      It is a pattern check, not a prediction from Gmail or Outlook, so treat
+      it as a rewrite guide.
+    </p>
+    <div class="tool-help-scores">
+      <div class="tool-help-score">
+        <strong>75 to 100</strong>
+        <span class="dot-clean" aria-hidden="true"></span>
+        <p>Looks clean. Fix any remaining warnings for better reply rates, then send.</p>
+      </div>
+      <div class="tool-help-score">
+        <strong>50 to 74</strong>
+        <span class="dot-work" aria-hidden="true"></span>
+        <p>Needs work. Fine for a small test list, not for a full campaign.</p>
+      </div>
+      <div class="tool-help-score">
+        <strong>Below 50</strong>
+        <span class="dot-risk" aria-hidden="true"></span>
+        <p>High spam risk. Rewrite using the fixes before you send anywhere.</p>
+      </div>
+    </div>
+    <p>
+      Points are weighted. A missing call to action or a subject full of
+      spam words costs more than a short body, because the first two are
+      what separates a reply from a report.
+    </p>
+  </div>
+</section>
+
+<!-- WHAT EACH CHECK LOOKS FOR -->
+<section class="tool-section" id="checks">
+  <div class="tool-help-inner">
+    <p class="tool-kicker">What it checks</p>
+    <h2>18 checks, grouped by what they protect</h2>
+    <p class="tool-help-lead">
+      Each row is one of the 18 checks; a High weight costs the most points.
+    </p>
+    <p class="tool-help-hint" id="checks-hint">
+      Scroll sideways to see every column.
+    </p>
+    <div
+      class="tool-help-table-wrap"
+      role="region"
+      aria-label="All 18 checks the runner performs"
+      aria-describedby="checks-hint"
+      tabindex="0"
+    >
+      <table class="tool-help-table">
+        <thead>
+          <tr>
+            <th scope="col">Check</th>
+            <th scope="col">What it looks for</th>
+            <th scope="col">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Spam trigger words</th><td>"guaranteed", "act now", "free trial"</td><td>High</td></tr>
+          <tr><th scope="row">Excessive capitalisation</th><td>10 or more capitals in a run</td><td>High</td></tr>
+          <tr><th scope="row">More than one URL</th><td>Two or more links in one email</td><td>Medium</td></tr>
+          <tr><th scope="row">Multiple exclamation marks</th><td>Two in a row</td><td>Medium</td></tr>
+          <tr><th scope="row">Generic opening</th><td>"just reaching out", "hope this finds you"</td><td>Medium</td></tr>
+          <tr><th scope="row">No clear call to action</th><td>No ask: no reply, no book, no yes no answer</td><td>High</td></tr>
+          <tr><th scope="row">Email too long</th><td>Over 180 words</td><td>Medium</td></tr>
+          <tr><th scope="row">Email too thin</th><td>Under 25 words with no link</td><td>Low</td></tr>
+          <tr><th scope="row">Vague value proposition</th><td>"boost your revenue", no number behind it</td><td>Medium</td></tr>
+          <tr><th scope="row">Subject spam signals</th><td>"free", "urgent", "invoice", leading quotes</td><td>High</td></tr>
+          <tr><th scope="row">Subject too long</th><td>Over 60 characters</td><td>Low</td></tr>
+          <tr><th scope="row">HTML or images</th><td>Embedded images or HTML tags</td><td>Medium</td></tr>
+          <tr><th scope="row">Mentions an attachment</th><td>"attached" in first touch copy</td><td>Low</td></tr>
+          <tr><th scope="row">Corporate language</th><td>"value proposition", "we are passionate about"</td><td>Medium</td></tr>
+          <tr><th scope="row">Robotic tone</th><td>"kindly advise", "in my capacity as"</td><td>Low</td></tr>
+          <tr><th scope="row">Emoji in subject</th><td>Any emoji in the subject</td><td>Low</td></tr>
+          <tr><th scope="row">Very long body</th><td>Over 300 words</td><td>Low</td></tr>
+          <tr><th scope="row">Multiple questions</th><td>More than two question marks</td><td>Low</td></tr>
+          <tr><th scope="row">No recipient language</th><td>No "you" or "your"</td><td>Low</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FIXING COMMON ISSUES -->
+<section class="tool-section" id="fixes">
+  <div class="tool-help-inner">
+    <p class="tool-kicker">Fix the common ones fast</p>
+    <h2>The four warnings that move a score most</h2>
+    <p class="tool-help-lead">
+      If you only fix one thing, fix the call to action first. These are the
+      patterns that separate a reply from a flagged email.
+    </p>
+    <h3 class="tool-help-sub">One specific, low friction ask</h3>
+    <p>"Worth a quick look?" or "Reply yes" beats "Let me know your thoughts". One question, one line, answerable from a phone.</p>
+    <h3 class="tool-help-sub">Open with something only true for them</h3>
+    <p>The generic opener check fires on "just reaching out" and "hope you are well". Open with a fact about their company: a launch, a hire, a market they entered.</p>
+    <h3 class="tool-help-sub">Cut to under 150 words</h3>
+    <p>Cold email is read once, on a phone. The sweet spot is 30 to 150 words: keep the ask, keep one specific detail, cut the company pitch.</p>
+    <h3 class="tool-help-sub">Keep the subject under 45 characters</h3>
+    <p>Long subjects get cut off in the inbox; the ones full of "free", "urgent" or "deal" get cut off in the spam folder. The built in good example, "Quick question about your EU expansion", is the template: short, specific, no hype.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="tool-section" id="faq">
+  <div class="tool-help-inner">
+    <p class="tool-kicker">Straight answers</p>
+    <h2>Cold email checker FAQ</h2>
+    <div class="tool-faq">
+      {helpFaqs.map(([question, answer]) => (
+        <details class="tool-faq-item">
+          <summary>{question}</summary>
+          <div class="tool-faq-answer"><p>{answer}</p></div>
+        </details>
+      ))}
     </div>
   </div>
 </section>
