@@ -36,8 +36,13 @@ Key facts:
 
 ## Target lists
 
-- [CEO and founder lists](https://www.cleanrowsdata.com/lists/ceos): Title rules and company criteria.
-- [VP of Sales lists](https://www.cleanrowsdata.com/lists/vp-sales): Sales-leadership title map.
+- [Buy B2B leads](https://www.cleanrowsdata.com/buy-b2b-leads): Hub page. Checklist, provider types, pricing and a browse table of every list.
+- [VP of Sales lists](https://www.cleanrowsdata.com/lists/vp-of-sales-email-list): Sales-leadership title map.
+- [CEO and founder lists](https://www.cleanrowsdata.com/lists/ceo-email-list): Title rules and company criteria.
+- [HR Director lists](https://www.cleanrowsdata.com/lists/hr-director-email-list): HR and people leadership title map.
+- [Marketing Director lists](https://www.cleanrowsdata.com/lists/marketing-director-email-list): CMO, VP and Head of Marketing titles.
+- [CFO lists](https://www.cleanrowsdata.com/lists/cfo-email-list): Finance leadership title map.
+- [CTO lists](https://www.cleanrowsdata.com/lists/cto-email-list): Technology leadership title map.
 - [Fintech lists](https://www.cleanrowsdata.com/lists/fintech): Subsector definitions before contacts.
 
 ## Comparisons

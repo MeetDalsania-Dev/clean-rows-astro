@@ -17,6 +17,21 @@
       "source": "/login",
       "destination": "https://app.cleanrowsdata.com/login",
       "statusCode": 302
+    },
+    {
+      "source": "/lists/vp-sales",
+      "destination": "/lists/vp-of-sales-email-list",
+      "statusCode": 301
+    },
+    {
+      "source": "/lists/ceos",
+      "destination": "/lists/ceo-email-list",
+      "statusCode": 301
+    },
+    {
+      "source": "/lists",
+      "destination": "/buy-b2b-leads",
+      "statusCode": 301
     }
   ],
   "headers": [

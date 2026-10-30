@@ -1,4 +1,5 @@
 ---
+import InlineLinks from "./InlineLinks.astro";
 interface Props {
   label: string;
   title: string;
@@ -9,6 +10,8 @@ interface Props {
   secondary?: string;
   secondaryHref?: string;
   note?: string;
+  proof?: string;
+  noPanel?: boolean;
   panelLabel?: string;
   panelTitle?: string;
   items?: string[][];
@@ -23,6 +26,8 @@ const {
   secondary = "See how it works",
   secondaryHref = "#approach",
   note = "Pay as you go · No seat fees · Freshly sourced",
+  proof,
+  noPanel = false,
   panelLabel = "YOUR CAMPAIGN BRIEF",
   panelTitle = "A better starting point.",
   items = [],
@@ -44,7 +49,7 @@ const {
         </p>
         <h1>{title}</h1>
         <p class="ed-accent">{accent}</p>
-        <p class="ed-intro">{description}</p>
+        <p class="ed-intro"><InlineLinks text={description} /></p>
         <div class="ed-actions">
           <a class="ed-button ed-primary" href={href}>
             {cta}
@@ -55,8 +60,10 @@ const {
             <span aria-hidden="true">↓</span>
           </a>
         </div>
-        <p class="ed-note">{note}</p>
+        {proof && <p class="ed-proof">{proof}</p>}
+        {note && !proof && <p class="ed-note">{note}</p>}
       </div>
+      {!noPanel && (
       <aside class="ed-brief" aria-label={panelLabel}>
         <div class="ed-brief-bar">
           <span class="ed-dots" aria-hidden="true">
@@ -81,6 +88,7 @@ const {
           </div>
         </div>
       </aside>
+      )}
     </div>
   </div>
 </section>

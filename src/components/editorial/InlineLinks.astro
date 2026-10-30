@@ -1,0 +1,14 @@
+---
+// Renders plain copy with [anchor](/path) links as inline editorial links.
+const { text } = Astro.props;
+const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g).filter(Boolean);
+---
+{parts.map((part) =>
+  part.startsWith("[") ? (
+    <a class="ed-inline" href={part.match(/\]\(([^)]+)\)$/)![1]}>
+      {part.slice(1, part.indexOf("]"))}
+    </a>
+  ) : (
+    part
+  ),
+)}

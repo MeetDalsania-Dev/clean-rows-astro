@@ -1,0 +1,384 @@
+---
+// Section stack for the role list pages (Page 01 v3 template), rendered from the
+// verbatim content in src/data/list-roles.ts. The sample section renders only
+// once role.sample.rows is filled in, so nothing sample related is visible yet.
+import type { RolePage } from "../../data/list-roles";
+import Hero from "./Hero.astro";
+import FAQ from "./FAQ.astro";
+import Related from "./Related.astro";
+import Contact from "../Contact.astro";
+import InlineLinks from "./InlineLinks.astro";
+
+const { role } = Astro.props;
+const sampleVisible = role.sample.rows.length > 0;
+---
+
+<Hero
+  label={role.meta.label}
+  title={role.hero.title}
+  accent={role.hero.accent}
+  description={role.hero.intro}
+  cta="Get a free sample"
+  href="#contact"
+  secondary="See packages"
+  secondaryHref="#packages"
+  noPanel
+  proof={role.hero.proof}
+/>
+
+{sampleVisible && (
+  <section class="ed-section ed-tint" aria-labelledby="sample">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">FROM A REAL ORDER</p>
+          <h2 id="sample">{role.sample.heading}</h2>
+        </div>
+        <p>{role.sample.intro}</p>
+      </div>
+      <p class="ed-scroll-hint" id="role-sample-hint">Scroll sideways to see every column.</p>
+      <div
+        class="ed-table-scroll ed-table-light"
+        role="region"
+        aria-label={role.sample.heading}
+        aria-describedby="role-sample-hint"
+        tabindex="0"
+      >
+        <table class="ed-table ed-table-wrap">
+          <thead>
+            <tr>{role.sample.columns.map((c) => <th scope="col">{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {role.sample.rows.map((row) => (
+              <tr>{row.map((cell) => <td>{cell}</td>)}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="ed-section" aria-labelledby="role-fields">
+  <div class="ed-wrap">
+    <div class="ed-section-head">
+      <div>
+        <p class="ed-kicker">WHAT YOU GET</p>
+        <h2 id="role-fields">{role.fields.heading}</h2>
+      </div>
+      <p><InlineLinks text={role.fields.intro} /></p>
+    </div>
+    <p class="ed-scroll-hint" id="role-fields-hint">Scroll sideways to see every column.</p>
+    <div
+      class="ed-table-scroll ed-table-light"
+      role="region"
+      aria-label={role.fields.heading}
+      aria-describedby="role-fields-hint"
+      tabindex="0"
+    >
+      <table class="ed-table ed-table-wrap">
+        <thead>
+          <tr>
+            <th scope="col">Field</th>
+            <th scope="col">What it contains</th>
+            <th scope="col">Coverage notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">First name and last name</th>
+            <td>The name as the person writes it on their professional profile</td>
+            <td>Every row</td>
+          </tr>
+          <tr>
+            <th scope="row">Exact job title</th>
+            <td>The title they use today, for example {role.fields.titleExample}</td>
+            <td>{role.fields.titleNote}</td>
+          </tr>
+          <tr><th scope="row">Company</th><td>Company name</td><td>Every row</td></tr>
+          <tr><th scope="row">Domain</th><td>The company website domain</td><td>Every row, useful for CRM matching</td></tr>
+          <tr><th scope="row">Verified business email</th><td>Work email checked with two verification tools</td><td>Every row. No personal emails</td></tr>
+          <tr><th scope="row">Mobile number</th><td>Direct mobile where one is found in public sources</td><td>Roughly 50 to 60 percent of rows, marked per row</td></tr>
+          <tr><th scope="row">Company HQ phone</th><td>The main company number</td><td>A second route when no mobile is found</td></tr>
+          <tr><th scope="row">Personal LinkedIn URL</th><td>Link to the leader's own profile</td><td>For research and LinkedIn outreach</td></tr>
+          <tr><th scope="row">Company LinkedIn URL</th><td>Link to the company page</td><td>For a quick read on headcount and hiring</td></tr>
+          <tr><th scope="row">Company size</th><td>Employee range</td><td>Every row, matched to your brief</td></tr>
+          <tr><th scope="row">Industry</th><td>The company's industry</td><td>Every row, matched to your brief</td></tr>
+          <tr><th scope="row">Location</th><td>Location for each row</td><td>Every row, filtered to your brief</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ed-note">{role.fields.notIncluded}</p>
+  </div>
+</section>
+
+<section class="ed-section ed-tint" aria-labelledby="role-titles">
+  <div class="ed-wrap">
+    <div class="ed-section-head">
+      <div>
+        <p class="ed-kicker">THE TITLE MAP</p>
+        <h2 id="role-titles">{role.titleMap.heading}</h2>
+      </div>
+      <p>{role.titleMap.intro}</p>
+    </div>
+    <p class="ed-scroll-hint" id="role-titles-hint">Scroll sideways to see every column.</p>
+    <div
+      class="ed-table-scroll ed-table-light"
+      role="region"
+      aria-label={role.titleMap.heading}
+      aria-describedby="role-titles-hint"
+      tabindex="0"
+    >
+      <table class="ed-table ed-table-wrap">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Who it usually is</th>
+            <th scope="col">Include when</th>
+          </tr>
+        </thead>
+        <tbody>
+          {role.titleMap.rows.map(([title, who, when]) => (
+            <tr>
+              <th scope="row">{title}</th>
+              <td>{who}</td>
+              <td>{when}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>{role.titleMap.closing}</p>
+  </div>
+</section>
+
+<section class="ed-section" aria-labelledby="role-count">
+  <div class="ed-wrap ed-split">
+    <div>
+      <p class="ed-kicker">STRAIGHT ANSWER</p>
+      <h2 id="role-count">{role.count.heading}</h2>
+    </div>
+    <div>
+      <p>{role.count.p1}</p>
+      <p>{role.count.p2}</p>
+    </div>
+  </div>
+</section>
+
+<section class="ed-section ed-tint" aria-labelledby="role-filters">
+  <div class="ed-wrap">
+    <div class="ed-section-head">
+      <div>
+        <p class="ed-kicker">COMPANY FILTERS YOU SET</p>
+        <h2 id="role-filters">{role.filters.heading}</h2>
+      </div>
+      <p><InlineLinks text={role.filters.calc} /></p>
+    </div>
+    <div class="ed-table-scroll ed-table-light" role="region" aria-label={role.filters.heading} tabindex="0">
+      <table class="ed-table">
+        <thead>
+          <tr>
+            <th scope="col">Filter</th>
+            <th scope="col">What you can set</th>
+          </tr>
+        </thead>
+        <tbody>
+          {role.filters.rows.map(([filter, value]) => (
+            <tr>
+              <th scope="row">{filter}</th>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="ed-section" aria-labelledby="role-built">
+  <div class="ed-wrap">
+    <div class="ed-section-head">
+      <div>
+        <p class="ed-kicker">HOW IT IS BUILT</p>
+        <h2 id="role-built">{role.built.heading}</h2>
+      </div>
+    </div>
+    <div class="ed-wrap ed-split">
+      <ol class="ed-checklist">
+        {role.built.steps.map(([title, text], i) => (
+          <li>
+            <span>{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{title}</h3>
+              <p><InlineLinks text={text} /></p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Delivery time by list size" tabindex="0">
+        <table class="ed-table">
+          <thead>
+            <tr>
+              <th scope="col">List size</th>
+              <th scope="col">Delivery time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {role.built.delivery.map(([size, time]) => (
+              <tr>
+                <th scope="row">{size}</th>
+                <td>{time}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ed-section ed-tint" aria-labelledby="packages">
+  <div class="ed-wrap">
+    <div class="ed-section-head">
+      <div>
+        <p class="ed-kicker">ONE TIME PACKAGES. NO SEAT FEES.</p>
+        <h2 id="packages">{role.packages.heading}</h2>
+      </div>
+      <p>{role.packages.lead}</p>
+    </div>
+    <div class="ed-plan-cards">
+      {role.packages.rows.map(([name, leads, price, rate, delivery]) => (
+        <article>
+          <h3>{name}</h3>
+          <strong>{price}</strong>
+          <p>{leads} contacts</p>
+          <p class="ed-plan-rate">{rate}</p>
+          <p class="ed-plan-rate">Delivery {delivery}</p>
+        </article>
+      ))}
+    </div>
+    <p class="ed-note"><InlineLinks text={role.packages.note} /></p>
+    <a class="ed-button ed-primary" href="#contact">
+      {role.packages.cta}
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="ed-section" aria-labelledby="role-prebuilt">
+  <div class="ed-wrap">
+    <div class="ed-section-head">
+      <div>
+        <p class="ed-kicker">TWO WAYS TO BUY</p>
+        <h2 id="role-prebuilt">{role.prebuilt.heading}</h2>
+      </div>
+      <p>{role.prebuilt.intro}</p>
+    </div>
+    <p class="ed-scroll-hint" id="role-prebuilt-hint">Scroll sideways to see every column.</p>
+    <div
+      class="ed-table-scroll ed-table-light"
+      role="region"
+      aria-label={role.prebuilt.heading}
+      aria-describedby="role-prebuilt-hint"
+      tabindex="0"
+    >
+      <table class="ed-table ed-table-wrap">
+        <thead>
+          <tr>
+            <th scope="col">Question</th>
+            <th scope="col">Prebuilt list</th>
+            <th scope="col">Clean Rows list built to your ICP</th>
+          </tr>
+        </thead>
+        <tbody>
+          {role.prebuilt.rows.map(([q, them, us]) => (
+            <tr>
+              <th scope="row">{q}</th>
+              <td>{them}</td>
+              <td>{us}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p><InlineLinks text={role.prebuilt.close} /></p>
+  </div>
+</section>
+
+<section class="ed-section ed-tint" aria-labelledby="role-buyers">
+  <div class="ed-wrap">
+    <div class="ed-section-head">
+      <div>
+        <p class="ed-kicker">WHO USES IT</p>
+        <h2 id="role-buyers">{role.useCases.heading}</h2>
+      </div>
+    </div>
+    <div class="ed-table-scroll ed-table-light" role="region" aria-label={role.useCases.heading} tabindex="0">
+      <table class="ed-table">
+        <thead>
+          <tr>
+            <th scope="col">Buyer</th>
+            <th scope="col">How they use the list</th>
+          </tr>
+        </thead>
+        <tbody>
+          {role.useCases.rows.map(([buyer, use]) => (
+            <tr>
+              <th scope="row">{buyer}</th>
+              <td><InlineLinks text={use} /></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <h3 class="ed-subhead">{role.useCases.tipsHeading}</h3>
+    <ul class="ed-two-lists" role="list">
+      {role.useCases.tips.map((tip) => (
+        <li><InlineLinks text={tip} /></li>
+      ))}
+    </ul>
+    <div class="section-cta">
+      <div class="cta-pair">
+        <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+        <a class="button cta-secondary" href="#packages">See packages</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ed-section" aria-labelledby="role-sources">
+  <div class="ed-wrap ed-split">
+    <div>
+      <p class="ed-kicker">SOURCES AND COMPLIANCE</p>
+      <h2 id="role-sources">{role.sources.heading}</h2>
+    </div>
+    <div>
+      <p><InlineLinks text={role.sources.p1} /></p>
+      <p><InlineLinks text={role.sources.p2} /></p>
+    </div>
+  </div>
+</section>
+
+<FAQ title={`${role.meta.label} FAQ`} items={role.faqs} />
+
+<section class="ed-section ed-tint" id="close-band" aria-labelledby="role-close">
+  <div class="ed-wrap">
+    <div class="ed-section-head">
+      <div>
+        <p class="ed-kicker">FREE SAMPLE. NO CARD. NO CALL.</p>
+        <h2 id="role-close">{role.closing.heading}</h2>
+      </div>
+      <p>{role.closing.body}</p>
+    </div>
+    <div class="section-cta">
+      <div class="cta-pair">
+        <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+        <a class="button cta-secondary" href="#packages">See packages</a>
+      </div>
+    </div>
+    <p class="ed-note"><InlineLinks text={role.closing.crossLink} /></p>
+  </div>
+</section>
+
+<Contact sampleOnly team="Other" />
+<Related items={role.related} />

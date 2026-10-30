@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/EditorialLayout.astro";
+import RoleListBody from "../../components/editorial/RoleListBody.astro";
+import { rolePage } from "../../data/list-roles";
+// BreadcrumbList and FAQPage come from EditorialLayout; the doc specific
+// Service block (offers) is passed separately so no schema block is duplicated.
+const role = rolePage("ceo");
+---
+
+<Layout
+  title={role.meta.title}
+  description={role.meta.description}
+  label={role.meta.label}
+  faqs={role.faqs}
+  extraSchema={[role.serviceSchema]}
+>
+  <RoleListBody {role} />
+</Layout>

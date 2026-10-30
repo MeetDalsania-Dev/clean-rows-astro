@@ -1,0 +1,345 @@
+---
+import Layout from "../layouts/EditorialLayout.astro";
+import Hero from "../components/editorial/Hero.astro";
+import FAQ from "../components/editorial/FAQ.astro";
+import Contact from "../components/Contact.astro";
+import InlineLinks from "../components/editorial/InlineLinks.astro";
+
+// Page 02 "Buy B2B leads" (v2 doc): the hub with 301 from /lists. Browse table
+// and ItemList carry all six new role pages plus the existing list rows.
+const faqs = [
+  ["What is a B2B lead list?", "A B2B lead list is a file of people at companies you want to sell to, with their job titles, business emails, phone numbers and company details. Sales teams and agencies load it into a CRM or outreach tool to run cold email, calls and LinkedIn outreach. A good list matches your ideal customer profile on both the person and the company."],
+  ["What is a B2B lead?", "A B2B lead is a person at a business who could buy what you sell, usually because their role, company size and industry fit your ideal customer profile. A lead becomes qualified once they show interest, for example by replying or booking a call."],
+  ["Where can I buy B2B leads?", "You can buy B2B leads from ready made list sellers, from data platforms that sell seat or credit access or from a list building service like Clean Rows. With Clean Rows you send your ICP and we confirm the count and price before you pay. 10,000 contacts cost $199 and arrive within 24 hours."],
+  ["Is it legal to buy B2B leads?", "Buying business contact data from public B2B sources is legal in most places; the rules cover how you contact people. US rules require honest sender details and subject lines, a postal address and a working opt out. In the UK and EU, GDPR also applies and B2B outreach usually relies on legitimate interest with a clear opt out. This is general information, not legal advice."],
+  ["How much does B2B data cost?", "It depends on the model. List sellers charge per file or record, data platforms charge per seat or by credits and list building services charge per list. At Clean Rows, 10,000 verified contacts cost $199 one time, which is $19.90 per 1,000."],
+  ["What is a B2B data provider?", "A B2B data provider is a company that supplies business contact and company data for sales and marketing. Some sell files, some sell access to a searchable platform and some, like Clean Rows, build a list to your brief."],
+  ["How do I build a B2B lead list myself?", "Define your ICP, list the target companies, find the right person at each one on LinkedIn or the company website, then find and verify their business email. It works for a few dozen accounts but takes days at scale. For thousands of contacts, a list built to your brief saves that time."],
+  ["Can I get B2B leads for free?", "You can collect leads free from company websites, LinkedIn and the free tiers of data tools, but you pay in research time. Clean Rows offers a free sample built to your own brief within 24 hours, so you can judge the data before you spend anything."],
+  ["How many leads should I buy?", "Divide the meetings you want by the share of contacts that become meetings. For example, 100 meetings at 1 in 100 needs about 10,000 contacts. Use your own past rates where you have them."],
+  ["How fresh is the data?", "Each list is researched for your order after you send the brief, not exported from a stored database. Every email is checked with two verification tools before delivery."],
+  ["Does every lead include a mobile number?", "No. We find mobile numbers for roughly 50 to 60 percent of rows and mark clearly which rows have one. Every row has the company HQ phone field as a second route."],
+  ["What if the list misses my brief?", "We rebuild it free or refund you. The brief you agree before payment is the standard we check the list against."],
+  ["How fast is delivery?", "10,000 contacts arrive within 24 hours and 50,000 within 48 hours. 1,000 contacts take about 3 hours and 100,000 or more take 5 to 7 business days."],
+];
+
+const browseRows: [string, string, string, string][] = [
+  ["VP of Sales", "VPs of Sales, Heads of Sales, CROs and Chief Sales Officers", "VP of Sales email list", "/lists/vp-of-sales-email-list"],
+  ["CEOs and founders", "CEOs, founders, managing directors and owners", "CEO and founder email lists", "/lists/ceo-email-list"],
+  ["HR Directors", "HR leaders, Heads of People and CHROs for HR tech, benefits and hiring services", "HR Director email list", "/lists/hr-director-email-list"],
+  ["Marketing Directors", "CMOs, VPs and Heads of Marketing for martech, media and events sellers", "Marketing Director email list", "/lists/marketing-director-email-list"],
+  ["CFOs and finance leaders", "CFOs, VPs of Finance and Finance Directors for finance software teams", "CFO email list", "/lists/cfo-email-list"],
+  ["CTOs and tech leaders", "CTOs, VPs of Engineering and IT Directors for dev tools and IT services", "CTO email list", "/lists/cto-email-list"],
+  ["Fintech companies", "Leaders at fintech companies, split by subsector", "fintech companies email list", "/lists/fintech"],
+  ["Clients of an agency", "One list per client ICP for outbound and lead generation agencies", "B2B lead lists for agencies", "/for/agencies"],
+  ["SaaS buyers", "The roles a SaaS sales team sells to", "lead lists for SaaS sales teams", "/for/saas"],
+  ["HR and hiring contacts", "HR leaders and hiring managers for recruitment agencies", "HR contact lists for recruiters", "/for/recruitment"],
+  ["Any other role or industry", "Built from your brief, for example VP of Operations or logistics companies", "custom lead list built to your brief", "/services/custom-lists"],
+];
+
+const itemSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "B2B lead lists by role and industry",
+  itemListElement: browseRows.map(([list, , anchor, url], i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: anchor,
+    url: `https://www.cleanrowsdata.com${url}`,
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Buy B2B leads",
+  serviceType: "B2B lead list building",
+  description:
+    "B2B lead lists built fresh to the buyer's ICP for any role or industry, from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+  url: "https://www.cleanrowsdata.com/buy-b2b-leads",
+  provider: {
+    "@type": "Organization",
+    name: "Clean Rows",
+    url: "https://www.cleanrowsdata.com/",
+    email: "sales@cleanrowsdata.com",
+    founder: { "@type": "Person", name: "Meet Dalsania" },
+  },
+  offers: [
+    { "@type": "Offer", name: "Growth: 10,000 B2B leads", priceCurrency: "USD", url: "https://www.cleanrowsdata.com/buy-b2b-leads#packages", availability: "https://schema.org/InStock", eligibleQuantity: { "@type": "QuantitativeValue", value: 10000, unitText: "contacts" }, price: "199" },
+    { "@type": "Offer", name: "Scale: 50,000 contacts", priceCurrency: "USD", url: "https://www.cleanrowsdata.com/buy-b2b-leads#packages", availability: "https://schema.org/InStock", eligibleQuantity: { "@type": "QuantitativeValue", value: 50000, unitText: "contacts" }, price: "799" },
+    { "@type": "Offer", name: "Starter: 1,000 contacts", priceCurrency: "USD", url: "https://www.cleanrowsdata.com/buy-b2b-leads#packages", availability: "https://schema.org/InStock", eligibleQuantity: { "@type": "QuantitativeValue", value: 1000, unitText: "contacts" }, price: "25" },
+    { "@type": "Offer", name: "Enterprise: 100,000+ contacts, custom quote", priceCurrency: "USD", url: "https://www.cleanrowsdata.com/buy-b2b-leads#packages", availability: "https://schema.org/InStock", eligibleQuantity: { "@type": "QuantitativeValue", value: 100000, unitText: "contacts" } },
+  ],
+};
+
+const packageRows: [string, string, string, string, string][] = [
+  ["Growth", "10,000", "$199", "$19.90", "24 hours"],
+  ["Scale", "50,000", "$799", "$15.98", "48 hours"],
+  ["Enterprise", "100,000+", "Custom quote", "Quoted for your brief", "5 to 7 business days"],
+  ["Starter", "1,000", "$25", "$25.00", "About 3 hours"],
+];
+---
+
+<Layout
+  title="Buy B2B Leads: 10,000 Verified Contacts for $199"
+  description="Buy B2B leads with an 8 point checklist, then get 10,000 verified contacts built to your ICP for $199, one time. A free sample comes in 24 hours."
+  label="Buy B2B leads"
+  faqs={faqs}
+  extraSchema={[itemSchema, serviceSchema]}
+>
+  <Hero
+    label="Buy B2B leads"
+    title="Buy B2B leads"
+    accent="built fresh to your ICP"
+    description="To buy B2B leads safely, check the source, age, verification, ICP fit, fields, count, price model and guarantee before you pay, whoever you buy from. Clean Rows builds [B2B lead lists](https://www.cleanrowsdata.com/) fresh to your ICP and delivers them as a CSV or Google Sheet, with 10,000 contacts ready in 24 hours."
+    cta="Get a free sample"
+    href="#contact"
+    secondary="See packages"
+    secondaryHref="#packages"
+    noPanel
+    proof="10,000 B2B leads for $199. One time. No seats."
+  />
+
+  <!-- 1. Checklist -->
+  <section class="ed-section ed-tint" aria-labelledby="checklist">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">ASK BEFORE YOU PAY</p>
+          <h2 id="checklist">Before you buy B2B leads: an 8 point checklist</h2>
+        </div>
+        <p>Whoever you buy from, ask these eight questions before you pay. The third column shows how we answer them, so you can compare like for like.</p>
+      </div>
+      <p class="ed-scroll-hint" id="bl-checklist-hint">Scroll sideways to see every column.</p>
+      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Buy B2B leads checklist" aria-describedby="bl-checklist-hint" tabindex="0">
+        <table class="ed-table ed-table-wrap">
+          <thead>
+            <tr>
+              <th scope="col">Check</th>
+              <th scope="col">Question to ask</th>
+              <th scope="col">Clean Rows answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">1. Source</th><td>Where does the data come from? Does it include personal emails?</td><td>Public B2B sources only. No consumer data, no personal emails</td></tr>
+            <tr><th scope="row">2. Age</th><td>When was each record gathered?</td><td>Researched for your order after you send the brief</td></tr>
+            <tr><th scope="row">3. Verification</th><td>How are emails verified and when?</td><td>Two verification tools before delivery, then a human review</td></tr>
+            <tr><th scope="row">4. ICP fit</th><td>Can I set titles, seniority, industries, company size and locations?</td><td>Yes, plus target accounts and exclusions</td></tr>
+            <tr><th scope="row">5. Fields</th><td>Which fields do I get and how complete is each one?</td><td>Standard fields on every row; mobile on roughly 50 to 60 percent, marked</td></tr>
+            <tr><th scope="row">6. Count</th><td>How many contacts match my ICP? Will I know before I pay?</td><td>Exact count confirmed before payment</td></tr>
+            <tr><th scope="row">7. Price model</th><td>Am I paying per list, per seat or per credit?</td><td>Per list, one time: 10,000 contacts for $199</td></tr>
+            <tr><th scope="row">8. Guarantee</th><td>What happens if the list misses what I asked for?</td><td>Free rebuild or refund</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>One more test beats all eight: ask for a free sample built to your own brief and check the rows yourself.</p>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+          <a class="button cta-secondary" href="#packages">See packages</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Provider types -->
+  <section class="ed-section" aria-labelledby="bl-providers">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">THREE WAYS TO BUY</p>
+          <h2 id="bl-providers">Where to buy B2B leads: list sellers, data platforms or list building services</h2>
+        </div>
+        <p>There are three ways to buy a B2B list. Each fits a different team, so choose by how you work, not by the size of the database.</p>
+      </div>
+      <p class="ed-scroll-hint" id="bl-providers-hint">Scroll sideways to see every column.</p>
+      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Where to buy B2B leads" aria-describedby="bl-providers-hint" tabindex="0">
+        <table class="ed-table ed-table-wrap">
+          <thead>
+            <tr>
+              <th scope="col">Question</th>
+              <th scope="col">Ready made list sellers</th>
+              <th scope="col">Data platforms</th>
+              <th scope="col">List building services (Clean Rows)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">What you get</th><td>A file from the seller's existing data, sorted into their categories</td><td>Search access to a contact database inside a tool</td><td>A file researched for your brief</td></tr>
+            <tr><th scope="row">How you pay</th><td>Per file or per record</td><td>Monthly or yearly, usually per seat or by credits</td><td>Per list, one time</td></tr>
+            <tr><th scope="row">Who does the work</th><td>The seller, before you buy</td><td>Your team searches, filters and exports</td><td>The service researches and checks the list</td></tr>
+            <tr><th scope="row">Freshness</th><td>Depends on the seller's refresh schedule</td><td>Depends on the platform's update cycle</td><td>Built after you brief us</td></tr>
+            <tr><th scope="row">Fits when</th><td>Your ICP matches the seller's categories exactly</td><td>Your team prospects daily and wants a tool</td><td>You want a specific ICP built and reviewed without seats</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Weighing a seat based tool? See the <a class="ed-inline" href="/compare/b2b-data-subscriptions">per list vs per seat pricing compared</a>.</p>
+    </div>
+  </section>
+
+  <!-- 3. How to buy from Clean Rows -->
+  <section class="ed-section ed-tint" aria-labelledby="bl-how">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">SIX STEPS FROM BRIEF TO FILE</p>
+          <h2 id="bl-how">How to buy B2B leads from Clean Rows</h2>
+        </div>
+        <p>Six steps from brief to file. You see the exact count and price before you pay anything.</p>
+      </div>
+
+      <h3 class="ed-subhead">How we build your list</h3>
+      <ol class="ed-checklist">
+        <li><span>01</span><div><p>You send the brief: roles, seniority, industries, company size, locations, target accounts and exclusions.</p></div></li>
+        <li><span>02</span><div><p>We confirm the exact count and price for your ICP before you pay.</p></div></li>
+        <li><span>03</span><div><p>We research every row from <a class="ed-inline" href="/data-sources">public B2B sources</a>: LinkedIn, company websites, public directories and public filings.</p></div></li>
+        <li><span>04</span><div><p>Each email passes two verification tools and duplicates are removed.</p></div></li>
+        <li><span>05</span><div><p>A person reviews the list against your brief.</p></div></li>
+        <li><span>06</span><div><p>You get a CSV or Google Sheet, ready for your CRM or sequencing tool.</p></div></li>
+      </ol>
+
+      <h3 class="ed-subhead">What is in every lead list</h3>
+      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Fields in every lead list" tabindex="0">
+        <table class="ed-table">
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Coverage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">First name, last name and exact job title</th><td>Every row</td></tr>
+            <tr><th scope="row">Company and domain</th><td>Every row</td></tr>
+            <tr><th scope="row">Verified business email (two verification tools)</th><td>Every row. No personal emails</td></tr>
+            <tr><th scope="row">Mobile number</th><td>Roughly 50 to 60 percent of rows, marked per row</td></tr>
+            <tr><th scope="row">Company HQ phone</th><td>Main company number</td></tr>
+            <tr><th scope="row">Personal LinkedIn URL and company LinkedIn URL</th><td>Per row</td></tr>
+            <tr><th scope="row">Company size, industry and location</th><td>Every row, matched to your brief</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ed-note">No tech stack data: its accuracy is not good enough to sell.</p>
+
+      <h3 class="ed-subhead">How many B2B leads do you need?</h3>
+      <p>Work backward from the meetings you want. Contacts needed equals your meeting target divided by the share of contacts that become meetings.</p>
+      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Sizing example" tabindex="0">
+        <table class="ed-table">
+          <thead>
+            <tr>
+              <th scope="col">Your inputs</th>
+              <th scope="col">Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Meetings you want from the campaign</th><td>100</td></tr>
+            <tr><th scope="row">Share of contacts that turn into a meeting</th><td>1 in 100</td></tr>
+            <tr><th scope="row">Contacts needed</th><td>10,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Use your own rates from past campaigns. If you have none yet, start with one list, track replies and meetings, then size the next order from real numbers. <a class="ed-inline" href="/calculator">Estimate the cost of your list with our calculator</a>.</p>
+
+      <h3 id="packages" class="ed-subhead">B2B lead pricing</h3>
+      <p>10,000 B2B leads cost $199. That is $19.90 per 1,000 contacts, paid once. No seats, no subscription and no credits to use up.</p>
+      <div class="ed-plan-cards" id="plan-options">
+        {packageRows.map(([name, leads, price, rate, delivery]) => (
+          <article>
+            <h4>{name}</h4>
+            <strong>{price}</strong>
+            <p>{leads} contacts</p>
+            <p class="ed-plan-rate">{rate}</p>
+            <p class="ed-plan-rate">Delivery {delivery}</p>
+          </article>
+        ))}
+      </div>
+      <p class="ed-note">The same standard fields come with every package. If the list misses the agreed brief, we rebuild it free or refund you.</p>
+      <a class="ed-button ed-primary" href="#contact">
+        Order 10,000 B2B leads
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <h3 class="ed-subhead">Try a free sample built to your brief</h3>
+      <p>Send your ICP and we deliver a free sample within 24 hours. No card, no call and no signup. Check the titles, companies and emails against your own standards before you order.</p>
+      <a class="ed-button ed-primary" data-sample href="#contact">
+        Get a free sample
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 4. Browse -->
+  <section class="ed-section" id="lists" aria-labelledby="lists">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">BROWSE BY ROLE AND INDUSTRY</p>
+          <h2 id="lists">Browse lead lists by role and industry</h2>
+        </div>
+        <p>Pick a ready brief to start from or send your own. Every list is built to your titles, industries, company size and locations.</p>
+      </div>
+      <p class="ed-scroll-hint" id="bl-browse-hint">Scroll sideways to see every column.</p>
+      <div class="ed-table-scroll ed-table-light" role="region" aria-label="Lead lists by role and industry" aria-describedby="bl-browse-hint" tabindex="0">
+        <table class="ed-table ed-table-wrap">
+          <thead>
+            <tr>
+              <th scope="col">List</th>
+              <th scope="col">Who is on it</th>
+              <th scope="col">Page</th>
+            </tr>
+          </thead>
+          <tbody>
+            {browseRows.map(([list, who, anchor, url]) => (
+              <tr>
+                <th scope="row">{list}</th>
+                <td>{who}</td>
+                <td><a class="ed-inline" href={url}>{anchor}</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+          <a class="button cta-secondary" href="#packages">See packages</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Compliance -->
+  <section class="ed-boundary" aria-labelledby="bl-sources">
+    <div class="ed-wrap">
+      <p class="ed-kicker">SOURCES AND COMPLIANCE</p>
+      <h2 id="bl-sources">Data sources and compliance</h2>
+      <p>
+        We use public B2B sources only and never sell consumer data or personal
+        emails. If someone asks to be removed, we remove them. You stay
+        responsible for how you email: honest sender details, a clear opt out
+        and the rules where your recipients are.
+      </p>
+    </div>
+  </section>
+
+  <FAQ title="Buy B2B leads FAQ" items={faqs} />
+
+  <!-- 6. Closing -->
+  <section class="ed-section ed-tint" aria-labelledby="bl-close">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">START WITH A SAMPLE</p>
+          <h2 id="bl-close">Buy your B2B leads</h2>
+        </div>
+        <p>Tell us who you sell to. We send a free sample within 24 hours, then confirm the count and price for your full list.</p>
+      </div>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+          <a class="button cta-secondary" href="mailto:sales@cleanrowsdata.com">Email sales@cleanrowsdata.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Contact sampleOnly team="Other" />
+</Layout>
