@@ -6,6 +6,7 @@ export const plans = [
     price: "$25",
     volume: "1,000 verified leads",
     rate: "$25.00 per 1,000 leads",
+    delivery: "Delivery about 3 hours",
     features: [
       "Standard prospect and company fields",
       "Built to your agreed ICP",
@@ -17,11 +18,12 @@ export const plans = [
   },
   {
     name: "Growth",
-    badge: "SAVE 20%",
+    badge: "Start here for a campaign",
     for: "For growing outbound campaigns",
     price: "$199",
     volume: "10,000 verified leads",
     rate: "$19.90 per 1,000 leads",
+    delivery: "Delivery in 24 hours",
     features: [
       "Standard prospect and company fields",
       "Built to your agreed ICP",
@@ -29,7 +31,7 @@ export const plans = [
     ],
     ctaText: "Choose this plan",
     dataPlan: "10000",
-    featured: false,
+    featured: true,
   },
   {
     name: "Scale",
@@ -38,6 +40,7 @@ export const plans = [
     price: "$799",
     volume: "50,000 verified leads",
     rate: "$15.98 per 1,000 leads",
+    delivery: "Delivery in 48 hours",
     features: [
       "Standard prospect and company fields",
       "Built to your agreed ICP",
@@ -47,7 +50,7 @@ export const plans = [
     ],
     ctaText: "Choose this plan",
     dataPlan: "50000",
-    featured: true,
+    featured: false,
   },
   {
     name: "Enterprise",
@@ -56,6 +59,7 @@ export const plans = [
     price: "Custom",
     volume: "100,000+ leads",
     rate: "Quoted for your volume and scope",
+    delivery: "Delivery 5 to 7 business days",
     features: [
       "Recurring delivery options",
       "Pricing agreed before you order",

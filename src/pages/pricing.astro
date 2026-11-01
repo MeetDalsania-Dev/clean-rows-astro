@@ -28,18 +28,62 @@ const faqs = [
   ],
   [
     "How long will my list take?",
-    "We confirm the delivery date before payment. Volume, market coverage and specialist research affect the schedule.",
+    "We confirm the delivery date before payment. Delivery is about 3 hours for 1,000 leads, 24 hours for 10,000 and 48 hours for 50,000; orders of 100,000+ take 5 to 7 business days.",
   ],
   [
     "What if the delivered list does not match the brief?",
     "Report mismatches within 7 days of delivery with examples of affected rows. You can choose a rebuild or refund under the refund policy; campaign results are not covered.",
   ],
+  [
+    "Do I get an invoice?",
+    "Yes. Every paid order comes with an invoice for the amount you pay, so you can keep it for your records or share it with your finance team.",
+  ],
+  [
+    "What if my ICP has fewer contacts than a package?",
+    "We confirm the count for your ICP before payment. If fewer people match than the volume you had in mind, we tell you the real number first and you decide whether to adjust the brief or order fewer leads.",
+  ],
+  [
+    "Can I split one package across clients?",
+    "Yes. Splits by client, territory or campaign are agreed in the brief before research starts, and each file can carry the column names your import needs.",
+  ],
+  [
+    "Can I get recurring monthly delivery?",
+    "Yes, on request. Recurring delivery is agreed separately from a one time package: you set the schedule, volume and price in advance, and we confirm coverage before each delivery. Standard packages have no automatic renewal.",
+  ],
+];
+const orderSteps: [string, string][] = [
+  [
+    "Send the brief",
+    "Roles, seniority, industries, company sizes and locations, plus named accounts and exclusions. No portal and no onboarding call.",
+  ],
+  [
+    "Count and price confirmed",
+    "We confirm the exact count for your ICP and the price for it, in writing, before you pay. No padded numbers.",
+  ],
+  [
+    "Research and checks",
+    "Every row is sourced from public B2B sources, each email passes two verification tools, duplicates are removed and a person reviews the list.",
+  ],
+  [
+    "Delivery",
+    "You receive a CSV or Google Sheet in the agreed format and time, with mobile marked on the rows where one was found.",
+  ],
+  [
+    "Rebuild or refund",
+    "If the list misses the agreed brief, report it within 7 days for a free rebuild or a refund.",
+  ],
+];
+const deliveryRows: [string, string][] = [
+  ["1,000 leads", "About 3 hours"],
+  ["10,000 leads", "24 hours"],
+  ["50,000 leads", "48 hours"],
+  ["100,000+ leads", "5 to 7 business days"],
 ];
 ---
 
 <Layout
-  title="B2B Lead List Pricing: From $25 | Clean Rows"
-  description="Compare Clean Rows pricing: $25 for 1,000 leads, $199 for 10,000 and $799 for 50,000. One time packages, no seat fees. Start with 100 free leads."
+  title="B2B Lead List Pricing: 10,000 Contacts for $199 | Clean Rows"
+  description="10,000 B2B leads for $199, one time, no seats or subscription. Four packages, a free sample in 24 hours plus verified business emails in every list."
   label="Pricing"
   faqs={faqs}
   service
@@ -49,15 +93,30 @@ const faqs = [
     title="B2B lead list pricing"
     accent="One clear price."
     description="One time B2B prospect list packages. Choose the volume your campaign needs, agree the brief and get a file your team can share."
-    cta="Compare packages"
-    href="#pricing"
-    secondary="Try 100 free leads"
-    secondaryHref="#contact"
-    panelLabel="THE STARTER PACKAGE"
-    panelTitle="1,000 leads. $25."
+    cta="Get a free sample"
+    samplePrimary
+    secondary="Choose a package"
+    secondaryHref="#pricing"
+    proof="10,000 contacts for $199, one time, no seats."
+    answer={[
+      {
+        label: "What you pay",
+        text: "10,000 contacts for $199, one time, no seats.",
+      },
+      {
+        label: "What you get",
+        text: "A researched B2B list with verified business emails and company details.",
+      },
+      {
+        label: "How fast",
+        text: "Delivered in 24 hours, with a free sample within a day.",
+      },
+    ]}
+    panelLabel="THE GROWTH PACKAGE"
+    panelTitle="10,000 leads. $199."
     items={[
-      ["Prospects", "1,000 leads"],
-      ["Standard fields", "10 enriched field groups"],
+      ["Prospects", "10,000 verified leads"],
+      ["Per 1,000", "$19.90"],
       ["Seat fees", "$0"],
       ["Subscription", "None"],
     ]}
@@ -69,6 +128,89 @@ const faqs = [
   <div class="ed-wrap">
     <p class="ed-note"><a class="ed-inline" href="/calculator">Estimate your list size with our calculator</a> before you pick a package.</p>
   </div>
+
+  <!-- What happens after you order -->
+  <section class="ed-section ed-tint" aria-labelledby="after-order">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">WHAT HAPPENS AFTER YOU ORDER</p>
+          <h2 id="after-order">From brief to a delivered, checked list</h2>
+        </div>
+        <p>
+          Choosing a package opens a request, it does not charge you or start a
+          subscription. These are the five steps, in order, with the delivery
+          time each list size takes.
+        </p>
+      </div>
+      <div class="ed-built">
+        <ol class="ed-step-cards">
+          {orderSteps.map(([title, text], i) => (
+            <li>
+              <span class="ed-step-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <div class="ed-delivery-card" role="region" aria-label="Delivery time by list size" tabindex="0">
+          <p class="ed-kicker">DELIVERY TIME</p>
+          <table class="ed-table">
+            <thead>
+              <tr>
+                <th scope="col">List size</th>
+                <th scope="col">Delivery time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {deliveryRows.map(([size, time]) => (
+                <tr>
+                  <th scope="row">{size}</th>
+                  <td>{time}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Risk reversal -->
+  <section class="ed-section" aria-labelledby="risk-reversal">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">THE RISK IS ON US</p>
+        <h2 id="risk-reversal">You can check the fit before anything is paid</h2>
+        <p>
+          The order is built so you only commit after you have seen the work
+          and the numbers. If it is not right, the cost stays with us, not
+          with you.
+        </p>
+      </div>
+      <div class="ed-two-lists">
+        <article>
+          <h3>Before you pay</h3>
+          <ul>
+            <li>A free sample of 100 leads, no card and no call</li>
+            <li>The count for your ICP confirmed before payment</li>
+            <li>No subscription and no automatic renewal</li>
+          </ul>
+        </article>
+        <article>
+          <h3>After delivery</h3>
+          <ul>
+            <li>Free rebuild or refund if the list misses the brief</li>
+            <li>Report within 7 days with the affected rows</li>
+            <li>An invoice for the amount you pay</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="ed-section ed-tint" id="approach">
     <div class="ed-wrap ed-split">
       <div>
@@ -180,50 +322,6 @@ const faqs = [
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-  </section>
-  <section class="ed-section ed-tint" aria-labelledby="pricing-order">
-    <div class="ed-wrap">
-      <div class="ed-section-head">
-        <div>
-          <p class="ed-kicker">NO CHECKOUT GUESSWORK</p>
-          <h2 id="pricing-order">How to order your custom B2B lead list</h2>
-        </div>
-        <p>
-          Choosing a plan opens a request. It does not charge you or start a
-          subscription.
-        </p>
-      </div>
-      <div class="ed-cards">
-        <article>
-          <span class="ed-index">01</span>
-          <h3>Check the audience</h3>
-          <p>
-            Request a free sample and make sure the roles and companies match
-            what you sell.
-          </p>
-        </article>
-        <article>
-          <span class="ed-index">02</span>
-          <h3>Agree the scope</h3>
-          <p>
-            Confirm volume, available fields, price and timing in a direct
-            conversation.
-          </p>
-        </article>
-        <article>
-          <span class="ed-index">03</span>
-          <h3>Review the delivery</h3>
-          <p>
-            Check your file against the brief. If something does not match, use
-            the{" "}
-            <a class="ed-inline" href="/refund">
-              refund and resolution policy
-            </a>
-            .
-          </p>
-        </article>
       </div>
     </div>
   </section>

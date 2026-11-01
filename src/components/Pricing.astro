@@ -22,7 +22,8 @@ const { heading = 'Pay per list. Never per seat.', description = 'Choose a packa
         <strong class="plan-price">{plan.price}</strong>
         <span class="plan-volume"><span class="sr-only">for </span>{plan.volume}</span>
         <p class="unit-rate">{plan.rate}</p>
-        
+        <p class="unit-rate plan-delivery">{plan.delivery}</p>
+
         <ul>
           {plan.features.map((feature) => (
             <li>{feature}</li>

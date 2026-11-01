@@ -38,12 +38,27 @@
   function reopenRequest() {
     if (form.classList.contains("is-sent")) window.CleanRowsSuccess?.reset(form);
   }
+  // Pricing page conversion events. Fire only on /pricing so other editorial
+  // pages keep their existing behavior; gtag is already consent-gated upstream.
+  const isPricing = pagePath === "/pricing";
+  const packageNames = {
+    "1000": "starter",
+    "10000": "growth",
+    "50000": "scale",
+    "100000+": "enterprise",
+  };
+  function track(event, params) {
+    if (typeof gtag === "function") gtag("event", event, params || {});
+  }
   document.querySelectorAll("[data-plan]").forEach((link) => {
     link.addEventListener("click", () => {
       reopenRequest();
       volume.value = link.dataset.plan;
       window.CleanRowsFormSteps?.show(1, false);
       updateSelection();
+      if (isPricing) {
+        track("select_package", { package: packageNames[link.dataset.plan] || link.dataset.plan });
+      }
     });
   });
   document
@@ -54,6 +69,7 @@
         volume.value = "100";
         window.CleanRowsFormSteps?.show(1, false);
         updateSelection();
+        if (isPricing) track("cta_free_sample");
       });
     });
   volume.addEventListener("change", updateSelection);

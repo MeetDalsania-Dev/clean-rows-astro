@@ -2098,6 +2098,15 @@ html:has(body.editorial) {
 .editorial .ed-delivery-card td {
   padding: 9px 10px;
 }
+/* The delivery card sits in a grid column, so its table must not hold the
+   site-wide 720px min-width or it pushes the page to scroll sideways. */
+.editorial .ed-delivery-card .ed-table {
+  min-width: 0;
+}
+.editorial .ed-delivery-card .ed-table th,
+.editorial .ed-delivery-card .ed-table td {
+  white-space: normal;
+}
 @media (max-width: 1100px) {
   .editorial .ed-built {
     gap: 30px;

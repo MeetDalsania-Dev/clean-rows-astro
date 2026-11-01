@@ -23,6 +23,8 @@ interface Props {
   items?: string[][];
   filePanel?: PanelProps;
   strip?: { strong: string; sub: string }[];
+  answer?: { label: string; text: string }[];
+  samplePrimary?: boolean;
 }
 const {
   label,
@@ -41,6 +43,8 @@ const {
   items = [],
   filePanel,
   strip,
+  answer,
+  samplePrimary = false,
 } = Astro.props;
 const avatarClasses = ["a0", "a1", "a2"];
 ---
@@ -61,11 +65,25 @@ const avatarClasses = ["a0", "a1", "a2"];
         <h1>{title}</h1>
         <p class="ed-accent">{accent}</p>
         <p class="ed-intro"><InlineLinks text={description} /></p>
+        {answer && answer.length > 0 && (
+        <div class="ed-answer">
+          {answer.map((line) => (
+            <p><strong>{line.label}</strong> {line.text}</p>
+          ))}
+        </div>
+        )}
         <div class="ed-actions">
-          <a class="ed-button ed-primary" href={href}>
-            {cta}
-            <span aria-hidden="true">↗</span>
-          </a>
+          {samplePrimary ? (
+            <a class="ed-button ed-primary" data-sample href="#contact">
+              {cta}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <a class="ed-button ed-primary" href={href}>
+              {cta}
+              <span aria-hidden="true">↗</span>
+            </a>
+          )}
           <a class="ed-text-link" href={secondaryHref}>
             {secondary}
             <span aria-hidden="true">↓</span>
