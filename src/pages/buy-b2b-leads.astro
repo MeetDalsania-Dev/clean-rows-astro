@@ -8,6 +8,9 @@ import InlineLinks from "../components/editorial/InlineLinks.astro";
 // Page 02 "Buy B2B leads" (v2 doc): the hub with 301 from /lists. Browse table
 // and ItemList carry all six new role pages plus the existing list rows.
 const faqs = [
+  ["What is a B2B email list?", "A B2B email list is a file of people at the companies you sell to, with exact job titles, verified business emails and company details. Clean Rows builds each one to your ICP and delivers it as a CSV or Google Sheet."],
+  ["Is a B2B mailing list the same as a B2B email list?", "Not always. A B2B mailing list can mean postal addresses, while a B2B email list is built for email and LinkedIn outreach. Our lists carry business emails, LinkedIn URLs and company details, with company HQ phones on every row."],
+  ["Should I buy email lists or build them myself?", "Build it yourself when you need a few dozen contacts and have the time. Buy when you need thousands: 10,000 contacts cost $199 with Clean Rows, researched to your brief and checked with two verification tools."],
   ["What is a B2B lead list?", "A B2B lead list is a file of people at companies you want to sell to, with their job titles, business emails, phone numbers and company details. Sales teams and agencies load it into a CRM or outreach tool to run cold email, calls and LinkedIn outreach. A good list matches your ideal customer profile on both the person and the company."],
   ["What is a B2B lead?", "A B2B lead is a person at a business who could buy what you sell, usually because their role, company size and industry fit your ideal customer profile. A lead becomes qualified once they show interest, for example by replying or booking a call."],
   ["Where can I buy B2B leads?", "You can buy B2B leads from ready made list sellers, from data platforms that sell seat or credit access or from a list building service like Clean Rows. With Clean Rows you send your ICP and we confirm the count and price before you pay. 10,000 contacts cost $199 and arrive within 24 hours."],
@@ -26,11 +29,12 @@ const faqs = [
 const browseRows: [string, string, string, string][] = [
   ["VP of Sales", "VPs of Sales, Heads of Sales, CROs and Chief Sales Officers", "VP of Sales email list", "/lists/vp-of-sales-email-list"],
   ["CEOs and founders", "CEOs, founders, managing directors and owners", "CEO and founder email lists", "/lists/ceo-email-list"],
-  ["HR Directors", "HR leaders, Heads of People and CHROs for HR tech, benefits and hiring services", "HR Director email list", "/lists/hr-director-email-list"],
-  ["Marketing Directors", "CMOs, VPs and Heads of Marketing for martech, media and events sellers", "Marketing Director email list", "/lists/marketing-director-email-list"],
+  ["HR Directors", "HR leaders, Heads of People and CHROs for HR tech, benefits and hiring services", "HR directors email list", "/lists/hr-director-email-list"],
+  ["Marketing Directors", "CMOs, VPs and Heads of Marketing for martech, media and events sellers", "marketing directors email list", "/lists/marketing-director-email-list"],
   ["CFOs and finance leaders", "CFOs, VPs of Finance and Finance Directors for finance software teams", "CFO email list", "/lists/cfo-email-list"],
   ["CTOs and tech leaders", "CTOs, VPs of Engineering and IT Directors for dev tools and IT services", "CTO email list", "/lists/cto-email-list"],
   ["Fintech companies", "Leaders at fintech companies, split by subsector", "fintech companies email list", "/lists/fintech"],
+  ["UK companies", "Decision makers at UK companies by SIC code, postcode and city", "UK business email list", "/b2b-data/uk"],
   ["Clients of an agency", "One list per client ICP for outbound and lead generation agencies", "B2B lead lists for agencies", "/for/agencies"],
   ["SaaS buyers", "The roles a SaaS sales team sells to", "lead lists for SaaS sales teams", "/for/saas"],
   ["HR and hiring contacts", "HR leaders and hiring managers for recruitment agencies", "HR contact lists for recruiters", "/for/recruitment"],
@@ -81,17 +85,17 @@ const packageRows: [string, string, string, string, string][] = [
 ---
 
 <Layout
-  title="Buy B2B Leads: 10,000 Verified Contacts for $199"
-  description="Buy B2B leads with an 8 point checklist, then get 10,000 verified contacts built to your ICP for $199, one time. A free sample comes in 24 hours."
+  title="B2B Email Lists: 10,000 Contacts for $199 | Clean Rows"
+  description="Buy B2B email lists built to your ICP: verified business emails for any role, 10,000 contacts for $199, one time. Buy B2B leads with our checklist first."
   label="Buy B2B leads"
   faqs={faqs}
   extraSchema={[itemSchema, serviceSchema]}
 >
   <Hero
     label="Buy B2B leads"
-    title="Buy B2B leads"
+    title="Buy B2B email lists"
     accent="built fresh to your ICP"
-    description="To buy B2B leads safely, check the source, age, verification, ICP fit, fields, count, price model and guarantee before you pay, whoever you buy from. Clean Rows builds [B2B lead lists](https://www.cleanrowsdata.com/) fresh to your ICP and delivers them as a CSV or Google Sheet, with 10,000 contacts ready in 24 hours."
+    description="A B2B email list is a file of decision makers with verified business emails, exact job titles and company details, built to your ICP. To buy B2B leads safely, check the source, age, verification, ICP fit, fields, count, price model and guarantee before you pay, whoever you buy from. Clean Rows builds [B2B lead lists](https://www.cleanrowsdata.com/) fresh to your ICP and delivers them as a CSV or Google Sheet, with 10,000 contacts ready in 24 hours."
     cta="Get a free sample"
     href="#contact"
     secondary="See packages"
@@ -113,6 +117,41 @@ const packageRows: [string, string, string, string, string][] = [
       { strong: "CSV in 24 hours", sub: "10,000 contacts, delivered as a CSV or Google Sheet" },
     ]}
   />
+
+  <!-- 0. Hub: every B2B email list -->
+  <section class="ed-section" aria-labelledby="bl-hub">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">B2B EMAIL LISTS BY ROLE</p>
+          <h2 id="bl-hub">B2B email lists for every buyer you sell to</h2>
+        </div>
+        <p>
+          When you buy email lists from Clean Rows, each B2B email list is
+          researched to your brief, not pulled from a fixed B2B mailing list.
+          Pick the role you sell to. For any other role, <a class="ed-inline" href="/services/custom-lists">send us a brief</a>.
+          Prices for every package are on the <a class="ed-inline" href="/pricing">B2B lead list pricing page</a>.
+        </p>
+      </div>
+      <div class="ed-related-grid">
+        <a href="/lists/ceo-email-list"><span aria-hidden="true">↗</span><h3>CEO email list</h3><p>CEOs, founders and owners, for anything the top of the company signs off.</p></a>
+        <a href="/lists/vp-of-sales-email-list"><span aria-hidden="true">↗</span><h3>VP of Sales email list</h3><p>Sales leaders and CROs, for sales tools, training and hiring services.</p></a>
+        <a href="/lists/marketing-director-email-list"><span aria-hidden="true">↗</span><h3>Marketing directors email list</h3><p>Marketing Directors and CMOs, for martech, media and events sellers.</p></a>
+        <a href="/lists/hr-director-email-list"><span aria-hidden="true">↗</span><h3>HR directors email list</h3><p>HR Directors and CHROs, for HR tech, benefits and hiring services.</p></a>
+        <a href="/lists/cfo-email-list"><span aria-hidden="true">↗</span><h3>CFO email list</h3><p>CFOs and finance leaders, for finance software and advisory teams.</p></a>
+        <a href="/lists/cto-email-list"><span aria-hidden="true">↗</span><h3>CTO email list</h3><p>CTOs and IT leaders, for dev tools, security and IT services.</p></a>
+        <a href="/b2b-data/uk"><span aria-hidden="true">↗</span><h3>UK business email list</h3><p>Decision makers at UK companies, by SIC code, postcode and city.</p></a>
+        <a href="/lists/fintech"><span aria-hidden="true">↗</span><h3>Fintech companies email list</h3><p>Leaders at fintech companies, split by subsector.</p></a>
+        <a href="/services/custom-lists"><span aria-hidden="true">↗</span><h3>Any other role</h3><p>A list built to your brief, such as VP of Operations or logistics companies.</p></a>
+      </div>
+      <div class="section-cta">
+        <div class="cta-pair">
+          <a class="button cta-primary" data-sample href="#contact">Get a free sample</a>
+          <a class="button cta-secondary" href="#packages">See packages</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- 1. Checklist -->
   <section class="ed-section ed-tint" aria-labelledby="checklist">

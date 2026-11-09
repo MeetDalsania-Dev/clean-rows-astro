@@ -16,7 +16,7 @@ const faqs = [
   ],
   [
     "Does 10 field groups mean exactly 10 spreadsheet columns?",
-    "No. A field group can contain more than one column, such as first and last name or company name and domain. The illustrative CSV on this page uses 13 columns; agree your delivery headers before ordering.",
+    "No. A field group can contain more than one column, such as first and last name or company name and domain. The 13 column preview CSV on this page shows the format; agree your delivery headers before ordering.",
   ],
   [
     "Will every row have a mobile number?",
@@ -39,7 +39,7 @@ const faqs = [
 
 <Layout
   title="B2B Lead Data Fields & CSV Preview | Clean Rows"
-  description="Explore the 10 Clean Rows prospect data field groups, view a fictional CSV preview and understand phone coverage, file formats and import preparation."
+  description="Explore the 10 Clean Rows prospect data field groups, view a CSV preview and understand phone coverage, file formats and import preparation."
   label="Data fields"
   faqs={faqs}
 >
@@ -70,24 +70,24 @@ const faqs = [
         </div>
         <p>
           Comparing B2B email list providers? Look at the file before you buy.
-          This fictional example shows the export structure. Your real sample
+          This file preview shows the export structure. Your real sample
           follows your agreed audience; these are not actual prospects.
         </p>
       </div>
       <div class="ed-file-bar">
-        <span>↳ clean-rows-illustrative.csv</span>
-        <span>FICTIONAL EXAMPLE</span>
+        <span>↳ clean_rows_file_preview.csv</span>
+        <span>FILE PREVIEW</span>
       </div>
       <div
         class="ed-table-scroll"
         role="region"
-        aria-label="Fictional prospect CSV preview"
+        aria-label="Prospect CSV preview"
         tabindex="0"
         aria-describedby="csv-hint"
       >
         <table class="ed-table">
           <caption>
-            5 preview columns from the 13 column illustrative CSV.
+            5 preview columns from the 13 column preview CSV.
           </caption>
           <thead>
             <tr>
@@ -119,11 +119,11 @@ const faqs = [
       <div class="ed-file-footer">
         <p id="csv-hint">
           Scroll sideways on smaller screens. Profile URLs and phones are blank
-          in the download because the records are fictional.
+          in the preview download.
         </p>
         <a
           class="ed-button ed-download"
-          href="/samples/clean-rows-illustrative.csv"
+          href="/samples/clean_rows_file_preview.csv"
           download
         >
           Download example CSV <span aria-hidden="true">↓</span>
@@ -163,7 +163,7 @@ const faqs = [
             <p class="ed-field-note">{field.note}</p>
             <div
               class="ed-field-columns"
-              aria-label="Illustrative column names"
+              aria-label="Column names"
             >
               {field.columns.map((column) => (
                 <code>{column}</code>

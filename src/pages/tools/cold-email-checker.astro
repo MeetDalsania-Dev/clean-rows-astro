@@ -4,7 +4,9 @@ const origin = Astro.site || new URL('https://www.cleanrowsdata.com');
 const toolUrl = new URL('/tools/cold-email-checker', origin).href;
 const software = {
   '@type': 'SoftwareApplication',
-  name: 'Clean Rows Cold Email Checker',
+  name: 'Clean Rows Email Spam Checker',
+  alternateName: 'Cold Email Checker',
+  description: 'A free email spam checker for cold emails: 19 checks covering 120+ spam patterns in the subject and body, with a score out of 100 and specific fixes.',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
@@ -32,6 +34,18 @@ const helpFaqs = [
     'Does a high score guarantee inbox placement?',
     'No. A clean email sent to a bounced address still reaches nobody, which is why a list of verified business emails matters. A copy and clean data both need to be right for the message to land.',
   ],
+  [
+    'Is this email spam checker free?',
+    'Yes. It runs in your browser with no signup and no limit on how many emails you check. Nothing you paste is stored or sent anywhere.',
+  ],
+  [
+    'Does the email spam test check SPF, DKIM or blacklists?',
+    'No. It checks the words and structure of your subject and body: spam phrases, links, images, length, the call to action and tone. Authentication and sender reputation need a separate test with your email provider.',
+  ],
+  [
+    'What does the cold email checker look for?',
+    'It runs 19 checks covering 120+ spam patterns, from trigger words and runs of capitals to vague value claims, robotic tone and a missing call to action. Each check has a weight, so the score shows which fixes matter most.',
+  ],
 ];
 const faqSchema = {
   '@type': 'FAQPage',
@@ -46,8 +60,8 @@ const faqSchema = {
 <BaseLayout
   bodyClass="tools-page"
   scripts="none"
-  title="Cold Email Checker: Free Spam Score | Clean Rows"
-  description="Paste your cold email for a free 100 point spam score, fixes and what is already working. Back your copy with verified B2B lead lists from Clean Rows."
+  title="Email Spam Checker: Free Cold Email Test | Clean Rows"
+  description="A free email spam checker for cold emails: paste your copy for a score out of 100 from 19 checks, with specific fixes. A quick email spam test, no signup."
   schema={[software, faqSchema]}
 >
 <link rel="stylesheet" href="/tools.css">
@@ -56,8 +70,8 @@ const faqSchema = {
 <section class="tool-hero" id="top">
   <div class="tool-hero-inner">
     <p class="tool-kicker">Free. No signup. Runs right here.</p>
-    <h1>Cold Email Spam Checker</h1>
-    <p class="tool-hero-desc">Paste your cold email. Get an instant spam score, warnings and specific fixes before you send it to 1,000 prospects.</p>
+    <h1>Email Spam Checker for Cold Emails</h1>
+    <p class="tool-hero-desc">This free email spam checker reads your cold email against 19 checks and gives you a score out of 100, warnings and specific fixes before you send it to 1,000 prospects.</p>
     <p class="tool-hero-note">19 checks covering 120+ spam patterns. No account required.</p>
   </div>
 </section>
@@ -283,11 +297,36 @@ const faqSchema = {
   </div>
 </section>
 
+<!-- WHAT KIND OF SPAM CHECKER -->
+<section class="tool-section" id="what-it-is">
+  <div class="tool-help-inner">
+    <p class="tool-kicker">What kind of spam checker this is</p>
+    <h2>A spam checker for emails you write, not for your mail server</h2>
+    <p class="tool-help-lead">
+      Most email spam test tools send a message to test inboxes and report
+      where it landed. This one reads the copy instead: it is a cold email
+      checker for the words, links and structure that make a message look
+      like bulk mail.
+    </p>
+    <p>
+      Use it as a spam checker for emails before every new sequence step.
+      It does not send anything, it does not test SPF, DKIM or your domain
+      reputation and it cannot promise inbox placement. It tells you which
+      patterns in your subject and body to fix first.
+    </p>
+    <p>
+      Copy is half of the job; the list is the other half. If your email is
+      ready, see the <a class="tool-link" href="/lists/vp-of-sales-email-list">VP of Sales email list</a> or the <a class="tool-link" href="/lists/marketing-director-email-list">marketing directors email list</a>,
+      check <a class="tool-link" href="/pricing">B2B lead list pricing</a> or <a class="tool-link" href="/#contact" data-sample>request a free sample built to your brief</a>.
+    </p>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="tool-section" id="faq">
   <div class="tool-help-inner">
     <p class="tool-kicker">Straight answers</p>
-    <h2>Cold email checker FAQ</h2>
+    <h2>Email spam checker FAQ</h2>
     <div class="tool-faq">
       {helpFaqs.map(([question, answer]) => (
         <details class="tool-faq-item">

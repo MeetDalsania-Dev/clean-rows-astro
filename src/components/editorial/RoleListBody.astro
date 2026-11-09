@@ -175,6 +175,22 @@ const sampleVisible = role.sample.rows.length > 0;
   </div>
 </section>
 
+{role.extra && (
+  <section class="ed-section" aria-labelledby="role-extra">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">{role.extra.kicker}</p>
+        <h2 id="role-extra">{role.extra.heading}</h2>
+      </div>
+      <div>
+        {role.extra.paragraphs.map((text) => (
+          <p><InlineLinks text={text} /></p>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
 <section class="ed-section ed-tint" aria-labelledby="role-filters">
   <div class="ed-wrap">
     <div class="ed-section-head">

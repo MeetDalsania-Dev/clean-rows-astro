@@ -53,7 +53,7 @@
     $('#savings').textContent = custom ? 'Quote required' : money(result.savings);
     $('#savings-label').textContent = custom
       ? 'Confirm your price before comparing costs'
-      : 'Illustrative difference against the lower comparison estimate';
+      : 'Estimated difference against the lower comparison estimate';
     $('#savings-period').hidden = custom;
     $('#custom-quote-link').hidden = !custom;
     $('#pricing-estimate-note').textContent = custom

@@ -990,3 +990,9 @@ body.tools-page .tool-help-table-wrap:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+.tool-help-inner .tool-link {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

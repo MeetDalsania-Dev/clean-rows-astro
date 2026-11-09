@@ -45,6 +45,8 @@ export interface RolePage {
   sources: { heading: string; p1: string; p2: string };
   faqs: [string, string][];
   closing: { heading: string; body: string; crossLink: string };
+  /** Optional section for secondary search terms, shown after the count section. */
+  extra?: { kicker: string; heading: string; paragraphs: string[] };
   serviceSchema: Record<string, unknown>;
   related: [string, string, string][];
 }
@@ -167,9 +169,9 @@ rolePages.push({
   key: "vp-of-sales",
   slug: "vp-of-sales-email-list",
   meta: {
-    title: "VP of Sales Email List: 10,000 Contacts for $199",
+    title: "VP of Sales Email List: 10,000 for $199 | Clean Rows",
     description:
-      "Buy a VP of Sales email list built fresh to your ICP: 10,000 verified contacts for $199, one time. Exact titles, two email checks, CSV in 24 hours.",
+      "Buy a VP of Sales email list built to your ICP: sales VPs, CROs and chief sales officers. 10,000 verified contacts for $199, one time, CSV in 24 hours.",
     label: "VP of Sales email list",
     serviceName: "VP of Sales email list",
     audience: "B2B teams selling to sales leadership",
@@ -276,12 +278,23 @@ rolePages.push({
     ["How fast will I get my list?", "10,000 contacts arrive within 24 hours and 50,000 within 48 hours. A 1,000 contact list takes about 3 hours and 100,000 or more takes 5 to 7 business days. Files come as a CSV or Google Sheet."],
     ["Can I get a free sample first?", "Yes. Send your brief and we deliver a free sample built to it within 24 hours. No card, no call and no signup."],
     ["Do you include tech stack data?", "No. We leave out tech stack data because its accuracy is not good enough to sell. Every row has the standard contact and company fields listed above."],
+    ["What is a VP email list?", "A VP email list is a file of vice presidents in one or more functions, such as sales, marketing or finance, with verified business emails and company details. We build it to your brief, so you choose the functions, seniority and company filters. Sales tool vendors usually start with VPs of Sales because they own the number."],
+    ["Can you include chief sales officers?", "Yes. Chief sales officers, Chief Revenue Officers and SVPs of Sales can sit in the same file as VPs of Sales. You choose the titles in the brief and we agree the title map before research starts."],
   ],
   closing: {
     heading: "Get a VP of Sales sample built to your brief",
     body: "Tell us the titles, industries, company size and locations you want. We send a free sample within 24 hours, then confirm the count and price for your full list. No card, no call and no signup.",
     crossLink: "Selling to the top of the company instead? See our [CEO and founder email lists](/lists/ceo-email-list). Need another role, such as VP of Operations? We build it as a [custom lead list to your brief](/services/custom-lists).",
+  },  extra: {
+    "kicker": "VP EMAIL LIST",
+    "heading": "VP email list or chief sales officer email list",
+    "paragraphs": [
+      "A VP email list can cover any function, so start with the one that owns your buyer's budget. For sales tools and services that is the VP of Sales. At larger companies the chief sales officer or Chief Revenue Officer sits above them.",
+      "Tell us the titles you want in the brief. A chief sales officer email list for enterprise accounts and a VP of Sales list for mid market software companies can come from the same brief with different title maps. If your buyer sits elsewhere in the company, see the [CEO email list](/lists/ceo-email-list) or the [CFO email list](/lists/cfo-email-list).",
+      "Package prices are on the [B2B lead list pricing page](/pricing): 10,000 contacts cost $199, paid once. Or start with a free sample built to your brief."
+    ]
   },
+
   serviceSchema: serviceSchema(
     "VP of Sales email list",
     "VP of Sales email lists built fresh to the buyer's ICP from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
@@ -302,9 +315,9 @@ rolePages.push({
   key: "ceo",
   slug: "ceo-email-list",
   meta: {
-    title: "CEO Email List: 10,000 CEO and Founder Contacts for $199",
+    title: "CEO Email List: 10,000 Contacts for $199 | Clean Rows",
     description:
-      "Buy a CEO email list built fresh to your ICP: CEOs, founders and owners. 10,000 verified contacts for $199, one time, as a CSV file in 24 hours.",
+      "Buy a CEO email list built to your ICP: CEOs, founders and owners with verified emails. A CEO email database option: 10,000 contacts for $199, one time.",
     label: "CEO email list",
     serviceName: "CEO email list",
     audience: "B2B teams selling to company leaders",
@@ -410,12 +423,23 @@ rolePages.push({
     ["Does every contact include a mobile number?", "No. We find mobile numbers for roughly 50 to 60 percent of rows and mark clearly which rows have one. The company HQ phone field gives you a second route."],
     ["What if the list misses my brief?", "We rebuild it free or refund you. The brief you agree before payment is the standard we check against, so titles, industries, company size and locations must match it."],
     ["How fast will I get my list?", "10,000 contacts arrive within 24 hours and 50,000 within 48 hours. A 1,000 contact list takes about 3 hours and 100,000 or more takes 5 to 7 business days. Files come as a CSV or Google Sheet."],
+    ["Is a CEO mailing list the same as a CEO email list?", "Mostly yes. Both are files of company leaders with contact details, but a mailing list can also mean postal addresses. Our CEO email list has verified business emails, LinkedIn URLs and company details, with mobiles marked where we find them."],
+    ["Can I get chief executive officer emails for one industry only?", "Yes. Industry is part of the brief, along with company size and locations. We confirm the count for that slice before you pay, so you know what the file will hold."],
   ],
   closing: {
     heading: "Get a CEO sample built to your brief",
     body: "Tell us the titles, industries, company size and locations you want. We send a free sample within 24 hours, then confirm the count and price for your full list. No card, no call and no signup.",
     crossLink: "Need a role that is not here? We build it as a [custom lead list to your brief](/services/custom-lists).",
+  },  extra: {
+    "kicker": "CEO EMAIL DATABASE",
+    "heading": "CEO email database, CEO mailing list or a list built to your brief",
+    "paragraphs": [
+      "A CEO email database is a platform you search and export yourself, usually on a subscription. A CEO mailing list from a list seller is a fixed file that someone else defined. Clean Rows does neither: we research chief executive officer email addresses for your brief and deliver the finished file.",
+      "The CEOs, founders and managing directors in your file match your industries, company size and locations. Every address is checked with two verification tools. If the CEO is not your buyer, the [VP of Sales email list](/lists/vp-of-sales-email-list) and the [CFO email list](/lists/cfo-email-list) cover the leaders who often own the budget.",
+      "Package prices are on the [B2B lead list pricing page](/pricing): 10,000 contacts cost $199, paid once. Or start with a free sample built to your brief."
+    ]
   },
+
   serviceSchema: serviceSchema(
     "CEO email list",
     "CEO and founder email lists built fresh to the buyer's ICP from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
@@ -436,18 +460,18 @@ rolePages.push({
   key: "hr-director",
   slug: "hr-director-email-list",
   meta: {
-    title: "HR Director Email List: 10,000 Contacts for $199",
+    title: "HR Directors Email List: 10,000 for $199 | Clean Rows",
     description:
-      "Buy an HR Director email list built fresh to your ICP: 10,000 verified contacts for $199, one time. Exact titles, two email checks, CSV in 24 hours.",
+      "Buy an HR directors email list built to your ICP: HR Directors, Heads of People and CHROs. An HR email database alternative: 10,000 contacts for $199.",
     label: "HR Director email list",
     serviceName: "HR Director email list",
     audience: "B2B teams selling to HR and people leaders",
   },
   hero: {
-    title: "HR Director email list",
+    title: "HR directors email list",
     accent: "built fresh to your ICP",
     intro:
-      "An HR Director email list is a file of HR leaders, such as HR Directors, Heads of People and CHROs, with verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
+      "An HR directors email list (an HR Director email list) is a file of HR leaders, such as HR Directors, Heads of People and CHROs, with verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
     proof: "10,000 HR Director contacts for $199. One time. No seats.",
   },
   heroFile: {
@@ -548,12 +572,24 @@ rolePages.push({
     ["How fast will I get my list?", "10,000 contacts arrive within 24 hours and 50,000 within 48 hours. A 1,000 contact list takes about 3 hours and 100,000 or more takes 5 to 7 business days. Files come as a CSV or Google Sheet."],
     ["Can I get a free sample first?", "Yes. Send your brief and we deliver a free sample built to it within 24 hours. No card, no call and no signup."],
     ["Do you include tech stack data?", "No. We leave out tech stack data because its accuracy is not good enough to sell. Every row has the standard contact and company fields listed above."],
+    ["Can I get a CHRO email list?", "Yes. Add CHRO, Chief People Officer and VP of HR to the titles in your brief. We can deliver them on their own or alongside HR Directors. We confirm the count before you pay."],
+    ["What is in an HR email database from Clean Rows?", "Each row has the name, exact job title, company, domain, verified business email, company HQ phone, LinkedIn URLs, company size, industry and location. Mobiles are found for roughly 50 to 60 percent of rows and marked."],
   ],
   closing: {
     heading: "Get an HR Director sample built to your brief",
     body: "Tell us the titles, industries, company size and locations you want. We send a free sample within 24 hours, then confirm the count and price for your full list. No card, no call and no signup.",
     crossLink: "Selling to sales or company leaders too? See our [VP of Sales email list](/lists/vp-of-sales-email-list). Need another role? We build it as a [custom lead list to your brief](/services/custom-lists).",
+  },  extra: {
+    "kicker": "CHRO AND HR EXECUTIVES",
+    "heading": "CHRO email list and HR executives email list",
+    "paragraphs": [
+      "At larger companies the Chief Human Resources Officer (CHRO) owns people strategy and the budget for HR software, benefits and training. A CHRO email list reaches that person directly. HR Directors and Heads of People run the work day to day.",
+      "Most briefs combine both levels into one human resources email list: CHROs and VPs of HR for enterprise accounts, HR Directors and Heads of People for mid market companies. An HR executives email list is the same file with the senior titles only. You choose the titles and we agree the title map before research starts.",
+      "Use the file as your HR email database for outreach and CRM import. Selling to other leaders as well? See the [marketing directors email list](/lists/marketing-director-email-list) and the [CFO email list](/lists/cfo-email-list).",
+      "Package prices are on the [B2B lead list pricing page](/pricing): 10,000 contacts cost $199, paid once. Or start with a free sample built to your brief."
+    ]
   },
+
   serviceSchema: serviceSchema(
     "HR Director email list",
     "HR Director email lists built fresh to the buyer's ICP from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
@@ -574,18 +610,18 @@ rolePages.push({
   key: "marketing-director",
   slug: "marketing-director-email-list",
   meta: {
-    title: "Marketing Director Email List: 10,000 Contacts for $199",
+    title: "Marketing Directors Email List: 10,000 Leads | Clean Rows",
     description:
-      "Buy a Marketing Director email list built to your ICP: CMOs, VPs and Heads of Marketing. 10,000 verified contacts for $199, one time, CSV in 24 hours.",
+      "A marketing directors email list built to your ICP: Marketing Directors, VPs of Marketing and CMOs. A CMO email database alternative at $199 per 10,000.",
     label: "Marketing Director email list",
     serviceName: "Marketing Director email list",
     audience: "B2B teams selling to marketing leaders",
   },
   hero: {
-    title: "Marketing Director email list",
+    title: "Marketing directors email list",
     accent: "built fresh to your ICP",
     intro:
-      "A Marketing Director email list is a file of marketing leaders, such as CMOs, VPs of Marketing and Marketing Directors, with verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
+      "A marketing directors email list, also called a Marketing Director email list, is a file of marketing leaders, such as CMOs, VPs of Marketing and Marketing Directors, with verified business emails, phone numbers and company details, ready to load into your outreach tool. Clean Rows builds yours fresh to your ICP and delivers it as a CSV or Google Sheet in 24 hours.",
     proof: "10,000 Marketing Director contacts for $199. One time. No seats.",
   },
   heroFile: {
@@ -685,12 +721,24 @@ rolePages.push({
     ["How fast will I get my list?", "10,000 contacts arrive within 24 hours and 50,000 within 48 hours. A 1,000 contact list takes about 3 hours and 100,000 or more takes 5 to 7 business days. Files come as a CSV or Google Sheet."],
     ["Can I get a free sample first?", "Yes. Send your brief and we deliver a free sample built to it within 24 hours. No card, no call and no signup."],
     ["Do you include tech stack data?", "No. We leave out tech stack data because its accuracy is not good enough to sell. Every row has the standard contact and company fields listed above."],
+    ["Is there a CMO email database I can search myself?", "Not with Clean Rows. We do not sell database access; we research a CMO list to your brief and deliver the finished file. 10,000 contacts cost $199, paid once, with no seats."],
+    ["Can one list mix CMOs, Marketing Directors and Marketing Managers?", "Yes. You choose which titles count in the brief and we agree the title map before research starts. Each row shows the exact job title, so you can split the file by level in your outreach tool."],
   ],
   closing: {
     heading: "Get a Marketing Director sample built to your brief",
     body: "Tell us the titles, industries, company size and locations you want. We send a free sample within 24 hours, then confirm the count and price for your full list. No card, no call and no signup.",
     crossLink: "Selling to sales leaders as well? See our [VP of Sales email list](/lists/vp-of-sales-email-list). Need another role? We build it as a [custom lead list to your brief](/services/custom-lists).",
+  },  extra: {
+    "kicker": "MANAGERS AND CMOS",
+    "heading": "Marketing managers email list and CMO email database",
+    "paragraphs": [
+      "Marketing Directors usually run the team and the campaign budget. CMOs set strategy at larger companies and Marketing Managers own channels such as email, events or paid search. The level you need depends on who signs off on what you sell.",
+      "One brief can cover all three: CMOs for enterprise accounts, Marketing Directors for mid market companies and a marketing managers email list for teams that buy channel tools. We do not sell a CMO email database to search; we research the titles you choose and agree the title map before research starts.",
+      "Need other leaders too? See the [HR directors email list](/lists/hr-director-email-list) and the [VP of Sales email list](/lists/vp-of-sales-email-list).",
+      "Package prices are on the [B2B lead list pricing page](/pricing): 10,000 contacts cost $199, paid once. Or start with a free sample built to your brief."
+    ]
   },
+
   serviceSchema: serviceSchema(
     "Marketing Director email list",
     "Marketing Director email lists built fresh to the buyer's ICP from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
@@ -711,9 +759,9 @@ rolePages.push({
   key: "cfo",
   slug: "cfo-email-list",
   meta: {
-    title: "CFO Email List: 10,000 Contacts for $199",
+    title: "CFO Email List: 10,000 Contacts for $199 | Clean Rows",
     description:
-      "Buy a CFO email list built fresh to your ICP: CFOs, VPs of Finance and Finance Directors. 10,000 verified contacts for $199, one time, CSV in 24 hours.",
+      "Buy a CFO email list built to your ICP: CFOs, VPs of Finance and finance directors. A chief financial officer email list at $199 per 10,000, paid once.",
     label: "CFO email list",
     serviceName: "CFO email list",
     audience: "B2B teams selling to finance leaders",
@@ -821,12 +869,24 @@ rolePages.push({
     ["How fast will I get my list?", "10,000 contacts arrive within 24 hours and 50,000 within 48 hours. A 1,000 contact list takes about 3 hours and 100,000 or more takes 5 to 7 business days. Files come as a CSV or Google Sheet."],
     ["Can I get a free sample first?", "Yes. Send your brief and we deliver a free sample built to it within 24 hours. No card, no call and no signup."],
     ["Do you include tech stack data?", "No. We leave out tech stack data because its accuracy is not good enough to sell. Every row has the standard contact and company fields listed above."],
+    ["Can I get a hospital CFO email list?", "Yes. Add hospitals or health systems to your brief, along with company size and location. We build the list to those filters. We confirm the count before you pay. The free sample shows rows built to your brief."],
+    ["Is a CFO email database different from a CFO email list?", "A database is a platform you search yourself, usually on a subscription with seats. Our chief financial officer email list is a finished file built to your brief and paid once: 10,000 contacts for $199."],
   ],
   closing: {
     heading: "Get a CFO sample built to your brief",
     body: "Tell us the titles, industries, company size and locations you want. We send a free sample within 24 hours, then confirm the count and price for your full list. No card, no call and no signup.",
     crossLink: "Selling to the person who runs the company too? See our [CEO and founder email lists](/lists/ceo-email-list). Need another role? We build it as a [custom lead list to your brief](/services/custom-lists).",
+  },  extra: {
+    "kicker": "HOSPITAL AND HEALTHCARE CFOS",
+    "heading": "Hospital CFO email list and healthcare finance leaders",
+    "paragraphs": [
+      "A hospital CFO email list follows the same brief as any other CFO list, with healthcare filters on top. You can ask for hospitals, health systems, clinics and other healthcare providers by company size and location.",
+      "Finance titles in healthcare vary. Alongside the CFO, a brief often includes the VP of Finance, the Controller and the director who runs revenue cycle. Tell us which titles count and we agree the title map before research starts.",
+      "The same file works as a CFO email database for your CRM: verified business emails, company HQ phones and LinkedIn URLs, with mobiles marked where we find them. Selling to other leaders too? See the [CEO email list](/lists/ceo-email-list) and the [HR directors email list](/lists/hr-director-email-list).",
+      "Package prices are on the [B2B lead list pricing page](/pricing): 10,000 contacts cost $199, paid once. Or start with a free sample built to your brief."
+    ]
   },
+
   serviceSchema: serviceSchema(
     "CFO email list",
     "CFO email lists built fresh to the buyer's ICP from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",

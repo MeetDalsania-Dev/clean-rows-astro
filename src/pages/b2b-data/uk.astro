@@ -5,8 +5,16 @@ import PlanStrip from "../../components/editorial/PlanStrip.astro";
 import Contact from "../../components/Contact.astro";
 const faqs = [
   [
+    "What is in a UK business email list?",
+    "Each row has the name, exact job title, company, domain, verified business email, LinkedIn URLs, company size, industry and location, plus the company HQ phone. Mobiles are found for roughly 50 to 60 percent of rows and marked.",
+  ],
+  [
+    "How much does a UK business email list cost?",
+    "10,000 contacts cost $199, paid once, with no seats or subscription. 1,000 contacts cost $25, 50,000 cost $799 and 100,000 or more get a custom quote.",
+  ],
+  [
     "Can I get a UK B2B list by city or postcode or only nationally?",
-    "Yes, both. Brief by nation, city or postcode area or brief nationally by SIC code and title. The free 100 lead sample shows whether your geography and industry combination returns the fit you want before you pay.",
+    "Yes, both. Brief by nation, city or postcode area or brief nationally by SIC code and title. The free sample shows whether your geography and industry combination returns the fit you want before you pay.",
   ],
   [
     "What is a SIC code and do I need one to order?",
@@ -22,7 +30,7 @@ const faqs = [
   ],
   [
     "How is a UK list different from a subscription database?",
-    "A subscription charges per seat per month for access to a database you search yourself, with credits for reveals. Clean Rows charges per finished list: you describe your ideal UK customer, check a free 100 lead sample and pay only for the human reviewed file. Subscriptions suit daily prospectors; pay per list suits campaigns, agencies and founders who want the list done for them.",
+    "A subscription charges per seat per month for access to a database you search yourself, with credits for reveals. Clean Rows charges per finished list: you describe your ideal UK customer, check a free sample and pay only for the human reviewed file. Subscriptions suit daily prospectors; pay per list suits campaigns, agencies and founders who want the list done for them.",
   ],
 ];
 const origin = Astro.site || new URL("https://www.cleanrowsdata.com");
@@ -68,16 +76,16 @@ const schema = [
 ];
 ---
 <BaseLayout
-  title="UK B2B Data Lists | Verified Business Emails by SIC, Postcode and City | Clean Rows"
-  description="Build a verified UK B2B prospect list by SIC code, postcode, city or nation. Human-reviewed lists from $25 per 1,000 leads, with a free 100 lead sample before you pay."
+  title="UK Business Email List by SIC and Postcode | Clean Rows"
+  description="A UK business email list built to your brief by SIC code, postcode, city or nation. UK B2B data with verified emails: 10,000 contacts for $199, paid once."
   schema={schema}
   editorial
 >
   <Hero
     label="UK B2B data"
-    title="UK B2B data lists, built to your brief"
+    title="UK business email list, built to your brief"
     accent="Nations, cities, postcodes and SIC sectors."
-    description="Clean Rows builds verified UK B2B prospect lists by nation, city, postcode area, industry (SIC code), company size and job title. Every list is built fresh to your brief, human reviewed and delivered with name, title, company, verified business email and LinkedIn URL. Pricing starts at $25 for 1,000 leads and you get a free sample built to your brief before you pay anything."
+    description="A UK business email list from Clean Rows is a file of decision makers at UK companies, built by nation, city, postcode area, industry (SIC code), company size and job title. Every list is built fresh to your brief, human reviewed and delivered with name, title, company, verified business email and LinkedIn URL. 10,000 contacts cost $199, paid once. You get a free sample built to your brief before you pay anything."
     cta="Get 100 free UK leads"
     href="/free-sample#contact"
     secondary="See the filters"
@@ -92,6 +100,29 @@ const schema = [
       ["Titles", "Heads of Operations, Finance Director"],
     ]}
   />
+
+  <section class="ed-section ed-tint" aria-labelledby="uk-email-list">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">UK B2B DATA</p>
+        <h2 id="uk-email-list">UK B2B data as a finished UK email list</h2>
+      </div>
+      <div>
+        <p>
+          UK B2B data is often sold as access to a database you search
+          yourself. A UK email list from Clean Rows is a finished file instead:
+          the decision makers who match your brief, with verified business
+          emails, LinkedIn URLs and company details. Every list is researched
+          fresh and reviewed by a person before delivery.
+        </p>
+        <p>
+          Selling to one role? The <a class="ed-inline" href="/lists/ceo-email-list">CEO email list</a> and the <a class="ed-inline" href="/lists/cfo-email-list">CFO email list</a> can both be limited
+          to UK companies. Package prices are on the <a class="ed-inline" href="/pricing">B2B lead list pricing page</a>: 10,000 contacts cost $199,
+          paid once.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <section class="ed-section" aria-labelledby="uk-filters">
     <div class="ed-wrap">
@@ -171,7 +202,7 @@ const schema = [
         </div>
         <p>
           Coverage is agreed in the brief, not promised. A narrow brief returns
-          fewer rows than a broad one and the free 100 lead sample is how the
+          fewer rows than a broad one and the free sample is how the
           buyer sees real coverage before committing.
         </p>
       </div>
@@ -347,8 +378,7 @@ const schema = [
         <p class="ed-kicker">STRAIGHT ANSWERS</p>
         <h2 id="uk-faq-title">UK list FAQs</h2>
         <p>
-          Have a more specific brief?
-          <a class="ed-inline" href="/free-sample#contact">Ask us directly.</a>
+          Have a more specific brief? <a class="ed-inline" href="/free-sample#contact">Ask us directly.</a>
         </p>
       </div>
       <div class="ed-questions">
@@ -393,7 +423,7 @@ const schema = [
         <a href="/free-sample">
           <span aria-hidden="true">↗</span>
           <h3>Free sample</h3>
-          <p>How the 100 lead sample works.</p>
+          <p>How the free sample works.</p>
         </a>
         <a href="/calculator">
           <span aria-hidden="true">↗</span>
