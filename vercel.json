@@ -34,6 +34,11 @@
       "statusCode": 301
     },
     {
+      "source": "/b2b-data",
+      "destination": "/buy-b2b-leads",
+      "statusCode": 301
+    },
+    {
       "source": "/samples/clean-rows-illustrative.csv",
       "destination": "/samples/clean_rows_file_preview.csv",
       "statusCode": 301

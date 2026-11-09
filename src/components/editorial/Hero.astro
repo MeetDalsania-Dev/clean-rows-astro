@@ -26,6 +26,8 @@ interface Props {
   answer?: { label: string; text: string }[];
   samplePrimary?: boolean;
   answerBelow?: boolean;
+  /** Optional middle breadcrumb as [href, label], e.g. the hub page. */
+  crumb?: [string, string];
 }
 const {
   label,
@@ -47,6 +49,7 @@ const {
   answer,
   samplePrimary = false,
   answerBelow = false,
+  crumb,
 } = Astro.props;
 const avatarClasses = ["a0", "a1", "a2"];
 ---
@@ -56,6 +59,12 @@ const avatarClasses = ["a0", "a1", "a2"];
     <nav class="ed-breadcrumb" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span aria-hidden="true">/</span>
+      {crumb && (
+        <>
+          <a href={crumb[0]}>{crumb[1]}</a>
+          <span aria-hidden="true">/</span>
+        </>
+      )}
       <span aria-current="page">{label}</span>
     </nav>
     <div class="ed-hero-grid">

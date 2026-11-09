@@ -59,7 +59,7 @@ const schema = [
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: origin.href },
-      { "@type": "ListItem", position: 2, name: "B2B Data", item: new URL("/b2b-data", origin).href },
+      { "@type": "ListItem", position: 2, name: "B2B email lists", item: new URL("/buy-b2b-leads", origin).href },
       { "@type": "ListItem", position: 3, name: "UK", item: url },
     ],
   },
@@ -82,6 +82,7 @@ const schema = [
   editorial
 >
   <Hero
+    crumb={["/buy-b2b-leads", "B2B email lists"]}
     label="UK B2B data"
     title="UK business email list, built to your brief"
     accent="Nations, cities, postcodes and SIC sectors."
@@ -177,10 +178,13 @@ const schema = [
             <div><dt>L</dt><dd>Real estate activities</dd></div>
             <div><dt>M</dt><dd>Professional, scientific and technical activities</dd></div>
             <div><dt>N</dt><dd>Administrative and support service activities</dd></div>
+            <div><dt>O</dt><dd>Public administration and defence; compulsory social security</dd></div>
             <div><dt>P</dt><dd>Education</dd></div>
             <div><dt>Q</dt><dd>Human health and social work activities</dd></div>
             <div><dt>R</dt><dd>Arts, entertainment and recreation</dd></div>
             <div><dt>S</dt><dd>Other service activities</dd></div>
+            <div><dt>T</dt><dd>Activities of households as employers; undifferentiated goods and services producing activities of households for own use</dd></div>
+            <div><dt>U</dt><dd>Activities of extraterritorial organisations and bodies</dd></div>
           </dl>
         </article>
       <p class="ed-note">
