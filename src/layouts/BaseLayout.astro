@@ -110,7 +110,7 @@ const graph = [
 
   <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'site.css'), 'utf-8')}></style>
   {editorial && <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'editorial.css'), 'utf-8')}></style>}
-  {Astro.url.pathname.startsWith('/b2b-data/uk') && <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'uk.astro.css'), 'utf-8')}></style>}
+  {Astro.url.pathname.startsWith('/b2b-data/') && <style is:inline set:html={readFileSync(join(process.cwd(), 'public', 'uk.astro.css'), 'utf-8')}></style>}
   
   <!-- Google Analytics 4 with Consent Mode: no analytics cookies until the visitor accepts in the cookie banner. -->
   <script is:inline>
@@ -226,16 +226,19 @@ const graph = [
       </div>
       <div class="footer-col">
         <strong>Popular Lists</strong>
-        <a href="/lists/ceo-email-list">CEOs & Founders</a>
-        <a href="/lists/vp-of-sales-email-list">VP of Sales</a>
-        <a href="/lists/hr-director-email-list">HR Directors</a>
-        <a href="/lists/marketing-director-email-list">Marketing Directors</a>
+        <a href="/lists/ceo-email-list">CEOs</a>
         <a href="/lists/cfo-email-list">CFOs</a>
-        <a href="/lists/cto-email-list">CTOs</a>
-        <a href="/lists/fintech">Fintech Companies</a>
+        <a href="/lists/marketing-director-email-list">Marketing Directors</a>
+        <a href="/lists/cio-email-list">CIOs</a>
+        <a href="/lists/law-firms-email-list">Lawyers</a>
+        <a href="/lists/accountants-email-list">Accountants</a>
+        <a href="/lists/manufacturing-email-list">Manufacturing</a>
+        <a href="/lists/business-owners-email-list">Small Business</a>
+        <a href="/buy-b2b-leads">See all lists</a>
       </div>
       <div class="footer-col">
         <strong>Country Data</strong>
+        <a href="/b2b-data/usa">USA B2B Data</a>
         <a href="/b2b-data/uk">UK B2B Data</a>
       </div>
       <div class="footer-col">

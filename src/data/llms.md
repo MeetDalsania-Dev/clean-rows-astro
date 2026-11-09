@@ -26,6 +26,7 @@ Key facts:
 
 ## Country data
 
+- [USA business email list](https://www.cleanrowsdata.com/b2b-data/usa): US B2B data by state, metro area, NAICS or SIC industry code and job title.
 - [UK business email list](https://www.cleanrowsdata.com/b2b-data/uk): UK B2B data by SIC industry code, postcode, city or nation.
 
 ## Who it is for
@@ -49,6 +50,11 @@ Key facts:
 - [Accountants email list](https://www.cleanrowsdata.com/lists/accountants-email-list): CPAs, partners and accounting firm owners by services offered and firm size.
 - [Small business email list](https://www.cleanrowsdata.com/lists/business-owners-email-list): Owners and founders of small companies and local service businesses.
 - [Hotel email list](https://www.cleanrowsdata.com/lists/hotel-email-list): General managers, sales and revenue leaders and owners at independent or chain hotels.
+- [Retail industry email list](https://www.cleanrowsdata.com/lists/retail-email-list): Retail owners, store and operations directors, buyers and ecommerce heads by category and store count.
+- [Banking industry email list](https://www.cleanrowsdata.com/lists/banking-email-list): Bank and credit union executives, branch managers and compliance, risk and IT leaders.
+- [General managers email list](https://www.cleanrowsdata.com/lists/general-managers-email-list): General managers, COOs and operations directors.
+- [Software engineers email list](https://www.cleanrowsdata.com/lists/software-engineers-email-list): Engineers and engineering managers by specialty and seniority; work contacts only, not a candidate database.
+- [Shopify store owners email list](https://www.cleanrowsdata.com/lists/shopify-store-owners-email-list): Owners, founders and ecommerce managers of Shopify stores; the domain field is the store URL.
 - [Fintech lists](https://www.cleanrowsdata.com/lists/fintech): Subsector definitions before contacts.
 
 ## Comparisons

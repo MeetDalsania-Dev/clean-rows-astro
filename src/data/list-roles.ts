@@ -429,7 +429,7 @@ rolePages.push({
   closing: {
     heading: "Get a CEO sample built to your brief",
     body: "Tell us the titles, industries, company size and locations you want. We send a free sample within 24 hours, then confirm the count and price for your full list. No card, no call and no signup.",
-    crossLink: "Need a role that is not here? We build it as a [custom lead list to your brief](/services/custom-lists).",
+    crossLink: "Selling to the person who runs daily operations? See the [general managers email list](/lists/general-managers-email-list). Need a role that is not here? We build it as a [custom lead list to your brief](/services/custom-lists).",
   },  extra: {
     "kicker": "CEO EMAIL DATABASE",
     "heading": "CEO email database, CEO mailing list or a list built to your brief",
@@ -1021,7 +1021,7 @@ rolePages.push({
   closing: {
     heading: "Get a CTO sample built to your brief",
     body: "Tell us the titles, industries, company size and locations you want. We send a free sample within 24 hours, then confirm the count and price for your full list. No card, no call and no signup.",
-    crossLink: "Selling to the person who runs the company too? See our [CEO and founder email lists](/lists/ceo-email-list). Need another role? We build it as a [custom lead list to your brief](/services/custom-lists).",
+    crossLink: "Selling to the engineers on their team? See the [software engineers email list](/lists/software-engineers-email-list). Selling to the person who runs the company too? See our [CEO and founder email lists](/lists/ceo-email-list). Need another role? We build it as a [custom lead list to your brief](/services/custom-lists).",
   },
   serviceSchema: serviceSchema(
     "CTO email list",
@@ -1743,7 +1743,7 @@ rolePages.push({
   closing: {
     heading: "Get a small business email list sample built to your brief",
     body: "Send the business types, company size, locations and owner titles you want. You get a free sample within 24 hours. Then we confirm how many owners match and what the full list costs. No card, no call and no signup.",
-    crossLink: "Selling to the CEOs of larger companies? See the [CEO email list](/lists/ceo-email-list). Selling to small accounting practices? See the [accountants email list](/lists/accountants-email-list).",
+    crossLink: "Selling to the CEOs of larger companies? See the [CEO email list](/lists/ceo-email-list). Selling to the people who run operations? See the [general managers email list](/lists/general-managers-email-list). Selling to online stores? See the [Shopify store owners email list](/lists/shopify-store-owners-email-list).",
   },
   serviceSchema: serviceSchema(
     "Small business email list",
@@ -1898,6 +1898,727 @@ rolePages.push({
   related: [
     ["/lists/business-owners-email-list", "Small business owners", "Owners of small and local businesses."],
     ["/lists/marketing-director-email-list", "Marketing leaders", "CMO, VP and Head of Marketing titles."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 14 Retail
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "retail",
+  slug: "retail-email-list",
+  meta: {
+    title: "Retail Industry Email List: 10,000 for $199 | Clean Rows",
+    description:
+      "A retail industry email list built to your brief: owners, store directors, buyers and ecommerce heads by category and store count. $199 per 10,000.",
+    label: "Retail industry email list",
+    serviceName: "Retail industry email list",
+    audience: "B2B teams selling products, software and services to retailers",
+  },
+  hero: {
+    title: "Retail industry email list",
+    accent: "store, buying and ecommerce leaders",
+    intro:
+      "A retail industry email list from Clean Rows gives you the owners, operations and store directors, merchandising and buying heads and ecommerce leaders at the retailers you target, with verified business emails, phone numbers and company details. We build it to your categories, store counts and locations and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 retail contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "retail_industry_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["OW", "Owner, President"],
+      ["SD", "Director of Stores"],
+      ["BU", "Head of Buying"],
+    ],
+    chips: ["Verified emails", "Store count"],
+  },
+  sample: { heading: "Sample rows from a retail industry email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every retail contact list",
+    intro: fieldsIntro,
+    titleExample: "Director of Store Operations",
+    titleNote: "Every row, checked against your retail title map",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which retail roles a retail industry email list can cover",
+    intro:
+      "Retailers buy in three places. Store operations decide what happens on the shop floor, merchandising decides what goes on the shelf and ecommerce runs the website and online orders. At an independent shop the owner covers all three. Pick the retail roles and we agree the title map with you first.",
+    rows: [
+      ["Owner, President, CEO", "Runs an independent retailer or a small chain", "You sell to single stores and small chains where the owner decides"],
+      ["VP Retail Operations, Director of Stores", "Owns every store, its staff and its standards", "You sell store technology, fixtures, staffing or services"],
+      ["Regional Manager, District Manager", "Runs a group of stores in one area", "You sell to larger chains and need the person closest to the stores"],
+      ["Head of Merchandising, Buying Director, Category Manager", "Chooses which products the stores carry", "You are a brand or wholesaler selling products into stores"],
+      ["Head of Ecommerce, Director of Digital", "Runs the online store and online orders", "You sell ecommerce software, marketing or fulfillment"],
+      ["Head of Loss Prevention, Head of Store Development", "Owns shrink, security or new store openings", "You sell security, store design or construction services"],
+    ],
+    closing:
+      "Tell us which rows you want and whether store managers count at large chains. We leave out sales associates and cashiers unless you ask for them. A buyer list for specialty food stores and an operations list for apparel chains can come from one order with two title rules.",
+  },
+  count: {
+    heading: "How many retail contacts can you get?",
+    p1: "We research every retail list to your brief, so there is no fixed file size. Category and store count set most of the count: independent bookshops in a few regions return far fewer rows than every apparel retailer with five or more stores.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "RETAIL EMAIL LISTS",
+    heading: "Retail email lists by category, channel and store count",
+    paragraphs: [
+      "Retail email lists work well when they follow how your buyer shops for suppliers. A brand pitching new products needs category buyers, while a point of sale company needs the owner of a single shop or the operations head of a chain. So we split the brief by category, store count and channel before research starts.",
+      "Common categories in our retail briefs are apparel and footwear, grocery and specialty food, home and furniture, beauty and personal care, sporting goods, electronics, pet supplies and gift shops. You can ask for store based retailers, online only retailers or both.",
+      "Selling to online stores built on Shopify? See the [Shopify store owners email list](/lists/shopify-store-owners-email-list). Selling to small local shops of every kind? See the [small business email list](/lists/business-owners-email-list). Prices for every package sit on the [B2B lead list pricing page](/pricing).",
+    ],
+  },
+  filters: {
+    heading: "Retailer filters you set",
+    rows: [
+      ["Store count", "Single store retailers, small chains or chains with many stores"],
+      ["Category", "Apparel, grocery, home, beauty, sporting goods, electronics or any category you name"],
+      ["Company size", "Employee bands, for example 10 to 50 or 200 to 1,000"],
+      ["Location", "The locations of the retailers or stores you sell to"],
+      ["Channel", "Store based, online only or both"],
+      ["Exclusions", "Current customers, franchise stores or any domains to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each retail list is built",
+    steps: builtSteps(["Brief", "You send categories, store counts, channels, locations and the retail roles you want. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "Retail industry email list pricing",
+    lead: "10,000 retail contacts cost $199. That comes to $19.90 per 1,000, paid once, with no seats, no subscription and no credits.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 retail contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt retail database or a list built to your brief",
+    intro: "Retailer contacts are sold as prebuilt databases and as lists researched for one order. Here is how they differ.",
+    rows: PREBUILT_ROWS,
+    close: "A prebuilt file can be enough when you want every retailer in a broad category. Store counts and channels change often in retail, so a list built to your brief checks each retailer's current website and stores before it goes in the file. Weighing a data platform instead? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a retail industry email list",
+    rows: [
+      ["Brands and wholesalers", "Reach the buyers and category managers who decide which products go into stores."],
+      ["Retail software companies", "Pitch point of sale, inventory, workforce and ecommerce tools to operations and ecommerce leaders. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Store services and suppliers", "Reach the directors of stores who buy fixtures, security, cleaning, signage and logistics."],
+      ["Agencies running retail outbound", "Build one retail list per client. See [B2B lead lists for agencies](/for/agencies)."],
+    ],
+    tipsHeading: "How to get replies from retail buyers and operators",
+    tips: [
+      "Talk about sales per square foot, margin, stock levels or staff hours. Those are the numbers retail leaders watch.",
+      "Pitch buyers on the product, with price, margin and minimum order in the first email.",
+      "Avoid their peak season. Retailers have little time for new suppliers in the weeks before major holidays.",
+      "Name their category and channel. A grocery chain and an online beauty store have very different problems.",
+      "Offer a trial in one store or one region before a chain wide rollout.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a retail industry email list?", "A retail industry email list is a file of decision makers at retailers, such as owners, directors of stores, buyers and ecommerce heads, with verified business emails and company details. Brands, wholesalers and retail software companies use it for outreach. Clean Rows builds each list fresh to the categories and store counts you choose."],
+    ["Can I filter retailers by store count?", "Yes. Choose single store retailers, small chains or larger chains and we check each retailer's store locator or website for the count. Coverage depends on what each retailer publishes, so we confirm the total before you pay."],
+    ["Can I reach retail buyers for my products?", "Yes. Ask for merchandising heads, buying directors and category managers in your product category. Larger chains usually have a buyer per category, while smaller retailers leave buying to the owner."],
+    ["Do you include online only retailers?", "Yes, if you ask for them. Choose store based retailers, online only retailers or both. For stores built on Shopify, see the Shopify store owners email list."],
+    ["How much does a retail industry email list cost?", "10,000 retail contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Can you leave out franchise stores?", "Yes. Ask for independent and corporate stores only and we leave franchise locations out. Franchise owners can come as a separate group if you want them."],
+    ["How do you verify retail contacts?", "We check every business email with two separate verification tools. A person then reviews titles, categories and store counts against your brief before delivery."],
+    ["Can I get a free sample of a retail list?", "Yes. Send your categories, store counts, locations and roles and we deliver a free sample within 24 hours. No card, no call and no signup."],
+  ],
+  closing: {
+    heading: "Get a retail industry email list sample built to your brief",
+    body: "Send the categories, store counts, channels and roles you want. A free sample arrives within 24 hours, then we confirm the count and price for the full list. No card, no call and no signup.",
+    crossLink: "Selling to online stores on Shopify? See the [Shopify store owners email list](/lists/shopify-store-owners-email-list). Selling to local shop owners? See the [small business email list](/lists/business-owners-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "Retail industry email list",
+    "Retail industry email lists built fresh to the buyer's brief by category, store count, channel and location from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/retail-email-list`,
+    "Growth: 10,000 retail contacts"
+  ),
+  related: [
+    ["/lists/shopify-store-owners-email-list", "Shopify store owners", "Owners and ecommerce managers of Shopify stores."],
+    ["/lists/business-owners-email-list", "Small business owners", "Owners of small and local businesses."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 15 Banking
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "banking",
+  slug: "banking-email-list",
+  meta: {
+    title: "Banking Industry Email List: 10,000 for $199 | Clean Rows",
+    description:
+      "A banking industry email list built to your brief: bank and credit union executives, branch managers and compliance, risk and IT leaders. $199 per 10,000.",
+    label: "Banking industry email list",
+    serviceName: "Banking industry email list",
+    audience: "B2B teams selling software, services and advice to banks and credit unions",
+  },
+  hero: {
+    title: "Banking industry email list",
+    accent: "banks and credit unions",
+    intro:
+      "A banking industry email list from Clean Rows gives you the executives, branch and regional managers and compliance, risk and IT leaders at the banks and credit unions you target, with verified business emails, phone numbers and institution details. We build it to your institution types, sizes and locations and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 banking contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "banking_industry_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["EX", "President, CEO"],
+      ["BR", "Branch Manager"],
+      ["CO", "Chief Compliance Officer"],
+    ],
+    chips: ["Verified emails", "Banks and credit unions"],
+  },
+  sample: { heading: "Sample rows from a banking industry email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every banking contact list",
+    intro: fieldsIntro,
+    titleExample: "SVP, Chief Risk Officer",
+    titleNote: "Every row, checked against your banking title map",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which bank and credit union roles the list can cover",
+    intro:
+      "Banks buy carefully and several people usually sign off. Executives approve the budget, compliance and risk check every new supplier and IT decides whether a system can connect to the core. Branch leaders run the customer side. Tell us which roles to include and we agree the title map before any research.",
+    rows: [
+      ["President, CEO", "Runs the bank or credit union", "You sell strategy, advice or anything the board signs off"],
+      ["CFO, Chief Lending Officer, Chief Operating Officer", "Owns finance, lending or operations across the institution", "You sell lending, payments or operations software"],
+      ["Branch Manager, Regional Manager", "Runs one branch or a group of branches", "You sell branch services, equipment or customer experience tools"],
+      ["Chief Compliance Officer, BSA Officer", "Owns regulatory compliance and anti money laundering checks", "You sell compliance software, audits or training"],
+      ["Chief Risk Officer, Head of Risk", "Owns credit, operational and vendor risk", "You sell risk, fraud or vendor management tools"],
+      ["CIO, CTO, CISO, IT Director", "Owns core systems, digital banking and security", "You sell software, security or IT services that must connect to the core"],
+    ],
+    closing:
+      "Tell us which rows you want and whether branch staff below manager level count. We leave out tellers and loan officers unless you ask for them. A compliance list for community banks and a branch manager list for credit unions can come from one order with two title rules.",
+  },
+  count: {
+    heading: "How many banking contacts can you get?",
+    p1: "There is no fixed banking file, because each list is researched to your brief. Institution type and size set the count: compliance officers at small credit unions return far fewer rows than branch managers at every regional bank in a wide area.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "BANKING EMAIL LIST",
+    heading: "A banking email list or a banking and finance industry email list",
+    paragraphs: [
+      "A banking email list stays with deposit taking institutions: commercial banks, community banks, savings institutions and credit unions. A banking and finance industry email list is wider and can add lenders, payment companies, wealth managers and insurers. Tell us how wide you want it and we set the brief to match.",
+      "Selling to the companies that build financial products rather than the banks that use them? The [fintech companies email list](/lists/fintech) splits fintech by subsector before any contacts are added. For finance leaders at companies outside banking, see the [CFO email list](/lists/cfo-email-list).",
+      "The [B2B lead list pricing page](/pricing) has every package: 10,000 contacts cost $199, paid once. Or start with a free sample built to your banking brief.",
+    ],
+  },
+  filters: {
+    heading: "Bank and credit union filters you set",
+    rows: [
+      ["Institution type", "Commercial banks, community banks, savings institutions or credit unions"],
+      ["Institution size", "Employee bands or branch count, for example single branch or 10 to 50 branches"],
+      ["Location", "The locations of the institutions or branches you sell to"],
+      ["Function", "Executive, branch, compliance and risk or IT and security"],
+      ["Target institutions", "Your own list of banks or credit unions to build from"],
+      ["Exclusions", "Current customers, open deals or any institutions to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each banking list is built",
+    steps: builtSteps(["Brief", "You send institution types, sizes, locations and the banking roles you want, plus any institutions to leave out. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "Banking industry email list pricing",
+    lead: "10,000 banking contacts cost $199, which is $19.90 per 1,000. You pay once, with no seats, no subscription and no credits.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 banking contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt banking database or a list built to your brief",
+    intro: "Banking contacts come as prebuilt databases or as lists researched for your order. This is how they compare.",
+    rows: PREBUILT_ROWS,
+    close: "A prebuilt database can work when you want every bank in a broad category. When your product fits one institution type or function, such as fraud tools for credit union risk teams, a list built to your brief keeps the file to buyers who can say yes. Comparing with a data platform? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a banking industry email list",
+    rows: [
+      ["Banking software vendors", "Pitch digital banking, lending, payments and core related tools to executives and IT leaders. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Compliance and risk firms", "Reach compliance and risk officers who buy audits, training, monitoring and regulatory software."],
+      ["Security and IT service providers", "Reach CIOs and CISOs who own security, infrastructure and vendor reviews."],
+      ["Consultants and agencies", "Reach executives who buy strategy, marketing or growth programs. See [B2B lead lists for agencies](/for/agencies)."],
+    ],
+    tipsHeading: "How to get replies from bank and credit union leaders",
+    tips: [
+      "Lead with risk and regulation. Bankers ask first whether something is safe and compliant, then whether it works.",
+      "Name the institution type. A credit union and a commercial bank have different members, rules and priorities.",
+      "Mention institutions like theirs only when you can name them with permission.",
+      "Expect vendor review. Offer your security and compliance documents early to shorten the cycle.",
+      "Write to compliance and IT as well as the executive. They often hold a veto even when they do not sign.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a banking industry email list?", "A banking industry email list is a file of decision makers at banks and credit unions, such as executives, branch managers and compliance, risk and IT leaders, with verified business emails and institution details. Banking software vendors, compliance firms and consultants use it for outreach. Clean Rows researches each list fresh to the institution types and sizes you choose."],
+    ["Do you include credit unions?", "Yes. Choose credit unions, banks or both in your brief. Credit unions often have smaller teams, so the CEO or a senior manager may cover several roles."],
+    ["Can I target compliance and risk officers only?", "Yes. Ask for Chief Compliance Officers, BSA Officers and Chief Risk Officers and we leave other roles out. We confirm the count for that slice before you pay."],
+    ["Is a banking email list the same as a fintech list?", "No. A banking email list covers banks and credit unions that hold deposits, while a fintech list covers technology companies that build financial products. If you sell to both, the fintech companies email list can sit in the same order."],
+    ["How much does a banking industry email list cost?", "10,000 banking contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Can I get branch managers for every branch?", "Yes. Ask for one contact per branch and we look for the manager at each branch the institution lists. Coverage depends on what each institution publishes, so we confirm the count first."],
+    ["How do you verify banking contacts?", "Each business email passes two separate verification tools. A person then checks titles, institutions and locations against your brief before delivery."],
+    ["Can I see a free sample of a banking list?", "Yes. Send your institution types, sizes, locations and roles and we deliver a free sample within 24 hours. No card, no call and no signup."],
+    ["Is it legal to email bank executives?", "Emailing bank leaders at their work address is allowed in most places when you follow the outreach rules. Identify yourself honestly, give a working opt out and act on every removal request; GDPR also applies in the UK and EU. This is general information, not legal advice."],
+  ],
+  closing: {
+    heading: "Get a banking industry email list sample built to your brief",
+    body: "Send the institution types, sizes, locations and roles you want. We deliver a free sample within 24 hours and then confirm the count and price for the full list. No card, no call and no signup.",
+    crossLink: "Selling to fintech companies too? See the [fintech companies email list](/lists/fintech). Selling to finance leaders outside banking? See the [CFO email list](/lists/cfo-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "Banking industry email list",
+    "Banking industry email lists built fresh to the buyer's brief by institution type, size and location from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/banking-email-list`,
+    "Growth: 10,000 banking contacts"
+  ),
+  related: [
+    ["/lists/fintech", "Fintech companies", "Fintech leaders, split by subsector."],
+    ["/lists/cfo-email-list", "Finance leaders", "CFO, VP of Finance and controller titles."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 16 General managers
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "general-managers",
+  slug: "general-managers-email-list",
+  meta: {
+    title: "General Managers Email List: 10,000 for $199 | Clean Rows",
+    description:
+      "A general managers email list built to your brief: general managers, COOs and operations directors who run the business day to day. $199 per 10,000.",
+    label: "General managers email list",
+    serviceName: "General managers email list",
+    audience: "B2B teams selling to the people who run day to day operations",
+  },
+  hero: {
+    title: "General managers email list",
+    accent: "the people who run the day to day",
+    intro:
+      "A general managers email list from Clean Rows gives you the general managers, COOs, operations directors and operations managers at the companies you target, with verified business emails, phone numbers and company details. We research it to your industries, company sizes and sites and deliver 10,000 contacts as a CSV or Google Sheet within 24 hours.",
+    proof: "10,000 general manager contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "general_managers_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["GM", "General Manager"],
+      ["CO", "COO, VP Operations"],
+      ["OD", "Operations Director"],
+    ],
+    chips: ["Verified emails", "LinkedIn profiles"],
+  },
+  sample: { heading: "Sample rows from a general managers email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every general manager contact list",
+    intro: fieldsIntro,
+    titleExample: "General Manager, Western Region",
+    titleNote: "Every row, checked against your operations title map",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which operations titles a general managers email list can cover",
+    intro:
+      "The general manager is often the person who actually buys. The CEO sets direction, but the GM or operations head chooses the suppliers, tools and services that keep the business running. The title changes with company size and industry, so you choose the titles and we agree the title map before research starts.",
+    rows: [
+      ["General Manager", "Runs a company, site or business unit with profit responsibility", "Always"],
+      ["COO, Chief Operating Officer", "Runs operations across the whole company", "You sell to larger companies where operations has its own executive"],
+      ["VP Operations, Operations Director", "Owns processes, teams and suppliers across sites", "You sell anything that changes how the company runs"],
+      ["Operations Manager", "Runs daily operations at smaller companies or one site", "You sell to small and mid sized companies or need a hands on buyer"],
+      ["Site General Manager, Branch Manager", "Runs one location of a multi site business", "You sell to each location of a chain or group"],
+      ["Managing Director", "The top operating role at many private companies", "You sell to private companies where the MD runs the business"],
+    ],
+    closing:
+      "Tell us which rows you want and whether you need one contact per company or one per site. We leave out supervisors and team leads unless you ask for them. A GM list for car dealerships and an operations director list for logistics firms can come from one order with two title rules.",
+  },
+  count: {
+    heading: "How many general manager contacts can you get?",
+    p1: "We research every list to your brief, so there is no standard size. Industry decides how common the GM title is: dealerships, hotels and restaurants use it at every site, while many offices use Operations Director instead. The titles you include change the count a lot.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "OPERATIONS LEADERS",
+    heading: "Operations directors email list and operating manager contacts",
+    paragraphs: [
+      "An operations directors email list is the same brief one level wider: the directors and VPs who own operations across several sites or teams. Many buyers order both, with general managers for each site and operations directors for the company as a whole.",
+      "Looking for the company operating manager name and email for a set of accounts? Send your company names or domains and we find the person who runs operations at each one, with their verified business email, title and LinkedIn URL.",
+      "If the owner or CEO makes the final call, add titles from the [CEO email list](/lists/ceo-email-list). For owners of small companies, see the [small business email list](/lists/business-owners-email-list). The [B2B lead list pricing page](/pricing) lists every package.",
+    ],
+  },
+  filters: {
+    heading: "Operations filters you set",
+    rows: [
+      ["Industry", "Dealerships, logistics, construction, healthcare, hospitality or any industry you name"],
+      ["Company size", "Employee bands, for example 50 to 200 or 500 to 2,000"],
+      ["Location", "The locations of the companies or sites you sell to"],
+      ["Level", "General managers only or also COOs, VPs and operations managers"],
+      ["Contacts per company", "One per company or one per site"],
+      ["Target accounts and exclusions", "Your own account list to build from, plus customers or domains to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each general managers list is built",
+    steps: builtSteps(["Brief", "You send industries, company size, locations, operations titles and any accounts to include or leave out. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "General managers email list pricing",
+    lead: "10,000 general manager contacts cost $199, which works out at $19.90 per 1,000. One payment, no seats, no subscription and no credits.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 general manager contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt operations database or a list built to your brief",
+    intro: "General manager contacts are sold as prebuilt databases and as lists researched for your order. Here is how the two compare.",
+    rows: PREBUILT_ROWS,
+    close: "General manager is one of the broadest titles in business, so a prebuilt file often mixes site managers, sales GMs and business unit heads. A list built to your brief agrees exactly which kind of GM you want before research starts. Weighing a data platform instead? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a general managers email list",
+    rows: [
+      ["Operations software companies", "Pitch scheduling, field service, maintenance and facilities tools to the people who run them. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["B2B service providers", "Reach GMs who choose staffing, cleaning, security, waste and logistics suppliers."],
+      ["Equipment and supply companies", "Reach operations directors who approve equipment, vehicles and supplies across sites."],
+      ["Agencies running outbound for operations focused clients", "Build one list per client. See [B2B lead lists for agencies](/for/agencies)."],
+    ],
+    tipsHeading: "How to get replies from general managers",
+    tips: [
+      "Talk about the problem on their desk this week: staff shortages, downtime, cost overruns or slow processes.",
+      "Keep it practical. GMs want to know what changes on Monday morning, not a long product story.",
+      "Name their site or region when the title shows it.",
+      "Call where a mobile is found. Many GMs spend the day on site, away from email.",
+      "Copy the operations director when a decision covers several sites.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a general managers email list?", "A general managers email list is a file of general managers, COOs and operations leaders with names, exact titles, verified business emails and company details. Operations software companies and B2B service providers use it to reach the people who run the business day to day. Clean Rows builds each list fresh to the industries and company sizes you choose."],
+    ["Should I contact the general manager or the CEO?", "Contact the general manager for anything used in daily operations, such as services, equipment or operations software. Contact the CEO for company wide decisions or when the company is small enough that the CEO runs operations. You can include both in one brief."],
+    ["Can I get an operations directors email list too?", "Yes. Add Operations Directors, VPs of Operations and COOs to the same brief and we agree the title map before research. Many buyers order both levels together."],
+    ["Can I get the operating manager for each of my target accounts?", "Yes. Send your company names or domains and we find the person who runs operations at each one. We confirm how many accounts we can match before you pay."],
+    ["How much does a general managers email list cost?", "10,000 general manager contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Can I get one general manager per site?", "Yes. Ask for one contact per site and we look for the general manager at each location the company lists. Coverage depends on what each company publishes, so we confirm the count first."],
+    ["How do you verify the emails?", "Every business email goes through two separate verification tools. A person then checks titles, companies and sites against your brief before delivery."],
+    ["Can I get a free sample first?", "Yes. Send your industries, company size, locations and titles and we deliver a free sample within 24 hours. No card, no call and no signup."],
+  ],
+  closing: {
+    heading: "Get a general managers email list sample built to your brief",
+    body: "Send the industries, company size, locations and operations titles you want. Your free sample arrives within 24 hours, then we confirm the count and price for the full list. No card, no call and no signup.",
+    crossLink: "Selling to the CEO as well? See the [CEO email list](/lists/ceo-email-list). Selling to owners of small companies? See the [small business email list](/lists/business-owners-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "General managers email list",
+    "General manager and operations leader email lists built fresh to the buyer's brief by industry, company size and location from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/general-managers-email-list`,
+    "Growth: 10,000 general manager contacts"
+  ),
+  related: [
+    ["/lists/ceo-email-list", "CEOs and founders", "CEO, founder and owner title rules."],
+    ["/lists/business-owners-email-list", "Small business owners", "Owners and founders of small companies."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 17 Software engineers
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "software-engineers",
+  slug: "software-engineers-email-list",
+  meta: {
+    title: "Software Engineers Email List: 10,000 for $199 | Clean Rows",
+    description:
+      "A software engineers email list built to your brief: senior and staff engineers and engineering managers with verified work emails. $199 per 10,000.",
+    label: "Software engineers email list",
+    serviceName: "Software engineers email list",
+    audience: "Technical recruiters and developer tool companies",
+  },
+  hero: {
+    title: "Software engineers email list",
+    accent: "for tech recruiters and developer tools",
+    intro:
+      "A software engineers email list from Clean Rows gives you software engineers, senior and staff engineers and engineering managers at the companies you target, with exact titles, verified work emails, LinkedIn URLs and company details. We build it to your specialties, seniority and locations and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 software engineer contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "software_engineers_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["SE", "Senior Software Engineer"],
+      ["ST", "Staff Engineer"],
+      ["EM", "Engineering Manager"],
+    ],
+    chips: ["Verified work emails", "LinkedIn profiles"],
+  },
+  sample: { heading: "Sample rows from a software engineers email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every software engineer contact list",
+    intro: fieldsIntro,
+    titleExample: "Senior Backend Engineer",
+    titleNote: "Every row, checked against your engineering title map",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which engineering titles a software engineers email list can cover",
+    intro:
+      "Engineering titles say a lot about the person: their seniority, their specialty and sometimes their main language. Recruiters filling a senior backend role and a developer tool company looking for early users need very different slices. You choose the titles and we agree the title map before research starts.",
+    rows: [
+      ["Software Engineer, Developer", "Builds and ships product code", "You need a wide base of engineers at your target companies"],
+      ["Senior Software Engineer", "Leads features and reviews others' code", "You recruit for senior roles or sell tools engineers pick themselves"],
+      ["Staff Engineer, Principal Engineer", "Sets technical direction across teams", "You sell architecture, platform or developer experience tools"],
+      ["Engineering Manager", "Runs a team of engineers and hires for it", "You sell team tools or recruit through the hiring manager"],
+      ["Backend, Frontend, Full Stack or Mobile Engineer", "Engineers named by specialty in their title", "You need one specialty for a role or a product"],
+      ["DevOps, Platform, Data or Machine Learning Engineer", "Engineers who run infrastructure, data or models", "You sell infrastructure, data or machine learning tools"],
+    ],
+    closing:
+      "Tell us which rows you want and how senior the engineers should be. We leave out interns, students and non engineering roles unless you ask. A staff engineer list for platform tools and an engineering manager list for recruiters can come from one order with two title rules.",
+  },
+  count: {
+    heading: "How many software engineer contacts can you get?",
+    p1: "We do not sell a fixed file of developers, so there is no standard size. Specialty and seniority change the count most: staff level machine learning engineers at mid sized companies return far fewer rows than all software engineers at those companies.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "ENGINEERING EMAIL LIST",
+    heading: "An engineering email list for recruiters and developer tool companies",
+    paragraphs: [
+      "Technical recruiters use an engineering email list in two ways. They reach engineering managers who are hiring and they approach engineers at their work address about a new role. The file holds work contacts only: no CVs, no candidate profiles and no personal emails. For lists of employers to win as clients, see [B2B lead lists for recruiters](/for/recruitment).",
+      "Developer tool companies use the same list to reach the engineers who will try the product first, then the [CTO email list](/lists/cto-email-list) to reach the person who signs the contract. A staff engineer who likes a tool is often the one who brings it to the CTO.",
+      "If your buyer runs internal IT rather than product engineering, see the [CIO email list](/lists/cio-email-list). See every package on the [B2B lead list pricing page](/pricing).",
+    ],
+  },
+  filters: {
+    heading: "Engineering filters you set",
+    rows: [
+      ["Specialty", "Backend, frontend, full stack, mobile, DevOps, data or machine learning"],
+      ["Seniority", "Engineers, senior and staff engineers or engineering managers"],
+      ["Language in the title", "For example Python, Java or Go, where engineers name it in their job title"],
+      ["Company type and size", "Software companies or tech teams inside other industries, by employee band"],
+      ["Location", "The locations of the engineers or companies you want"],
+      ["Exclusions", "Your clients, current customers or any companies to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each software engineers list is built",
+    steps: builtSteps(["Brief", "You send specialties, seniority, company types, locations and any companies to leave out, such as your own clients. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "Software engineers email list pricing",
+    lead: "10,000 software engineer contacts cost $199. Each 1,000 contacts works out at $19.90, paid once, with no seats and no subscription.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 engineer contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt developer database or a list built to your brief",
+    intro: "Engineer contacts are sold as prebuilt developer databases and as lists researched for one order. Here is how they differ.",
+    rows: PREBUILT_ROWS,
+    close: "Engineers change jobs often, so the date a file was gathered matters a lot for this list. A list built to your brief is researched after you order, against the specialty and seniority you set. Comparing with a seat based platform? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a software engineers email list",
+    rows: [
+      ["Technical recruiters and agencies", "Reach engineering managers who are hiring and engineers who match an open role. See [B2B lead lists for recruiters](/for/recruitment)."],
+      ["Developer tool companies", "Reach the engineers who try tools first, then their managers. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Developer events and training providers", "Invite engineers by specialty to events, courses and certification programs."],
+      ["Developer relations teams", "Reach engineers at target accounts before a sales conversation starts."],
+    ],
+    tipsHeading: "How to get replies from software engineers",
+    tips: [
+      "Be specific. Name the stack, the problem or the role in the first line.",
+      "Skip the hype. Engineers reply to plain facts, a short example and a clear ask.",
+      "For roles, share the salary range, team and tech up front. Engineers rarely reply to vague openings.",
+      "For tools, offer a free tier, docs or a repo link instead of a sales call.",
+      "Send one follow up at most. Engineers notice and dislike long automated sequences.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a software engineers email list?", "A software engineers email list is a file of engineers and engineering managers with names, exact titles, verified work emails, LinkedIn URLs and company details. Technical recruiters and developer tool companies use it for outreach. Clean Rows builds each list fresh to the specialties and seniority you choose."],
+    ["Is this a candidate database?", "No. The file holds work contacts for outreach: names, titles, work emails and company details. It has no CVs, candidate profiles or personal emails."],
+    ["Do you include personal or GitHub emails?", "No. We only include verified business emails at the engineer's current company. LinkedIn URLs are included, so you can also reach engineers there."],
+    ["Can I filter engineers by programming language?", "Only through the job title. If engineers name a language in their title, such as Senior Python Engineer, we can filter on it. We do not sell tech stack data, so there is no language field beyond the title."],
+    ["How much does a software engineers email list cost?", "10,000 software engineer contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Can I leave out my clients' engineers?", "Yes. Send your client and off limits company list and we leave those companies out. Recruiters usually send this list with every brief."],
+    ["How do you verify engineer emails?", "Every work email passes two separate verification tools. A person then checks titles, specialties and companies against your brief before delivery."],
+    ["Can I get a free sample of an engineering list?", "Yes. Send your specialties, seniority, company types and locations and we deliver a free sample within 24 hours. No card, no call and no signup."],
+  ],
+  closing: {
+    heading: "Get a software engineers email list sample built to your brief",
+    body: "Send the specialties, seniority, company types and locations you want. We deliver a free sample in 24 hours and confirm the count and price for the full engineering list afterwards. No card, no call and no signup.",
+    crossLink: "Selling to the person who signs for engineering tools? See the [CTO email list](/lists/cto-email-list). Recruiting? See [B2B lead lists for recruiters](/for/recruitment).",
+  },
+  serviceSchema: serviceSchema(
+    "Software engineers email list",
+    "Software engineer and engineering manager email lists built fresh to the buyer's brief by specialty, seniority and location from public B2B sources. Work emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/software-engineers-email-list`,
+    "Growth: 10,000 software engineer contacts"
+  ),
+  related: [
+    ["/lists/cto-email-list", "Engineering leaders", "CTO, VP and Head of Engineering titles."],
+    ["/lists/cio-email-list", "IT leaders", "CIO and IT Director title map."],
+    ["/for/recruitment", "Lists for recruiters", "Employer lists to win new clients."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 18 Shopify store owners
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "shopify-store-owners",
+  slug: "shopify-store-owners-email-list",
+  meta: {
+    title: "Shopify Store Owners Email List: 10,000 Leads | Clean Rows",
+    description:
+      "A Shopify store owners email list built to your brief: owners, founders and ecommerce managers by category, store size and location. $199 per 10,000.",
+    label: "Shopify store owners email list",
+    serviceName: "Shopify store owners email list",
+    audience: "B2B teams selling apps, services and supplies to Shopify stores",
+  },
+  hero: {
+    title: "Shopify store owners email list",
+    accent: "owners and ecommerce managers",
+    intro:
+      "A Shopify store owners email list from Clean Rows gives you the owners, founders and ecommerce managers of the Shopify stores you target, with verified business emails, phone numbers, store URLs and company details. We build it to your product categories, store sizes and locations and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 Shopify store contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "shopify_store_owners_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["OW", "Store Owner, Founder"],
+      ["EM", "Ecommerce Manager"],
+      ["HG", "Head of Growth"],
+    ],
+    chips: ["Verified emails", "Store URLs"],
+  },
+  sample: { heading: "Sample rows from a Shopify store owners email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every Shopify store contact list",
+    intro: fieldsIntro + " On this list the domain field is the store URL.",
+    titleExample: "Founder and CEO",
+    titleNote: "Every row, checked against your store title rules",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which roles a Shopify store owners email list can cover",
+    intro:
+      "Most Shopify stores are small teams, so the owner or founder decides almost everything. Growing brands add an ecommerce manager or a head of growth who chooses apps, agencies and marketing. You choose the roles and we agree the title rules before research starts.",
+    rows: [
+      ["Owner, Store Owner", "Owns and runs the store", "Always"],
+      ["Founder, Cofounder, CEO", "Started the brand and usually still decides on spend", "You sell to brands rather than one person shops"],
+      ["Ecommerce Manager, Head of Ecommerce", "Runs the store, apps, orders and fulfillment", "You sell Shopify apps, fulfillment or store services"],
+      ["Head of Growth, Marketing Manager", "Owns ads, email, reviews and conversion", "You sell marketing tools or agency services"],
+      ["Operations Manager", "Runs stock, suppliers and shipping", "You sell logistics, packaging or inventory tools"],
+      ["Brand Manager at larger stores", "Owns the brand and product launches", "You sell creative, content or product services"],
+    ],
+    closing:
+      "Tell us which rows you want and whether one contact per store is enough. Most Shopify briefs ask for the owner or founder only. We leave out customer service and warehouse staff unless you ask for them.",
+  },
+  count: {
+    heading: "How many Shopify store contacts can you get?",
+    p1: "We research every Shopify list to your brief, so there is no fixed file size. Product category and store size set the count: pet supply stores with a small team return far fewer rows than every apparel store on the platform.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "SHOPIFY STORES LIST",
+    heading: "A Shopify stores list with the owner behind each store",
+    paragraphs: [
+      "A Shopify stores list on its own gives you storefronts. This list adds the person who runs each one: the owner, founder or ecommerce manager, with a verified business email. The store URL sits in the domain field, so you can open each storefront before you write.",
+      "Store platform is part of the brief, not a column in the file: every store is checked during research to confirm it runs on Shopify. Clean Rows is not affiliated with Shopify. The file still has no tech stack data beyond that targeting rule.",
+      "Selling to retailers with physical stores too? See the [retail industry email list](/lists/retail-email-list). For owners of local businesses of every kind, see the [small business email list](/lists/business-owners-email-list). You will find every package on the [B2B lead list pricing page](/pricing).",
+    ],
+  },
+  filters: {
+    heading: "Shopify store filters you set",
+    rows: [
+      ["Product category", "Apparel, beauty, home, food and drink, pet, fitness, jewelry or any category you name"],
+      ["Store size", "Employee bands, for example 1 to 10 or 10 to 50"],
+      ["Location", "The locations of the stores or brands you sell to"],
+      ["Role", "Owners and founders only or also ecommerce and growth managers"],
+      ["Target stores", "Your own list of store URLs to build from"],
+      ["Exclusions", "Current customers, open deals or any store URLs to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each Shopify store list is built",
+    steps: builtSteps(["Brief", "You send product categories, store sizes, locations and the roles you want, plus any stores to leave out. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "Shopify store owners email list pricing",
+    lead: "10,000 Shopify store contacts cost $199. You pay $19.90 per 1,000 once. No seats, no subscription and no credits.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 Shopify store contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt store database or a list built to your brief",
+    intro: "Shopify store contacts come as prebuilt store databases or as lists researched for your order. This is how they compare.",
+    rows: PREBUILT_ROWS,
+    close: "Online stores open, close and change platforms often, so a prebuilt store database ages quickly. A list built to your brief is researched only after you order. Every store is checked against your brief before delivery. Weighing a data platform instead? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a Shopify store owners email list",
+    rows: [
+      ["Shopify app developers", "Reach owners and ecommerce managers who install apps for reviews, upsells, subscriptions or shipping. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Ecommerce agencies", "Pitch design, ads, email marketing and conversion work to store owners. See [B2B lead lists for agencies](/for/agencies)."],
+      ["Fulfillment, packaging and logistics companies", "Reach the operations side of growing stores."],
+      ["Suppliers and manufacturers", "Offer products, private label or wholesale terms to stores in your category."],
+    ],
+    tipsHeading: "How to get replies from Shopify store owners",
+    tips: [
+      "Visit the store first and mention one real detail, such as a product or a page you would improve.",
+      "Lead with revenue: more orders, a higher average order value or fewer abandoned carts.",
+      "Keep it short and personal. Store owners get many app and agency pitches every week.",
+      "Offer something they can try alone, such as a free trial, a short audit or a sample.",
+      "Avoid their busiest weeks, such as the run up to major sale days.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a Shopify store owners email list?", "A Shopify store owners email list is a file of the owners, founders and ecommerce managers of stores built on Shopify, with verified business emails, store URLs and company details. App developers, ecommerce agencies and suppliers use it for outreach. Clean Rows builds each list fresh to the product categories and store sizes you choose."],
+    ["How do you know a store runs on Shopify?", "Each store is checked during research before it goes in the list. Platform is a targeting rule in the brief, not a tech stack column in the file."],
+    ["Is the store URL included?", "Yes. On this list the domain field is the store URL, so every row links to the storefront. You can open it before you write your first line."],
+    ["Can I filter stores by product category?", "Yes. Name the categories you sell to (such as beauty, apparel or pet supplies) and we check each store's products against them. You can also leave out categories you do not serve."],
+    ["How much does a Shopify store owners email list cost?", "10,000 Shopify store contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Is Clean Rows connected to Shopify?", "No. Clean Rows is not affiliated with Shopify. We research store owners from public B2B sources such as store websites, LinkedIn and public directories."],
+    ["How do you verify store owner emails?", "Each store owner email passes two separate verification tools. A person then checks owners, categories and store URLs against your brief before delivery."],
+    ["Can I get a free sample of a Shopify store list?", "Yes. Send your product categories, store sizes, locations and roles and we deliver a free sample within 24 hours. No card, no call and no signup."],
+  ],
+  closing: {
+    heading: "Get a Shopify store owners email list sample built to your brief",
+    body: "Send the product categories, store sizes, locations and roles you want. You get a free sample within 24 hours and then a confirmed count and price for the full list. No card, no call and no signup.",
+    crossLink: "Selling to retailers with physical stores? See the [retail industry email list](/lists/retail-email-list). Selling to owners of local businesses? See the [small business email list](/lists/business-owners-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "Shopify store owners email list",
+    "Shopify store owner email lists built fresh to the buyer's brief by product category, store size and location from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/shopify-store-owners-email-list`,
+    "Growth: 10,000 Shopify store contacts"
+  ),
+  related: [
+    ["/lists/retail-email-list", "Retailers", "Store, buying and ecommerce leaders."],
+    ["/lists/business-owners-email-list", "Small business owners", "Owners of local and small businesses."],
     ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
   ],
 });

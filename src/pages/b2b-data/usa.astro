@@ -1,0 +1,438 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/editorial/Hero.astro";
+import PlanStrip from "../../components/editorial/PlanStrip.astro";
+import Contact from "../../components/Contact.astro";
+const faqs = [
+  [
+    "What is in a USA business email list?",
+    "Every row has the contact's name, exact job title, company, domain, verified business email, LinkedIn URLs, company size, industry and location, plus the company HQ phone. Mobile numbers are found for roughly 50 to 60 percent of rows and each one is marked.",
+  ],
+  [
+    "How much does a US business email list cost?",
+    "10,000 contacts cost $199, paid once, with no seats and no subscription. 50,000 contacts cost $799, 1,000 cost $25 and 100,000 or more get a custom quote.",
+  ],
+  [
+    "Can I target one state or one metro area?",
+    "Yes. Brief by state, metro area or region. You can also brief the whole country by industry and title. The free sample shows how your mix of location and industry looks before you pay.",
+  ],
+  [
+    "Do I need to know NAICS codes to order?",
+    "No. Describe the industry in plain words and we map it to NAICS or SIC codes in the brief. If you already target by code, send the codes and we use them as the filter.",
+  ],
+  [
+    "Should I use NAICS or SIC codes?",
+    "Use whichever your team already works with. NAICS is the current US system and is more detailed, while older SIC codes still appear in some sources, such as SEC company filings. We can work from either.",
+  ],
+  [
+    "Does CAN SPAM apply to B2B cold email?",
+    "Yes. CAN SPAM covers commercial email to businesses as well as consumers. Each email needs accurate sender details, an honest subject line, a working opt out and a valid business postal address. This is general information, not legal advice.",
+  ],
+  [
+    "Can I get USA B2B data for one industry only?",
+    "Yes. Name one industry or one NAICS sector and we keep the list to companies in it. You can narrow it further by company size, location and title.",
+  ],
+  [
+    "How narrow can a NAICS filter be?",
+    "As narrow as six digits, which name one specific type of business. Most briefs work at three or four digits, which keeps the list focused without making it too small. We confirm the count for your codes before you pay.",
+  ],
+  [
+    "Can I get one contact per company or several?",
+    "Either. Ask for one decision maker per company for account based outreach or several titles per company for a wider campaign. The title map in your brief sets which roles go in the file.",
+  ],
+  [
+    "Is a USA list different from a subscription database?",
+    "Yes. A subscription gives your team access to a database to search, usually priced per seat with credits. Clean Rows builds one finished file to your US brief and charges once per list, after you check a free sample.",
+  ],
+];
+const naics: [string, string][] = [
+  ["11", "Agriculture, forestry, fishing and hunting"],
+  ["21", "Mining, quarrying and oil and gas extraction"],
+  ["22", "Utilities"],
+  ["23", "Construction"],
+  ["31", "Manufacturing (codes 31 to 33)"],
+  ["42", "Wholesale trade"],
+  ["44", "Retail trade (codes 44 to 45)"],
+  ["48", "Transportation and warehousing (codes 48 to 49)"],
+  ["51", "Information"],
+  ["52", "Finance and insurance"],
+  ["53", "Real estate and rental and leasing"],
+  ["54", "Professional, scientific and technical services"],
+  ["55", "Management of companies and enterprises"],
+  ["56", "Administrative and support and waste management and remediation services"],
+  ["61", "Educational services"],
+  ["62", "Health care and social assistance"],
+  ["71", "Arts, entertainment and recreation"],
+  ["72", "Accommodation and food services"],
+  ["81", "Other services (except public administration)"],
+  ["92", "Public administration"],
+];
+const origin = Astro.site || new URL("https://www.cleanrowsdata.com");
+const url = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", origin).href;
+const schema = [
+  {
+    "@type": "Service",
+    "@id": new URL("/#usa-service", origin).href,
+    name: "USA business email lists",
+    description:
+      "Verified US B2B prospect lists built by state, metro area, NAICS or SIC industry code, company size and job title, with name, title, company, verified business email and LinkedIn URL.",
+    url,
+    serviceType: "Custom B2B prospect list research",
+    areaServed: "US",
+    provider: { "@id": new URL("/#organization", origin).href },
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faqs.map(([name, text]) => ({
+      "@type": "Question",
+      name,
+      acceptedAnswer: { "@type": "Answer", text },
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: origin.href },
+      { "@type": "ListItem", position: 2, name: "B2B email lists", item: new URL("/buy-b2b-leads", origin).href },
+      { "@type": "ListItem", position: 3, name: "USA", item: url },
+    ],
+  },
+  {
+    "@type": "ItemList",
+    name: "Related Clean Rows pages",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "UK business email list", url: new URL("/b2b-data/uk", origin).href },
+      { "@type": "ListItem", position: 2, name: "Pricing", url: new URL("/pricing", origin).href },
+      { "@type": "ListItem", position: 3, name: "Free sample", url: new URL("/free-sample", origin).href },
+      { "@type": "ListItem", position: 4, name: "B2B data subscriptions", url: new URL("/compare/b2b-data-subscriptions", origin).href },
+    ],
+  },
+];
+---
+<BaseLayout
+  title="USA Business Email List by State and NAICS | Clean Rows"
+  description="A USA business email list built to your brief by state, metro area, NAICS or SIC code and job title. US B2B data with verified emails: $199 per 10,000."
+  schema={schema}
+  editorial
+>
+  <Hero
+    label="USA B2B data"
+    title="USA business email list, built to your brief"
+    accent="States, metro areas, NAICS and SIC codes."
+    description="A USA business email list from Clean Rows is a file of decision makers at US companies, built by state, metro area, NAICS or SIC industry code, company size and job title. Each list is researched fresh to your brief, reviewed by a person and delivered with name, exact title, company, verified business email and LinkedIn URL. 10,000 contacts cost $199, paid once. A free sample built to your brief comes first."
+    cta="Get 100 free US leads"
+    href="/free-sample#contact"
+    secondary="See the filters"
+    secondaryHref="#usa-filters"
+    note="Pay per list · No seat fees · Freshly sourced"
+    panelLabel="EXAMPLE US BRIEF"
+    panelTitle="Construction firms, Texas."
+    items={[
+      ["State", "Texas"],
+      ["Metro areas", "Dallas and Houston"],
+      ["NAICS sector", "23 (construction)"],
+      ["Titles", "Owners, Operations Directors"],
+    ]}
+  />
+
+  <section class="ed-section ed-tint" aria-labelledby="usa-email-list">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">USA B2B DATA</p>
+        <h2 id="usa-email-list">USA B2B data delivered as a finished US email list</h2>
+      </div>
+      <div>
+        <p>
+          Most USA B2B data is sold as seats on a database your team searches.
+          A US business email list from Clean Rows is the finished result
+          instead: the people who match your brief, with verified business
+          emails, LinkedIn URLs and company details, checked by a person before
+          the file reaches you.
+        </p>
+        <p>
+          Selling to one role across the country? The <a class="ed-inline" href="/lists/ceo-email-list">CEO email list</a> and the <a class="ed-inline" href="/lists/business-owners-email-list">small business email list</a> can both be limited
+          to US companies. Selling in Britain as well? See the <a class="ed-inline" href="/b2b-data/uk">UK business email list</a>. Package prices are on the <a class="ed-inline" href="/pricing">B2B lead list pricing page</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ed-section" aria-labelledby="usa-filters">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">BRIEFING A US LIST</p>
+          <h2 id="usa-filters">What you can filter a US email list by</h2>
+        </div>
+        <p>
+          These are the choices you make when you brief a US list. We agree
+          them in writing and you check the fit in your free sample before you
+          pay.
+        </p>
+      </div>
+      <div class="ed-filter-chips" role="list" aria-label="Filters you can use when briefing a US list">
+        <div role="listitem"><span>Location</span><p>State, metro area or region.</p></div>
+        <div role="listitem"><span>Industry</span><p>NAICS or SIC code, set in the brief.</p></div>
+        <div role="listitem"><span>Company</span><p>Employee size band and target accounts.</p></div>
+        <div role="listitem"><span>Job title</span><p>Role and seniority, agreed as a title map.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ed-section ed-tint" aria-labelledby="usa-naics">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">INDUSTRY TARGETING</p>
+          <h2 id="usa-naics">US industry codes: NAICS and SIC for buyers</h2>
+        </div>
+        <p>
+          NAICS, the North American Industry Classification System, is the
+          system US federal agencies use to group businesses by what they do.
+          Codes run up to six digits and the first two digits give the sector.
+          The older SIC system uses four digit codes and still appears in some
+          sources, such as SEC company filings.
+        </p>
+      </div>
+      <article class="ed-field-card">
+        <div class="ed-field-top"><span class="ed-index">01</span><h3>NAICS sectors by two digit code</h3></div>
+        <p class="ed-note">The 20 NAICS sectors. Manufacturing, retail trade and transportation each span more than one two digit code.</p>
+        <dl class="uk-sic-rows">
+          {naics.map(([code, name]) => (
+            <div><dt>{code}</dt><dd>{name}</dd></div>
+          ))}
+        </dl>
+      </article>
+      <p class="ed-note">
+        An industry code describes what a company reports it does. It does not
+        mean every company in a sector buys the same way, so Clean Rows uses
+        NAICS or SIC as a filter in the brief and a person checks each company
+        against your description. Send codes if you have them or describe the
+        industry in plain words.
+      </p>
+      <p class="ed-note">
+        Choose the depth that fits your offer. A two digit sector, such as 23
+        for construction, is wide. Three or four digits narrow it to a type of
+        business, such as specialty trade contractors. Six digits name one exact
+        activity. Narrower codes give a smaller, closer fit list, so we
+        confirm the count for your codes before you pay.
+      </p>
+    </div>
+  </section>
+
+  <section class="ed-section" aria-labelledby="usa-coverage">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">US COVERAGE</p>
+          <h2 id="usa-coverage">States, metro areas and regions</h2>
+        </div>
+        <p>
+          You set the geography in the brief. A list for one metro area is
+          smaller than a list for a whole region and the free sample is where
+          you see how your mix of location and industry looks.
+        </p>
+      </div>
+      <div class="uk-chip-grid">
+        <div>
+          <span>Northeast</span>
+          <p>Brief the whole region, a group of states or one metro area.</p>
+        </div>
+        <div>
+          <span>Midwest</span>
+          <p>Brief the whole region, a group of states or one metro area.</p>
+        </div>
+        <div>
+          <span>South</span>
+          <p>Brief the whole region, a group of states or one metro area.</p>
+        </div>
+        <div>
+          <span>West</span>
+          <p>Brief the whole region, a group of states or one metro area.</p>
+        </div>
+      </div>
+      <p class="ed-note">Regions follow the four US Census Bureau regions. You can also send your own list of states or sales territories.</p>
+      <p class="ed-note">
+        Metro area briefs suit local service sellers, field sales teams and
+        anyone who meets buyers in person. State and region briefs suit teams
+        that sell by territory. A national brief by industry and title suits
+        remote sales, where location matters less than fit. Tell us how your
+        team sells and we shape the geography around it.
+      </p>
+    </div>
+  </section>
+
+  <section class="ed-section ed-tint" aria-labelledby="usa-sources">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">WHERE US COMPANY DATA COMES FROM</p>
+          <h2 id="usa-sources">The public US sources buyers ask about</h2>
+        </div>
+        <p>
+          Clean Rows researches every row from public B2B sources: LinkedIn,
+          company websites, public directories and public filings. These are
+          the official US references behind the industry codes and email rules
+          on this page.
+        </p>
+      </div>
+      <div class="ed-source-grid">
+        <article><span class="ed-index">01</span>
+          <h3>US Census Bureau NAICS</h3>
+          <p>The NAICS code structure, sector list and code search.</p>
+          <a class="ed-inline" href="https://www.census.gov/naics/" rel="noopener">census.gov ↗</a>
+        </article>
+        <article><span class="ed-index">02</span>
+          <h3>SEC EDGAR</h3>
+          <p>Public company filings, which still list a SIC code for each filer.</p>
+          <a class="ed-inline" href="https://www.sec.gov/edgar/search/" rel="noopener">sec.gov ↗</a>
+        </article>
+        <article><span class="ed-index">03</span>
+          <h3>FTC CAN SPAM guide</h3>
+          <p>The federal guide to the email rules in the compliance section below.</p>
+          <a class="ed-inline" href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business" rel="noopener">ftc.gov ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ed-section" aria-labelledby="usa-file">
+    <div class="ed-wrap">
+      <div class="ed-section-head">
+        <div>
+          <p class="ed-kicker">WHAT THE FILE LOOKS LIKE</p>
+          <h2 id="usa-file">Ten field groups on every row</h2>
+        </div>
+        <p>
+          A delivered US list carries the same standard fields as every Clean
+          Rows list. See the <a class="ed-inline" href="/whats-in-the-file">full CSV field specification</a> for column formats.
+        </p>
+      </div>
+      <div class="uk-chip-grid" role="list" aria-label="Fields on a delivered US list">
+        <div role="listitem"><span>Name</span><p>First and last name.</p></div>
+        <div role="listitem"><span>Job title</span><p>The exact title they use today.</p></div>
+        <div role="listitem"><span>Company and domain</span><p>Company name and website.</p></div>
+        <div role="listitem"><span>Verified email</span><p>Business email, two verification tools.</p></div>
+        <div role="listitem"><span>Mobile</span><p>Roughly 50 to 60 percent of rows, marked.</p></div>
+        <div role="listitem"><span>Company HQ phone</span><p>The main company number.</p></div>
+        <div role="listitem"><span>LinkedIn URLs</span><p>Personal and company profiles.</p></div>
+        <div role="listitem"><span>Company size</span><p>Employee range, matched to the brief.</p></div>
+        <div role="listitem"><span>Industry</span><p>Matched to your NAICS or SIC filter.</p></div>
+        <div role="listitem"><span>Location</span><p>State and city for each row.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <PlanStrip
+    kicker="US LIST PRICING"
+    heading="US B2B lists: one price per list, any state or sector"
+    points={[
+      ["Priced by volume", "US lists use the same one time packages as every other market."],
+      ["Codes and titles included", "Mapping your industry to NAICS or SIC and agreeing titles is part of the brief, not an extra."],
+      ["Small markets flagged first", "If your US criteria hold too few prospects to fill a package, we tell you before payment."],
+    ]}
+    note="Prices in USD. One time packages, no seat fees. Location, industry codes and titles are confirmed before payment."
+  />
+
+  <section class="ed-section ed-boundary" id="usa-compliance" aria-labelledby="usa-compliance-title">
+    <div class="ed-wrap">
+      <p class="ed-kicker">US COMPLIANCE</p>
+      <h2 id="usa-compliance-title">US email rules: CAN SPAM</h2>
+      <p>
+        This section is general information, not legal advice. Check the FTC
+        guide and your own counsel before you send.
+      </p>
+      <p>
+        CAN SPAM is the federal law for commercial email in the United States.
+        It does not require consent before a first email. It covers email to
+        businesses as well as to consumers. Every commercial email should
+        meet these points:
+      </p>
+      <ul>
+        <li>Accurate sender details: the from name, reply address and routing must identify who sent it.</li>
+        <li>An honest subject line that matches what the email is about.</li>
+        <li>A clear way to opt out of future email, which keeps working after the email is sent.</li>
+        <li>Opt out requests honored promptly. The FTC guide sets 10 business days.</li>
+        <li>A valid business postal address: a street address, a post office box or a registered private mailbox.</li>
+      </ul>
+      <p>
+        You stay responsible when an agency or another company sends email on
+        your behalf. Some states have their own rules on commercial email. Calls
+        and text messages follow separate rules that this section does
+        not cover.
+      </p>
+      <blockquote>
+        This page gives general information about US email rules, not legal
+        advice. Rules depend on your message, your audience and your sending
+        setup. Read the FTC CAN SPAM guide before you send.
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="ed-section ed-faq" aria-labelledby="usa-faq-title">
+    <div class="ed-wrap ed-split">
+      <div>
+        <p class="ed-kicker">STRAIGHT ANSWERS</p>
+        <h2 id="usa-faq-title">USA business email list FAQs</h2>
+        <p>
+          Have a more specific brief? <a class="ed-inline" href="/free-sample#contact">Ask us directly.</a>
+        </p>
+      </div>
+      <div class="ed-questions">
+        {faqs.map(([question, answer]) => (
+          <details>
+            <summary>
+              {question}
+              <span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              <strong>
+                {answer.split(". ")[0]}
+                {answer.includes(". ") ? "." : ""}
+              </strong>
+              {answer.includes(". ")
+                ? " " + answer.split(". ").slice(1).join(". ")
+                : ""}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Contact
+    team="Other"
+    heading="Brief your US list."
+    emphasis="Start with a free sample."
+    closing=""
+    description="Share the states, metro areas, industries and titles you want, plus anyone to leave out. We will confirm US coverage and timing before you pay."
+    placeholder="e.g. Operations Directors at construction firms in Texas, 50 to 200 staff. NAICS 23. Exclude current customers."
+  />
+  <section class="ed-section ed-related" aria-labelledby="usa-related-heading">
+    <div class="ed-wrap">
+      <p class="ed-kicker" id="usa-related-heading">KEEP EXPLORING</p>
+      <div class="ed-related-grid">
+        <a href="/b2b-data/uk">
+          <span aria-hidden="true">↗</span>
+          <h3>UK business email list</h3>
+          <p>UK B2B data by SIC code, postcode and city.</p>
+        </a>
+        <a href="/pricing">
+          <span aria-hidden="true">↗</span>
+          <h3>US list pricing</h3>
+          <p>Packages and the price per 1,000 contacts.</p>
+        </a>
+        <a href="/free-sample">
+          <span aria-hidden="true">↗</span>
+          <h3>Free sample</h3>
+          <p>How the free sample works.</p>
+        </a>
+        <a href="/compare/b2b-data-subscriptions">
+          <span aria-hidden="true">↗</span>
+          <h3>Lists vs subscriptions</h3>
+          <p>When a subscription fits better.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

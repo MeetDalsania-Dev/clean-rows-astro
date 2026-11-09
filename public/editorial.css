@@ -390,8 +390,10 @@
 .editorial .ed-selection:empty {
   display: none;
 }
-.editorial .footer-col a {
-  min-height: 34px;
+@media (min-width: 641px) {
+  .editorial .footer-col a {
+    min-height: 34px;
+  }
 }
 .editorial input:focus-visible,
 .editorial textarea:focus-visible,

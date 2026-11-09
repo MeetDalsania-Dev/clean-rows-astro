@@ -1,4 +1,4 @@
-/* /b2b-data/uk only: compact chip and field patterns that read as designed,
+/* /b2b-data country pages (UK and USA): compact chip and field patterns that read as designed,
    not as walls of table cells. Loaded by BaseLayout when the path matches. */
 .uk-chip-grid {
   display: grid;
@@ -97,4 +97,18 @@
   .uk-sic-rows > div {
     grid-template-columns: 30px 1fr;
   }
+}
+
+/* Compliance lists on the country pages: real bullets with spacing so each
+   rule reads as its own point. */
+.editorial .ed-boundary ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 14px 0 18px;
+}
+.editorial .ed-boundary li {
+  margin: 0 0 10px;
+}
+.editorial .ed-boundary li::marker {
+  color: #00704f;
 }
