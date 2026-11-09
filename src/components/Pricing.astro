@@ -1,6 +1,6 @@
 ---
 import { plans } from "../data/plans";
-const { heading = 'Pay per list. Never per seat.', description = 'Choose a package for your campaign. Every plan includes ICP based targeting, personal and company LinkedIn profiles, company details and verified business emails. Review 100 free leads before your first paid order.' } = Astro.props;
+const { heading = 'Pay per list. Never per seat.', description = 'Choose a package for your campaign. Every plan includes ICP based targeting, personal and company LinkedIn profiles, company details and verified business emails. Review 100 free leads before your first paid order.', sampleNote = 'Your first 100 leads are free.', sampleCta = 'Get 100 free leads' } = Astro.props;
 
 ---
 
@@ -53,9 +53,9 @@ const { heading = 'Pay per list. Never per seat.', description = 'Choose a packa
   </p>
 
   <div class="section-cta">
-    <p>Review the fit before choosing a paid list. <strong>Your first 100 leads are free.</strong></p>
+    <p>Review the fit before choosing a paid list. <strong>{sampleNote}</strong></p>
     <div class="cta-pair">
-      <a class="button lime cta-primary" data-sample href="#contact">Get 100 free leads</a>
+      <a class="button lime cta-primary" data-sample href="#contact">{sampleCta}</a>
       <a class="button cta-secondary" href="#plan-options">Choose a plan</a>
     </div>
   </div>
