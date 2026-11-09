@@ -448,7 +448,7 @@ rolePages.push({
   ),
   related: [
     ["/lists/vp-of-sales-email-list", "Selling to sales leaders", "VP of Sales and CRO title map."],
-    ["/lists/cfo-email-list", "Finance decisions", "CFO and finance title map."],
+    ["/lists/business-owners-email-list", "Small business owners", "Owners and founders of small companies."],
     ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
   ],
 });
@@ -895,7 +895,7 @@ rolePages.push({
   ),
   related: [
     ["/lists/ceo-email-list", "The top of the company", "CEO and founder title rules."],
-    ["/lists/cto-email-list", "Selling to tech leaders", "CTO, CIO and VP of Engineering titles."],
+    ["/lists/accountants-email-list", "Accounting firms", "CPAs, partners and firm owners."],
     ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
   ],
 });
@@ -907,7 +907,7 @@ rolePages.push({
   key: "cto",
   slug: "cto-email-list",
   meta: {
-    title: "CTO Email List: 10,000 Contacts for $199",
+    title: "CTO Email List: 10,000 Contacts for $199 | Clean Rows",
     description:
       "Buy a CTO email list built fresh to your ICP: CTOs, VPs of Engineering and IT Directors. 10,000 verified contacts for $199, one time, CSV in 24 hours.",
     label: "CTO email list",
@@ -927,7 +927,7 @@ rolePages.push({
     rows: [
       ["CT", "CTO, Chief Technology Officer"],
       ["VE", "VP of Engineering"],
-      ["HE", "Head of Engineering, Engineering Director"],
+      ["HE", "Head of Engineering"],
     ],
     chips: ["Verified emails", "LinkedIn profiles"],
   },
@@ -1031,7 +1031,873 @@ rolePages.push({
   ),
   related: [
     ["/lists/ceo-email-list", "The top of the company", "CEO and founder title rules."],
-    ["/lists/cfo-email-list", "Finance decisions", "CFO and finance title map."],
+    ["/lists/cio-email-list", "IT leaders", "CIO, VP of IT and IT Director titles."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 08 CIO
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "cio",
+  slug: "cio-email-list",
+  meta: {
+    title: "CIO Email List: 10,000 IT Leaders for $199 | Clean Rows",
+    description:
+      "A CIO email list built to your ICP: CIOs, VPs of IT, IT Directors and Heads of IT with verified emails. An IT decision makers email list, $199 per 10,000.",
+    label: "CIO email list",
+    serviceName: "CIO email list",
+    audience: "B2B teams selling infrastructure, security and software to IT buyers",
+  },
+  hero: {
+    title: "CIO email list",
+    accent: "for the people who buy IT",
+    intro:
+      "A CIO email list from Clean Rows gives you the CIOs, VPs of IT, IT Directors and Heads of IT at the companies you target, with exact titles, verified business emails, phone numbers and company details. We research it fresh to your brief and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 CIO and IT leader contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "cio_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["CI", "CIO, Chief Information Officer"],
+      ["VI", "VP of IT"],
+      ["ID", "IT Director, Head of IT"],
+    ],
+    chips: ["Verified emails", "LinkedIn profiles"],
+  },
+  sample: { heading: "Sample rows from a CIO email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every CIO contact list",
+    intro: fieldsIntro,
+    titleExample: "VP, Information Technology",
+    titleNote: "Every row, checked against your IT title map",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which IT leadership titles a CIO list can cover",
+    intro:
+      "A CIO buys for the business, not for a product team. CIOs and IT Directors choose the infrastructure, security tools, business software and IT services the whole company runs on. That makes them a different buyer from the CTO, who leads engineering at software companies. You pick the IT titles and we agree the title map before research starts.",
+    rows: [
+      ["CIO, Chief Information Officer", "Owns IT strategy, budget and vendors for the whole company", "Always"],
+      ["VP of IT, VP Information Technology", "Runs IT operations and often signs vendor contracts", "You sell to larger companies where the CIO delegates buying"],
+      ["IT Director", "Manages systems, support and suppliers day to day", "You sell to mid sized companies or need a hands on buyer"],
+      ["Head of IT, IT Manager at smaller firms", "The most senior IT person at companies without a CIO", "You sell to companies under a few hundred staff"],
+      ["Head of Infrastructure, Director of IT Operations", "Owns networks, cloud, data centers and uptime", "You sell infrastructure, cloud or managed services"],
+      ["CISO, Director of IT Security", "Owns security tools, risk and audits", "You sell security software or security services"],
+    ],
+    closing:
+      "Tell us which rows you want and whether IT Managers count at smaller firms. We leave out help desk staff, engineers and technicians unless you ask for them. A Head of IT list for growing companies and a CIO list for large enterprises can sit in one order with two title rules.",
+  },
+  count: {
+    heading: "How many CIO contacts can you get?",
+    p1: "There is no standard file size because we research each list to your brief. Large companies often have a CIO, while smaller ones give the same job to an IT Director or Head of IT. So the titles you include change your count as much as your industries and company size.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "IT BUYERS",
+    heading: "IT decision makers email list and IT directors email list",
+    paragraphs: [
+      "An IT decision makers email list covers everyone who can approve or shape an IT purchase: the CIO, the VP of IT and the IT Director, plus security and infrastructure heads where you need them. An IT directors email list is a narrower order that stays with the people who run IT day to day.",
+      "Both come from the same brief. Choose the titles, then set industry, company size and location so the file only holds companies that buy what you sell. If your buyer leads engineering at a software company instead, see the [CTO email list](/lists/cto-email-list). If finance signs off the budget, add the [CFO email list](/lists/cfo-email-list).",
+      "Prices are on the [B2B lead list pricing page](/pricing): 10,000 contacts cost $199, paid once. Or start with a free sample built to your IT brief.",
+    ],
+  },
+  filters: {
+    heading: "IT buyer filters you set",
+    rows: [
+      ["Industry", "The sectors you sell into, such as healthcare, manufacturing, retail or financial services, plus any to leave out"],
+      ["Company size", "Employee bands, for example 200 to 1,000 or 1,000 to 5,000"],
+      ["Location", "The locations of the companies or IT leaders you sell to"],
+      ["IT seniority", "CIO and VP of IT only or also IT Directors and Heads of IT"],
+      ["Function within IT", "General IT leadership, infrastructure, security or business systems"],
+      ["Exclusions", "Current customers, open deals or any domains to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each CIO list is built",
+    steps: builtSteps(["Brief", "You send the IT titles, industries, company size, locations and exclusions. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "CIO email list pricing",
+    lead: "10,000 CIO and IT leader contacts cost $199. That works out at $19.90 per 1,000, paid once, with no seats and no credits to use up.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 CIO contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt CIO database or a list built to your brief",
+    intro: "You can buy IT leader contacts as a prebuilt CIO database or as a list researched for your order. This is how the two compare.",
+    rows: PREBUILT_ROWS,
+    close: "A prebuilt file can work when its industry and size categories match your market exactly. If you sell something specific, such as backup software to IT Directors at hospitals and clinics, a list built to your brief keeps the wrong companies out. Comparing this with a seat based data platform? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a CIO email list",
+    rows: [
+      ["Managed IT and cloud service providers", "Reach the IT leaders who choose outside partners for support, hosting and migration."],
+      ["Security software and security services firms", "Pitch CIOs and CISOs who own risk, audits and security budgets."],
+      ["Business software vendors", "Reach the IT Directors who approve and roll out systems such as ERP, HR or finance software. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Agencies running IT outbound for clients", "Build one CIO list per client. See [B2B lead lists for agencies](/for/agencies)."],
+    ],
+    tipsHeading: "How to get replies from CIOs",
+    tips: [
+      "Talk about the business result. CIOs answer to the board for uptime, risk and cost, so lead with one of those.",
+      "Send the technical detail to the IT Director. The CIO sets direction while the IT Director often runs the evaluation.",
+      "Name the trigger you saw, such as a new office, a merger or a job post for an infrastructure role.",
+      "Keep the first email short and offer one clear next step, such as a short call or a two page summary.",
+      "Expect a longer cycle. IT purchases often need security review and finance approval before a contract.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a CIO email list?", "A CIO email list is a file of Chief Information Officers and other IT leaders with names, exact titles, verified business emails and company details. Vendors of infrastructure, security and business software use it to reach the people who approve IT spend. Clean Rows researches each list fresh to the buyer's brief."],
+    ["What is the difference between a CIO list and a CTO list?", "A CIO runs internal IT for the whole company, so they buy infrastructure, security tools and business systems. A CTO usually leads engineering at a software company and buys tools for the product team. If you sell to IT departments, start with the CIO list; if you sell to developers, see the CTO list."],
+    ["Can I get an IT decision makers email list instead of only CIOs?", "Yes. Add VPs of IT, IT Directors, Heads of IT and security or infrastructure heads to the same brief. We agree the title map before research, so the file only holds the IT roles you want."],
+    ["How much does a CIO email list cost?", "10,000 CIO and IT leader contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Can you target IT Directors at mid sized companies only?", "Yes. Set employee bands in the brief (for example 200 to 1,000) and choose IT Director as the title. We confirm the exact count for that slice before you pay."],
+    ["Do you include CISOs?", "Only if you ask for them. Security leaders can sit in the same file as CIOs and IT Directors. They can also go in a separate order if you run a security campaign."],
+    ["How do you verify CIO emails?", "Every business email is checked with two separate verification tools. A person then reviews titles and companies against your brief before the file is delivered."],
+    ["Can I see a sample of the CIO list first?", "Yes. Send your IT brief and we deliver a free sample built to it within 24 hours. No card, no call and no signup."],
+    ["Is it legal to email CIOs?", "Emailing business contacts from public B2B sources is allowed in most places when you follow the outreach rules. Use honest sender details, include a working opt out and honor every removal request; in the UK and EU, GDPR also applies. This is general information, not legal advice."],
+  ],
+  closing: {
+    heading: "Get a CIO sample built to your brief",
+    body: "Send the IT titles, industries, company size and locations you want. We deliver a free sample within 24 hours, then confirm the count and price for the full list. No card, no call and no signup.",
+    crossLink: "Selling to engineering leaders as well? See the [CTO email list](/lists/cto-email-list). Need finance sign off too? See the [CFO email list](/lists/cfo-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "CIO email list",
+    "CIO and IT leader email lists built fresh to the buyer's brief from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/cio-email-list`,
+    "Growth: 10,000 CIO contacts"
+  ),
+  related: [
+    ["/lists/cto-email-list", "Engineering leaders", "CTO and VP of Engineering titles."],
+    ["/lists/cfo-email-list", "Finance sign off", "CFO and finance title map."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 09 Lawyers and law firms
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "law-firms",
+  slug: "law-firms-email-list",
+  meta: {
+    title: "Lawyers Email List: 10,000 Attorneys for $199 | Clean Rows",
+    description:
+      "A lawyers email list built to your brief: partners, attorneys and firm administrators by practice area, firm size and location. 10,000 for $199, paid once.",
+    label: "Lawyers email list",
+    serviceName: "Lawyers email list",
+    audience: "B2B teams selling services and software to law firms",
+  },
+  hero: {
+    title: "Lawyers email list",
+    accent: "by practice area and firm size",
+    intro:
+      "A lawyers email list from Clean Rows gives you the managing partners, partners, attorneys and firm administrators at the law firms you choose, with verified business emails, phone numbers and firm details. We build it to your practice areas and firm sizes and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 lawyer and law firm contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "lawyers_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["MP", "Managing Partner"],
+      ["AT", "Partner, Attorney, Associate"],
+      ["FA", "Firm Administrator"],
+    ],
+    chips: ["Verified emails", "Practice areas"],
+  },
+  sample: { heading: "Sample rows from a lawyers email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every law firm contact list",
+    intro: fieldsIntro,
+    titleExample: "Managing Partner",
+    titleNote: "Every row, checked against your legal title map",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which law firm roles a lawyers email list can cover",
+    intro:
+      "Who buys at a law firm depends on what you sell. Partners decide on anything that touches clients or fees, while firm administrators and legal operations staff run software, billing and suppliers. At a small firm the founding attorney often does all of it. You choose the roles and we agree the title map before research starts.",
+    rows: [
+      ["Managing Partner, Founding Partner", "Runs the firm and signs off spend", "Always, for anything that changes how the firm runs"],
+      ["Partner, Equity Partner", "Owns a practice group and its clients", "You sell to a practice area, such as marketing for personal injury firms"],
+      ["Attorney, Associate, Of Counsel", "Does the legal work and often refers suppliers", "You sell research tools, expert services or legal training"],
+      ["Solo practitioner, Principal Attorney", "Owns a one person or very small firm", "You sell to small firms where the lawyer is the buyer"],
+      ["Firm Administrator, Office Manager", "Runs operations, staff and suppliers", "You sell software, IT, office services or payroll"],
+      ["Director of Legal Operations, COO", "Owns systems and process at larger firms", "You sell practice management, billing or document software"],
+    ],
+    closing:
+      "Tell us which rows you want and whether paralegals or in house counsel count. We leave them out by default, since in house legal teams belong to companies rather than law firms. A list of personal injury partners and a list of firm administrators at mid sized firms can come from one order with two title rules.",
+  },
+  count: {
+    heading: "How many lawyer contacts can you get?",
+    p1: "We do not sell a fixed file of attorneys, so there is no standard size. Practice area changes the count most: a brief for one narrow specialty in a few locations is far smaller than one for every civil litigation firm in a large region.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "ATTORNEY LISTS",
+    heading: "Attorney email list, law firms email list or personal injury lawyers",
+    paragraphs: [
+      "An attorney email list and a law firms email list are the same order looked at two ways. One starts with the people, the other with the firms. Tell us which matters more and we build around it: every partner at the firms you name or one decision maker per firm across a whole practice area.",
+      "A personal injury lawyers email list is the most common practice area brief, because legal marketing, case funding, medical record and expert witness services all sell to these firms. Family, immigration, estate planning, employment and criminal defense firms work the same way. Pick the areas and we check each firm's own website for them.",
+      "Many buyers call the same file an attorney mailing list. Every row carries the firm name, domain, HQ phone and location next to the verified email, so you can run email and phone outreach from one file. Package prices sit on the [B2B lead list pricing page](/pricing). The free sample comes first.",
+    ],
+  },
+  filters: {
+    heading: "Law firm filters you set",
+    rows: [
+      ["Practice area", "Personal injury, family, immigration, estate planning, employment, criminal defense, corporate or any area the firm lists"],
+      ["Firm size", "Solo and small firms, mid sized firms or large firms, set by employee band"],
+      ["Location", "The locations of the firms or offices you sell to"],
+      ["Role", "Managing partners only, all partners or also attorneys and firm administrators"],
+      ["Target firms", "Your own list of firm names or domains to build from"],
+      ["Exclusions", "Current clients, open deals or any firms to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each law firm list is built",
+    steps: builtSteps(["Brief", "You send practice areas, firm sizes, locations, the roles you want and any firms to leave out. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "Lawyers email list pricing",
+    lead: "10,000 lawyer and law firm contacts cost $199, which is $19.90 per 1,000. You pay once. There are no seats, no subscription and no credits.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 law firm contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt attorney database or a list built to your brief",
+    intro: "Law firm contacts are sold as prebuilt attorney databases and as lists researched for one order. Here is how the two differ.",
+    rows: PREBUILT_ROWS,
+    close: "A prebuilt database can be enough when you want every firm in a broad category. When your offer only suits one practice area or firm size, such as intake software for personal injury firms with 10 to 50 staff, a list built to your brief keeps every row relevant. Weighing a data platform instead? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a lawyers email list",
+    rows: [
+      ["Legal marketing and lead generation agencies", "Reach managing partners at firms in the practice areas you serve. See [B2B lead lists for agencies](/for/agencies)."],
+      ["Legal software companies", "Pitch practice management, billing, intake and document tools to firm administrators and legal operations leaders. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Expert witness, court reporting and record retrieval firms", "Reach the litigation partners and attorneys who hire outside experts and services."],
+      ["Legal recruiters", "Pitch partners who are hiring associates or approach attorneys as candidates. See [B2B lead lists for recruiters](/for/recruitment)."],
+    ],
+    tipsHeading: "How to get replies from law firm partners",
+    tips: [
+      "Write to their practice. A personal injury partner and an estate planning partner have very different problems.",
+      "Lead with time or cases. Partners bill by the hour or work on contingency, so show what your offer saves or wins.",
+      "Keep it formal and short. Lawyers read carefully, so skip slang and make one clear ask.",
+      "Copy the firm administrator for software and services. They often run the evaluation for the partners.",
+      "Leave out claims you could not back up. Lawyers notice them at once.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a lawyers email list?", "A lawyers email list is a file of attorneys and law firm decision makers with names, titles, verified business emails and firm details. Legal marketing agencies, legal software companies and litigation service firms use it for outreach. Clean Rows builds each list fresh to the practice areas and firm sizes you choose."],
+    ["Can I get a personal injury lawyers email list?", "Yes. Choose personal injury as the practice area and we only include firms whose own website lists that work. You can add firm size, location and roles to narrow it further."],
+    ["Is an attorney email list different from a law firms email list?", "Only in focus. An attorney list can include several lawyers at each firm, while a law firms list usually holds one or two decision makers per firm. Tell us which you need and we set the brief that way."],
+    ["Do you include in house counsel?", "Not by default, because in house lawyers work at companies rather than law firms. If you sell to legal departments, ask for General Counsel and in house legal titles and we build that as a separate brief."],
+    ["How much does a lawyers email list cost?", "10,000 lawyer and law firm contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Can I use the list as an attorney mailing list?", "Yes, for email campaigns. Every row has a verified business email plus the firm name, domain, HQ phone and location. Postal addresses are not part of the standard fields."],
+    ["How do you check the emails?", "Each business email is checked with two separate verification tools. A person then reviews firm names, practice areas and titles against your brief before delivery."],
+    ["Can I get a free sample of a law firm list?", "Yes. Send your practice areas, firm size and locations and we deliver a free sample within 24 hours. No card, no call and no signup."],
+    ["Is it legal to send cold emails to lawyers?", "Business outreach to lawyers at their work address is allowed in most places when you follow the email rules. Use honest sender details, include a working opt out and remove anyone who asks; in the UK and EU, GDPR also applies. This is general information, not legal advice."],
+  ],
+  closing: {
+    heading: "Get a lawyers email list sample built to your brief",
+    body: "Send the practice areas, firm sizes, locations and roles you want. Your free sample arrives within 24 hours. After that we confirm the count and price for the full list, with no card, no call and no signup.",
+    crossLink: "Selling to accounting firms too? See the [accountants email list](/lists/accountants-email-list). Selling to the owners of small firms in any field? See the [small business email list](/lists/business-owners-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "Lawyers email list",
+    "Lawyer and law firm email lists built fresh to the buyer's brief by practice area, firm size and location from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/law-firms-email-list`,
+    "Growth: 10,000 law firm contacts"
+  ),
+  related: [
+    ["/lists/accountants-email-list", "Accounting firms", "CPAs, partners and firm owners."],
+    ["/lists/business-owners-email-list", "Small business owners", "Owners and founders of small companies."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 10 Manufacturing
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "manufacturing",
+  slug: "manufacturing-email-list",
+  meta: {
+    title: "Manufacturing Industry Email List to Your ICP | Clean Rows",
+    description:
+      "A manufacturing industry email list built to your ICP: plant, operations and procurement leaders and owners by sub sector. 10,000 for $199, paid once.",
+    label: "Manufacturing industry email list",
+    serviceName: "Manufacturing industry email list",
+    audience: "B2B teams selling equipment, supplies, software and services to manufacturers",
+  },
+  hero: {
+    title: "Manufacturing industry email list",
+    accent: "plant, operations and procurement leaders",
+    intro:
+      "A manufacturing industry email list from Clean Rows gives you the plant managers, operations directors, procurement and supply chain heads and owners at the manufacturers you target, with verified business emails, phone numbers and company details. We research it to your sub sectors and company sizes and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 manufacturing contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "manufacturing_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["PM", "Plant Manager, Site Director"],
+      ["OD", "VP Operations, Operations Director"],
+      ["PR", "Head of Procurement"],
+    ],
+    chips: ["Verified emails", "Sub sectors"],
+  },
+  sample: { heading: "Sample rows from a manufacturing email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every manufacturing contact list",
+    intro: fieldsIntro,
+    titleExample: "Plant Manager",
+    titleNote: "Every row, checked against your plant and operations title map",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which manufacturing roles the list can cover",
+    intro:
+      "Buying at a manufacturer is split by what you sell. The plant manager decides what runs on the floor, procurement decides who supplies it and the owner or operations head signs off anything large. Pick the roles and we agree the title map with you before any research.",
+    rows: [
+      ["Owner, President, Managing Director", "Runs the company, common at family and privately held manufacturers", "You sell to smaller manufacturers or need final sign off"],
+      ["VP Operations, Operations Director, COO", "Owns output, cost and every plant", "You sell anything that changes how production runs"],
+      ["Plant Manager, Site Director", "Runs one site, its staff and its equipment", "You sell machinery, maintenance, safety or floor software"],
+      ["Head of Procurement, Purchasing Manager", "Chooses suppliers and negotiates contracts", "You sell raw materials, parts, packaging or MRO supplies"],
+      ["Supply Chain Director, Logistics Manager", "Owns inbound materials, stock and shipping", "You sell freight, warehousing or planning software"],
+      ["Quality Manager, EHS Manager", "Owns quality systems, audits and safety", "You sell testing, certification, training or safety products"],
+    ],
+    closing:
+      "Tell us which rows you want and whether you need one contact per site or several per company. We leave out shift supervisors, line operators and technicians unless you ask for them. A plant manager list for food producers and a procurement list for metal fabricators can come from one order with two title rules.",
+  },
+  count: {
+    heading: "How many manufacturing contacts can you get?",
+    p1: "Every manufacturing list is researched to your brief, so there is no fixed file size. Sub sector and company size set the count: a brief for plastics molders with 50 to 200 staff in a few regions is far smaller than one for every food and beverage producer.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "BY SUB SECTOR",
+    heading: "A manufacturing email list split by sub sector",
+    paragraphs: [
+      "Manufacturing covers very different businesses, so a single manufacturing email list for every factory rarely works. A supplier of food grade packaging needs food and beverage producers, while a CNC tooling company needs machine shops and metal fabricators. We build the list around the sub sectors you name.",
+      "Common sub sectors in our briefs are food and beverage, industrial machinery, metal fabrication, plastics and rubber, electronics, automotive parts, chemicals, building products and packaging. Name yours, add company size and location and we check each company's own website before it goes in the file.",
+      "If the owner signs off every purchase at the companies you target, add the [CEO email list](/lists/ceo-email-list) titles to the same brief. For finance approval, see the [CFO email list](/lists/cfo-email-list). Every package is listed on the [B2B lead list pricing page](/pricing).",
+    ],
+  },
+  filters: {
+    heading: "Manufacturer filters you set",
+    rows: [
+      ["Sub sector", "Food and beverage, machinery, metal fabrication, plastics, electronics, automotive parts, chemicals or any other"],
+      ["Company size", "Employee bands, for example 50 to 200 or 500 to 2,000"],
+      ["Location", "The locations of the companies or plants you sell to"],
+      ["Function", "Plant and operations, procurement and supply chain, quality and safety or ownership"],
+      ["Target accounts", "Your own list of manufacturers or domains to build from"],
+      ["Exclusions", "Current customers, distributors, open deals or any domains to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each manufacturing list is built",
+    steps: builtSteps(["Brief", "You send sub sectors, company size, locations, the plant or purchasing roles you want and any exclusions. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "Manufacturing industry email list pricing",
+    lead: "10,000 manufacturing contacts cost $199. That is $19.90 per 1,000, paid once, with no seats, no subscription and no credits to use up.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 manufacturing contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt manufacturing database or a list built to your brief",
+    intro: "Manufacturer contacts come as prebuilt databases or as lists researched for your order. Here is how they compare.",
+    rows: PREBUILT_ROWS,
+    close: "A prebuilt file can be quicker if its industry codes match your market. Industry codes often lump distributors and resellers in with real producers, so a list built to your brief checks that each company actually makes things in your sub sector. Comparing with a data platform? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a manufacturing industry email list",
+    rows: [
+      ["Industrial equipment and parts suppliers", "Reach plant managers and procurement heads at the producers who use your products."],
+      ["Manufacturing software companies", "Pitch ERP, MES, maintenance and quality software to operations leaders. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Logistics and packaging companies", "Reach supply chain directors and purchasing managers who choose carriers and packaging suppliers."],
+      ["Industrial recruiters and agencies", "Pitch plant leaders who are hiring or run outbound for industrial clients. See [B2B lead lists for agencies](/for/agencies)."],
+    ],
+    tipsHeading: "How to get replies from plant and operations leaders",
+    tips: [
+      "Talk about downtime, scrap, lead times or cost per unit. Those are the numbers plant leaders are judged on.",
+      "Name their sub sector. A food producer and a metal fabricator worry about very different audits and machines.",
+      "Call where a mobile is found. Plant managers spend much of the day on the floor, away from their inbox.",
+      "Send procurement the commercial detail and the plant manager the operational detail. Both often sit on the same decision.",
+      "Offer a site visit or a short trial. Manufacturers like to see equipment and services work before they commit.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a manufacturing industry email list?", "A manufacturing industry email list is a file of decision makers at manufacturers, such as plant managers, operations directors, procurement heads and owners, with verified business emails and company details. Equipment suppliers, software vendors and logistics firms use it for outreach. Clean Rows builds each list fresh to the sub sectors and company sizes you choose."],
+    ["Can you split a manufacturing email list by sub sector?", "Yes. We recommend it. Name the sub sectors you sell to (such as food and beverage or metal fabrication) and we check each company's website to confirm what it makes. You can also leave out sub sectors you do not serve."],
+    ["Do you separate manufacturers from distributors?", "Yes. Industry codes often mix producers with wholesalers and resellers, so a person checks whether each company makes products itself. Tell us if you want distributors included as a separate group."],
+    ["Who should I contact at a manufacturer?", "Contact the plant manager for anything used on the production floor and procurement for materials, parts and supplies. Contact the operations director or owner for larger purchases that affect every site. You can include all of them in one brief."],
+    ["How much does a manufacturing email list cost?", "10,000 manufacturing contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Can I get contacts for several plants at one company?", "Yes. Ask for one contact per site and we look for the plant manager at each location the company lists. Coverage depends on what each company publishes, so we confirm the count before you pay."],
+    ["How do you verify the emails?", "We run every business email through two separate verification tools. A person then checks titles, companies and sub sectors against your brief before delivery."],
+    ["Can I try a manufacturing list before I buy?", "Yes. Send your sub sectors, company size and roles and we deliver a free sample within 24 hours. No card, no call and no signup."],
+  ],
+  closing: {
+    heading: "Get a manufacturing list sample built to your brief",
+    body: "Send the sub sectors, company size, locations and roles you want. A free sample reaches you within 24 hours and we confirm the full count and price after you review it. No card, no call and no signup.",
+    crossLink: "Selling to the owner or the top of the company? See the [CEO email list](/lists/ceo-email-list). Need finance approval too? See the [CFO email list](/lists/cfo-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "Manufacturing industry email list",
+    "Manufacturing industry email lists built fresh to the buyer's brief by sub sector, company size and location from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/manufacturing-email-list`,
+    "Growth: 10,000 manufacturing contacts"
+  ),
+  related: [
+    ["/lists/ceo-email-list", "Owners and CEOs", "CEO, founder and owner title rules."],
+    ["/lists/cfo-email-list", "Finance sign off", "CFO and finance title map."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 11 Accountants
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "accountants",
+  slug: "accountants-email-list",
+  meta: {
+    title: "Accountants Email List: 10,000 CPAs for $199 | Clean Rows",
+    description:
+      "An accountants email list built to your brief: CPAs, partners and firm owners by firm size, services and location. A CPA email list at $199 per 10,000.",
+    label: "Accountants email list",
+    serviceName: "Accountants email list",
+    audience: "B2B teams selling software and services to accounting firms and finance teams",
+  },
+  hero: {
+    title: "Accountants email list",
+    accent: "CPAs, partners and firm owners",
+    intro:
+      "An accountants email list from Clean Rows gives you the CPAs, partners and owners of the accounting firms you target, plus finance controllers where you need them, with verified business emails, phone numbers and firm details. We build it to your firm sizes, services and locations and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 accountant and CPA contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "accountants_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["MP", "Managing Partner, Firm Owner"],
+      ["CP", "CPA, Partner, Tax Partner"],
+      ["FC", "Financial Controller"],
+    ],
+    chips: ["Verified emails", "Services offered"],
+  },
+  sample: { heading: "Sample rows from an accountants email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every accountant contact list",
+    intro: fieldsIntro,
+    titleExample: "Tax Partner, CPA",
+    titleNote: "Every row, checked against your accounting title map",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which accounting roles an accountants email list can cover",
+    intro:
+      "Accounting buyers sit in two places. At accounting firms the partners and owners choose software, staff and suppliers for the practice. Inside other companies the controller runs the books and often picks the tools. You choose which side you sell to and we agree the title map before research starts.",
+    rows: [
+      ["Managing Partner, Firm Owner", "Runs the accounting firm and signs off spend", "Always, when you sell to firms"],
+      ["Partner, Tax Partner, Audit Partner", "Owns a service line and its clients", "You sell to one service, such as tax software or audit tools"],
+      ["CPA, Senior Accountant at small firms", "Does client work and often owns the practice at small firms", "You sell to sole practitioners and small firms"],
+      ["Practice Manager, Firm Administrator", "Runs operations, staff and systems", "You sell practice management, IT or office services"],
+      ["Financial Controller, Controller", "Runs accounting inside a company, not a firm", "You sell finance software or services to company finance teams"],
+      ["Bookkeeping Firm Owner", "Owns a bookkeeping or payroll practice", "You sell tools or services built for bookkeepers"],
+    ],
+    closing:
+      "Tell us which rows you want and whether controllers inside companies count. We leave out junior staff, trainees and assistants unless you ask for them. A list of tax partners at small firms and a list of controllers at mid sized companies can come from one order with two title rules.",
+  },
+  count: {
+    heading: "How many accountant contacts can you get?",
+    p1: "Each accountants email list is researched to your brief, so there is no standard size. The services you pick and the firm sizes you allow set the count; a brief for audit firms with 20 to 150 staff is much smaller than one for every tax practice in a wide region.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "CPA LISTS",
+    heading: "CPA email list, accountants mailing list and accountant email database",
+    paragraphs: [
+      "A CPA email list keeps to licensed accountants and the firms they own. An accountants mailing list is often wider and also covers bookkeepers, enrolled agents and practice managers. Tell us which you want and we set the title map to match, so every row fits the campaign.",
+      "Many buyers search for an accountant email database to filter themselves. Instead, we research the file for your order, filtered by the services each firm offers: tax, audit, bookkeeping, payroll, advisory or outsourced CFO work. We check each firm's own website for those services before it goes in the list.",
+      "Selling to finance leaders inside companies instead of firms? See the [CFO email list](/lists/cfo-email-list). Full package prices are on the [B2B lead list pricing page](/pricing). You can start with a free sample.",
+    ],
+  },
+  filters: {
+    heading: "Accounting firm filters you set",
+    rows: [
+      ["Services offered", "Tax, audit, bookkeeping, payroll, advisory or outsourced CFO work"],
+      ["Firm size", "Sole practitioners, small firms or larger firms, set by employee band"],
+      ["Location", "The locations of the firms or offices you sell to"],
+      ["Role", "Partners and owners only or also CPAs, practice managers and controllers"],
+      ["Firm or company", "Accounting firms, finance teams inside companies or both"],
+      ["Exclusions", "Current clients, open deals or any firms to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each accountants list is built",
+    steps: builtSteps(["Brief", "You send the services, firm sizes, locations and roles you want, plus any firms to leave out. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "Accountants email list pricing",
+    lead: "10,000 accountant and CPA contacts cost $199. You pay $19.90 per 1,000 once, with no seats, no subscription and no credits.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 accountant contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt accountant database or a list built to your brief",
+    intro: "You can buy accountant contacts as a prebuilt database or as a list researched for your order. Here is how the two compare.",
+    rows: PREBUILT_ROWS,
+    close: "A prebuilt database can be enough if you want every accounting firm in a category. When your product fits one service, such as payroll software for small bookkeeping firms, a list built to your brief keeps tax and audit firms that will never buy out of the file. Comparing with a data platform? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses an accountants email list",
+    rows: [
+      ["Accounting and tax software companies", "Reach partners and practice managers who choose the firm's software. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Outsourcing and offshore staffing firms", "Pitch firm owners who need extra capacity during tax season."],
+      ["Financial service providers", "Reach CPAs who refer clients for lending, insurance or wealth services."],
+      ["Agencies and recruiters", "Run outbound for clients that sell to accounting firms or pitch firms that are hiring. See [B2B lead lists for agencies](/for/agencies)."],
+    ],
+    tipsHeading: "How to get replies from accountants",
+    tips: [
+      "Time it around their calendar. Firm owners have little time during the busiest weeks of tax season.",
+      "Lead with billable hours. Show how your offer saves staff time or lets the firm take on more clients.",
+      "Be precise. Accountants trust exact numbers and clear terms more than broad promises.",
+      "Name the service you fit. A payroll practice and an audit firm need very different tools.",
+      "Copy the practice manager at larger firms. They often run the evaluation for the partners.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is an accountants email list?", "An accountants email list is a file of CPAs, partners and accounting firm owners with names, titles, verified business emails and firm details. Accounting software companies, outsourcing firms and financial service providers use it for outreach. Clean Rows builds each list fresh to the firm sizes, services and locations you choose."],
+    ["Is a CPA email list the same as an accountants email list?", "Not quite. A CPA email list keeps to licensed accountants, while an accountants email list can also include bookkeepers, enrolled agents and practice managers. Tell us which titles count and we agree the title map before research."],
+    ["Can I filter accounting firms by the services they offer?", "Yes. Choose tax, audit, bookkeeping, payroll, advisory or outsourced CFO work and we check each firm's own website for those services. You can also leave out firms that only offer services you do not support."],
+    ["Can you include controllers at companies, not just firms?", "Yes. Financial controllers inside companies can sit in the same file or a separate one. For more senior finance leaders, see the CFO email list."],
+    ["How much does an accountants email list cost?", "10,000 accountant and CPA contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["When should I email accountants?", "Avoid the weeks right before major tax deadlines, when firm owners have the least time. Plan the campaign for the weeks after the busy season, when firms have room to review software and staffing. Your free sample arrives in 24 hours, so you can plan around those dates."],
+    ["How do you verify accountant emails?", "Two separate verification tools check every business email. A person then reviews firm names, services and titles against your brief before delivery."],
+    ["Can I get a free sample of an accountants list?", "Yes. Send your firm size, services, locations and roles and we deliver a free sample within 24 hours. No card, no call and no signup."],
+  ],
+  closing: {
+    heading: "Get an accountants email list sample built to your brief",
+    body: "Send the firm sizes, services, locations and roles you want. We send a free sample within 24 hours, then quote the exact count and price for the full list. No card, no call and no signup.",
+    crossLink: "Selling to finance leaders inside companies? See the [CFO email list](/lists/cfo-email-list). Selling to other professional firms? See the [lawyers email list](/lists/law-firms-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "Accountants email list",
+    "Accountant and CPA email lists built fresh to the buyer's brief by firm size, services offered and location from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/accountants-email-list`,
+    "Growth: 10,000 accountant contacts"
+  ),
+  related: [
+    ["/lists/cfo-email-list", "Finance leaders", "CFO, VP of Finance and controller titles."],
+    ["/lists/law-firms-email-list", "Law firms", "Partners, attorneys and firm administrators."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 12 Small business owners
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "business-owners",
+  slug: "business-owners-email-list",
+  meta: {
+    title: "Small Business Email List: 10,000 Owners | Clean Rows",
+    description:
+      "A small business email list built to your brief: owners, founders and presidents of small firms and local service businesses. 10,000 for $199, paid once.",
+    label: "Small business email list",
+    serviceName: "Small business email list",
+    audience: "B2B teams selling to the owners of small companies",
+  },
+  hero: {
+    title: "Small business email list",
+    accent: "the owner of every company, by name",
+    intro:
+      "A small business email list from Clean Rows gives you the owners, founders, presidents and managing directors of the small companies you target, with their names, verified business emails, phone numbers and company details. We build it to your industries, company sizes and locations and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 small business owner contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "small_business_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["OW", "Owner, Co Owner"],
+      ["FO", "Founder, President"],
+      ["MD", "Managing Director"],
+    ],
+    chips: ["Verified emails", "Owner names"],
+  },
+  sample: { heading: "Sample rows from a small business email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every small business owner list",
+    intro: fieldsIntro,
+    titleExample: "Owner and President",
+    titleNote: "Every row, checked against your owner title rules",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which owner titles a small business email list can cover",
+    intro:
+      "Small companies rarely have a buying committee. The owner reads the email, decides and pays. But owners call themselves many things, from Owner to President to Managing Director, so we agree the title rules with you before research starts.",
+    rows: [
+      ["Owner, Co Owner", "The person who owns the business and makes the decisions", "Always"],
+      ["Founder, Cofounder", "Started the company and usually still runs it", "You sell to younger or fast growing small companies"],
+      ["President", "A common title for the owner of a small company", "You sell to established small firms"],
+      ["Managing Director, General Manager", "Runs the business day to day, sometimes for an owner", "You want the person who runs operations"],
+      ["Principal, Managing Partner", "The owner title at small professional practices", "You sell to agencies, studios or consulting firms"],
+      ["Operations Manager, Office Manager", "Handles suppliers and admin for the owner", "You sell office services and the owner delegates buying"],
+    ],
+    closing:
+      "Tell us which rows you want and whether one contact per company is enough. Most small business briefs ask for the owner only. We leave out staff roles unless you ask, so you reach the person who can say yes.",
+  },
+  count: {
+    heading: "How many small business contacts can you get?",
+    p1: "There is no fixed file of small businesses, because we research each list to your brief. Industry and location set most of the count: a brief for dental practices in a few cities is much smaller than one for every home services company in a large region.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "OWNER CONTACTS",
+    heading: "Small business owners email list with the owner's name and email",
+    paragraphs: [
+      "A small business owners email list is only useful if it reaches the owner, not a general inbox. So every row gives you the company owner name and email, so the owner contact email for each company sits next to the company HQ phone as a second route.",
+      "Local service businesses are a common brief: plumbers, electricians, HVAC and roofing companies, landscapers, cleaning companies, dental and medical practices, salons, auto repair shops and restaurants. Name the trades or business types you sell to, then set company size and location for the areas you serve.",
+      "For owners and CEOs of larger companies, see the [CEO email list](/lists/ceo-email-list). For small accounting practices, see the [accountants email list](/lists/accountants-email-list). See the [B2B lead list pricing page](/pricing) for every package.",
+    ],
+  },
+  filters: {
+    heading: "Small business filters you set",
+    rows: [
+      ["Business type", "Trades and local services, retail, restaurants, practices, agencies or any type you name"],
+      ["Company size", "Employee bands, for example 1 to 10 or 10 to 50"],
+      ["Location", "The service areas or locations of the businesses you sell to"],
+      ["Owner title", "Owner only or also founders, presidents and managing directors"],
+      ["Contacts per company", "One owner per company or several leaders where they exist"],
+      ["Exclusions", "Franchise locations, current customers or any domains to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each small business list is built",
+    steps: builtSteps(["Brief", "You send the business types, company size, locations and owner titles you want, plus any exclusions. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "Small business email list pricing",
+    lead: "10,000 small business owner contacts cost $199, which is $19.90 per 1,000. One payment covers the list. No seats, no subscription and no credits.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 owner contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt small business database or a list built to your brief",
+    intro: "Small business contacts are sold as prebuilt databases and as lists researched for one order. This is how they differ.",
+    rows: PREBUILT_ROWS,
+    close: "Small businesses open, close and change owners often, so the date the data was gathered matters more here than for most lists. A list built to your brief is researched after you order. A person checks every owner against your brief before delivery. Weighing a data platform instead? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a small business email list",
+    rows: [
+      ["Marketing and web agencies", "Reach owners who need websites, local search, ads or reviews. See [B2B lead lists for agencies](/for/agencies)."],
+      ["Software for small businesses", "Pitch booking, invoicing, payroll and field service tools to the owner who buys them. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Business services and suppliers", "Reach owners who choose insurance, payment processing, equipment leasing or business funding."],
+      ["Franchise development teams", "Reach owners of independent businesses who may want to convert or expand."],
+    ],
+    tipsHeading: "How to get replies from small business owners",
+    tips: [
+      "Write like a person, not a company. Owners reply to short, plain emails from someone they could call.",
+      "Name their trade and area. A message for HVAC companies should talk about HVAC jobs, not small business in general.",
+      "Lead with money or time: more jobs booked, fewer hours on admin or a lower monthly bill.",
+      "Call where a mobile is found. Many owners work away from a desk and answer the phone first.",
+      "Make the next step small, such as a five minute call or a quick reply with one number.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a small business email list?", "A small business email list is a file of owners and founders of small companies with names, titles, verified business emails and company details. Agencies, software companies and business service providers use it to reach the person who makes every buying decision. Clean Rows researches each list to the business types and locations you choose."],
+    ["Does the list give me the company owner name and email?", "Yes. Each row names the owner or the most senior leader we can confirm, with their verified business email. You agree the owner titles in the brief before research starts."],
+    ["Can I target local service businesses?", "Yes. Name the trades or business types (such as plumbers, HVAC companies, dental practices or salons) and set the locations you serve. We check each business's own website before it goes in the list."],
+    ["How much does a small business email list cost?", "10,000 small business owner contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Can I get one owner per company only?", "Yes. Most small business briefs ask for exactly that. We find the owner or most senior leader at each company, so you send one email per business. If a company has two owners, tell us whether you want both."],
+    ["Can you leave out franchise locations?", "Yes. Ask for independent businesses only and we leave out franchise locations and chain branches. You can also ask for franchise owners as a separate group."],
+    ["How do you keep small business data fresh?", "We research each list after you order, so it reflects who runs each business at that point. Every email passes two verification tools and a person reviews the list before delivery."],
+    ["Can I get a free sample of a small business list?", "Yes. Send your business types, company size and locations and we deliver a free sample within 24 hours. No card, no call and no signup."],
+  ],
+  closing: {
+    heading: "Get a small business email list sample built to your brief",
+    body: "Send the business types, company size, locations and owner titles you want. You get a free sample within 24 hours. Then we confirm how many owners match and what the full list costs. No card, no call and no signup.",
+    crossLink: "Selling to the CEOs of larger companies? See the [CEO email list](/lists/ceo-email-list). Selling to small accounting practices? See the [accountants email list](/lists/accountants-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "Small business email list",
+    "Small business owner email lists built fresh to the buyer's brief by business type, company size and location from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/business-owners-email-list`,
+    "Growth: 10,000 small business owner contacts"
+  ),
+  related: [
+    ["/lists/ceo-email-list", "CEOs of larger companies", "CEO, founder and owner title rules."],
+    ["/lists/accountants-email-list", "Accounting practices", "CPAs, partners and firm owners."],
+    ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
+  ],
+});
+
+// ---------------------------------------------------------------------------
+// 13 Hotels
+// ---------------------------------------------------------------------------
+rolePages.push({
+  key: "hotels",
+  slug: "hotel-email-list",
+  meta: {
+    title: "Hotel Email List: 10,000 Contacts for $199 | Clean Rows",
+    description:
+      "A hotel email list built to your brief: general managers, directors of sales, revenue managers and owners at independent or chain hotels. $199 per 10,000.",
+    label: "Hotel email list",
+    serviceName: "Hotel email list",
+    audience: "B2B teams selling products, software and services to hotels",
+  },
+  hero: {
+    title: "Hotel email list",
+    accent: "independent and chain properties",
+    intro:
+      "A hotel email list from Clean Rows gives you the general managers, directors of sales, revenue managers, owners and group executives at the hotels you target, with verified business emails, phone numbers and property details. We build it to your property types, sizes and locations and deliver 10,000 contacts as a CSV or Google Sheet in 24 hours.",
+    proof: "10,000 hotel contacts for $199. One time. No seats.",
+  },
+  heroFile: {
+    fileName: "hotel_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
+    rows: [
+      ["GM", "General Manager, Hotel Manager"],
+      ["DS", "Director of Sales and Marketing"],
+      ["RM", "Revenue Manager"],
+    ],
+    chips: ["Verified emails", "Independent or chain"],
+  },
+  sample: { heading: "Sample rows from a hotel email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
+  fields: {
+    heading: "What is in every hotel contact list",
+    intro: fieldsIntro,
+    titleExample: "Director of Sales and Marketing",
+    titleNote: "Every row, checked against your hotel title map",
+    notIncluded: NOT_INCLUDED,
+  },
+  titleMap: {
+    heading: "Which hotel roles a hotel email list can cover",
+    intro:
+      "A hotel buys in two places. The property team runs the building, rooms and guests, while the owner or management group signs off larger spend across several hotels. Which one you need depends on what you sell, so we agree the title map with you before research starts.",
+    rows: [
+      ["General Manager, Hotel Manager", "Runs the property and its budget", "Always, for anything used at the hotel"],
+      ["Director of Sales, Director of Sales and Marketing", "Owns group, corporate and event bookings", "You sell marketing, booking channels or event services"],
+      ["Revenue Manager, Director of Revenue", "Sets room rates and channel strategy", "You sell revenue, pricing or distribution software"],
+      ["Owner, Owner Operator", "Owns one or more independent hotels", "You sell to independent hotels where the owner decides"],
+      ["Hospitality group executive, VP Operations", "Runs several properties for a group or management company", "You sell across a portfolio of hotels"],
+      ["Director of Operations, Rooms Division Manager", "Runs housekeeping, front desk and guest services", "You sell supplies, linen, cleaning or guest technology"],
+    ],
+    closing:
+      "Tell us which rows you want and whether you need one contact per hotel or several. We leave out front desk, kitchen and housekeeping staff unless you ask for them. A general manager list for independent hotels and a group executive list for chains can come from one order with two title rules.",
+  },
+  count: {
+    heading: "How many hotel contacts can you get?",
+    p1: "We research every hotel list to your brief, so there is no standard size. Property type sets most of the count: a brief for independent boutique hotels in a few regions is much smaller than one for every chain property across a wide area.",
+    p2: COUNT_P2,
+  },
+  extra: {
+    kicker: "HOTELS AND HOSPITALITY",
+    heading: "An email list of hotels or a hospitality industry email list",
+    paragraphs: [
+      "An email list of hotels starts with the properties: one or two decision makers at each hotel you target. A hospitality industry email list is wider and can add hospitality groups, management companies, resorts and serviced apartments. Tell us which you need and we set the brief to match.",
+      "For a hotels email list split by property, choose independent hotels, chain and franchise properties or both, then set property size and location. Independent hotels usually buy through the owner or general manager, while chain properties often follow decisions made by the brand or the management group.",
+      "If you also sell to small hospitality businesses such as guesthouses or restaurants, see the [small business email list](/lists/business-owners-email-list). For hotel marketing leaders at group level, see the [marketing directors email list](/lists/marketing-director-email-list). Prices are on the [B2B lead list pricing page](/pricing).",
+    ],
+  },
+  filters: {
+    heading: "Hotel filters you set",
+    rows: [
+      ["Independent or chain", "Independent hotels, chain and franchise properties or both"],
+      ["Property size", "Small, mid sized or large properties, set by employee band"],
+      ["Location", "The locations of the hotels or groups you sell to"],
+      ["Property type", "City hotels, resorts, boutique hotels, extended stay or serviced apartments"],
+      ["Level", "Property team, owner or the management group above several hotels"],
+      ["Exclusions", "Current customers, open deals or any brands to leave out"],
+    ],
+    calc: CALC_LINE,
+  },
+  built: {
+    heading: "How each hotel list is built",
+    steps: builtSteps(["Brief", "You send property types, independent or chain, property size, locations and the hotel roles you want. A short form or an email to sales@cleanrowsdata.com is enough."]),
+    delivery: DELIVERY_ROWS,
+  },
+  packages: {
+    heading: "Hotel email list pricing",
+    lead: "10,000 hotel contacts cost $199. That is $19.90 per 1,000 contacts, paid once. No seats, no subscription and no credits to use up.",
+    rows: PACKAGE_ROWS,
+    note: "Every package has the same standard fields. If the list misses the agreed brief, we rebuild it free or refund you. See the [B2B lead list pricing page](/pricing) for full package details.",
+    cta: "Order 10,000 hotel contacts",
+  },
+  prebuilt: {
+    heading: "Prebuilt hotel database or a list built to your brief",
+    intro: "Hotel contacts are sold as prebuilt hospitality databases and as lists researched for your order. Here is how they compare.",
+    rows: PREBUILT_ROWS,
+    close: "Hotel teams change often, so a general manager in a prebuilt database may have moved on. A list built to your brief is researched after you order, so it reflects the team at each property at that point. Comparing with a data platform? See [B2B data subscription or pay per list](/compare/b2b-data-subscriptions).",
+  },
+  useCases: {
+    heading: "Who uses a hotel email list",
+    rows: [
+      ["Hotel software companies", "Pitch property management, booking engine, revenue and guest messaging tools to general managers and revenue teams. See [lead lists for SaaS sales teams](/for/saas)."],
+      ["Hospitality suppliers", "Reach operations and rooms leaders who buy linen, amenities, furniture, cleaning and food service supplies."],
+      ["Travel and event companies", "Reach directors of sales who handle group, corporate and event bookings."],
+      ["Hospitality agencies and recruiters", "Run outbound for hotel marketing clients or pitch properties that are hiring. See [B2B lead lists for agencies](/for/agencies)."],
+    ],
+    tipsHeading: "How to get replies from hotel managers",
+    tips: [
+      "Talk about occupancy, average rate, guest reviews or labor cost. Those are the numbers hotel managers are judged on.",
+      "Time it around their seasons. Managers have more time for new suppliers before the busy months, not during them.",
+      "Write to the property type. A resort, a city hotel and an extended stay property have different problems.",
+      "For chain properties, ask who decides. Many purchases are made by the brand or the management group, not the hotel.",
+      "Offer a short demo or a trial at one property before a group wide deal.",
+    ],
+  },
+  sources: { heading: "Data sources and compliance", p1: SOURCES_P1, p2: SOURCES_P2 },
+  faqs: [
+    ["What is a hotel email list?", "A hotel email list is a file of hotel decision makers, such as general managers, directors of sales, revenue managers and owners, with verified business emails and property details. Hotel software companies, hospitality suppliers and event companies use it for outreach. Clean Rows builds each list fresh to the property types and locations you choose."],
+    ["Can I target independent hotels only?", "Yes. Choose independent hotels in your brief and we leave out chain and franchise properties. You can add property size, property type and location to narrow it further."],
+    ["Who should I contact at a hotel?", "Contact the general manager for anything used at the property and the director of sales for marketing, booking and event services. Contact the revenue manager for pricing and distribution tools. For chain hotels, add the management group, which often makes the decision."],
+    ["Is a hospitality industry email list different from a hotel list?", "Yes. A hotel list covers hotel properties, while a hospitality industry email list can also include hospitality groups, management companies, resorts and serviced apartments. Tell us how wide you want it and we agree the brief before research."],
+    ["How much does a hotel email list cost?", "10,000 hotel contacts cost $199 at Clean Rows, paid once. 50,000 contacts cost $799 and 100,000 or more get a custom quote. There are no seats or subscriptions."],
+    ["Can I get several contacts at each hotel?", "Yes. Ask for the general manager, director of sales and revenue manager at each property and we look for all three. Coverage depends on what each hotel publishes, so we confirm the count before you pay."],
+    ["How do you verify hotel emails?", "Every business email passes two separate verification tools. A person then checks titles and properties against your brief before delivery."],
+    ["Can I get a free sample of a hotel list?", "Yes. Send your property types, sizes, locations and roles and we deliver a free sample within 24 hours. No card, no call and no signup."],
+  ],
+  closing: {
+    heading: "Get a hotel email list sample built to your brief",
+    body: "Send the property types, sizes, locations and hotel roles you want. We build a free sample within 24 hours and then confirm the count and price for every property in your brief. No card, no call and no signup.",
+    crossLink: "Selling to small hospitality businesses too? See the [small business email list](/lists/business-owners-email-list). Selling to marketing leaders at hotel groups? See the [marketing directors email list](/lists/marketing-director-email-list).",
+  },
+  serviceSchema: serviceSchema(
+    "Hotel email list",
+    "Hotel email lists built fresh to the buyer's brief by property type, independent or chain, property size and location from public B2B sources. Emails checked with two verification tools and every list reviewed by a person. Delivered as a CSV or Google Sheet.",
+    `${site}/lists/hotel-email-list`,
+    "Growth: 10,000 hotel contacts"
+  ),
+  related: [
+    ["/lists/business-owners-email-list", "Small business owners", "Owners of small and local businesses."],
+    ["/lists/marketing-director-email-list", "Marketing leaders", "CMO, VP and Head of Marketing titles."],
     ["/buy-b2b-leads", "Browse all lists", "Every role and industry list."],
   ],
 });

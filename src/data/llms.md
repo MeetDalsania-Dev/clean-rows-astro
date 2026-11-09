@@ -36,18 +36,24 @@ Key facts:
 
 ## Target lists
 
-- [B2B email lists](https://www.cleanrowsdata.com/buy-b2b-leads): Hub page for every B2B email list by role, plus how to buy B2B leads: checklist, provider types and pricing.
+- [B2B email lists](https://www.cleanrowsdata.com/buy-b2b-leads): Hub page for every B2B email list by role and industry, plus how to buy B2B leads: checklist, provider types and pricing.
 - [VP of Sales email list](https://www.cleanrowsdata.com/lists/vp-of-sales-email-list): Sales leadership title map, including chief sales officers.
 - [CEO email list](https://www.cleanrowsdata.com/lists/ceo-email-list): CEO and founder title rules and company criteria.
 - [HR directors email list](https://www.cleanrowsdata.com/lists/hr-director-email-list): HR and people leadership title map, including CHROs.
 - [Marketing directors email list](https://www.cleanrowsdata.com/lists/marketing-director-email-list): Marketing Director, CMO, VP and Head of Marketing titles.
 - [CFO email list](https://www.cleanrowsdata.com/lists/cfo-email-list): Finance leadership title map, including hospital and healthcare CFOs.
 - [CTO lists](https://www.cleanrowsdata.com/lists/cto-email-list): Technology leadership title map.
+- [CIO email list](https://www.cleanrowsdata.com/lists/cio-email-list): IT decision makers: CIOs, VPs of IT, IT Directors and Heads of IT.
+- [Lawyers email list](https://www.cleanrowsdata.com/lists/law-firms-email-list): Attorneys and law firm decision makers by practice area, firm size and location.
+- [Manufacturing industry email list](https://www.cleanrowsdata.com/lists/manufacturing-email-list): Plant, operations, procurement and supply chain leaders by sub sector.
+- [Accountants email list](https://www.cleanrowsdata.com/lists/accountants-email-list): CPAs, partners and accounting firm owners by services offered and firm size.
+- [Small business email list](https://www.cleanrowsdata.com/lists/business-owners-email-list): Owners and founders of small companies and local service businesses.
+- [Hotel email list](https://www.cleanrowsdata.com/lists/hotel-email-list): General managers, sales and revenue leaders and owners at independent or chain hotels.
 - [Fintech lists](https://www.cleanrowsdata.com/lists/fintech): Subsector definitions before contacts.
 
 ## Comparisons
 
-- [Clean Rows vs B2B data subscriptions](https://www.cleanrowsdata.com/compare/b2b-data-subscriptions): A delivered list priced per list versus a database subscription priced per seat.
+- [B2B data subscription or pay per list](https://www.cleanrowsdata.com/compare/b2b-data-subscriptions): Do you need a B2B data subscription? A delivered list priced per list versus a database subscription priced per seat.
 - [Apollo alternatives](https://www.cleanrowsdata.com/compare/apollo-alternatives): Apollo compared with ZoomInfo, Lusha, UpLead, Cognism, Seamless.AI and Clean Rows on pricing model, published starting price, fit and limits.
 
 ## Company and policies
