@@ -73,10 +73,10 @@ const serviceSchema = {
 };
 
 const packageRows: [string, string, string, string, string][] = [
+  ["Starter", "1,000", "$25", "$25.00", "About 3 hours"],
   ["Growth", "10,000", "$199", "$19.90", "24 hours"],
   ["Scale", "50,000", "$799", "$15.98", "48 hours"],
   ["Enterprise", "100,000+", "Custom quote", "Quoted for your brief", "5 to 7 business days"],
-  ["Starter", "1,000", "$25", "$25.00", "About 3 hours"],
 ];
 ---
 
@@ -98,8 +98,8 @@ const packageRows: [string, string, string, string, string][] = [
     secondaryHref="#packages"
     proof="10,000 B2B leads for $199. One time. No seats."
     filePanel={{
-      fileName: "b2b-leads.csv",
-      subline: "10,000 contacts · 12 fields",
+      fileName: "b2b_leads.csv",
+      subline: "10,000 contacts · 10 field groups",
       rows: [
         { initials: "VS", title: "VP of Sales" },
         { initials: "CE", title: "CEO" },
@@ -256,7 +256,7 @@ const packageRows: [string, string, string, string, string][] = [
       <p>10,000 B2B leads cost $199. That is $19.90 per 1,000 contacts, paid once. No seats, no subscription and no credits to use up.</p>
       <div class="ed-plan-cards" id="plan-options">
         {packageRows.map(([name, leads, price, rate, delivery]) => (
-          <article>
+          <article class:list={{ "ed-plan-growth": name === "Growth" }}>
             <h4>{name}</h4>
             <strong>{price}</strong>
             <p>{leads} contacts</p>

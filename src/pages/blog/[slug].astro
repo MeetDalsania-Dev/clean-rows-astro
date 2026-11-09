@@ -75,7 +75,7 @@ const related = [
     .sort((a, b) => Number(b.data.category === data.category) - Number(a.data.category === data.category))
     .slice(0, 3)
     .map((p) => [`/blog/${p.id}`, p.data.title, p.data.description]),
-  ['/free-sample', 'Try 100 free leads', 'A sample built to your ICP before you pay.'],
+  ['/free-sample', 'Try a free sample', 'A sample built to your ICP before you pay.'],
   ['/services/custom-lists', 'How custom lists work', 'Briefs, feasibility and scope.'],
   ['/pricing', 'Clean Rows pricing', 'One time packages, no seat fees.'],
 ].slice(0, 3);

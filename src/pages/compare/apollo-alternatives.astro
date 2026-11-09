@@ -17,7 +17,7 @@ const faqs = [
   ],
   [
     "How do I switch from Apollo to a list building service?",
-    "You do not replace the tool, you replace the data work. Keep the platform for outreach if you want to, and buy the finished list it would otherwise be searching for. Clean Rows delivers a standard CSV or Google Sheet that imports into the CRM or sequencing tool you already use, with column names agreed in advance.",
+    "You do not replace the tool, you replace the data work. Keep the platform for outreach if you want to and buy the finished list it would otherwise be searching for. Clean Rows delivers a standard CSV or Google Sheet that imports into the CRM or sequencing tool you already use, with column names agreed in advance.",
   ],
   [
     "Which Apollo alternative supports WhatsApp outreach?",
@@ -25,7 +25,7 @@ const faqs = [
   ],
   [
     "Why do people look for an Apollo alternative?",
-    "Mostly the cost model and the time. A per seat subscription adds a new line for every hire, and credits cap how much each rep can pull each cycle. Filtering, deduplicating and cleaning a database export is work someone has to do. A list built to your brief hands you the finished file, so the team spends its hours on outreach instead of research.",
+    "Mostly the cost model and the time. A per seat subscription adds a new line for every hire and credits cap how much each rep can pull each cycle. Filtering, deduplicating and cleaning a database export is work someone has to do. A list built to your brief hands you the finished file, so the team spends its hours on outreach instead of research.",
   ],
   [
     "Does Clean Rows include a CRM, sequences or a dialer?",
@@ -76,8 +76,8 @@ const pricingSources = [
     secondaryHref="#table"
     proof="10,000 contacts for $199. One time. No seats."
     filePanel={{
-      fileName: "b2b-leads.csv",
-      subline: "10,000 contacts · 12 fields",
+      fileName: "b2b_leads.csv",
+      subline: "10,000 contacts · 10 field groups",
       rows: [
         { initials: "VS", title: "VP of Sales" },
         { initials: "CE", title: "CEO" },
@@ -102,7 +102,7 @@ const pricingSources = [
         </div>
         <p>
           Apollo is a working tool: a searchable B2B database, credit based
-          exports, and outreach features like sequences and a dialer. Teams
+          exports and outreach features like sequences and a dialer. Teams
           still compare it against options for three reasons.
         </p>
       </div>
@@ -111,7 +111,7 @@ const pricingSources = [
           <span class="ed-index">01</span>
           <h3>The per seat cost</h3>
           <p>
-            Every new hire adds a subscription line, and credits are pooled
+            Every new hire adds a subscription line and credits are pooled
             per plan with limits that expire each billing cycle. If you need
             a list now and then, the seats you do not use are still paid for.
           </p>
@@ -154,7 +154,7 @@ const pricingSources = [
           <h2 id="apollo-tools">The tools, one by one</h2>
         </div>
         <p>
-          Six B2B data platforms plus Clean Rows, in the same honest format:
+          Six B2B data platforms plus Clean Rows, in the same format:
           what it is, how it is priced, the published starting price, who it
           fits and where it draws the line. Where a provider does not publish
           a figure, this page says so instead of guessing.
@@ -166,19 +166,18 @@ const pricingSources = [
         B2B data platform: a searchable contact and company database with
         credits for email and phone lookups, plus outreach tools such as
         sequences and a dialer. Free plan with credit limits; Basic and
-        Professional are self serve paid plans, and Custom is quoted by
-        sales. <a class="ed-inline" href="https://www.apollo.io/pricing">On the Apollo pricing page</a>
-        the Basic plan is $49 a user a month and the Professional plan is
+        Professional are self serve paid plans and Custom is quoted by
+        sales. <a class="ed-inline" href="https://www.apollo.io/pricing">On the Apollo pricing page</a> the Basic plan is $49 a user a month and the Professional plan is
         $99 a user a month (checked October 2026). Fits teams that prospect
         every day and want the search, the sequences and the dialer in one
-        place. The line it draws: the research is still your team's job, and
+        place. The line it draws: the research is still your team's job and
         credits cap how much anyone can pull each cycle.
       </p>
       <p>
         What a team actually does on it: a rep opens a contact profile, runs
         filters for their ideal customer, exports or reveals the fields they
         need, then cleans the rows before they load them into a sequence.
-        Every rep who does that needs a seat, and every export or reveal
+        Every rep who does that needs a seat and every export or reveal
         draws on the plan's credits. The platform keeps the software; the
         list work stays with the team.
       </p>
@@ -186,18 +185,17 @@ const pricingSources = [
       <h3 class="ed-subhead">ZoomInfo</h3>
       <p>
         Enterprise B2B data provider: a large verified database of company
-        and contact records with engagement and account level workflows.
-        <a class="ed-inline" href="https://www.zoominfo.com/pricing">Pricing is on request</a>;
+        and contact records with engagement and account level workflows. <a class="ed-inline" href="https://www.zoominfo.com/pricing">Pricing is on request</a>;
         plans are usually annual sales contracts (checked October 2026). Fits
         larger sales organizations that want enterprise depth and account
         based workflows. The line it draws: sales only pricing, annual
-        commitments, and data served from a maintained database rather than
+        commitments and data served from a maintained database rather than
         built to your brief.
       </p>
       <p>
         In practice, ZoomInfo sits at the other end of the market from a
         solo seller: it buys in through a sales conversation, renews on an
-        annual cycle, and its strength is the depth of the enterprise records
+        annual cycle and its strength is the depth of the enterprise records
         and the workflow around them.
       </p>
 
@@ -206,35 +204,32 @@ const pricingSources = [
         Phone and email lookup for B2B contacts, with a browser extension and
         mobile app, plus prospecting search for finding contacts. You pay for
         credits: the free plan includes 40 credits a
-        month, and paid plans are published starting at
-        <a class="ed-inline" href="https://www.lusha.com/pricing">$49.90 a month</a>
-        for the Starter tier (400 credits; checked October 2026). Fits solo
+        month and paid plans are published starting at <a class="ed-inline" href="https://www.lusha.com/pricing">$49.90 a month</a> for the Starter tier (400 credits; checked October 2026). Fits solo
         sellers who need one verified number or email at a time, from the
         profile in front of them. The line it draws: credits are spent per
         revealed email or phone, so a large list means a large credit budget
         and your team still filters and exports it.
       </p>
       <p>
-        Lusha is the fastest route from one profile to one number. That is
-        exactly the job it is built for: you are already looking at a person
-        on LinkedIn and you want their mobile without asking.
+        Lusha is built for single lookups: one profile to one number. That fits when
+        you are already looking at a person on LinkedIn and want their
+        mobile without asking.
       </p>
 
       <h3 class="ed-subhead">UpLead</h3>
       <p>
         B2B contact database with list building, enrichment and data refresh
-        features. <a class="ed-inline" href="https://uplead.com/pricing">Published prices start at $74 a month</a>
-        for the Essentials tier on annual billing ($99 a month paid monthly);
+        features. <a class="ed-inline" href="https://uplead.com/pricing">Published prices start at $74 a month</a> for the Essentials tier on annual billing ($99 a month paid monthly);
         the Professional tier is pricing on request (checked October 2026).
         Fits teams that want to build lists themselves inside a tool and keep
-        a subscription. The line it draws: a per seat subscription, and the
+        a subscription. The line it draws: a per seat subscription and the
         lists are filtered and exported by your team.
       </p>
       <p>
         UpLead is the middle ground: a subscription database, but aimed at
         people who build lists in a tool rather than search one profile at a
         time. It still follows the same model as the others: your team does
-        the filtering and the cleaning, and you pay for the access every
+        the filtering and the cleaning and you pay for the access every
         month the team keeps it.
       </p>
 
@@ -245,29 +240,28 @@ const pricingSources = [
         the Standard and Pro plans are sold through their team (checked
         October 2026). Fits teams that want a data platform with a compliance
         focus and intent data on top. The line it draws: sales only, per
-        seat, and the research still happens in the platform.
+        seat and the research still happens in the platform.
       </p>
       <p>
         Cognism's position is data you can defend: documented sourcing,
         quality controls and intent signals on top of the contact records.
         Teams that need to answer a compliance question about where their
-        data comes from, and that will prospect in the platform day to day,
+        data comes from and that will prospect in the platform day to day,
         are its natural fit. It remains a platform, not a delivered list.
       </p>
 
       <h3 class="ed-subhead">Seamless.AI</h3>
       <p>
         B2B data and enrichment platform: contact and company records, API
-        access and lead engagement features. <a class="ed-inline" href="https://seamless.ai/pricing">Pricing is on request</a>
-        (checked October 2026). Fits teams that want enrichment and data
+        access and lead engagement features. <a class="ed-inline" href="https://seamless.ai/pricing">Pricing is on request</a> (checked October 2026). Fits teams that want enrichment and data
         access through an API as well as the interface. The line it draws: no
-        published starting price, and the research and exports happen inside
+        published starting price and the research and exports happen inside
         the platform.
       </p>
       <p>
         Seamless.AI is built for teams that want data in their own systems,
         not just on a screen: enrichment of records you already hold, access
-        through an API, and lead engagement features around the records. If
+        through an API and lead engagement features around the records. If
         your job is to keep a CRM or a workflow fed with fresh fields, that
         is the kind of tool for it. If the job is one finished campaign
         list, the finished file is the smaller purchase.
@@ -277,10 +271,9 @@ const pricingSources = [
       <p>
         A B2B list building service: we research a fresh list to your brief
         when you order and deliver a CSV or Google Sheet. There is no
-        database to search and no seats to buy; you pay once per list.
-        <a class="ed-inline" href="/pricing">10,000 contacts cost $199</a>,
+        database to search and no seats to buy; you pay once per list. <a class="ed-inline" href="/pricing">10,000 contacts cost $199</a>,
         delivered in 24 hours. Fits teams that need one defined list for a
-        campaign rather than a platform, and agencies that build one list per
+        campaign rather than a platform and agencies that build one list per
         client. The line it draws, stated plainly: no searchable database,
         no tech stack data and no instant export tool. Every address is
         checked with two verification tools, duplicates are removed and a
@@ -291,7 +284,7 @@ const pricingSources = [
         The difference is where the work sits. On a platform, the software
         is the product and your team supplies the research. With a list
         building service, the research is the product: you send the brief,
-        we do the sourcing, the checks and the review, and the file arrives
+        we do the sourcing, the checks and the review and the file arrives
         ready to import. The platform stays available if you want it; the
         list is the part you no longer have to build.
       </p>
@@ -334,7 +327,7 @@ const pricingSources = [
           <h3>Per credit, lookup</h3>
           <p>
             You buy the right to reveal one phone or email at a time. Per
-            credit pricing suits lookups and small batches, and Lusha is the
+            credit pricing suits lookups and small batches and Lusha is the
             example, with 40 free credits a month.
           </p>
         </article>
@@ -365,7 +358,7 @@ const pricingSources = [
           own pricing page, checked October 2026.
         </p>
       </div>
-      <p class="ed-scroll-hint" id="apollo-table-hint">
+      <p class="ed-scroll-hint ed-hint-stack" id="apollo-table-hint">
         Scroll sideways to see every column.
       </p>
       <div
@@ -375,7 +368,7 @@ const pricingSources = [
         aria-describedby="apollo-table-hint"
         tabindex="0"
       >
-        <table class="ed-table ed-table-wrap ed-compare">
+        <table class="ed-table ed-table-wrap ed-compare ed-table-stack">
           <caption>
             Apollo and its main alternatives, compared on the same six
             questions. Prices as published on each provider's own pricing
@@ -394,59 +387,59 @@ const pricingSources = [
           <tbody>
             <tr>
               <th scope="row">Apollo</th>
-              <td>Database plus outreach tools</td>
-              <td>Per seat, monthly; credits per cycle</td>
-              <td>Free tier; Basic $49 a user a month, Professional $99 a user a month; Custom quoted by sales</td>
-              <td>Search, filter, export, clean</td>
-              <td>Daily prospecting with sequences and a dialer</td>
+              <td data-label="What it is">Database plus outreach tools</td>
+              <td data-label="How you pay">Per seat, monthly; credits per cycle</td>
+              <td data-label="Published starting price">Free tier; Basic $49 a user a month, Professional $99 a user a month; Custom quoted by sales</td>
+              <td data-label="What your team still does">Search, filter, export, clean</td>
+              <td data-label="Where it fits">Daily prospecting with sequences and a dialer</td>
             </tr>
             <tr>
               <th scope="row">ZoomInfo</th>
-              <td>Enterprise database plus engagement</td>
-              <td>Annual sales contracts</td>
-              <td>Pricing on request</td>
-              <td>Search and export</td>
-              <td>Larger sales orgs, account based workflows</td>
+              <td data-label="What it is">Enterprise database plus engagement</td>
+              <td data-label="How you pay">Annual sales contracts</td>
+              <td data-label="Published starting price">Pricing on request</td>
+              <td data-label="What your team still does">Search and export</td>
+              <td data-label="Where it fits">Larger sales orgs, account based workflows</td>
             </tr>
             <tr>
               <th scope="row">Lusha</th>
-              <td>Contact lookup, credit based</td>
-              <td>Free 40 credits a month, then per credit plan</td>
-              <td>$49.90 a month (Starter, 400 credits)</td>
-              <td>One lookup at a time, list building</td>
-              <td>Solo sellers who need a verified number fast</td>
+              <td data-label="What it is">Contact lookup, credit based</td>
+              <td data-label="How you pay">Free 40 credits a month, then per credit plan</td>
+              <td data-label="Published starting price">$49.90 a month (Starter, 400 credits)</td>
+              <td data-label="What your team still does">One lookup at a time, list building</td>
+              <td data-label="Where it fits">Solo sellers who need a verified number fast</td>
             </tr>
             <tr>
               <th scope="row">UpLead</th>
-              <td>Database plus list building</td>
-              <td>Per seat, annual or monthly</td>
-              <td>$74 a month (Essentials, annual billing)</td>
-              <td>Filter and export</td>
-              <td>Teams that build lists inside a tool</td>
+              <td data-label="What it is">Database plus list building</td>
+              <td data-label="How you pay">Per seat, annual or monthly</td>
+              <td data-label="Published starting price">$74 a month (Essentials, annual billing)</td>
+              <td data-label="What your team still does">Filter and export</td>
+              <td data-label="Where it fits">Teams that build lists inside a tool</td>
             </tr>
             <tr>
               <th scope="row">Cognism</th>
-              <td>Data platform with intent data</td>
-              <td>Per seat, sales only</td>
-              <td>Pricing on request</td>
-              <td>Search and research</td>
-              <td>Compliance focused data with intent signals</td>
+              <td data-label="What it is">Data platform with intent data</td>
+              <td data-label="How you pay">Per seat, sales only</td>
+              <td data-label="Published starting price">Pricing on request</td>
+              <td data-label="What your team still does">Search and research</td>
+              <td data-label="Where it fits">Compliance focused data with intent signals</td>
             </tr>
             <tr>
               <th scope="row">Seamless.AI</th>
-              <td>Data and enrichment platform</td>
-              <td>Per seat or API, sales only</td>
-              <td>Pricing on request</td>
-              <td>Research and export in the platform</td>
-              <td>Teams that need enrichment through an API</td>
+              <td data-label="What it is">Data and enrichment platform</td>
+              <td data-label="How you pay">Per seat or API, sales only</td>
+              <td data-label="Published starting price">Pricing on request</td>
+              <td data-label="What your team still does">Research and export in the platform</td>
+              <td data-label="Where it fits">Teams that need enrichment through an API</td>
             </tr>
             <tr>
               <th scope="row">Clean Rows</th>
-              <td>List building service, one file per order</td>
-              <td>Per list, one time; no seats, no subscription</td>
-              <td>$199 for 10,000 contacts (our pricing page)</td>
-              <td>Send the brief and check the sample; the list arrives reviewed</td>
-              <td>A defined list for a campaign, not a platform</td>
+              <td data-label="What it is">List building service, one file per order</td>
+              <td data-label="How you pay">Per list, one time; no seats, no subscription</td>
+              <td data-label="Published starting price">$199 for 10,000 contacts (our pricing page)</td>
+              <td data-label="What your team still does">Send the brief and check the sample; the list arrives reviewed</td>
+              <td data-label="Where it fits">A defined list for a campaign, not a platform</td>
             </tr>
           </tbody>
         </table>
@@ -468,7 +461,7 @@ const pricingSources = [
         <h2 id="apollo-us">Clean Rows, stated plainly</h2>
         <p>
           The comparison above is the whole pitch. What follows is the same
-          honest format: what the service does, what it does not, and who it
+          format: what the service does, what it does not and who it
           fits. If a platform is the right tool, use a platform; the list is
           the part we remove from that equation.
         </p>
@@ -548,7 +541,7 @@ const pricingSources = [
   <!-- Sources -->
   <section class="ed-section ed-sources" aria-labelledby="apollo-sources">
     <div class="ed-wrap">
-      <h2 id="apollo-sources" class="ed-kicker">SOURCES</h2>
+      <p id="apollo-sources" class="ed-kicker">SOURCES</p>
       <ul>
         {pricingSources.map(([url, label]) => (
           <li>

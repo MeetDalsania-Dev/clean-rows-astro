@@ -284,7 +284,7 @@ h1,h2{text-wrap:balance}
    The placeholder height is larger than any section so skipped content never overlaps the next section.
    .tools-page sections always render eagerly - their content-visibility placeholder height otherwise overlaps with
    the following section while off-screen. */
-main>section:not(.hero):not(.metrics):not(.ed-hero):not(.tool-hero):not(.tool-section):not(.tool-cta-strip),main>.ed-section,.site-footer{content-visibility:auto;contain-intrinsic-size:auto 3600px}
+main>section:not(.hero):not(.metrics):not(.ed-hero):not(.tool-hero):not(.tool-section):not(.tool-cta-strip):not(#contact):not(#pricing):not(:has(#packages,#contact,#plan-options)),main>.ed-section:not(#contact):not(#pricing):not(:has(#packages,#contact,#plan-options)),.site-footer{content-visibility:auto;contain-intrinsic-size:auto 1200px}
 body.tools-page main>section,body.tools-page .site-footer{content-visibility:visible}
 /* Before an in-page jump, every section renders so smooth scrolling lands on the right place. */
 html.cv-off main>section,html.cv-off main>.ed-section,html.cv-off .site-footer{content-visibility:visible!important}
@@ -293,3 +293,4 @@ html.cv-off main>section,html.cv-off main>.ed-section,html.cv-off .site-footer{c
 /* Header "Client login": hidden where the desktop nav has no room for it (still in the footer and mobile menu). */
 .nav-login{white-space:nowrap}
 @media (min-width:801px) and (max-width:1000px){#menu .nav-login{display:none}}
+@media(max-width:640px){.price-grid .price-card.featured{order:-1}}

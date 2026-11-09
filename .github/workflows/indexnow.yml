@@ -1,0 +1,45 @@
+# Sends changed URLs to IndexNow (Bing, Yandex and partners) after every successful
+# Vercel Production deploy. A failed IndexNow call never fails anything else.
+# Manual resubmit: Actions > IndexNow > Run workflow, with space separated paths.
+name: IndexNow
+
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "Space separated paths, e.g. / /pricing /llms.txt (empty = changes since the last Production deploy)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  deployments: read
+
+jobs:
+  submit:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Work out changed URLs
+        id: urls
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_URLS: ${{ github.event.inputs.urls }}
+          DEPLOY_SHA: ${{ github.event.deployment.sha }}
+          DEPLOY_ID: ${{ github.event.deployment.id }}
+        run: node .github/scripts/indexnow-urls.mjs
+      - name: Submit to IndexNow
+        if: steps.urls.outputs.urls != ''
+        continue-on-error: true
+        run: node indexnow.mjs ${{ steps.urls.outputs.urls }}

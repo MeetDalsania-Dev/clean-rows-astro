@@ -4,7 +4,7 @@ const { items } = Astro.props;
 
 <section class="ed-section ed-related" aria-labelledby="related-heading">
   <div class="ed-wrap">
-    <h2 class="ed-kicker" id="related-heading">KEEP EXPLORING</h2>
+    <p class="ed-kicker" id="related-heading">KEEP EXPLORING</p>
     <div class="ed-related-grid">
       {items.map(([href, title, text]) => (
         <a href={href}>

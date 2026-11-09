@@ -112,10 +112,10 @@ const PREBUILT_ROWS: [string, string, string][] = [
 ];
 
 const PACKAGE_ROWS: [string, string, string, string, string][] = [
+  ["Starter", "1,000", "$25", "$25.00", "About 3 hours"],
   ["Growth", "10,000", "$199", "$19.90", "24 hours"],
   ["Scale", "50,000", "$799", "$15.98", "48 hours"],
   ["Enterprise", "100,000+", "Custom quote", "Quoted for your brief", "5 to 7 business days"],
-  ["Starter", "1,000", "$25", "$25.00", "About 3 hours"],
 ];
 
 const DELIVERY_ROWS: [string, string][] = [
@@ -143,12 +143,12 @@ const COUNT_P2 =
 
 const builtSteps = (step1: [string, string]): [string, string][] => [
   step1,
-  ["Count and price.", "We confirm the exact count and price for your ICP before you pay."],
-  ["Research.", "We research every row fresh from [public B2B sources](/data-sources): LinkedIn, company websites, public directories and public filings."],
-  ["Email verification.", "Each email passes two verification tools."],
-  ["Deduplication.", "Duplicate people and rows are removed."],
-  ["Human review.", "A person checks titles, companies and fit against your brief."],
-  ["Delivery.", "You get a CSV or Google Sheet, ready for your CRM or sequencing tool."],
+  ["Count and price", "We confirm the exact count and price for your ICP before you pay."],
+  ["Research", "We research every row fresh from [public B2B sources](/data-sources): LinkedIn, company websites, public directories and public filings."],
+  ["Email verification", "Each email passes two verification tools."],
+  ["Deduplication", "Duplicate people and rows are removed."],
+  ["Human review", "A person checks titles, companies and fit against your brief."],
+  ["Delivery", "You get a CSV or Google Sheet, ready for your CRM or sequencing tool."],
 ];
 
 const SOURCES_P1 =
@@ -182,8 +182,8 @@ rolePages.push({
     proof: "10,000 VP of Sales contacts for $199. One time. No seats.",
   },
   heroFile: {
-    fileName: "vp-of-sales-email-list.csv",
-    subline: "10,000 contacts · 12 fields",
+    fileName: "vp_of_sales_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
     rows: [
       ["VS", "VP of Sales, SVP Sales, EVP Sales"],
       ["HS", "Head of Sales"],
@@ -317,8 +317,8 @@ rolePages.push({
     proof: "10,000 CEO contacts for $199. One time. No seats.",
   },
   heroFile: {
-    fileName: "ceo-email-list.csv",
-    subline: "10,000 contacts · 12 fields",
+    fileName: "ceo_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
     rows: [
       ["CE", "CEO, Chief Executive Officer"],
       ["FO", "Founder, Cofounder"],
@@ -451,8 +451,8 @@ rolePages.push({
     proof: "10,000 HR Director contacts for $199. One time. No seats.",
   },
   heroFile: {
-    fileName: "hr-director-email-list.csv",
-    subline: "10,000 contacts · 12 fields",
+    fileName: "hr_director_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
     rows: [
       ["CH", "CHRO, Chief People Officer"],
       ["VP", "VP of HR, VP People"],
@@ -589,8 +589,8 @@ rolePages.push({
     proof: "10,000 Marketing Director contacts for $199. One time. No seats.",
   },
   heroFile: {
-    fileName: "marketing-director-email-list.csv",
-    subline: "10,000 contacts · 12 fields",
+    fileName: "marketing_director_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
     rows: [
       ["CM", "CMO, Chief Marketing Officer"],
       ["VM", "VP of Marketing"],
@@ -600,7 +600,7 @@ rolePages.push({
   },
   sample: { heading: "Sample rows from a Marketing Director email list", intro: "Real rows with emails and phone numbers masked. Every list you order has these columns.", columns: SAMPLE_COLUMNS, rows: [] },
   fields: {
-    heading: "What is in every marketing director contact list",
+    heading: "What is in every Marketing Director contact list",
     intro: fieldsIntro,
     titleExample: "VP, Demand Generation",
     titleNote: "Every row, checked against your title map",
@@ -726,8 +726,8 @@ rolePages.push({
     proof: "10,000 CFO contacts for $199. One time. No seats.",
   },
   heroFile: {
-    fileName: "cfo-email-list.csv",
-    subline: "10,000 contacts · 12 fields",
+    fileName: "cfo_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
     rows: [
       ["CF", "CFO, Chief Financial Officer"],
       ["VF", "VP of Finance"],
@@ -862,8 +862,8 @@ rolePages.push({
     proof: "10,000 CTO contacts for $199. One time. No seats.",
   },
   heroFile: {
-    fileName: "cto-email-list.csv",
-    subline: "10,000 contacts · 12 fields",
+    fileName: "cto_email_list.csv",
+    subline: "10,000 contacts · 10 field groups",
     rows: [
       ["CT", "CTO, Chief Technology Officer"],
       ["VE", "VP of Engineering"],

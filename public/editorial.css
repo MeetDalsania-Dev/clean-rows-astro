@@ -1160,7 +1160,7 @@ html:has(body.editorial) {
     gap: 4px;
   }
 }
-.editorial .ed-sources h2.ed-kicker {
+.editorial .ed-sources .ed-kicker {
   font:
     600 0.72rem/1.6 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
@@ -1301,7 +1301,7 @@ html:has(body.editorial) {
 .editorial .ed-404 h1 em {
   display: block;
 }
-.editorial .ed-related h2.ed-kicker {
+.editorial .ed-related .ed-kicker {
   font:
     600 0.72rem/1.6 "JetBrains Mono","JetBrains Mono Fallback",
     monospace;
@@ -2141,4 +2141,80 @@ html:has(body.editorial) {
     padding: 14px;
     gap: 12px;
   }
+}
+
+/* Wide reference tables become one card per row on phones (no sideways scroll). */
+.editorial .ed-table-gap {
+  margin-bottom: 32px;
+}
+@media (max-width: 640px) {
+  .editorial .ed-table-stack {
+    min-width: 0;
+  }
+  .editorial .ed-table-stack thead {
+    display: none;
+  }
+  .editorial .ed-table-stack,
+  .editorial .ed-table-stack tbody,
+  .editorial .ed-table-stack tr,
+  .editorial .ed-table-stack th,
+  .editorial .ed-table-stack td {
+    display: block;
+    width: auto;
+  }
+  .editorial .ed-table-stack tr {
+    padding: 4px 0 16px;
+    border-bottom: 1px solid #e2e9e1;
+  }
+  .editorial .ed-table-stack tbody tr:last-child {
+    border-bottom: 0;
+  }
+  .editorial .ed-table-stack tbody th {
+    position: static;
+    width: auto;
+    box-shadow: none;
+    padding: 14px 16px 4px;
+    border-bottom: 0;
+  }
+  .editorial .ed-table-stack td {
+    padding: 4px 16px;
+    border-bottom: 0;
+    white-space: normal;
+  }
+  .editorial .ed-table-stack td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-top: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #234d36;
+  }
+  .editorial .ed-table-stack caption {
+    display: block;
+    width: auto;
+    border-top: 0;
+    border-bottom: 1px solid #e2e9e1;
+    padding: 14px 16px;
+  }
+  .editorial .ed-table-stack td,
+  .editorial .ed-table-stack td:nth-child(2) {
+    background: transparent;
+  }
+  .editorial .ed-section .ed-hint-stack {
+    display: none;
+  }
+}
+.editorial .ls-brief-note {
+  margin-top: 24px;
+}
+@media (max-width: 640px) {
+  /* Growth ($199) leads on phones; desktop keeps Starter, Growth, Scale, Enterprise. */
+  .editorial .ed-plan-cards .ed-plan-growth,
+  .editorial .ed-plan-strip li.featured,
+  .editorial .price-grid .price-card.featured {
+    order: -1;
+  }
+}
+.editorial .ed-answer-below {
+  margin-top: 24px;
 }

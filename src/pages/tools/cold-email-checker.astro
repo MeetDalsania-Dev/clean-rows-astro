@@ -14,7 +14,7 @@ const software = {
 const helpFaqs = [
   [
     'Is this a real spam filter score?',
-    'No. The score is a pattern check: it starts at 100 and subtracts weighted points for the 18 rule groups in the table above. It is not a prediction from Gmail or Outlook.',
+    'No. The score is a pattern check: it starts at 100 and subtracts weighted points for the 19 checks in the table above. It is not a prediction from Gmail or Outlook.',
   ],
   [
     'What score should I aim for?',
@@ -22,7 +22,7 @@ const helpFaqs = [
   ],
   [
     'Does it check the subject line?',
-    'Yes, on its own, for spam words such as "free" and "urgent", for emoji, and for length over 60 characters. The built in good example keeps the subject quiet and under 45 characters.',
+    'Yes, on its own, for spam words such as "free" and "urgent", for emoji and for length over 60 characters. The built in good example keeps the subject quiet and under 45 characters.',
   ],
   [
     'Why did my short email score low?',
@@ -58,7 +58,7 @@ const faqSchema = {
     <p class="tool-kicker">Free. No signup. Runs right here.</p>
     <h1>Cold Email Spam Checker</h1>
     <p class="tool-hero-desc">Paste your cold email. Get an instant spam score, warnings and specific fixes before you send it to 1,000 prospects.</p>
-    <p class="tool-hero-note">Powered by 120+ spam pattern rules. No account required.</p>
+    <p class="tool-hero-note">19 checks covering 120+ spam patterns. No account required.</p>
   </div>
 </section>
 
@@ -69,7 +69,7 @@ const faqSchema = {
       <div class="tool-input-panel">
         <div class="tool-input-header">
           <span>Subject</span>
-          <input id="email-subject" type="text" placeholder="e.g. Quick question about your team" autocomplete="off" />
+          <input id="email-subject" type="text" placeholder="e.g. Quick question" autocomplete="off" />
         </div>
         <div class="tool-input-header">
           <span>From name</span>
@@ -88,7 +88,7 @@ const faqSchema = {
           </button>
           <button class="tool-example-btn" data-example="good">
             <strong>Better cold email <em>Clear</em></strong>
-            <span>"Saw your team is scaling in the EU. We help SaaS teams there close 30% faster..."</span>
+            <span>"Saw you posted three SDR roles. Who builds their prospect lists today?"</span>
           </button>
         </div>
       </details>
@@ -115,7 +115,7 @@ const faqSchema = {
         </div>
         <div class="tool-results-cta">
           <a href="/#contact" data-sample>Get a clean, verified email list</a>
-          <p>Great outreach needs clean data. Our 100 free leads come with verified business emails, so your good email actually lands in the inbox.</p>
+          <p>Great outreach needs clean data. Our free sample comes with verified business emails, so your good email actually lands in the inbox.</p>
         </div>
       </div>
       <div class="tool-results-empty" id="empty-state">
@@ -127,10 +127,10 @@ const faqSchema = {
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="tool-section" id="how">
+<section class="tool-section" id="score-works">
   <div class="tool-how-inner">
     <p class="tool-kicker">How the score works</p>
-    <h2>120+ spam patterns, one clean score</h2>
+    <h2>19 checks covering 120+ spam patterns</h2>
     <div class="tool-how-grid">
       <div class="tool-how-item">
         <span class="tool-how-icon">#</span>
@@ -144,7 +144,7 @@ const faqSchema = {
       </div>
       <div class="tool-how-item">
         <span class="tool-how-icon">@</span>
-        <h3>Personalisation check</h3>
+        <h3>Personalization check</h3>
         <p>The highest performing outreach references something specific about the recipient. We flag generic copy that reads like it was sent to 10,000 people.</p>
       </div>
       <div class="tool-how-item">
@@ -170,7 +170,7 @@ const faqSchema = {
       <li><strong>Type your subject line.</strong> Under 45 characters and quiet; the checker flags spam words, emoji and length.</li>
       <li><strong>Set your from name.</strong> A real person, not "Marketing Team". The rules read body and subject together.</li>
       <li><strong>Paste the body you would actually send.</strong> The two built in examples show the gap between a weak and a strong email.</li>
-      <li><strong>Read the fixes.</strong> Each warning comes with a specific fix, such as cutting to under 150 words.</li>
+      <li><strong>Read the fixes.</strong> Each warning comes with a specific fix, such as cutting a body that runs over 180 words.</li>
     </ol>
     <p>No account needed. Clear the fields to reset; Control or Command and Return also runs the check.</p>
   </div>
@@ -215,9 +215,9 @@ const faqSchema = {
 <section class="tool-section" id="checks">
   <div class="tool-help-inner">
     <p class="tool-kicker">What it checks</p>
-    <h2>18 checks, grouped by what they protect</h2>
+    <h2>19 checks covering 120+ spam patterns</h2>
     <p class="tool-help-lead">
-      Each row is one of the 18 checks; a High weight costs the most points.
+      Each row is one of the 19 checks; a High weight costs the most points.
     </p>
     <p class="tool-help-hint" id="checks-hint">
       Scroll sideways to see every column.
@@ -225,7 +225,7 @@ const faqSchema = {
     <div
       class="tool-help-table-wrap"
       role="region"
-      aria-label="All 18 checks the runner performs"
+      aria-label="All 19 checks the runner performs"
       aria-describedby="checks-hint"
       tabindex="0"
     >
@@ -239,7 +239,7 @@ const faqSchema = {
         </thead>
         <tbody>
           <tr><th scope="row">Spam trigger words</th><td>"guaranteed", "act now", "free trial"</td><td>High</td></tr>
-          <tr><th scope="row">Excessive capitalisation</th><td>10 or more capitals in a run</td><td>High</td></tr>
+          <tr><th scope="row">Excessive capitalization</th><td>10 or more capitals in a run</td><td>High</td></tr>
           <tr><th scope="row">More than one URL</th><td>Two or more links in one email</td><td>Medium</td></tr>
           <tr><th scope="row">Multiple exclamation marks</th><td>Two in a row</td><td>Medium</td></tr>
           <tr><th scope="row">Generic opening</th><td>"just reaching out", "hope this finds you"</td><td>Medium</td></tr>
@@ -279,7 +279,7 @@ const faqSchema = {
     <h3 class="tool-help-sub">Cut to under 150 words</h3>
     <p>Cold email is read once, on a phone. The sweet spot is 30 to 150 words: keep the ask, keep one specific detail, cut the company pitch.</p>
     <h3 class="tool-help-sub">Keep the subject under 45 characters</h3>
-    <p>Long subjects get cut off in the inbox; the ones full of "free", "urgent" or "deal" get cut off in the spam folder. The built in good example, "Quick question about your EU expansion", is the template: short, specific, no hype.</p>
+    <p>Long subjects get cut off in the inbox; the ones full of "free", "urgent" or "deal" get cut off in the spam folder. The built in good example, "Quick question about your new SDRs", is the template: short, specific, no hype.</p>
   </div>
 </section>
 

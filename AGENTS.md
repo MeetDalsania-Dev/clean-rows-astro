@@ -14,7 +14,7 @@ These rules apply to every session that touches copy, pages or marketing content
 - No hype words: best, ultimate, #1, revolutionary, game changing, world class, cutting edge, unlock, supercharge.
 - No unprovable claims: no accuracy percentages, client counts, testimonials, awards, "we tested", "most popular".
 - No fixed database size or typical build size; the count is confirmed for the buyer's ICP before payment.
-- Lead with 10,000 contacts for $199. Never lead titles or headings with $25. No small numbers as proof of scale. The free sample size appears only on the homepage and /free-sample.
+- Lead with 10,000 contacts for $199. Never lead titles or headings with $25. No small numbers as proof of scale. The free sample size (100) may appear only in CTA buttons, the Contact component, the homepage, /free-sample, the legal pages (/terms and /refund) and llms.txt. Never in titles, headings, hero copy or body copy of other pages.
 - Never label examples or sample rows as fictional or illustrative.
 - Never use target countries as a selling point.
 - Competitors: factual only, every price linked to their own pricing page with the month checked, never criticise.
@@ -28,7 +28,7 @@ These rules apply to every session that touches copy, pages or marketing content
 ### SEO and release checklist
 - Primary keyword in title (max 60 characters), meta (140 to 155), H1, first 100 words, one H2 and the slug. FAQ answers 2 to 4 sentences, answer first; FAQPage schema generated from the same data as the visible FAQ.
 - New URLs go into the sitemap and llms.txt. Old URLs get a 301 in vercel.json.
-- After every push that adds or changes public pages, run npm run indexnow for those URLs (network calls may run outside the sandbox).
+- IndexNow runs automatically after each Production deploy (GitHub Action). Use the workflow_dispatch run to resubmit manually.
 - Production build must have zero new errors. Push from the login shell if the sandbox blocks it.
 
 ## Development

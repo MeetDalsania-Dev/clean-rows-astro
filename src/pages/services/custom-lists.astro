@@ -17,7 +17,7 @@ const faqs = [
   ],
   [
     "How is a list building service different from a data platform?",
-    "A data platform gives your team a shared database to search, filter and export, usually priced per seat. A list building service hands you the finished file and the work is done when it arrives. You pay once per list, not monthly per person, and nobody on your team has to search.",
+    "A data platform gives your team a shared database to search, filter and export, usually priced per seat. A list building service hands you the finished file and the work is done when it arrives. You pay once per list, not monthly per person and nobody on your team has to search.",
   ],
   [
     "What does 10,000 contacts for $199 include?",
@@ -40,7 +40,7 @@ const processSteps: [string, string][] = [
   ],
   [
     "Review a free sample",
-    "Up to 100 leads for your ICP arrive within 24 hours, no card and no call. Check the job titles, companies, LinkedIn profiles and emails before anything is paid.",
+    "A free sample for your ICP arrives within 24 hours, no card and no call. Check the job titles, companies, LinkedIn profiles and emails before anything is paid.",
   ],
   [
     "Count and price, confirmed",
@@ -48,14 +48,14 @@ const processSteps: [string, string][] = [
   ],
   [
     "Research to the brief",
-    "Every row is sourced fresh from public B2B sources: public professional profiles, company websites, public directories and public filings. No personal emails, and no tech stack data.",
+    "Every row is sourced fresh from public B2B sources: public professional profiles, company websites, public directories and public filings. No personal emails and no tech stack data.",
   ],
   [
     "Check and clean",
     "Each business email passes two verification tools. Duplicates are removed and a person reviews the list against the brief before it ships.",
   ],
   [
-    "Deliver, or rebuild free",
+    "Deliver or rebuild free",
     "The list arrives as a CSV or Google Sheet, with the column names agreed in the brief. If it misses the brief, we rebuild it free or refund you.",
   ],
 ];
@@ -83,8 +83,8 @@ const fieldRows: [string, string, string][] = [
 ];
 
 const packageRows: [string, string, string, string, string][] = [
-  ["Growth", "10,000", "$199", "$19.90 per 1,000", "24 hours"],
   ["Starter", "1,000", "$25", "$25.00 per 1,000", "About 3 hours"],
+  ["Growth", "10,000", "$199", "$19.90 per 1,000", "24 hours"],
   ["Scale", "50,000", "$799", "$15.98 per 1,000", "48 hours"],
   ["Enterprise", "100,000+", "Custom quote", "Quoted for your brief", "5 to 7 business days"],
 ];
@@ -104,15 +104,15 @@ const packageRows: [string, string, string, string, string][] = [
     label="Custom lists"
     title="B2B list building service. Built to your ICP."
     accent="Scoped before you pay."
-    description="Clean Rows sells B2B lead lists one price per list with no subscription and no seats: 10,000 leads for $199 or 1,000 for $25, paid once and delivered as CSV or Google Sheet, with a free sample in 24 hours. A list building service is a done for you replacement for searching a database: we research a fresh prospect list to your brief and deliver the finished file. [10,000 verified contacts arrive in 24 hours](/buy-b2b-leads), every email checked with two tools and the whole list reviewed by a person. Start with a free sample: no card, no call, no signup."
+    description="Clean Rows sells B2B lead lists one price per list with no subscription and no seats: 10,000 leads for $199 or 1,000 for $25, paid once and delivered as CSV or Google Sheet, with a free sample in 24 hours. A list building service replaces searching a database: we research a fresh prospect list to your brief and deliver the finished file. [10,000 verified contacts arrive in 24 hours](/buy-b2b-leads), every email checked with two tools and the whole list reviewed by a person. Start with a free sample: no card, no call, no signup."
     cta="Scope your list"
     href="#contact"
     secondary="See the process"
     secondaryHref="#process"
     proof="10,000 contacts for $199. One time. No seats."
     filePanel={{
-      fileName: "b2b-list.csv",
-      subline: "10,000 contacts · 12 fields",
+      fileName: "b2b_list.csv",
+      subline: "10,000 contacts · 10 field groups",
       rows: [
         { initials: "VS", title: "VP of Sales" },
         { initials: "CE", title: "CEO" },
@@ -147,7 +147,7 @@ const packageRows: [string, string, string, string, string][] = [
           <h3 class="ed-subhead">The job, in one paragraph</h3>
           <p>
             Most teams that need a list have three options: search a
-            subscription database, build it in house, or hand the work to a
+            subscription database, build it in house or hand the work to a
             service. A data platform is software your team works inside every
             day. Building it yourself is real work, one person at a time,
             across LinkedIn, company websites and verification tools. A list
@@ -178,7 +178,7 @@ const packageRows: [string, string, string, string, string][] = [
             <article>
               <h3>What you get back</h3>
               <ul>
-                <li>A CSV or Google Sheet with 12 standard fields</li>
+                <li>A CSV or Google Sheet with 10 standard field groups</li>
                 <li>Business emails checked with two verification tools</li>
                 <li>Duplicates removed and a human review of the whole list</li>
                 <li>A free rebuild or refund if it misses the brief</li>
@@ -232,11 +232,10 @@ const packageRows: [string, string, string, string, string][] = [
           </ol>
         </article>
       </div>
-      <p>
+      <p class="ls-brief-note">
         The second brief is not longer, just specific. Specificity is where
         a list stops being a pile of contacts and becomes a list of people
-        who will actually reply, and it is also what the free sample
-        checks. Two briefs that both say "marketing people" can produce
+        who will actually reply. It is also what the free sample checks. Two briefs that both say "marketing people" can produce
         very different files.
       </p>
       <div class="section-cta">
@@ -258,7 +257,7 @@ const packageRows: [string, string, string, string, string][] = [
         </div>
         <p>
           Six steps, none of them inside a portal. The exact count and price
-          are confirmed for your ICP before you pay, and the delivery date is
+          are confirmed for your ICP before you pay and the delivery date is
           set with you, not estimated on a ticket.
         </p>
       </div>
@@ -314,11 +313,11 @@ const packageRows: [string, string, string, string, string][] = [
       <div class="ed-section-head">
         <div>
           <p class="ed-kicker">WHAT YOU GET</p>
-          <h2 id="ls-fields">The 12 fields in every list</h2>
+          <h2 id="ls-fields">What is in every list</h2>
         </div>
         <p>
           The same field groups on every row, so the file imports cleanly
-          whatever you load it into. Mobile coverage is the one that varies,
+          whatever you load it into. Mobile coverage is the one that varies
           and it is always marked per row.
         </p>
       </div>
@@ -328,7 +327,7 @@ const packageRows: [string, string, string, string, string][] = [
       <div
         class="ed-table-scroll ed-table-light"
         role="region"
-        aria-label="The 12 fields in every list"
+        aria-label="What is in every list"
         aria-describedby="ls-fields-hint"
         tabindex="0"
       >
@@ -357,9 +356,8 @@ const packageRows: [string, string, string, string, string][] = [
         </table>
       </div>
       <p>
-        Removal requests are honored across future lists, and we never sell
-        consumer data or personal emails. The full field guide lives on the
-        <a class="ed-inline" href="/whats-in-the-file">what is in the file</a> page.
+        Removal requests are honored across future lists and we never sell
+        consumer data or personal emails. The full field guide lives on the <a class="ed-inline" href="/whats-in-the-file">what is in the file</a> page.
       </p>
     </div>
   </section>
@@ -380,7 +378,7 @@ const packageRows: [string, string, string, string, string][] = [
       </div>
       <div class="ed-plan-cards">
         {packageRows.map(([name, leads, price, rate, delivery]) => (
-          <article>
+          <article class:list={{ "ed-plan-growth": name === "Growth" }}>
             <h3>{name}</h3>
             <strong>{price}</strong>
             <p>{leads} contacts</p>
@@ -409,7 +407,7 @@ const packageRows: [string, string, string, string, string][] = [
         <h2 id="ls-who">Who a list building service fits</h2>
         <p>
           The service pays for itself when the research is repetitive, the
-          list needs to match a specific brief, and nobody on the team wants
+          list needs to match a specific brief and nobody on the team wants
           to own a database. Four teams use it the most.
         </p>
       </div>
@@ -466,7 +464,7 @@ const packageRows: [string, string, string, string, string][] = [
         </div>
         <p>
           Delivery is not an afterthought on a list building service. It is
-          the moment the brief gets checked, and the whole process is
+          the moment the brief gets checked and the whole process is
           designed so the file arrives ready to use, not ready to clean.
         </p>
       </div>
@@ -489,7 +487,7 @@ const packageRows: [string, string, string, string, string][] = [
             Acceptance is judged against the brief you agreed in writing,
             not against a database refresh date. Rows outside the criteria,
             excluded companies, duplicates or missing columns are the
-            failure cases, and they trigger a free rebuild or a refund if
+            failure cases and they trigger a free rebuild or a refund if
             you report them within 7 days of delivery.
           </p>
         </article>
@@ -525,7 +523,7 @@ const packageRows: [string, string, string, string, string][] = [
         <p>
           The same three ways to reach the right people, compared on the
           questions that decide. No platform names: the comparison is about
-          the model, and each provider's details vary.
+          the model and each provider's details vary.
         </p>
       </div>
       <p class="ed-scroll-hint" id="ls-vs-hint">
@@ -607,7 +605,7 @@ const packageRows: [string, string, string, string, string][] = [
       <p>
         A platform can be the right call when your reps prospect every day.
         It is the wrong call when the job is one clean list for one
-        campaign, or when nobody on the team wants to own the searching.
+        campaign or when nobody on the team wants to own the searching.
         The <a class="ed-inline" href="/compare/b2b-data-subscriptions">per list vs per seat comparison</a>{" "}
         works the two models out in detail.
       </p>
@@ -629,9 +627,9 @@ const packageRows: [string, string, string, string, string][] = [
           <h2 id="ls-check">Six questions to ask a list building service</h2>
         </div>
         <p>
-          These apply to any provider, including us. Ask them before you pay,
-          and the answers tell you whether the work is actually being done
-          for you or just sold to you.
+          These apply to any provider, including us. Ask them before you pay
+          and the answers tell you whether a provider does the work or only
+          sells it.
         </p>
       </div>
       <ol class="ed-checklist">
@@ -639,20 +637,20 @@ const packageRows: [string, string, string, string, string][] = [
           <span>01</span>
           <div>
             <h3>When is each record researched?</h3>
-            <p>When you order, against your brief. Not on the provider's own refresh schedule, and not from a stored export.</p>
+            <p>When you order, against your brief. Not on the provider's own refresh schedule and not from a stored export.</p>
           </div>
         </li>
         <li>
           <span>02</span>
           <div>
             <h3>Do I know the count before I pay?</h3>
-            <p>Yes, and the count that matches your ICP is confirmed before payment. A count confirmed only after you have paid means you are buying a number, not a list.</p>
+            <p>Yes and the count that matches your ICP is confirmed before payment. A count confirmed only after you have paid means you are buying a number, not a list.</p>
           </div>
         </li>
         <li>
           <span>03</span>
           <div>
-            <h3>How are the emails checked, and how many times?</h3>
+            <h3>How are the emails checked and how many times?</h3>
             <p>Business emails checked with two independent verification tools, on every address, before the file is delivered.</p>
           </div>
         </li>
@@ -674,7 +672,7 @@ const packageRows: [string, string, string, string, string][] = [
           <span>06</span>
           <div>
             <h3>Where does the data come from?</h3>
-            <p>Public B2B sources only. No personal emails, no consumer data, and removal requests honored across future lists.</p>
+            <p>Public B2B sources only. No personal emails, no consumer data and removal requests honored across future lists.</p>
           </div>
         </li>
       </ol>
@@ -698,7 +696,7 @@ const packageRows: [string, string, string, string, string][] = [
           <h2 id="ls-close">Send the brief today, read the sample tomorrow</h2>
         </div>
         <p>
-          Up to 100 leads for your ICP arrive within 24 hours. Check the
+          A free sample for your ICP arrives within 24 hours. Check the
           titles, companies, LinkedIn profiles and emails, then confirm the
           count and price for the full list before you pay anything.
         </p>
@@ -710,10 +708,8 @@ const packageRows: [string, string, string, string, string][] = [
         </div>
       </div>
       <p class="ed-note">
-        Ready made lists for common roles live on the{" "}
-        <a class="ed-inline" href="/lists/vp-of-sales-email-list">VP of Sales list</a> and
-        the <a class="ed-inline" href="/buy-b2b-leads">buy B2B leads hub</a>. The{" "}
-        <a class="ed-inline" href="/compare/apollo-alternatives">Apollo alternatives page</a>{" "}
+        Ready made lists for common roles live on the{" "} <a class="ed-inline" href="/lists/vp-of-sales-email-list">VP of Sales list</a> and
+        the <a class="ed-inline" href="/buy-b2b-leads">buy B2B leads hub</a>. The{" "} <a class="ed-inline" href="/compare/apollo-alternatives">Apollo alternatives page</a>{" "}
         compares the service against the platforms.
       </p>
     </div>

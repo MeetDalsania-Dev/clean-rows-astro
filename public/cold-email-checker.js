@@ -10,7 +10,7 @@
       fix: 'Remove promotional language. Specific, factual claims outperform hype.'
     },
     {
-      id: 'all-caps', label: 'Excessive capitalisation', severity: 3,
+      id: 'all-caps', label: 'Excessive capitalization', severity: 3,
       patterns: [/[A-Z]{10,}/, /^[A-Z\s.!?]{20,}$/m],
       fix: 'Avoid runs of 10+ capital letters (excluding proper nouns or acronyms).'
     },
@@ -35,7 +35,7 @@
         const ctaWords = /\b(let\'s|shall we|could you|can you|would you|reply|respond|book|schedule|quick call|15 min|interested|think about|would love|curious|open to|worth|sounds|yep|sure)\b/i;
         return !ctaWords.test(text);
       },
-      fix: 'End with one specific, low-friction CTA. "Worth a quick look?" beats "Let me know your thoughts."'
+      fix: 'End with one specific, low friction CTA. "Worth a quick look?" beats "Let me know your thoughts."'
     },
     {
       id: 'too-long', label: 'Email is too long', severity: 2,
@@ -72,12 +72,12 @@
     {
       id: 'images', label: 'HTML / image content detected', severity: 2,
       patterns: [/<img[\s>]/i, /<html/i, /style="[^"]*background/i, /width="100%"/i],
-      fix: 'Plain-text emails have the highest reply rates for cold outreach. Drop HTML templates.'
+      fix: 'Plain text emails have the highest reply rates for cold outreach. Drop HTML templates.'
     },
     {
       id: 'attachment', label: 'Mentions an attachment', severity: 1,
       patterns: [/\battached\b/i, /\battachment\b/i, /\battached is\b/i, /\bsee attached\b/i],
-      fix: 'Avoid attachments in first-touch cold email — it raises spam scores. Share a link instead.'
+      fix: 'Avoid attachments in first touch cold email; it raises spam scores. Share a link instead.'
     },
     {
       id: 'self-promo', label: 'Marketing / corporate language', severity: 2,
@@ -176,7 +176,7 @@
         ];
         return phrases.some(p => p.test(text));
       },
-      fix: 'Write naturally. "I\'m Alex — saw your team is scaling fast" beats "I am writing to you in my capacity as…"'
+      fix: 'Write naturally. "I\'m Alex, saw your team is scaling fast" beats "I am writing to you in my capacity as…"'
     },
     {
       id: 'subject-emoji', label: 'Emoji in subject line', severity: 1,
@@ -186,7 +186,7 @@
     {
       id: 'long-body', label: 'Very long body', severity: 1,
       fn: (text) => text.split(/\s+/).length > 300,
-      fix: 'Cut significantly. 100–150 words is the sweet spot for cold outreach.'
+      fix: 'Cut significantly. 100 to 150 words is the sweet spot for cold outreach.'
     },
     {
       id: 'multiple-questions', label: 'Multiple questions in one email', severity: 1,
@@ -194,19 +194,19 @@
       fix: 'One clear ask. Multiple questions dilute the CTA and reduce reply rates.'
     },
     {
-      id: 'no-personalised', label: 'No recipient-specific language', severity: 1,
+      id: 'no-personalised', label: 'No recipient specific language', severity: 1,
       fn: (text) => !/\b(you|your)\b/i.test(text) || text.split(/\s+/).length < 15,
-      fix: 'Always personalise. Use {{first_name}} or reference a specific detail about them.'
+      fix: 'Always personalize. Use {{first_name}} or reference a specific detail about them.'
     }
   ];
 
   const POSITIVES = [
     { fn: (t, s) => s && s.trim().length > 5 && s.trim().length <= 45, msg: 'Subject line is a good length' },
     { fn: (t) => !WARNINGS[0].patterns.some(p => p.test(t)), msg: 'No obvious spam trigger words' },
-    { fn: (t) => /\b(your|their|his|her|they)\b/i.test(t), msg: 'Uses recipient-specific language' },
-    { fn: (t) => /\b(worth|open to|could you|can you|would you|reply|book|schedule|quick call|15 min)\b/i.test(t), msg: 'Clear, low-friction call to action' },
-    { fn: (t) => t.split(/\s+/).length >= 30 && t.split(/\s+/).length <= 150, msg: 'Body length is in the sweet spot (30–150 words)' },
-    { fn: (t) => !/<img/i.test(t), msg: 'No embedded images — good for deliverability' }
+    { fn: (t) => /\b(your|their|his|her|they)\b/i.test(t), msg: 'Uses recipient specific language' },
+    { fn: (t) => /\b(worth|open to|could you|can you|would you|reply|book|schedule|quick call|15 min)\b/i.test(t), msg: 'Clear low friction call to action' },
+    { fn: (t) => t.split(/\s+/).length >= 30 && t.split(/\s+/).length <= 150, msg: 'Body length is in the sweet spot (30 to 150 words)' },
+    { fn: (t) => !/<img/i.test(t), msg: 'No embedded images, good for deliverability' }
   ];
 
   function checkEmail(subject, body) {
@@ -247,8 +247,8 @@
       body: 'Hey there!\n\nI hope you\'re doing well. I came across your company and I think we could help you improve your sales performance. Our platform is a revolutionary, world-class solution that will transform your business and unlock your full potential.\n\nWe are passionate about delivering results and we are committed to helping you grow. Don\'t miss this exclusive opportunity! Click here to claim your free trial now. This is a limited time offer and once it\'s gone it\'s gone.\n\nAct now before it\'s too late!\n\nBest regards,\nSales Team'
     },
     good: {
-      subject: 'Quick question about your EU expansion',
-      body: 'Hi Jordan,\n\nSaw your team just opened a hub in Berlin — congrats. We work with SaaS companies expanding into the EU, and we typically help them cut time-to-first-meeting by about 40%.\n\nWorth a quick look? I put together a short breakdown of what changed for three teams your size last quarter.\n\n— Alex'
+      subject: 'Quick question about your new SDRs',
+      body: 'Hi Jordan,\n\nSaw you posted three SDR roles. Who builds their prospect lists today?\n\nIf it is the reps themselves, I can send a short sample built to your ICP so you can compare. Open to seeing one?\n\nAlex'
     }
   };
 

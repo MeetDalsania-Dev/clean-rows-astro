@@ -25,6 +25,7 @@ interface Props {
   strip?: { strong: string; sub: string }[];
   answer?: { label: string; text: string }[];
   samplePrimary?: boolean;
+  answerBelow?: boolean;
 }
 const {
   label,
@@ -45,6 +46,7 @@ const {
   strip,
   answer,
   samplePrimary = false,
+  answerBelow = false,
 } = Astro.props;
 const avatarClasses = ["a0", "a1", "a2"];
 ---
@@ -65,7 +67,7 @@ const avatarClasses = ["a0", "a1", "a2"];
         <h1>{title}</h1>
         <p class="ed-accent">{accent}</p>
         <p class="ed-intro"><InlineLinks text={description} /></p>
-        {answer && answer.length > 0 && (
+        {answer && answer.length > 0 && !answerBelow && (
         <div class="ed-answer">
           {answer.map((line) => (
             <p><strong>{line.label}</strong> {line.text}</p>
@@ -89,6 +91,13 @@ const avatarClasses = ["a0", "a1", "a2"];
             <span aria-hidden="true">↓</span>
           </a>
         </div>
+        {answer && answer.length > 0 && answerBelow && (
+        <div class="ed-answer ed-answer-below">
+          {answer.map((line) => (
+            <p><strong>{line.label}</strong> {line.text}</p>
+          ))}
+        </div>
+        )}
         {proof && <p class="ed-proof">{proof}</p>}
         {note && !proof && <p class="ed-note">{note}</p>}
       </div>

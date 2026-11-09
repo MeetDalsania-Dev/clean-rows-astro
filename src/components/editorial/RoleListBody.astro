@@ -259,7 +259,7 @@ const sampleVisible = role.sample.rows.length > 0;
     </div>
     <div class="ed-plan-cards">
       {role.packages.rows.map(([name, leads, price, rate, delivery]) => (
-        <article>
+        <article class:list={{ "ed-plan-growth": name === "Growth" }}>
           <h3>{name}</h3>
           <strong>{price}</strong>
           <p>{leads} contacts</p>
@@ -324,8 +324,8 @@ const sampleVisible = role.sample.rows.length > 0;
         <h2 id="role-buyers">{role.useCases.heading}</h2>
       </div>
     </div>
-    <div class="ed-table-scroll ed-table-light" role="region" aria-label={role.useCases.heading} tabindex="0">
-      <table class="ed-table">
+    <div class="ed-table-scroll ed-table-light ed-table-gap" role="region" aria-label={role.useCases.heading} tabindex="0">
+      <table class="ed-table ed-table-wrap ed-table-stack">
         <thead>
           <tr>
             <th scope="col">Buyer</th>
