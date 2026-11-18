@@ -26,7 +26,6 @@
     "esbuild": true
   },
   "devDependencies": {
-    "@vercel/functions": "^3.11.3",
     "node-html-parser": "^9.0.7",
     "turndown": "^7.2.5"
   }
