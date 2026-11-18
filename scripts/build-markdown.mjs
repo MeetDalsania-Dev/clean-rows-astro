@@ -22,6 +22,7 @@ const htmlFiles = (dir) =>
   });
 
 let count = 0;
+const written = [];
 for (const file of htmlFiles(SRC)) {
   const route = "/" + relative(SRC, dirname(file)).replace(/\\/g, "/");
   const root = parse(readFileSync(file, "utf8"));
@@ -60,6 +61,9 @@ for (const file of htmlFiles(SRC)) {
     mkdirSync(dirname(target), { recursive: true });
     writeFileSync(target, md);
   }
+  written.push(`/md/${rel}.md`);
   count++;
 }
+// Route list for the root middleware.ts, bundled by Vercel after this build.
+writeFileSync("md-routes.json", JSON.stringify(written.sort(), null, 2) + "\n");
 console.log(`[markdown] wrote ${count} pages to ${OUTS.map((o) => o + "/md").join(" and ")}`);
